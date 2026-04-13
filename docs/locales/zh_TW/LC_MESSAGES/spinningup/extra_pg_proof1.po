@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/extra_pg_proof1.rst:3
+msgid "Extra Material"
+msgstr "補充材料"
+
+#: ../../spinningup/extra_pg_proof1.rst:6
+msgid "Proof for Don't Let the Past Distract You"
+msgstr "「不要讓過去干擾你」的證明"
+
+#: ../../spinningup/extra_pg_proof1.rst:8
+msgid ""
+"In this subsection, we will prove that actions should not be reinforced "
+"for rewards obtained in the past."
+msgstr ""
+"在本小節中，我們將證明動作（action）不應該因為過去獲得的獎勵（reward）而被強化。"
+
+#: ../../spinningup/extra_pg_proof1.rst:10
+msgid ""
+"Expand out :math:`R(\\tau)` in the expression for the `simplest policy "
+"gradient`_ to obtain:"
+msgstr ""
+"將 `simplest policy gradient`_ 表達式中的 :math:`R(\\tau)` 展開，得到："
+
+#: ../../spinningup/extra_pg_proof1.rst:12
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) R(\\tau)} \\\\\n"
+"&= \\underE{\\tau \\sim \\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta}"
+" \\log \\pi_{\\theta}(a_t |s_t) \\sum_{t'=0}^T R(s_{t'}, a_{t'}, "
+"s_{t'+1})} \\\\\n"
+"&= \\sum_{t=0}^{T} \\sum_{t'=0}^T  \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) "
+"R(s_{t'}, a_{t'}, s_{t'+1})},"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) R(\\tau)} \\\\\n"
+"&= \\underE{\\tau \\sim \\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta}"
+" \\log \\pi_{\\theta}(a_t |s_t) \\sum_{t'=0}^T R(s_{t'}, a_{t'}, "
+"s_{t'+1})} \\\\\n"
+"&= \\sum_{t=0}^{T} \\sum_{t'=0}^T  \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) "
+"R(s_{t'}, a_{t'}, s_{t'+1})},"
+
+#: ../../spinningup/extra_pg_proof1.rst:18
+msgid "and consider the term"
+msgstr "並考慮以下項"
+
+#: ../../spinningup/extra_pg_proof1.rst:20
+msgid ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) "
+"R(s_{t'}, a_{t'}, s_{t'+1})}."
+msgstr ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) "
+"R(s_{t'}, a_{t'}, s_{t'+1})}."
+
+#: ../../spinningup/extra_pg_proof1.rst:24
+msgid ""
+"We will show that for the case of :math:`t' < t` (the reward comes before"
+" the action being reinforced), this term is zero. This is a complete "
+"proof of the original claim, because after dropping terms with :math:`t' "
+"< t` from the expression, we are left with the reward-to-go form of the "
+"policy gradient, as desired:"
+msgstr ""
+"我們將證明，當 :math:`t' < t`（即獎勵發生在被強化的動作之前）時，"
+"此項為零。這是對原始結論的完整證明，因為在從表達式中移除 :math:`t' "
+"< t` 的項之後，我們就得到了策略梯度（policy gradient）的 reward-to-go 形式，正如所期望的："
+
+#: ../../spinningup/extra_pg_proof1.rst:26
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1})}"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1})}"
+
+#: ../../spinningup/extra_pg_proof1.rst:30
+msgid ""
+"**1. Using the Marginal Distribution.** To proceed, we have to break down"
+" the expectation in :math:`\\underE{\\tau \\sim "
+"\\pi_{\\theta}}{f(t,t')}`. It's an expectation over trajectories, but the"
+" expression inside the expectation only deals with a few states and "
+"actions: :math:`s_t`, :math:`a_t`, :math:`s_{t'}`, :math:`a_{t'}`, and "
+":math:`s_{t'+1}`. So in computing the expectation, we only need to worry "
+"about the `marginal distribution`_ over these random variables."
+msgstr ""
+"**1. 使用邊際分佈（Marginal Distribution）。** 為了繼續推導，我們需要將"
+" :math:`\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')}` 中的期望值分解。"
+"雖然這是對軌跡（trajectory）的期望值，但期望值內的表達式只涉及少數幾個狀態和動作："
+" :math:`s_t`、:math:`a_t`、:math:`s_{t'}`、:math:`a_{t'}` 和"
+" :math:`s_{t'+1}`。因此在計算期望值時，我們只需要關注這些隨機變數的 `marginal distribution`_。"
+
+#: ../../spinningup/extra_pg_proof1.rst:32
+msgid "We derive:"
+msgstr "我們推導如下："
+
+#: ../../spinningup/extra_pg_proof1.rst:34
+msgid ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} &= \\int_{\\tau} "
+"P(\\tau|\\pi_{\\theta}) f(t,t') \\\\\n"
+"&= \\int_{s_t, a_t, s_{t'}, a_{t'}, s_{t'+1}} P(s_t, a_t, s_{t'}, a_{t'},"
+" s_{t'+1} | \\pi_{\\theta}) f(t,t') \\\\\n"
+"&= \\underE{s_t, a_t, s_{t'}, a_{t'}, s_{t'+1} \\sim "
+"\\pi_{\\theta}}{f(t,t')}."
+msgstr ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} &= \\int_{\\tau} "
+"P(\\tau|\\pi_{\\theta}) f(t,t') \\\\\n"
+"&= \\int_{s_t, a_t, s_{t'}, a_{t'}, s_{t'+1}} P(s_t, a_t, s_{t'}, a_{t'},"
+" s_{t'+1} | \\pi_{\\theta}) f(t,t') \\\\\n"
+"&= \\underE{s_t, a_t, s_{t'}, a_{t'}, s_{t'+1} \\sim "
+"\\pi_{\\theta}}{f(t,t')}."
+
+#: ../../spinningup/extra_pg_proof1.rst:40
+msgid ""
+"**2. Probability Chain Rule.** Joint distributions can be calculated in "
+"terms of conditional and marginal probabilities via `chain rule of "
+"probability`_: :math:`P(A,B) = P(B|A) P(A)`. Here, we use this rule to "
+"compute"
+msgstr ""
+"**2. 機率鏈式法則（Probability Chain Rule）。** 聯合分佈可以透過"
+" `chain rule of probability`_ 用條件機率和邊際機率來計算："
+" :math:`P(A,B) = P(B|A) P(A)`。在這裡，我們利用此法則來計算"
+
+#: ../../spinningup/extra_pg_proof1.rst:42
+#, python-brace-format
+msgid ""
+"P(s_t, a_t, s_{t'}, a_{t'}, s_{t'+1} | \\pi_{\\theta}) = P(s_t, a_t | "
+"\\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) P(s_{t'}, a_{t'}, s_{t'+1} | "
+"\\pi_{\\theta})"
+msgstr ""
+"P(s_t, a_t, s_{t'}, a_{t'}, s_{t'+1} | \\pi_{\\theta}) = P(s_t, a_t | "
+"\\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) P(s_{t'}, a_{t'}, s_{t'+1} | "
+"\\pi_{\\theta})"
+
+#: ../../spinningup/extra_pg_proof1.rst:47
+msgid ""
+"**3. Separating Expectations Over Multiple Random Variables.** If we have"
+" an expectation over two random variables :math:`A` and :math:`B`, we can"
+" split it into an inner and outer expectation, where the inner "
+"expectation treats the variable from the outer expectation as a constant."
+" Our ability to make this split relies on probability chain rule. "
+"Mathematically:"
+msgstr ""
+"**3. 分離多隨機變數的期望值。** 如果我們有一個關於兩個隨機變數 :math:`A` 和 :math:`B` 的期望值，"
+"我們可以將其拆分為內層和外層期望值，其中內層期望值將外層期望值的變數視為常數。"
+"我們進行此拆分的能力依賴於機率鏈式法則。用數學表示為："
+
+#: ../../spinningup/extra_pg_proof1.rst:49
+msgid ""
+"\\underE{A,B}{f(A,B)} &= \\int_{A,B} P(A,B) f(A,B) \\\\\n"
+"&= \\int_{A} \\int_B P(B|A) P(A) f(A,B) \\\\\n"
+"&= \\int_A P(A) \\int_B P(B|A) f(A,B) \\\\\n"
+"&= \\int_A P(A) \\underE{B}{f(A,B) \\Big| A} \\\\\n"
+"&= \\underE{A}{\\underE{B}{f(A,B) \\Big| A} }"
+msgstr ""
+"\\underE{A,B}{f(A,B)} &= \\int_{A,B} P(A,B) f(A,B) \\\\\n"
+"&= \\int_{A} \\int_B P(B|A) P(A) f(A,B) \\\\\n"
+"&= \\int_A P(A) \\int_B P(B|A) f(A,B) \\\\\n"
+"&= \\int_A P(A) \\underE{B}{f(A,B) \\Big| A} \\\\\n"
+"&= \\underE{A}{\\underE{B}{f(A,B) \\Big| A} }"
+
+#: ../../spinningup/extra_pg_proof1.rst:57
+#, python-brace-format
+msgid ""
+"An expectation over :math:`s_t, a_t, s_{t'}, a_{t'}, s_{t'+1}` can thus "
+"be expressed by"
+msgstr ""
+"因此，關於 :math:`s_t, a_t, s_{t'}, a_{t'}, s_{t'+1}` 的期望值可以表示為"
+
+#: ../../spinningup/extra_pg_proof1.rst:59
+msgid ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} &= \\underE{s_t, a_t, "
+"s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{f(t,t')} \\\\\n"
+"&= \\underE{s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{\\underE{s_t, "
+"a_t \\sim \\pi_{\\theta}}{f(t,t') \\Big| s_{t'}, a_{t'}, s_{t'+1}}}"
+msgstr ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} &= \\underE{s_t, a_t, "
+"s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{f(t,t')} \\\\\n"
+"&= \\underE{s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{\\underE{s_t, "
+"a_t \\sim \\pi_{\\theta}}{f(t,t') \\Big| s_{t'}, a_{t'}, s_{t'+1}}}"
+
+#: ../../spinningup/extra_pg_proof1.rst:64
+msgid ""
+"**4. Constants Can Be Pulled Outside of Expectations.** If a term inside "
+"an expectation is constant with respect to the variable being expected "
+"over, it can be pulled outside of the expectation. To give an example, "
+"consider again an expectation over two random variables :math:`A` and "
+":math:`B`, where this time, :math:`f(A,B) = h(A) g(B)`. Then, using the "
+"result from before:"
+msgstr ""
+"**4. 常數可以提到期望值外面。** 如果期望值內的某一項相對於被求期望的變數而言是常數，"
+"則可以將其提到期望值外面。舉例來說，再次考慮關於兩個隨機變數 :math:`A` 和 "
+":math:`B` 的期望值，這次令 :math:`f(A,B) = h(A) g(B)`。利用之前的結果："
+
+#: ../../spinningup/extra_pg_proof1.rst:66
+msgid ""
+"\\underE{A,B}{f(A,B)} &= \\underE{A}{\\underE{B}{f(A,B) \\Big| A}} \\\\\n"
+"&= \\underE{A}{\\underE{B}{h(A) g(B) \\Big| A}}\\\\\n"
+"&= \\underE{A}{h(A) \\underE{B}{g(B) \\Big| A}}."
+msgstr ""
+"\\underE{A,B}{f(A,B)} &= \\underE{A}{\\underE{B}{f(A,B) \\Big| A}} \\\\\n"
+"&= \\underE{A}{\\underE{B}{h(A) g(B) \\Big| A}}\\\\\n"
+"&= \\underE{A}{h(A) \\underE{B}{g(B) \\Big| A}}."
+
+#: ../../spinningup/extra_pg_proof1.rst:72
+msgid "The function in our expectation decomposes this way, allowing us to write:"
+msgstr "我們期望值中的函數可以如此分解，使我們能夠寫出："
+
+#: ../../spinningup/extra_pg_proof1.rst:74
+msgid ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} &= \\underE{s_{t'}, a_{t'},"
+" s_{t'+1} \\sim \\pi_{\\theta}}{\\underE{s_t, a_t \\sim "
+"\\pi_{\\theta}}{f(t,t') \\Big| s_{t'}, a_{t'}, s_{t'+1}}} \\\\\n"
+"&= \\underE{s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{\\underE{s_t, "
+"a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t "
+"|s_t) R(s_{t'}, a_{t'}, s_{t'+1}) \\Big| s_{t'}, a_{t'}, s_{t'+1}}} \\\\"
+"\n"
+"&= \\underE{s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{R(s_{t'}, "
+"a_{t'}, s_{t'+1})  \\underE{s_t, a_t \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) \\Big| "
+"s_{t'}, a_{t'}, s_{t'+1}}}."
+msgstr ""
+"\\underE{\\tau \\sim \\pi_{\\theta}}{f(t,t')} &= \\underE{s_{t'}, a_{t'},"
+" s_{t'+1} \\sim \\pi_{\\theta}}{\\underE{s_t, a_t \\sim "
+"\\pi_{\\theta}}{f(t,t') \\Big| s_{t'}, a_{t'}, s_{t'+1}}} \\\\\n"
+"&= \\underE{s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{\\underE{s_t, "
+"a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t "
+"|s_t) R(s_{t'}, a_{t'}, s_{t'+1}) \\Big| s_{t'}, a_{t'}, s_{t'+1}}} \\\\"
+"\n"
+"&= \\underE{s_{t'}, a_{t'}, s_{t'+1} \\sim \\pi_{\\theta}}{R(s_{t'}, "
+"a_{t'}, s_{t'+1})  \\underE{s_t, a_t \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) \\Big| "
+"s_{t'}, a_{t'}, s_{t'+1}}}."
+
+#: ../../spinningup/extra_pg_proof1.rst:80
+msgid ""
+"**5. Applying the EGLP Lemma.** The last step in our proof relies on the "
+"`EGLP lemma`_. At this point, we will only worry about the innermost "
+"expectation,"
+msgstr ""
+"**5. 應用 EGLP 引理。** 證明的最後一步依賴於 `EGLP lemma`_。在此，我們只需關注最內層的期望值，"
+
+#: ../../spinningup/extra_pg_proof1.rst:82
+msgid ""
+"\\underE{s_t, a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big| s_{t'}, a_{t'}, s_{t'+1}} = \\int_{s_t, "
+"a_t} P(s_t, a_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) "
+"\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t)."
+msgstr ""
+"\\underE{s_t, a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big| s_{t'}, a_{t'}, s_{t'+1}} = \\int_{s_t, "
+"a_t} P(s_t, a_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) "
+"\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t)."
+
+#: ../../spinningup/extra_pg_proof1.rst:86
+msgid ""
+"We now have to make a distinction between two cases: :math:`t' < t`, the "
+"case where the reward happened before the action, and :math:`t' \\geq t`,"
+" where it didn't."
+msgstr ""
+"現在我們需要區分兩種情況：:math:`t' < t`，即獎勵發生在動作之前的情況；"
+"以及 :math:`t' \\geq t`，即獎勵沒有發生在動作之前的情況。"
+
+#: ../../spinningup/extra_pg_proof1.rst:88
+msgid ""
+"**Case One: Reward Before Action.** If :math:`t' < t`, then the "
+"conditional probabilities for actions at :math:`a_t` come from the "
+"policy:"
+msgstr ""
+"**情況一：獎勵在動作之前。** 如果 :math:`t' < t`，則 :math:`a_t` 處的動作條件機率來自策略（policy）："
+
+#: ../../spinningup/extra_pg_proof1.rst:90
+#, python-brace-format
+msgid ""
+"P(s_t, a_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) &= "
+"\\pi_{\\theta}(a_t | s_t) P(s_t | \\pi_{\\theta}, s_{t'}, a_{t'}, "
+"s_{t'+1}),"
+msgstr ""
+"P(s_t, a_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) &= "
+"\\pi_{\\theta}(a_t | s_t) P(s_t | \\pi_{\\theta}, s_{t'}, a_{t'}, "
+"s_{t'+1}),"
+
+#: ../../spinningup/extra_pg_proof1.rst:94
+msgid "the innermost expectation can be broken down farther into"
+msgstr "最內層的期望值可以進一步分解為"
+
+#: ../../spinningup/extra_pg_proof1.rst:96
+msgid ""
+"\\underE{s_t, a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big| s_{t'}, a_{t'}, s_{t'+1}} &= \\int_{s_t, "
+"a_t} P(s_t, a_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) "
+"\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) \\\\\n"
+"&= \\int_{s_t} P(s_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) "
+"\\int_{a_t} \\pi_{\\theta}(a_t | s_t) \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\\\\n"
+"&= \\underE{s_t \\sim \\pi_{\\theta}}{ \\underE{a_t \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) \\Big| "
+"s_t } \\Big| s_{t'}, a_{t'}, s_{t'+1}}."
+msgstr ""
+"\\underE{s_t, a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big| s_{t'}, a_{t'}, s_{t'+1}} &= \\int_{s_t, "
+"a_t} P(s_t, a_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) "
+"\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) \\\\\n"
+"&= \\int_{s_t} P(s_t | \\pi_{\\theta}, s_{t'}, a_{t'}, s_{t'+1}) "
+"\\int_{a_t} \\pi_{\\theta}(a_t | s_t) \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\\\\n"
+"&= \\underE{s_t \\sim \\pi_{\\theta}}{ \\underE{a_t \\sim "
+"\\pi_{\\theta}}{\\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) \\Big| "
+"s_t } \\Big| s_{t'}, a_{t'}, s_{t'+1}}."
+
+#: ../../spinningup/extra_pg_proof1.rst:102
+msgid "The EGLP lemma says that"
+msgstr "EGLP 引理告訴我們"
+
+#: ../../spinningup/extra_pg_proof1.rst:104
+msgid ""
+"\\underE{a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big| s_t } = 0,"
+msgstr ""
+"\\underE{a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big| s_t } = 0,"
+
+#: ../../spinningup/extra_pg_proof1.rst:108
+msgid ""
+"allowing us to conclude that for :math:`t' < t`, :math:`\\underE{\\tau "
+"\\sim \\pi_{\\theta}}{f(t,t')} = 0`."
+msgstr ""
+"因此我們可以得出結論：當 :math:`t' < t` 時，:math:`\\underE{\\tau "
+"\\sim \\pi_{\\theta}}{f(t,t')} = 0`。"
+
+#: ../../spinningup/extra_pg_proof1.rst:110
+msgid ""
+"**Case Two: Reward After Action.** What about the :math:`t' \\geq t` "
+"case, though? Why doesn't the same logic apply? In this case, the "
+"conditional probabilities for :math:`a_t` can't be broken down the same "
+"way, because you're conditioning **on the future.** Think about it like "
+"this: let's say that every day, in the morning, you make a choice between"
+" going for a jog and going to work early, and you have a 50-50 chance of "
+"each option. If you condition on a future where you went to work early, "
+"what are the odds that you went for a jog? Clearly, you didn't. But if "
+"you're conditioning on the past---before you made the decision---what are"
+" the odds that you will later go for a jog? Now it's back to 50-50."
+msgstr ""
+"**情況二：獎勵在動作之後。** 那麼 :math:`t' \\geq t` 的情況呢？"
+"為什麼相同的邏輯不適用？在這種情況下，:math:`a_t` 的條件機率無法以相同方式分解，"
+"因為你是以**未來**為條件的。可以這樣想：假設每天早上你要在慢跑和提早上班之間做選擇，"
+"兩個選項各有 50% 的機率。如果你以「提早去上班了」這個未來為條件，"
+"你去慢跑的機率是多少？顯然你沒有去。但如果你以過去為條件——"
+"在你做出決定之前——你之後去慢跑的機率是多少？這又回到了 50-50。"
+
+#: ../../spinningup/extra_pg_proof1.rst:112
+msgid ""
+"So in the case where :math:`t' \\geq t`, the conditional distribution "
+"over actions :math:`a_t` is **not** :math:`\\pi(a_t|s_t)`, and the EGLP "
+"lemma does not apply."
+msgstr ""
+"因此在 :math:`t' \\geq t` 的情況下，動作 :math:`a_t` 的條件分佈"
+"**不是** :math:`\\pi(a_t|s_t)`，EGLP 引理也就不適用。"

@@ -1,0 +1,481 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../utils/logger.rst:3
+msgid "Logger"
+msgstr "Logger（日誌記錄器）"
+
+#: ../../utils/logger.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../utils/logger.rst:8
+msgid "Using a Logger"
+msgstr "使用 Logger"
+
+#: ../../utils/logger.rst:10
+msgid ""
+"Spinning Up ships with basic logging tools, implemented in the classes "
+"`Logger`_ and `EpochLogger`_. The Logger class contains most of the basic"
+" functionality for saving diagnostics, hyperparameter configurations, the"
+" state of a training run, and the trained model. The EpochLogger class "
+"adds a thin layer on top of that to make it easy to track the average, "
+"standard deviation, min, and max value of a diagnostic over each epoch "
+"and across MPI workers."
+msgstr ""
+"Spinning Up 內建了基本的日誌記錄工具，實作於 `Logger`_ 和 `EpochLogger`_ "
+"這兩個類別中。Logger 類別包含了大部分基本功能，用於儲存診斷資訊、超參數"
+"（hyperparameter）設定、訓練過程的狀態，以及訓練好的模型。EpochLogger 類別"
+"在此基礎上增加了一層薄封裝，使得追蹤每個 epoch 以及跨 MPI worker 的診斷"
+"值的平均值、標準差、最小值和最大值變得更加容易。"
+
+#: ../../utils/logger.rst:12 ../../utils/logger.rst:143
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../utils/logger.rst:14
+msgid "All Spinning Up algorithm implementations use an EpochLogger."
+msgstr "所有 Spinning Up 的演算法實作都使用 EpochLogger。"
+
+#: ../../utils/logger.rst:20
+msgid "Examples"
+msgstr "範例"
+
+#: ../../utils/logger.rst:22
+msgid ""
+"First, let's look at a simple example of how an EpochLogger keeps track "
+"of a diagnostic value:"
+msgstr ""
+"首先，讓我們看一個簡單的範例，了解 EpochLogger 如何追蹤診斷值："
+
+#: ../../utils/logger.rst:37
+msgid ""
+"The ``store`` method is used to save all values of ``Test`` to the "
+"``epoch_logger``'s internal state. Then, when ``log_tabular`` is called, "
+"it computes the average, standard deviation, min, and max of ``Test`` "
+"over all of the values in the internal state. The internal state is wiped"
+" clean after the call to ``log_tabular`` (to prevent leakage into the "
+"statistics at the next epoch). Finally, ``dump_tabular`` is called to "
+"write the diagnostics to file and to stdout."
+msgstr ""
+"``store`` 方法用於將 ``Test`` 的所有值儲存到 ``epoch_logger`` 的內部狀態中。"
+"接著，當呼叫 ``log_tabular`` 時，它會根據內部狀態中的所有值計算 ``Test`` "
+"的平均值、標準差、最小值和最大值。內部狀態會在呼叫 ``log_tabular`` 後被清除"
+"（以防止洩漏到下一個 epoch 的統計數據中）。最後，呼叫 ``dump_tabular`` "
+"將診斷資訊寫入檔案和標準輸出。"
+
+#: ../../utils/logger.rst:39
+msgid ""
+"Next, let's look at a full training procedure with the logger embedded, "
+"to highlight configuration and model saving as well as diagnostic "
+"logging:"
+msgstr ""
+"接下來，讓我們看一個嵌入了 logger 的完整訓練流程，以展示設定檔儲存、模型"
+"儲存以及診斷日誌記錄："
+
+#: ../../utils/logger.rst:115
+msgid "In this example, observe that"
+msgstr "在這個範例中，請注意"
+
+#: ../../utils/logger.rst:117
+msgid ""
+"On line 19, `logger.save_config`_ is used to save the hyperparameter "
+"configuration to a JSON file."
+msgstr ""
+"在第 19 行，`logger.save_config`_ 用於將超參數設定儲存到 JSON 檔案。"
+
+#: ../../utils/logger.rst:118
+msgid ""
+"On lines 42 and 43, `logger.setup_tf_saver`_ is used to prepare the "
+"logger to save the key elements of the computation graph."
+msgstr ""
+"在第 42 和 43 行，`logger.setup_tf_saver`_ 用於準備 logger 以儲存計算圖"
+"（computation graph）的關鍵元素。"
+
+#: ../../utils/logger.rst:119
+msgid ""
+"On line 54, diagnostics are saved to the logger's internal state via "
+"`logger.store`_."
+msgstr ""
+"在第 54 行，透過 `logger.store`_ 將診斷資訊儲存到 logger 的內部狀態中。"
+
+#: ../../utils/logger.rst:120
+msgid ""
+"On line 58, the computation graph is saved once per epoch via "
+"`logger.save_state`_."
+msgstr ""
+"在第 58 行，透過 `logger.save_state`_ 每個 epoch 儲存一次計算圖。"
+
+#: ../../utils/logger.rst:121
+msgid ""
+"On lines 61-66, `logger.log_tabular`_ and `logger.dump_tabular`_ are used"
+" to write the epoch diagnostics to file. Note that the keys passed into "
+"`logger.log_tabular`_ are the same as the keys passed into "
+"`logger.store`_."
+msgstr ""
+"在第 61-66 行，`logger.log_tabular`_ 和 `logger.dump_tabular`_ 用於將 epoch "
+"的診斷資訊寫入檔案。請注意，傳入 `logger.log_tabular`_ 的鍵（key）與傳入 "
+"`logger.store`_ 的鍵相同。"
+
+#: ../../utils/logger.rst:132
+msgid "Logging and PyTorch"
+msgstr "日誌記錄與 PyTorch"
+
+#: ../../utils/logger.rst:134
+msgid ""
+"The preceding example was given in Tensorflow. For PyTorch, everything is"
+" the same except for L42-43: instead of ``logger.setup_tf_saver``, you "
+"would use ``logger.setup_pytorch_saver``, and you would pass it `a "
+"PyTorch module`_ (the network you are training) as an argument."
+msgstr ""
+"前面的範例是使用 Tensorflow 撰寫的。對於 PyTorch，除了第 42-43 行之外一切相同："
+"你需要使用 ``logger.setup_pytorch_saver`` 來替代 ``logger.setup_tf_saver``，"
+"並將 `a PyTorch module`_（你正在訓練的網路）作為引數傳入。"
+
+#: ../../utils/logger.rst:136
+msgid ""
+"The behavior of ``logger.save_state`` is the same as in the Tensorflow "
+"case: each time it is called, it'll save the latest version of the "
+"PyTorch module."
+msgstr ""
+"``logger.save_state`` 的行為與 Tensorflow 的情況相同：每次呼叫時，"
+"它都會儲存最新版本的 PyTorch module。"
+
+#: ../../utils/logger.rst:141
+msgid "Logging and MPI"
+msgstr "日誌記錄與 MPI"
+
+#: ../../utils/logger.rst:145
+msgid ""
+"Several algorithms in RL are easily parallelized by using MPI to average "
+"gradients and/or other key quantities. The Spinning Up loggers are "
+"designed to be well-behaved when using MPI: things will only get written "
+"to stdout and to file from the process with rank 0. But information from "
+"other processes isn't lost if you use the EpochLogger: everything which "
+"is passed into EpochLogger via ``store``, regardless of which process "
+"it's stored in, gets used to compute average/std/min/max values for a "
+"diagnostic."
+msgstr ""
+"強化學習中有許多演算法可以透過 MPI 來對梯度（gradient）和／或其他關鍵量取平均值，"
+"從而輕鬆實現並行化。Spinning Up 的 logger 設計為在使用 MPI 時能正常運作："
+"只有 rank 0 的程序會寫入標準輸出和檔案。但如果你使用 EpochLogger，"
+"來自其他程序的資訊不會遺失：無論儲存在哪個程序中，所有透過 ``store`` 傳入 "
+"EpochLogger 的數據都會被用來計算診斷值的平均值／標準差／最小值／最大值。"
+
+#: ../../utils/logger.rst:149
+msgid "Logger Classes"
+msgstr "Logger 類別"
+
+#: of spinup.utils.logx.Logger:1
+msgid "A general-purpose logger."
+msgstr "通用日誌記錄器。"
+
+#: of spinup.utils.logx.Logger:3
+msgid ""
+"Makes it easy to save diagnostics, hyperparameter configurations, the "
+"state of a training run, and the trained model."
+msgstr ""
+"使儲存診斷資訊、超參數設定、訓練過程的狀態以及訓練好的模型變得容易。"
+
+#: of spinup.utils.logx.Logger.__init__:1
+msgid "Initialize a Logger."
+msgstr "初始化一個 Logger。"
+
+#: ../../utils/logger.rst
+msgid "Parameters"
+msgstr "參數"
+
+#: of spinup.utils.logx.Logger.__init__:3
+msgid ""
+"A directory for saving results to. If ``None``, defaults to a temp "
+"directory of the form ``/tmp/experiments/somerandomnumber``."
+msgstr ""
+"儲存結果的目錄。如果為 ``None``，預設使用格式為 "
+"``/tmp/experiments/somerandomnumber`` 的臨時目錄。"
+
+#: of spinup.utils.logx.Logger.__init__:7
+msgid ""
+"Name for the tab-separated-value file containing metrics logged "
+"throughout a training run. Defaults to ``progress.txt``."
+msgstr ""
+"包含整個訓練過程中所記錄指標的 tab 分隔值檔案名稱。預設為 ``progress.txt``。"
+
+#: of spinup.utils.logx.Logger.__init__:11
+msgid ""
+"Experiment name. If you run multiple training runs and give them all the "
+"same ``exp_name``, the plotter will know to group them. (Use case: if you"
+" run the same hyperparameter configuration with multiple random seeds, "
+"you should give them all the same ``exp_name``.)"
+msgstr ""
+"實驗名稱。如果你執行多次訓練並給它們相同的 ``exp_name``，繪圖工具會將它們"
+"分為一組。（使用情境：如果你使用多個隨機種子執行相同的超參數設定，"
+"應該給它們都設定相同的 ``exp_name``。）"
+
+#: of spinup.utils.logx.Logger.dump_tabular:1
+msgid "Write all of the diagnostics from the current iteration."
+msgstr "寫出目前迭代的所有診斷資訊。"
+
+#: of spinup.utils.logx.Logger.dump_tabular:3
+msgid "Writes both to stdout, and to the output file."
+msgstr "同時寫入標準輸出和輸出檔案。"
+
+#: of spinup.utils.logx.Logger.log:1
+msgid "Print a colorized message to stdout."
+msgstr "將帶有顏色的訊息印到標準輸出。"
+
+#: of spinup.utils.logx.Logger.log_tabular:1
+msgid "Log a value of some diagnostic."
+msgstr "記錄某個診斷值。"
+
+#: of spinup.utils.logx.Logger.log_tabular:3
+msgid ""
+"Call this only once for each diagnostic quantity, each iteration. After "
+"using ``log_tabular`` to store values for each diagnostic, make sure to "
+"call ``dump_tabular`` to write them out to file and stdout (otherwise "
+"they will not get saved anywhere)."
+msgstr ""
+"每次迭代中，對每個診斷量只呼叫一次。使用 ``log_tabular`` 儲存每個診斷值後，"
+"務必呼叫 ``dump_tabular`` 將它們寫入檔案和標準輸出（否則它們不會被儲存到任何地方）。"
+
+#: of spinup.utils.logx.Logger.save_config:1
+msgid "Log an experiment configuration."
+msgstr "記錄實驗設定。"
+
+#: of spinup.utils.logx.Logger.save_config:3
+msgid ""
+"Call this once at the top of your experiment, passing in all important "
+"config vars as a dict. This will serialize the config to JSON, while "
+"handling anything which can't be serialized in a graceful way (writing as"
+" informative a string as possible)."
+msgstr ""
+"在實驗開始時呼叫一次，將所有重要的設定變數以 dict 傳入。這會將設定序列化為 "
+"JSON，同時優雅地處理無法序列化的內容（盡可能寫出有意義的字串）。"
+
+#: of spinup.utils.logx.Logger.save_config:8
+msgid "Example use:"
+msgstr "使用範例："
+
+#: of spinup.utils.logx.Logger.save_state:1
+msgid "Saves the state of an experiment."
+msgstr "儲存實驗的狀態。"
+
+#: of spinup.utils.logx.Logger.save_state:3
+msgid ""
+"To be clear: this is about saving *state*, not logging diagnostics. All "
+"diagnostic logging is separate from this function. This function will "
+"save whatever is in ``state_dict``---usually just a copy of the "
+"environment---and the most recent parameters for the model you previously"
+" set up saving for with ``setup_tf_saver``."
+msgstr ""
+"需要澄清的是：這是關於儲存 *狀態*，而不是記錄診斷資訊。所有診斷日誌記錄與"
+"此函式無關。此函式會儲存 ``state_dict`` 中的內容——通常只是環境的副本——"
+"以及你先前透過 ``setup_tf_saver`` 設定儲存的模型的最新參數。"
+
+#: of spinup.utils.logx.Logger.save_state:9
+msgid ""
+"Call with any frequency you prefer. If you only want to maintain a single"
+" state and overwrite it at each call with the most recent version, leave "
+"``itr=None``. If you want to keep all of the states you save, provide "
+"unique (increasing) values for 'itr'."
+msgstr ""
+"可以按你偏好的頻率呼叫。如果你只想維護單一狀態並在每次呼叫時用最新版本覆蓋，"
+"請將 ``itr=None``。如果你想保留所有儲存的狀態，請為 'itr' 提供唯一的（遞增）值。"
+
+#: of spinup.utils.logx.Logger.save_state:14
+msgid ""
+"Dictionary containing essential elements to describe the current state of"
+" training."
+msgstr "包含描述當前訓練狀態之必要元素的字典。"
+
+#: of spinup.utils.logx.Logger.save_state:17
+msgid "An int, or None. Current iteration of training."
+msgstr "一個整數或 None。目前的訓練迭代次數。"
+
+#: of spinup.utils.logx.Logger.setup_pytorch_saver:1
+msgid "Set up easy model saving for a single PyTorch model."
+msgstr "為單一 PyTorch 模型設定簡便的模型儲存功能。"
+
+#: of spinup.utils.logx.Logger.setup_pytorch_saver:3
+msgid ""
+"Because PyTorch saving and loading is especially painless, this is very "
+"minimal; we just need references to whatever we would like to pickle. "
+"This is integrated into the logger because the logger knows where the "
+"user would like to save information about this training run."
+msgstr ""
+"由於 PyTorch 的儲存和載入特別簡單，這裡的實作非常精簡；我們只需要保留想要 "
+"pickle 的物件的參考。這被整合到 logger 中，因為 logger 知道使用者想將此次"
+"訓練的相關資訊儲存在哪裡。"
+
+#: of spinup.utils.logx.Logger.setup_pytorch_saver:9
+msgid "Any PyTorch model or serializable object containing PyTorch models."
+msgstr "任何 PyTorch 模型或包含 PyTorch 模型的可序列化物件。"
+
+#: of spinup.utils.logx.Logger.setup_tf_saver:1
+msgid "Set up easy model saving for tensorflow (legacy TF1 support)."
+msgstr "為 Tensorflow 設定簡便的模型儲存功能（舊版 TF1 支援）。"
+
+#: of spinup.utils.logx.EpochLogger:1
+msgid "A variant of Logger tailored for tracking average values over epochs."
+msgstr "Logger 的變體，專為追蹤跨 epoch 的平均值而設計。"
+
+#: of spinup.utils.logx.EpochLogger:3
+msgid ""
+"Typical use case: there is some quantity which is calculated many times "
+"throughout an epoch, and at the end of the epoch, you would like to "
+"report the average / std / min / max value of that quantity."
+msgstr ""
+"典型使用情境：某個量在一個 epoch 中被計算多次，而在 epoch 結束時，"
+"你希望報告該量的平均值／標準差／最小值／最大值。"
+
+#: of spinup.utils.logx.EpochLogger:7
+msgid "With an EpochLogger, each time the quantity is calculated, you would use"
+msgstr "使用 EpochLogger 時，每次計算該量時，你可以使用"
+
+#: of spinup.utils.logx.EpochLogger:14
+msgid ""
+"to load it into the EpochLogger's state. Then at the end of the epoch, "
+"you would use"
+msgstr ""
+"將其載入 EpochLogger 的狀態中。然後在 epoch 結束時，你可以使用"
+
+#: of spinup.utils.logx.EpochLogger:21
+msgid "to record the desired values."
+msgstr "來記錄所需的值。"
+
+#: of spinup.utils.logx.EpochLogger.get_stats:1
+msgid "Lets an algorithm ask the logger for mean/std/min/max of a diagnostic."
+msgstr "讓演算法向 logger 查詢某個診斷值的平均值／標準差／最小值／最大值。"
+
+#: of spinup.utils.logx.EpochLogger.log_tabular:1
+msgid "Log a value or possibly the mean/std/min/max values of a diagnostic."
+msgstr "記錄一個值，或記錄某個診斷值的平均值／標準差／最小值／最大值。"
+
+#: of spinup.utils.logx.EpochLogger.log_tabular:3
+msgid ""
+"The name of the diagnostic. If you are logging a diagnostic whose state "
+"has previously been saved with ``store``, the key here has to match the "
+"key you used there."
+msgstr ""
+"診斷項目的名稱。如果你記錄的診斷項目先前已透過 ``store`` 儲存了狀態，"
+"這裡的鍵必須與你在那裡使用的鍵一致。"
+
+#: of spinup.utils.logx.EpochLogger.log_tabular:7
+msgid ""
+"A value for the diagnostic. If you have previously saved values for this "
+"key via ``store``, do *not* provide a ``val`` here."
+msgstr ""
+"診斷項目的值。如果你先前已透過 ``store`` 儲存了此鍵的值，請 *不要* 在這裡提供 "
+"``val``。"
+
+#: of spinup.utils.logx.EpochLogger.log_tabular:10
+msgid "If true, log min and max values of the diagnostic over the epoch."
+msgstr "如果為 true，記錄該 epoch 中診斷值的最小值和最大值。"
+
+#: of spinup.utils.logx.EpochLogger.log_tabular:13
+msgid ""
+"If true, do not log the standard deviation of the diagnostic over the "
+"epoch."
+msgstr "如果為 true，不記錄該 epoch 中診斷值的標準差。"
+
+#: of spinup.utils.logx.EpochLogger.store:1
+msgid "Save something into the epoch_logger's current state."
+msgstr "將資料儲存到 epoch_logger 的目前狀態中。"
+
+#: of spinup.utils.logx.EpochLogger.store:3
+msgid "Provide an arbitrary number of keyword arguments with numerical values."
+msgstr "提供任意數量的關鍵字引數，值為數值型別。"
+
+#: ../../utils/logger.rst:163
+msgid "Loading Saved Models (PyTorch Only)"
+msgstr "載入已儲存的模型（僅限 PyTorch）"
+
+#: ../../utils/logger.rst:165
+msgid ""
+"To load an actor-critic model saved by a PyTorch Spinning Up "
+"implementation, run:"
+msgstr ""
+"要載入由 PyTorch Spinning Up 實作所儲存的 actor-critic 模型，請執行："
+
+#: ../../utils/logger.rst:171
+msgid ""
+"When you use this method to load an actor-critic model, you can minimally"
+" expect it to have an ``act`` method that allows you to sample actions "
+"from the policy, given observations:"
+msgstr ""
+"當你使用此方法載入 actor-critic 模型時，你至少可以預期它會有一個 ``act`` "
+"方法，讓你可以根據觀測值從策略（policy）中取樣動作（action）："
+
+#: ../../utils/logger.rst:179
+msgid "Loading Saved Graphs (Tensorflow Only)"
+msgstr "載入已儲存的計算圖（僅限 Tensorflow）"
+
+#: of spinup.utils.logx.restore_tf_graph:1
+msgid ""
+"Loads graphs saved by Logger (legacy TF1 support). Requires tensorflow to"
+" be installed."
+msgstr ""
+"載入由 Logger 儲存的計算圖（舊版 TF1 支援）。需要安裝 tensorflow。"
+
+#: ../../utils/logger.rst:183
+msgid ""
+"When you use this method to restore a graph saved by a Tensorflow "
+"Spinning Up implementation, you can minimally expect it to include the "
+"following:"
+msgstr ""
+"當你使用此方法還原由 Tensorflow Spinning Up 實作所儲存的計算圖時，"
+"你至少可以預期它包含以下內容："
+
+#: ../../utils/logger.rst:186
+msgid "Key"
+msgstr "鍵"
+
+#: ../../utils/logger.rst:186
+msgid "Value"
+msgstr "值"
+
+#: ../../utils/logger.rst:188
+msgid "``x``"
+msgstr "``x``"
+
+#: ../../utils/logger.rst:188
+msgid "Tensorflow placeholder for state input."
+msgstr "用於狀態輸入的 Tensorflow placeholder。"
+
+#: ../../utils/logger.rst:189
+msgid "``pi``"
+msgstr "``pi``"
+
+#: ../../utils/logger.rst:189
+msgid "Samples an action from the agent, conditioned"
+msgstr "從智慧體（agent）中取樣一個動作，條件為"
+
+#: ../../utils/logger.rst:190
+msgid "on states in ``x``."
+msgstr "``x`` 中的狀態。"
+
+#: ../../utils/logger.rst:193
+msgid ""
+"The relevant value functions for an algorithm are also typically stored. "
+"For details of what else gets saved by a given algorithm, see its "
+"documentation page."
+msgstr ""
+"演算法相關的價值函數（value function）通常也會被儲存。有關特定演算法還會儲存"
+"哪些內容的詳細資訊，請參閱其文件頁面。"

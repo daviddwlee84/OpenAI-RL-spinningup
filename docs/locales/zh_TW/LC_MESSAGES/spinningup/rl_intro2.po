@@ -1,0 +1,560 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/rl_intro2.rst:3
+msgid "Part 2: Kinds of RL Algorithms"
+msgstr "第二部分：強化學習 (RL) 演算法的種類"
+
+#: ../../spinningup/rl_intro2.rst:6
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../spinningup/rl_intro2.rst:8
+msgid ""
+"Now that we've gone through the basics of RL terminology and notation, we"
+" can cover a little bit of the richer material: the landscape of "
+"algorithms in modern RL, and a description of the kinds of trade-offs "
+"that go into algorithm design."
+msgstr ""
+"既然我們已經學習了 RL 術語和符號的基礎知識，我們可以涵蓋一些更豐富的內容：現代 "
+"RL 演算法的全貌，以及演算法設計中所涉及的各種權衡的描述。"
+
+#: ../../spinningup/rl_intro2.rst:11
+msgid "A Taxonomy of RL Algorithms"
+msgstr "RL 演算法的分類體系"
+
+#: ../../spinningup/rl_intro2.rst:16
+msgid ""
+"A non-exhaustive, but useful taxonomy of algorithms in modern RL. "
+"`Citations below.`_"
+msgstr ""
+"現代 RL 演算法的一個非詳盡但實用的分類體系。`Citations below.`_"
+
+#: ../../spinningup/rl_intro2.rst:18
+msgid ""
+"We'll start this section with a disclaimer: it's really quite hard to "
+"draw an accurate, all-encompassing taxonomy of algorithms in the modern "
+"RL space, because the modularity of algorithms is not well-represented by"
+" a tree structure. Also, to make something that fits on a page and is "
+"reasonably digestible in an introduction essay, we have to omit quite a "
+"bit of more advanced material (exploration, transfer learning, meta "
+"learning, etc). That said, our goals here are"
+msgstr ""
+"我們先在本節開頭聲明：要為現代 RL 領域的演算法繪製一個準確、全面的分類體系確實"
+"相當困難，因為演算法的模組化特性並不能很好地用樹狀結構來表示。此外，為了使內容"
+"能在一頁內呈現，並在介紹性文章中保持合理的可讀性，我們不得不省略相當多的進階材"
+"料（探索、遷移學習、元學習等）。話雖如此，我們在這裡的目標是"
+
+#: ../../spinningup/rl_intro2.rst:20
+msgid ""
+"to highlight the most foundational design choices in deep RL algorithms "
+"about what to learn and how to learn it,"
+msgstr ""
+"突出深度 RL 演算法中關於學什麼以及如何學的最基礎設計選擇，"
+
+#: ../../spinningup/rl_intro2.rst:21
+msgid "to expose the trade-offs in those choices,"
+msgstr "揭示這些選擇中的權衡，"
+
+#: ../../spinningup/rl_intro2.rst:22
+msgid ""
+"and to place a few prominent modern algorithms into context with respect "
+"to those choices."
+msgstr "並將一些知名的現代演算法放在這些選擇的背景下加以定位。"
+
+#: ../../spinningup/rl_intro2.rst:25
+msgid "Model-Free vs Model-Based RL"
+msgstr "無模型 (Model-Free) 與基於模型 (Model-Based) 的 RL"
+
+#: ../../spinningup/rl_intro2.rst:27
+msgid ""
+"One of the most important branching points in an RL algorithm is the "
+"question of **whether the agent has access to (or learns) a model of the "
+"environment**. By a model of the environment, we mean a function which "
+"predicts state transitions and rewards."
+msgstr ""
+"RL 演算法中最重要的分支點之一是**代理人 (Agent) 是否能存取（或學習）環境的模型"
+"**這個問題。所謂環境模型，我們指的是一個能預測狀態 (State) 轉移和獎勵 (Reward) "
+"的函數。"
+
+#: ../../spinningup/rl_intro2.rst:29
+msgid ""
+"The main upside to having a model is that **it allows the agent to plan**"
+" by thinking ahead, seeing what would happen for a range of possible "
+"choices, and explicitly deciding between its options. Agents can then "
+"distill the results from planning ahead into a learned policy. A "
+"particularly famous example of this approach is `AlphaZero`_. When this "
+"works, it can result in a substantial improvement in sample efficiency "
+"over methods that don't have a model."
+msgstr ""
+"擁有模型的主要優點是**它允許代理人進行規劃**——透過提前思考，看看一系列可能選擇"
+"會發生什麼，並明確地在選項之間做出決定。然後代理人可以將規劃的結果提煉為學習到"
+"的策略 (Policy)。這種方法的一個特別著名的例子是 `AlphaZero`_。當這種方法有效"
+"時，它可以比沒有模型的方法在樣本效率 (Sample Efficiency) 上帶來顯著的提升。"
+
+#: ../../spinningup/rl_intro2.rst:31
+msgid ""
+"The main downside is that **a ground-truth model of the environment is "
+"usually not available to the agent.** If an agent wants to use a model in"
+" this case, it has to learn the model purely from experience, which "
+"creates several challenges. The biggest challenge is that bias in the "
+"model can be exploited by the agent, resulting in an agent which performs"
+" well with respect to the learned model, but behaves sub-optimally (or "
+"super terribly) in the real environment. Model-learning is fundamentally "
+"hard, so even intense effort---being willing to throw lots of time and "
+"compute at it---can fail to pay off."
+msgstr ""
+"主要的缺點是**環境的真實模型通常對代理人不可用。** 如果代理人想在這種情況下使"
+"用模型，它必須純粹從經驗中學習模型，這會產生幾個挑戰。最大的挑戰是模型中的偏差"
+"可能被代理人利用，導致代理人在學習到的模型上表現良好，但在真實環境中表現欠佳"
+"（或非常糟糕）。模型學習從根本上來說是困難的，所以即使付出巨大的努力——願意投入"
+"大量的時間和算力——也可能無法獲得回報。"
+
+#: ../../spinningup/rl_intro2.rst:33
+msgid ""
+"Algorithms which use a model are called **model-based** methods, and "
+"those that don't are called **model-free**. While model-free methods "
+"forego the potential gains in sample efficiency from using a model, they "
+"tend to be easier to implement and tune. As of the time of writing this "
+"introduction (September 2018), model-free methods are more popular and "
+"have been more extensively developed and tested than model-based methods."
+msgstr ""
+"使用模型的演算法稱為**基於模型**的方法，不使用模型的稱為**無模型**的方法。雖然"
+"無模型方法放棄了使用模型可能帶來的樣本效率提升，但它們通常更容易實作和調參。在"
+"撰寫本介紹時（2018 年 9 月），無模型方法比基於模型的方法更受歡迎，也得到了更廣"
+"泛的開發和測試。"
+
+#: ../../spinningup/rl_intro2.rst:37
+msgid "What to Learn"
+msgstr "學什麼"
+
+#: ../../spinningup/rl_intro2.rst:39
+msgid ""
+"Another critical branching point in an RL algorithm is the question of "
+"**what to learn.** The list of usual suspects includes"
+msgstr ""
+"RL 演算法中另一個關鍵的分支點是**學什麼**的問題。常見的候選項包括"
+
+#: ../../spinningup/rl_intro2.rst:41
+msgid "policies, either stochastic or deterministic,"
+msgstr "策略，隨機的或確定性的，"
+
+#: ../../spinningup/rl_intro2.rst:42
+msgid "action-value functions (Q-functions),"
+msgstr "動作價值函數 (Action-Value Function)（Q 函數），"
+
+#: ../../spinningup/rl_intro2.rst:43
+msgid "value functions,"
+msgstr "價值函數 (Value Function)，"
+
+#: ../../spinningup/rl_intro2.rst:44
+msgid "and/or environment models."
+msgstr "以及／或環境模型。"
+
+#: ../../spinningup/rl_intro2.rst:49
+msgid "What to Learn in Model-Free RL"
+msgstr "在無模型 RL 中學什麼"
+
+#: ../../spinningup/rl_intro2.rst:51
+msgid ""
+"There are two main approaches to representing and training agents with "
+"model-free RL:"
+msgstr "在無模型 RL 中，有兩種主要方法來表示和訓練代理人："
+
+#: ../../spinningup/rl_intro2.rst:53
+#, python-brace-format
+msgid ""
+"**Policy Optimization.** Methods in this family represent a policy "
+"explicitly as :math:`\\pi_{\\theta}(a|s)`. They optimize the parameters "
+":math:`\\theta` either directly by gradient ascent on the performance "
+"objective :math:`J(\\pi_{\\theta})`,  or indirectly, by maximizing local "
+"approximations of :math:`J(\\pi_{\\theta})`. This optimization is almost "
+"always performed **on-policy**, which means that each update only uses "
+"data collected while acting according to the most recent version of the "
+"policy. Policy optimization also usually involves learning an "
+"approximator :math:`V_{\\phi}(s)` for the on-policy value function "
+":math:`V^{\\pi}(s)`, which gets used in figuring out how to update the "
+"policy."
+msgstr ""
+"**策略優化 (Policy Optimization)。** 這一族方法將策略明確地表示為 "
+":math:`\\pi_{\\theta}(a|s)`。它們透過對效能目標 :math:`J(\\pi_{\\theta})` 進行"
+"梯度上升來直接最佳化參數 :math:`\\theta`，或者透過最大化 "
+":math:`J(\\pi_{\\theta})` 的局部近似來間接最佳化。這種最佳化幾乎總是以**同策略 "
+"(On-Policy)** 的方式執行，這意味著每次更新只使用按照最新版本策略行動時收集的資"
+"料。策略優化通常還涉及學習同策略價值函數 :math:`V^{\\pi}(s)` 的近似器 "
+":math:`V_{\\phi}(s)`，用於確定如何更新策略。"
+
+#: ../../spinningup/rl_intro2.rst:55
+msgid "A couple of examples of policy optimization methods are:"
+msgstr "策略優化方法的幾個例子是："
+
+#: ../../spinningup/rl_intro2.rst:57
+msgid ""
+"`A2C / A3C`_, which performs gradient ascent to directly maximize "
+"performance,"
+msgstr "`A2C / A3C`_，透過梯度上升直接最大化效能，"
+
+#: ../../spinningup/rl_intro2.rst:58
+#, python-brace-format
+msgid ""
+"and `PPO`_, whose updates indirectly maximize performance, by instead "
+"maximizing a *surrogate objective* function which gives a conservative "
+"estimate for how much :math:`J(\\pi_{\\theta})` will change as a result "
+"of the update."
+msgstr ""
+"以及 `PPO`_，其更新透過最大化一個*替代目標*函數來間接最大化效能，該替代目標函數"
+"對 :math:`J(\\pi_{\\theta})` 因更新而產生的變化量給出保守估計。"
+
+#: ../../spinningup/rl_intro2.rst:60
+#, python-brace-format
+msgid ""
+"**Q-Learning.** Methods in this family learn an approximator "
+":math:`Q_{\\theta}(s,a)` for the optimal action-value function, "
+":math:`Q^*(s,a)`. Typically they use an objective function based on the "
+"`Bellman equation`_. This optimization is almost always performed **off-"
+"policy**, which means that each update can use data collected at any "
+"point during training, regardless of how the agent was choosing to "
+"explore the environment when the data was obtained. The corresponding "
+"policy is obtained via the connection between :math:`Q^*` and "
+":math:`\\pi^*`: the actions taken by the Q-learning agent are given by"
+msgstr ""
+"**Q 學習 (Q-Learning)。** 這一族方法學習最優動作價值函數 :math:`Q^*(s,a)` 的近"
+"似器 :math:`Q_{\\theta}(s,a)`。它們通常使用基於 `Bellman equation`_ 的目標函"
+"數。這種最佳化幾乎總是以**離策略 (Off-Policy)** 的方式執行，這意味著每次更新可"
+"以使用訓練期間任何時間點收集的資料，而不管獲取資料時代理人是如何選擇探索環境"
+"的。對應的策略透過 :math:`Q^*` 和 :math:`\\pi^*` 之間的關聯獲得：Q 學習代理人"
+"採取的動作由以下公式給出"
+
+#: ../../spinningup/rl_intro2.rst:62
+#, python-brace-format
+msgid "a(s) = \\arg \\max_a Q_{\\theta}(s,a)."
+msgstr "a(s) = \\arg \\max_a Q_{\\theta}(s,a)."
+
+#: ../../spinningup/rl_intro2.rst:66
+msgid "Examples of Q-learning methods include"
+msgstr "Q 學習方法的例子包括"
+
+#: ../../spinningup/rl_intro2.rst:68
+msgid "`DQN`_, a classic which substantially launched the field of deep RL,"
+msgstr "`DQN`_，一個實質性地開創了深度 RL 領域的經典方法，"
+
+#: ../../spinningup/rl_intro2.rst:69
+msgid ""
+"and `C51`_, a variant that learns a distribution over return whose "
+"expectation is :math:`Q^*`."
+msgstr ""
+"以及 `C51`_，一個學習回報 (Return) 分佈的變體，其期望值為 :math:`Q^*`。"
+
+#: ../../spinningup/rl_intro2.rst:71
+#, python-brace-format
+msgid ""
+"**Trade-offs Between Policy Optimization and Q-Learning.** The primary "
+"strength of policy optimization methods is that they are principled, in "
+"the sense that *you directly optimize for the thing you want.* This tends"
+" to make them stable and reliable. By contrast, Q-learning methods only "
+"*indirectly* optimize for agent performance, by training "
+":math:`Q_{\\theta}` to satisfy a self-consistency equation. There are "
+"many failure modes for this kind of learning, so it tends to be less "
+"stable. [1]_ But, Q-learning methods gain the advantage of being "
+"substantially more sample efficient when they do work, because they can "
+"reuse data more effectively than policy optimization techniques."
+msgstr ""
+"**策略優化與 Q 學習之間的權衡。** 策略優化方法的主要優勢在於它們是有原則的，因"
+"為*你直接最佳化你想要的東西*。這使得它們趨向穩定和可靠。相比之下，Q 學習方法只"
+"是透過訓練 :math:`Q_{\\theta}` 來滿足自洽方程式，從而*間接地*最佳化代理人效能。"
+"這種學習方式有很多失敗模式，所以往往不太穩定。[1]_ 但是，Q 學習方法在有效時能"
+"獲得顯著更高的樣本效率的優勢，因為它們可以比策略優化技術更有效地重用資料。"
+
+#: ../../spinningup/rl_intro2.rst:73
+msgid ""
+"**Interpolating Between Policy Optimization and Q-Learning.** "
+"Serendipitously, policy optimization and Q-learning are not incompatible "
+"(and under some circumstances, it turns out, `equivalent`_), and there "
+"exist a range of algorithms that live in between the two extremes. "
+"Algorithms that live on this spectrum are able to carefully trade-off "
+"between the strengths and weaknesses of either side. Examples include"
+msgstr ""
+"**在策略優化與 Q 學習之間插值。** 幸運的是，策略優化和 Q 學習並不是不相容的"
+"（在某些情況下，事實上是 `equivalent`_ 的），而且存在一系列位於兩個極端之間的演"
+"算法。位於這個頻譜上的演算法能夠在雙方的優缺點之間仔細權衡。例子包括"
+
+#: ../../spinningup/rl_intro2.rst:75
+msgid ""
+"`DDPG`_, an algorithm which concurrently learns a deterministic policy "
+"and a Q-function by using each to improve the other,"
+msgstr ""
+"`DDPG`_，一種同時學習確定性策略和 Q 函數的演算法，透過讓它們相互改進，"
+
+#: ../../spinningup/rl_intro2.rst:76
+msgid ""
+"and `SAC`_, a variant which uses stochastic policies, entropy "
+"regularization, and a few other tricks to stabilize learning and score "
+"higher than DDPG on standard benchmarks."
+msgstr ""
+"以及 `SAC`_，一個使用隨機策略、熵正則化和一些其他技巧來穩定學習的變體，在標準"
+"基準測試上得分高於 DDPG。"
+
+#: ../../spinningup/rl_intro2.rst:80
+msgid ""
+"For more information about how and why Q-learning methods can fail, see "
+"1) this classic paper by `Tsitsiklis and van Roy`_, 2) the (much more "
+"recent) `review by Szepesvari`_ (in section 4.3.2), and 3) chapter 11 of "
+"`Sutton and Barto`_, especially section 11.3 (on \"the deadly triad\" of "
+"function approximation, bootstrapping, and off-policy data, together "
+"causing instability in value-learning algorithms)."
+msgstr ""
+"關於 Q 學習方法如何以及為何會失敗的更多資訊，請參見 1) `Tsitsiklis and van "
+"Roy`_ 的經典論文，2)（更近期的）`review by Szepesvari`_（第 4.3.2 節），以及 "
+"3) `Sutton and Barto`_ 的第 11 章，特別是第 11.3 節（關於函數近似、自舉和離策略"
+"資料的「致命三角」，它們共同導致價值學習演算法的不穩定性）。"
+
+#: ../../spinningup/rl_intro2.rst:90
+msgid "What to Learn in Model-Based RL"
+msgstr "在基於模型的 RL 中學什麼"
+
+#: ../../spinningup/rl_intro2.rst:92
+msgid ""
+"Unlike model-free RL, there aren't a small number of easy-to-define "
+"clusters of methods for model-based RL: there are many orthogonal ways of"
+" using models. We'll give a few examples, but the list is far from "
+"exhaustive. In each case, the model may either be given or learned."
+msgstr ""
+"與無模型 RL 不同，基於模型的 RL 沒有少數幾個容易定義的方法群組：使用模型有很多"
+"正交的方式。我們將給出幾個例子，但這個列表遠非詳盡。在每種情況下，模型可以是預"
+"先給定的或學習得到的。"
+
+#: ../../spinningup/rl_intro2.rst:94
+msgid ""
+"**Background: Pure Planning.** The most basic approach *never* explicitly"
+" represents the policy, and instead, uses pure planning techniques like "
+"`model-predictive control`_ (MPC) to select actions. In MPC, each time "
+"the agent observes the environment, it computes a plan which is optimal "
+"with respect to the model, where the plan describes all actions to take "
+"over some fixed window of time after the present. (Future rewards beyond "
+"the horizon may be considered by the planning algorithm through the use "
+"of a learned value function.) The agent then executes the first action of"
+" the plan, and immediately discards the rest of it. It computes a new "
+"plan each time it prepares to interact with the environment, to avoid "
+"using an action from a plan with a shorter-than-desired planning horizon."
+msgstr ""
+"**背景：純規劃。** 最基本的方法*從不*明確地表示策略，而是使用純規劃技術，如 "
+"`model-predictive control`_（MPC，模型預測控制）來選擇動作 (Action)。在 MPC "
+"中，每當代理人觀測環境時，它會計算一個相對於模型最優的計劃，該計劃描述了從當前"
+"時刻起在某個固定時間窗口內要採取的所有動作。（超出時間範圍的未來獎勵可以透過使"
+"用學習到的價值函數被規劃演算法考慮。）然後代理人執行計劃的第一個動作，並立即丟"
+"棄其餘部分。它每次準備與環境互動時都會計算一個新的計劃，以避免使用來自規劃時間"
+"範圍不夠長的計劃中的動作。"
+
+#: ../../spinningup/rl_intro2.rst:96
+msgid ""
+"The `MBMF`_ work explores MPC with learned environment models on some "
+"standard benchmark tasks for deep RL."
+msgstr ""
+"`MBMF`_ 的工作在一些深度 RL 的標準基準任務上探索了使用學習到的環境模型的 MPC。"
+
+#: ../../spinningup/rl_intro2.rst:98
+#, python-brace-format
+msgid ""
+"**Expert Iteration.** A straightforward follow-on to pure planning "
+"involves using and learning an explicit representation of the policy, "
+":math:`\\pi_{\\theta}(a|s)`. The agent uses a planning algorithm (like "
+"Monte Carlo Tree Search) in the model, generating candidate actions for "
+"the plan by sampling from its current policy. The planning algorithm "
+"produces an action which is better than what the policy alone would have "
+"produced, hence it is an \"expert\" relative to the policy. The policy is"
+" afterwards updated to produce an action more like the planning "
+"algorithm's output."
+msgstr ""
+"**專家迭代。** 純規劃的一個直接後續發展涉及使用和學習策略的明確表示 "
+":math:`\\pi_{\\theta}(a|s)`。代理人在模型中使用規劃演算法（如蒙特卡洛樹搜尋），"
+"透過從當前策略中抽樣來生成計劃的候選動作。規劃演算法產生的動作比僅靠策略產生的"
+"動作更好，因此它相對於策略而言是一個「專家」。之後策略會被更新，以產生更接近規"
+"劃演算法輸出的動作。"
+
+#: ../../spinningup/rl_intro2.rst:100
+msgid ""
+"The `ExIt`_ algorithm uses this approach to train deep neural networks to"
+" play Hex."
+msgstr "`ExIt`_ 演算法使用這種方法訓練深度神經網路來玩 Hex 遊戲。"
+
+#: ../../spinningup/rl_intro2.rst:101
+msgid "`AlphaZero`_ is another example of this approach."
+msgstr "`AlphaZero`_ 是這種方法的另一個例子。"
+
+#: ../../spinningup/rl_intro2.rst:103
+msgid ""
+"**Data Augmentation for Model-Free Methods.** Use a model-free RL "
+"algorithm to train a policy or Q-function, but either 1) augment real "
+"experiences with fictitious ones in updating the agent, or 2) use *only* "
+"fictitous experience for updating the agent."
+msgstr ""
+"**無模型方法的資料增強。** 使用無模型 RL 演算法來訓練策略或 Q 函數，但 1) 在更"
+"新代理人時用虛構的經驗來增強真實經驗，或 2) *僅*使用虛構經驗來更新代理人。"
+
+#: ../../spinningup/rl_intro2.rst:105
+msgid ""
+"See `MBVE`_ for an example of augmenting real experiences with fictitious"
+" ones."
+msgstr "請參見 `MBVE`_ 作為用虛構經驗增強真實經驗的例子。"
+
+#: ../../spinningup/rl_intro2.rst:106
+msgid ""
+"See `World Models`_ for an example of using purely fictitious experience "
+"to train the agent, which they call \"training in the dream.\""
+msgstr ""
+"請參見 `World Models`_ 作為使用純虛構經驗訓練代理人的例子，他們稱之為「在夢中"
+"訓練」。"
+
+#: ../../spinningup/rl_intro2.rst:108
+msgid ""
+"**Embedding Planning Loops into Policies.** Another approach embeds the "
+"planning procedure directly into a policy as a subroutine---so that "
+"complete plans become side information for the policy---while training "
+"the output of the policy with any standard model-free algorithm. The key "
+"concept is that in this framework, the policy can learn to choose how and"
+" when to use the plans. This makes model bias less of a problem, because "
+"if the model is bad for planning in some states, the policy can simply "
+"learn to ignore it."
+msgstr ""
+"**將規劃迴圈嵌入策略。** 另一種方法是將規劃程序直接嵌入策略中作為子程序——使完整"
+"的計劃成為策略的附加資訊——同時使用任何標準的無模型演算法來訓練策略的輸出。關鍵"
+"概念是在這個框架中，策略可以學習如何以及何時使用計劃。這使得模型偏差不再是那麼"
+"大的問題，因為如果模型在某些狀態下不適合規劃，策略可以簡單地學習忽略它。"
+
+#: ../../spinningup/rl_intro2.rst:110
+msgid ""
+"See `I2A`_ for an example of agents being endowed with this style of "
+"imagination."
+msgstr "請參見 `I2A`_ 作為賦予代理人這種想像力風格的例子。"
+
+#: ../../spinningup/rl_intro2.rst:119
+msgid "Links to Algorithms in Taxonomy"
+msgstr "分類體系中演算法的連結"
+
+#: ../../spinningup/rl_intro2.rst:123
+msgid ""
+"`A2C / A3C <https://arxiv.org/abs/1602.01783>`_ (Asynchronous Advantage "
+"Actor-Critic): Mnih et al, 2016"
+msgstr ""
+"`A2C / A3C <https://arxiv.org/abs/1602.01783>`_（非同步優勢演員-評論家 "
+"(Actor-Critic)）：Mnih et al, 2016"
+
+#: ../../spinningup/rl_intro2.rst:124
+msgid ""
+"`PPO <https://arxiv.org/abs/1707.06347>`_ (Proximal Policy Optimization):"
+" Schulman et al, 2017"
+msgstr ""
+"`PPO <https://arxiv.org/abs/1707.06347>`_（近端策略優化）：Schulman et al, 2017"
+
+#: ../../spinningup/rl_intro2.rst:125
+msgid ""
+"`TRPO <https://arxiv.org/abs/1502.05477>`_ (Trust Region Policy "
+"Optimization): Schulman et al, 2015"
+msgstr ""
+"`TRPO <https://arxiv.org/abs/1502.05477>`_（信賴域策略優化）：Schulman et al, "
+"2015"
+
+#: ../../spinningup/rl_intro2.rst:126
+msgid ""
+"`DDPG <https://arxiv.org/abs/1509.02971>`_ (Deep Deterministic Policy "
+"Gradient): Lillicrap et al, 2015"
+msgstr ""
+"`DDPG <https://arxiv.org/abs/1509.02971>`_（深度確定性策略梯度 (Policy "
+"Gradient)）：Lillicrap et al, 2015"
+
+#: ../../spinningup/rl_intro2.rst:127
+msgid ""
+"`TD3 <https://arxiv.org/abs/1802.09477>`_ (Twin Delayed DDPG): Fujimoto "
+"et al, 2018"
+msgstr ""
+"`TD3 <https://arxiv.org/abs/1802.09477>`_（雙延遲 DDPG）：Fujimoto et al, 2018"
+
+#: ../../spinningup/rl_intro2.rst:128
+msgid ""
+"`SAC <https://arxiv.org/abs/1801.01290>`_ (Soft Actor-Critic): Haarnoja "
+"et al, 2018"
+msgstr ""
+"`SAC <https://arxiv.org/abs/1801.01290>`_（軟性演員-評論家）：Haarnoja et al, "
+"2018"
+
+#: ../../spinningup/rl_intro2.rst:129
+msgid ""
+"`DQN <https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf>`_ (Deep "
+"Q-Networks): Mnih et al, 2013"
+msgstr ""
+"`DQN <https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf>`_（深度 Q 網路）：Mnih "
+"et al, 2013"
+
+#: ../../spinningup/rl_intro2.rst:130
+msgid ""
+"`C51 <https://arxiv.org/abs/1707.06887>`_ (Categorical 51-Atom DQN): "
+"Bellemare et al, 2017"
+msgstr ""
+"`C51 <https://arxiv.org/abs/1707.06887>`_（類別 51 原子 DQN）：Bellemare et "
+"al, 2017"
+
+#: ../../spinningup/rl_intro2.rst:131
+msgid ""
+"`QR-DQN <https://arxiv.org/abs/1710.10044>`_ (Quantile Regression DQN): "
+"Dabney et al, 2017"
+msgstr ""
+"`QR-DQN <https://arxiv.org/abs/1710.10044>`_（分位數迴歸 DQN）：Dabney et al, "
+"2017"
+
+#: ../../spinningup/rl_intro2.rst:132
+msgid ""
+"`HER <https://arxiv.org/abs/1707.01495>`_ (Hindsight Experience Replay): "
+"Andrychowicz et al, 2017"
+msgstr ""
+"`HER <https://arxiv.org/abs/1707.01495>`_（後見經驗回放）：Andrychowicz et al, "
+"2017"
+
+#: ../../spinningup/rl_intro2.rst:133
+msgid "`World Models`_: Ha and Schmidhuber, 2018"
+msgstr "`World Models`_：Ha and Schmidhuber, 2018"
+
+#: ../../spinningup/rl_intro2.rst:134
+msgid ""
+"`I2A <https://arxiv.org/abs/1707.06203>`_ (Imagination-Augmented Agents):"
+" Weber et al, 2017"
+msgstr ""
+"`I2A <https://arxiv.org/abs/1707.06203>`_（想像力增強代理人）：Weber et al, "
+"2017"
+
+#: ../../spinningup/rl_intro2.rst:135
+msgid ""
+"`MBMF <https://sites.google.com/view/mbmf>`_ (Model-Based RL with Model-"
+"Free Fine-Tuning): Nagabandi et al, 2017"
+msgstr ""
+"`MBMF <https://sites.google.com/view/mbmf>`_（基於模型的 RL 搭配無模型微調）："
+"Nagabandi et al, 2017"
+
+#: ../../spinningup/rl_intro2.rst:136
+msgid ""
+"`MBVE <https://arxiv.org/abs/1803.00101>`_ (Model-Based Value Expansion):"
+" Feinberg et al, 2018"
+msgstr ""
+"`MBVE <https://arxiv.org/abs/1803.00101>`_（基於模型的價值擴展）：Feinberg et "
+"al, 2018"
+
+#: ../../spinningup/rl_intro2.rst:137
+msgid "`AlphaZero <https://arxiv.org/abs/1712.01815>`_: Silver et al, 2017"
+msgstr "`AlphaZero <https://arxiv.org/abs/1712.01815>`_：Silver et al, 2017"

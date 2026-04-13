@@ -3,9 +3,10 @@ import os.path as osp
 
 # Default neural network backend for each algo
 # (Must be either 'tf1' or 'pytorch')
+# Note: TF1 backend is legacy and requires tensorflow<2.0.
 DEFAULT_BACKEND = {
     'vpg': 'pytorch',
-    'trpo': 'tf1',
+    'trpo': 'pytorch',
     'ppo': 'pytorch',
     'ddpg': 'pytorch',
     'td3': 'pytorch',

@@ -1,0 +1,477 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../algorithms/trpo.rst:3
+msgid "Trust Region Policy Optimization"
+msgstr "信任區域策略優化 (Trust Region Policy Optimization)"
+
+#: ../../algorithms/trpo.rst:7
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../algorithms/trpo.rst:10
+msgid "Background"
+msgstr "背景"
+
+#: ../../algorithms/trpo.rst:12
+msgid "(Previously: `Background for VPG`_)"
+msgstr "（先前章節：`Background for VPG`_）"
+
+#: ../../algorithms/trpo.rst:16
+msgid ""
+"TRPO updates policies by taking the largest step possible to improve "
+"performance, while satisfying a special constraint on how close the new "
+"and old policies are allowed to be. The constraint is expressed in terms "
+"of `KL-Divergence`_, a measure of (something like, but not exactly) "
+"distance between probability distributions."
+msgstr ""
+"TRPO 透過在滿足新舊策略之間距離特殊約束的前提下，盡可能邁出最大步伐來改善性"
+"能，以此更新策略。該約束以 `KL-Divergence`_（KL 散度）來表示，這是一種衡量機"
+"率分佈之間距離（類似但不完全等同於距離）的度量。"
+
+#: ../../algorithms/trpo.rst:18
+msgid ""
+"This is different from normal policy gradient, which keeps new and old "
+"policies close in parameter space. But even seemingly small differences "
+"in parameter space can have very large differences in performance---so a "
+"single bad step can collapse the policy performance. This makes it "
+"dangerous to use large step sizes with vanilla policy gradients, thus "
+"hurting its sample efficiency. TRPO nicely avoids this kind of collapse, "
+"and tends to quickly and monotonically improve performance."
+msgstr ""
+"這與一般的策略梯度 (Policy Gradient) 不同，後者是在參數空間中保持新舊策略的接"
+"近。但即使在參數空間中看似微小的差異，也可能導致性能上的巨大差異——因此一個錯"
+"誤的步驟就可能導致策略性能崩潰。這使得在原始策略梯度中使用大步長變得危險，從"
+"而影響其樣本效率。TRPO 很好地避免了這類崩潰，並傾向於快速且單調地改善性能。"
+
+#: ../../algorithms/trpo.rst:23
+msgid "Quick Facts"
+msgstr "快速概覽"
+
+#: ../../algorithms/trpo.rst:25
+msgid "TRPO is an on-policy algorithm."
+msgstr "TRPO 是一種同策略 (On-policy) 演算法。"
+
+#: ../../algorithms/trpo.rst:26
+msgid ""
+"TRPO can be used for environments with either discrete or continuous "
+"action spaces."
+msgstr "TRPO 可用於具有離散或連續動作空間 (Action Space) 的環境。"
+
+#: ../../algorithms/trpo.rst:27
+msgid "The Spinning Up implementation of TRPO supports parallelization with MPI."
+msgstr "Spinning Up 的 TRPO 實作支援透過 MPI 進行平行化。"
+
+#: ../../algorithms/trpo.rst:30
+msgid "Key Equations"
+msgstr "關鍵方程式"
+
+#: ../../algorithms/trpo.rst:32
+#, python-brace-format
+msgid ""
+"Let :math:`\\pi_{\\theta}` denote a policy with parameters "
+":math:`\\theta`. The theoretical TRPO update is:"
+msgstr ""
+"令 :math:`\\pi_{\\theta}` 表示參數為 :math:`\\theta` 的策略。理論上的 "
+"TRPO 更新為："
+
+#: ../../algorithms/trpo.rst:34
+#, python-brace-format
+msgid ""
+"\\theta_{k+1} = \\arg \\max_{\\theta} \\; & {\\mathcal L}(\\theta_k, "
+"\\theta) \\\\\n"
+"\\text{s.t.} \\; & \\bar{D}_{KL}(\\theta || \\theta_k) \\leq \\delta"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:39
+#, python-brace-format
+msgid ""
+"where :math:`{\\mathcal L}(\\theta_k, \\theta)` is the *surrogate "
+"advantage*, a measure of how policy :math:`\\pi_{\\theta}` performs "
+"relative to the old policy :math:`\\pi_{\\theta_k}` using data from the "
+"old policy:"
+msgstr ""
+"其中 :math:`{\\mathcal L}(\\theta_k, \\theta)` 是*替代優勢 (Surrogate "
+"Advantage)*，用於衡量策略 :math:`\\pi_{\\theta}` 相對於舊策略 "
+":math:`\\pi_{\\theta_k}` 的表現，使用來自舊策略的資料："
+
+#: ../../algorithms/trpo.rst:41
+msgid ""
+"{\\mathcal L}(\\theta_k, \\theta) = \\underE{s,a \\sim \\pi_{\\theta_k}}{"
+"\n"
+"    \\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_k}(a|s)} "
+"A^{\\pi_{\\theta_k}}(s,a)\n"
+"    },"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:47
+#, python-brace-format
+msgid ""
+"and :math:`\\bar{D}_{KL}(\\theta || \\theta_k)` is an average KL-"
+"divergence between policies across states visited by the old policy:"
+msgstr ""
+"而 :math:`\\bar{D}_{KL}(\\theta || \\theta_k)` 是舊策略所訪問的狀態上，"
+"策略之間的平均 KL 散度："
+
+#: ../../algorithms/trpo.rst:49
+msgid ""
+"\\bar{D}_{KL}(\\theta || \\theta_k) = \\underE{s \\sim \\pi_{\\theta_k}}{"
+"\n"
+"    D_{KL}\\left(\\pi_{\\theta}(\\cdot|s) || \\pi_{\\theta_k} (\\cdot|s) "
+"\\right)\n"
+"}."
+msgstr ""
+
+#: ../../algorithms/trpo.rst:55 ../../algorithms/trpo.rst:74
+#: ../../algorithms/trpo.rst:157
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../algorithms/trpo.rst:57
+msgid ""
+"The objective and constraint are both zero when :math:`\\theta = "
+"\\theta_k`. Furthermore, the gradient of the constraint with respect to "
+":math:`\\theta` is zero when :math:`\\theta = \\theta_k`. Proving these "
+"facts requires some subtle command of the relevant math---it's an "
+"exercise worth doing, whenever you feel ready!"
+msgstr ""
+"當 :math:`\\theta = \\theta_k` 時，目標函數和約束條件都為零。此外，約束條件對"
+" :math:`\\theta` 的梯度在 :math:`\\theta = \\theta_k` 時也為零。證明這些事實"
+"需要對相關數學有一定的掌握——這是一個值得做的練習，等你準備好的時候可以試試！"
+
+#: ../../algorithms/trpo.rst:60
+msgid ""
+"The theoretical TRPO update isn't the easiest to work with, so TRPO makes"
+" some approximations to get an answer quickly. We Taylor expand the "
+"objective and constraint to leading order around :math:`\\theta_k`:"
+msgstr ""
+"理論上的 TRPO 更新並不容易直接使用，因此 TRPO 做了一些近似以快速得到結果。"
+"我們在 :math:`\\theta_k` 附近對目標函數和約束條件進行 Taylor 展開至首階："
+
+#: ../../algorithms/trpo.rst:62
+#, python-brace-format
+msgid ""
+"{\\mathcal L}(\\theta_k, \\theta) &\\approx g^T (\\theta - \\theta_k) "
+"\\\\\n"
+"\\bar{D}_{KL}(\\theta || \\theta_k) & \\approx \\frac{1}{2} (\\theta - "
+"\\theta_k)^T H (\\theta - \\theta_k)"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:67
+msgid "resulting in an approximate optimization problem,"
+msgstr "得到一個近似的最佳化問題，"
+
+#: ../../algorithms/trpo.rst:69
+#, python-brace-format
+msgid ""
+"\\theta_{k+1} = \\arg \\max_{\\theta} \\; & g^T (\\theta - \\theta_k) "
+"\\\\\n"
+"\\text{s.t.} \\; & \\frac{1}{2} (\\theta - \\theta_k)^T H (\\theta - "
+"\\theta_k) \\leq \\delta."
+msgstr ""
+
+#: ../../algorithms/trpo.rst:76
+#, python-brace-format
+msgid ""
+"By happy coincidence, the gradient :math:`g` of the surrogate advantage "
+"function with respect to :math:`\\theta`, evaluated at :math:`\\theta = "
+"\\theta_k`, is exactly equal to the policy gradient, "
+":math:`\\nabla_{\\theta} J(\\pi_{\\theta})`! Try proving this, if you "
+"feel comfortable diving into the math."
+msgstr ""
+"巧合的是，替代優勢函數對 :math:`\\theta` 的梯度 :math:`g`，在 "
+":math:`\\theta = \\theta_k` 處求值時，恰好等於策略梯度 "
+":math:`\\nabla_{\\theta} J(\\pi_{\\theta})`！如果你對深入數學感到自在，"
+"可以試著證明這一點。"
+
+#: ../../algorithms/trpo.rst:78
+msgid ""
+"This approximate problem can be analytically solved by the methods of "
+"Lagrangian duality [1]_, yielding the solution:"
+msgstr ""
+"這個近似問題可以透過 Lagrangian 對偶方法 [1]_ 解析求解，得到："
+
+#: ../../algorithms/trpo.rst:80
+msgid ""
+"\\theta_{k+1} = \\theta_k + \\sqrt{\\frac{2 \\delta}{g^T H^{-1} g}} "
+"H^{-1} g."
+msgstr ""
+
+#: ../../algorithms/trpo.rst:84
+msgid ""
+"If we were to stop here, and just use this final result, the algorithm "
+"would be exactly calculating the `Natural Policy Gradient`_. A problem is"
+" that, due to the approximation errors introduced by the Taylor "
+"expansion, this may not satisfy the KL constraint, or actually improve "
+"the surrogate advantage. TRPO adds a modification to this update rule: a "
+"backtracking line search,"
+msgstr ""
+"如果我們到此為止，直接使用這個最終結果，該演算法就恰好是在計算"
+"`Natural Policy Gradient`_（自然策略梯度）。問題在於，由於 Taylor 展開引入的"
+"近似誤差，結果可能不滿足 KL 約束，或者無法真正改善替代優勢。TRPO 對此更新規則"
+"增加了一個修改：回溯線搜索 (Backtracking Line Search)，"
+
+#: ../../algorithms/trpo.rst:86
+msgid ""
+"\\theta_{k+1} = \\theta_k + \\alpha^j \\sqrt{\\frac{2 \\delta}{g^T H^{-1}"
+" g}} H^{-1} g,"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:90
+msgid ""
+"where :math:`\\alpha \\in (0,1)` is the backtracking coefficient, and "
+":math:`j` is the smallest nonnegative integer such that "
+":math:`\\pi_{\\theta_{k+1}}` satisfies the KL constraint and produces a "
+"positive surrogate advantage."
+msgstr ""
+"其中 :math:`\\alpha \\in (0,1)` 是回溯係數，:math:`j` 是使得 "
+":math:`\\pi_{\\theta_{k+1}}` 滿足 KL 約束並產生正替代優勢的最小非負整數。"
+
+#: ../../algorithms/trpo.rst:92
+#, python-brace-format
+msgid ""
+"Lastly: computing and storing the matrix inverse, :math:`H^{-1}`, is "
+"painfully expensive when dealing with neural network policies with "
+"thousands or millions of parameters. TRPO sidesteps the issue by using "
+"the `conjugate gradient`_ algorithm to solve :math:`Hx = g` for :math:`x "
+"= H^{-1} g`, requiring only a function which can compute the matrix-"
+"vector product :math:`Hx` instead of computing and storing the whole "
+"matrix :math:`H` directly. This is not too hard to do: we set up a "
+"symbolic operation to calculate"
+msgstr ""
+"最後：當處理具有數千或數百萬個參數的神經網路策略時，計算和儲存矩陣逆 "
+":math:`H^{-1}` 的代價非常高昂。TRPO 透過使用 `conjugate gradient`_"
+"（共軛梯度）演算法來求解 :math:`Hx = g` 以得到 :math:`x = H^{-1} g`，"
+"從而迴避了這個問題，只需要一個能計算矩陣-向量乘積 :math:`Hx` 的函式，"
+"而不需要直接計算和儲存整個矩陣 :math:`H`。這並不太難實現：我們建立一個符號"
+"運算來計算"
+
+#: ../../algorithms/trpo.rst:94
+#, python-brace-format
+msgid ""
+"Hx = \\nabla_{\\theta} \\left( \\left(\\nabla_{\\theta} "
+"\\bar{D}_{KL}(\\theta || \\theta_k)\\right)^T x \\right),"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:98
+msgid "which gives us the correct output without computing the whole matrix."
+msgstr "這樣就可以在不計算整個矩陣的情況下得到正確的輸出。"
+
+#: ../../algorithms/trpo.rst:100
+msgid ""
+"See `Convex Optimization`_ by Boyd and Vandenberghe, especially chapters "
+"2 through 5."
+msgstr "參見 Boyd 和 Vandenberghe 的 `Convex Optimization`_，特別是第 2 到第 5 章。"
+
+#: ../../algorithms/trpo.rst:108
+msgid "Exploration vs. Exploitation"
+msgstr "探索與利用"
+
+#: ../../algorithms/trpo.rst:110
+msgid ""
+"TRPO trains a stochastic policy in an on-policy way. This means that it "
+"explores by sampling actions according to the latest version of its "
+"stochastic policy. The amount of randomness in action selection depends "
+"on both initial conditions and the training procedure. Over the course of"
+" training, the policy typically becomes progressively less random, as the"
+" update rule encourages it to exploit rewards that it has already found. "
+"This may cause the policy to get trapped in local optima."
+msgstr ""
+"TRPO 以同策略的方式訓練一個隨機策略 (Stochastic Policy)。這意味著它透過根據"
+"最新版本的隨機策略取樣動作來進行探索 (Exploration)。動作選擇的隨機程度取決於"
+"初始條件和訓練過程。在訓練過程中，策略通常會逐漸變得不那麼隨機，因為更新規則"
+"會鼓勵它利用 (Exploitation) 已經發現的獎勵。這可能導致策略陷入局部最優解 "
+"(Local Optima)。"
+
+#: ../../algorithms/trpo.rst:114
+msgid "Pseudocode"
+msgstr "虛擬碼"
+
+#: ../../algorithms/trpo.rst:116
+msgid ""
+"\\begin{algorithm}[H]\n"
+"    \\caption{Trust Region Policy Optimization}\n"
+"    \\label{alg1}\n"
+"\\begin{algorithmic}[1]\n"
+"    \\STATE Input: initial policy parameters $\\theta_0$, initial value "
+"function parameters $\\phi_0$\n"
+"    \\STATE Hyperparameters: KL-divergence limit $\\delta$, backtracking "
+"coefficient $\\alpha$, maximum number of backtracking steps $K$\n"
+"    \\FOR{$k = 0,1,2,...$}\n"
+"    \\STATE Collect set of trajectories ${\\mathcal D}_k = \\{\\tau_i\\}$"
+" by running policy $\\pi_k = \\pi(\\theta_k)$ in the environment.\n"
+"    \\STATE Compute rewards-to-go $\\hat{R}_t$.\n"
+"    \\STATE Compute advantage estimates, $\\hat{A}_t$ (using any method "
+"of advantage estimation) based on the current value function "
+"$V_{\\phi_k}$.\n"
+"    \\STATE Estimate policy gradient as\n"
+"        \\begin{equation*}\n"
+"        \\hat{g}_k = \\frac{1}{|{\\mathcal D}_k|} \\sum_{\\tau \\in "
+"{\\mathcal D}_k} \\sum_{t=0}^T \\left. \\nabla_{\\theta} "
+"\\log\\pi_{\\theta}(a_t|s_t)\\right|_{\\theta_k} \\hat{A}_t.\n"
+"        \\end{equation*}\n"
+"    \\STATE Use the conjugate gradient algorithm to compute\n"
+"        \\begin{equation*}\n"
+"        \\hat{x}_k \\approx \\hat{H}_k^{-1} \\hat{g}_k,\n"
+"        \\end{equation*}\n"
+"        where $\\hat{H}_k$ is the Hessian of the sample average KL-"
+"divergence.\n"
+"    \\STATE Update the policy by backtracking line search with\n"
+"        \\begin{equation*}\n"
+"        \\theta_{k+1} = \\theta_k + \\alpha^j \\sqrt{ "
+"\\frac{2\\delta}{\\hat{x}_k^T \\hat{H}_k \\hat{x}_k}} \\hat{x}_k,\n"
+"        \\end{equation*}\n"
+"        where $j \\in \\{0, 1, 2, ... K\\}$ is the smallest value which "
+"improves the sample loss and satisfies the sample KL-divergence "
+"constraint.\n"
+"    \\STATE Fit value function by regression on mean-squared error:\n"
+"        \\begin{equation*}\n"
+"        \\phi_{k+1} = \\arg \\min_{\\phi} \\frac{1}{|{\\mathcal D}_k| T} "
+"\\sum_{\\tau \\in {\\mathcal D}_k} \\sum_{t=0}^T\\left( V_{\\phi} (s_t) -"
+" \\hat{R}_t \\right)^2,\n"
+"        \\end{equation*}\n"
+"        typically via some gradient descent algorithm.\n"
+"    \\ENDFOR\n"
+"\\end{algorithmic}\n"
+"\\end{algorithm}"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:155
+msgid "Documentation"
+msgstr "文件說明"
+
+#: ../../algorithms/trpo.rst:159
+msgid "Spinning Up currently only has a Tensorflow implementation of TRPO."
+msgstr "Spinning Up 目前僅有 TRPO 的 Tensorflow 實作。"
+
+#: ../../algorithms/trpo.rst:165
+msgid "Saved Model Contents"
+msgstr "儲存的模型內容"
+
+#: ../../algorithms/trpo.rst:167
+msgid "The computation graph saved by the logger includes:"
+msgstr "記錄器儲存的計算圖包含："
+
+#: ../../algorithms/trpo.rst:170
+msgid "Key"
+msgstr "鍵"
+
+#: ../../algorithms/trpo.rst:170
+msgid "Value"
+msgstr "值"
+
+#: ../../algorithms/trpo.rst:172
+msgid "``x``"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:172
+msgid "Tensorflow placeholder for state input."
+msgstr "用於狀態輸入的 Tensorflow 佔位符。"
+
+#: ../../algorithms/trpo.rst:173
+msgid "``pi``"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:173
+msgid "Samples an action from the agent, conditioned on states in ``x``."
+msgstr "根據 ``x`` 中的狀態，從代理程式取樣一個動作。"
+
+#: ../../algorithms/trpo.rst:174
+msgid "``v``"
+msgstr ""
+
+#: ../../algorithms/trpo.rst:174
+msgid "Gives value estimate for states in ``x``."
+msgstr "給出 ``x`` 中狀態的價值估計。"
+
+#: ../../algorithms/trpo.rst:177
+msgid "This saved model can be accessed either by"
+msgstr "此儲存的模型可以透過以下方式存取"
+
+#: ../../algorithms/trpo.rst:179
+msgid "running the trained policy with the `test_policy.py`_ tool,"
+msgstr "使用 `test_policy.py`_ 工具執行訓練好的策略，"
+
+#: ../../algorithms/trpo.rst:180
+msgid "or loading the whole saved graph into a program with `restore_tf_graph`_."
+msgstr "或使用 `restore_tf_graph`_ 將整個儲存的計算圖載入到程式中。"
+
+#: ../../algorithms/trpo.rst:186
+msgid "References"
+msgstr "參考文獻"
+
+#: ../../algorithms/trpo.rst:189
+msgid "Relevant Papers"
+msgstr "相關論文"
+
+#: ../../algorithms/trpo.rst:191
+msgid "`Trust Region Policy Optimization`_, Schulman et al. 2015"
+msgstr "`Trust Region Policy Optimization`_, Schulman et al. 2015"
+
+#: ../../algorithms/trpo.rst:192
+msgid ""
+"`High Dimensional Continuous Control Using Generalized Advantage "
+"Estimation`_, Schulman et al. 2016"
+msgstr ""
+"`High Dimensional Continuous Control Using Generalized Advantage "
+"Estimation`_, Schulman et al. 2016"
+
+#: ../../algorithms/trpo.rst:193
+msgid ""
+"`Approximately Optimal Approximate Reinforcement Learning`_, Kakade and "
+"Langford 2002"
+msgstr ""
+"`Approximately Optimal Approximate Reinforcement Learning`_, Kakade and "
+"Langford 2002"
+
+#: ../../algorithms/trpo.rst:200
+msgid "Why These Papers?"
+msgstr "為什麼選擇這些論文？"
+
+#: ../../algorithms/trpo.rst:202
+msgid ""
+"Schulman 2015 is included because it is the original paper describing "
+"TRPO. Schulman 2016 is included because our implementation of TRPO makes "
+"use of Generalized Advantage Estimation for computing the policy "
+"gradient. Kakade and Langford 2002 is included because it contains "
+"theoretical results which motivate and deeply connect to the theoretical "
+"foundations of TRPO."
+msgstr ""
+"收錄 Schulman 2015 是因為它是描述 TRPO 的原始論文。收錄 Schulman 2016 是因為"
+"我們的 TRPO 實作使用了廣義優勢估計 (Generalized Advantage Estimation) 來計算"
+"策略梯度。收錄 Kakade and Langford 2002 是因為它包含了激發 TRPO 理論基礎並與"
+"之深度關聯的理論結果。"
+
+#: ../../algorithms/trpo.rst:207
+msgid "Other Public Implementations"
+msgstr "其他公開實作"
+
+#: ../../algorithms/trpo.rst:209
+msgid "Baselines_"
+msgstr "Baselines_"
+
+#: ../../algorithms/trpo.rst:210
+msgid "ModularRL_"
+msgstr "ModularRL_"
+
+#: ../../algorithms/trpo.rst:211
+msgid "rllab_"
+msgstr "rllab_"

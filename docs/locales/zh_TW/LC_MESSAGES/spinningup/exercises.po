@@ -1,0 +1,428 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/exercises.rst:3
+msgid "Exercises"
+msgstr "練習題"
+
+#: ../../spinningup/exercises.rst:7
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../spinningup/exercises.rst:10
+msgid "Problem Set 1: Basics of Implementation"
+msgstr "題組 1：實作基礎"
+
+#: ../../spinningup/exercises.rst:12
+msgid "Exercise 1.1: Gaussian Log-Likelihood"
+msgstr "練習 1.1：高斯對數似然 (Gaussian Log-Likelihood)"
+
+#: ../../spinningup/exercises.rst:14 ../../spinningup/exercises.rst:40
+msgid "**Path to Exercise:**"
+msgstr "**練習檔案路徑：**"
+
+#: ../../spinningup/exercises.rst:16
+msgid "PyTorch version: ``spinup/exercises/pytorch/problem_set_1/exercise1_1.py``"
+msgstr "PyTorch 版本：``spinup/exercises/pytorch/problem_set_1/exercise1_1.py``"
+
+#: ../../spinningup/exercises.rst:18
+msgid "Tensorflow version: ``spinup/exercises/tf1/problem_set_1/exercise1_1.py``"
+msgstr "Tensorflow 版本：``spinup/exercises/tf1/problem_set_1/exercise1_1.py``"
+
+#: ../../spinningup/exercises.rst:20 ../../spinningup/exercises.rst:46
+msgid "**Path to Solution:**"
+msgstr "**解答檔案路徑：**"
+
+#: ../../spinningup/exercises.rst:22
+msgid ""
+"PyTorch version: "
+"``spinup/exercises/pytorch/problem_set_1_solutions/exercise1_1_soln.py``"
+msgstr ""
+"PyTorch 版本："
+"``spinup/exercises/pytorch/problem_set_1_solutions/exercise1_1_soln.py``"
+
+#: ../../spinningup/exercises.rst:24
+msgid ""
+"Tensorflow version: "
+"``spinup/exercises/tf1/problem_set_1_solutions/exercise1_1_soln.py``"
+msgstr ""
+"Tensorflow 版本："
+"``spinup/exercises/tf1/problem_set_1_solutions/exercise1_1_soln.py``"
+
+#: ../../spinningup/exercises.rst:27
+msgid ""
+"**Instructions.** Write a function that takes in the means and log stds "
+"of a batch of diagonal Gaussian distributions, along with (previously-"
+"generated) samples from those distributions, and returns the log "
+"likelihoods of those samples. (In the Tensorflow version, you will write "
+"a function that creates computation graph operations to do this; in the "
+"PyTorch version, you will directly operate on given Tensors.)"
+msgstr ""
+"**說明。** 撰寫一個函式，輸入一批對角高斯分佈 (Diagonal Gaussian Distribution) "
+"的均值和對數標準差，以及（先前產生的）這些分佈的樣本，並回傳這些樣本的"
+"對數似然值。（在 Tensorflow 版本中，你將撰寫一個建立計算圖運算的函式來完成此操作；"
+"在 PyTorch 版本中，你將直接對給定的 Tensor 進行操作。）"
+
+#: ../../spinningup/exercises.rst:29
+msgid ""
+"You may find it useful to review the formula given in `this section of "
+"the RL introduction`_."
+msgstr ""
+"你可能會發現回顧 `this section of the RL introduction`_ 中給出的公式會很有幫助。"
+
+#: ../../spinningup/exercises.rst:31
+msgid ""
+"Implement your solution in ``exercise1_1.py``, and run that file to "
+"automatically check your work."
+msgstr ""
+"在 ``exercise1_1.py`` 中實作你的解答，並執行該檔案以自動檢查你的成果。"
+
+#: ../../spinningup/exercises.rst:33
+msgid ""
+"**Evaluation Criteria.** Your solution will be checked by comparing "
+"outputs against a known-good implementation, using a batch of random "
+"inputs."
+msgstr ""
+"**評估標準。** 你的解答將使用一批隨機輸入，透過與已知正確的實作進行輸出比對來檢查。"
+
+#: ../../spinningup/exercises.rst:38
+msgid "Exercise 1.2: Policy for PPO"
+msgstr "練習 1.2：PPO 的策略 (Policy)"
+
+#: ../../spinningup/exercises.rst:42
+msgid "PyTorch version: ``spinup/exercises/pytorch/problem_set_1/exercise1_2.py``"
+msgstr "PyTorch 版本：``spinup/exercises/pytorch/problem_set_1/exercise1_2.py``"
+
+#: ../../spinningup/exercises.rst:44
+msgid "Tensorflow version: ``spinup/exercises/tf1/problem_set_1/exercise1_2.py``"
+msgstr "Tensorflow 版本：``spinup/exercises/tf1/problem_set_1/exercise1_2.py``"
+
+#: ../../spinningup/exercises.rst:48
+msgid ""
+"PyTorch version: "
+"``spinup/exercises/pytorch/problem_set_1_solutions/exercise1_2_soln.py``"
+msgstr ""
+"PyTorch 版本："
+"``spinup/exercises/pytorch/problem_set_1_solutions/exercise1_2_soln.py``"
+
+#: ../../spinningup/exercises.rst:50
+msgid ""
+"Tensorflow version: "
+"``spinup/exercises/tf1/problem_set_1_solutions/exercise1_2_soln.py``"
+msgstr ""
+"Tensorflow 版本："
+"``spinup/exercises/tf1/problem_set_1_solutions/exercise1_2_soln.py``"
+
+#: ../../spinningup/exercises.rst:52
+msgid "**Instructions.** Implement an MLP diagonal Gaussian policy for PPO."
+msgstr "**說明。** 實作一個用於 PPO 的 MLP 對角高斯策略。"
+
+#: ../../spinningup/exercises.rst:54
+msgid ""
+"Implement your solution in ``exercise1_2.py``, and run that file to "
+"automatically check your work."
+msgstr ""
+"在 ``exercise1_2.py`` 中實作你的解答，並執行該檔案以自動檢查你的成果。"
+
+#: ../../spinningup/exercises.rst:56
+msgid ""
+"**Evaluation Criteria.** Your solution will be evaluated by running for "
+"20 epochs in the InvertedPendulum-v2 Gym environment, and this should "
+"take in the ballpark of 3-5 minutes (depending on your machine, and other"
+" processes you are running in the background). The bar for success is "
+"reaching an average score of over 500 in the last 5 epochs, or getting to"
+" a score of 1000 (the maximum possible score) in the last 5 epochs."
+msgstr ""
+"**評估標準。** 你的解答將在 InvertedPendulum-v2 Gym 環境中執行 20 個訓練週期 "
+"(Epoch) 來評估，這大約需要 3-5 分鐘（取決於你的機器以及背景中正在執行的"
+"其他程序）。成功的標準是在最後 5 個訓練週期中達到平均分數超過 500，或在"
+"最後 5 個訓練週期中達到 1000 分（最高可能分數）。"
+
+#: ../../spinningup/exercises.rst:59
+msgid "Exercise 1.3: Computation Graph for TD3"
+msgstr "練習 1.3：TD3 的計算圖"
+
+#: ../../spinningup/exercises.rst:61 ../../spinningup/exercises.rst:111
+msgid "**Path to Exercise.**"
+msgstr "**練習檔案路徑。**"
+
+#: ../../spinningup/exercises.rst:63
+msgid "PyTorch version: ``spinup/exercises/pytorch/problem_set_1/exercise1_3.py``"
+msgstr "PyTorch 版本：``spinup/exercises/pytorch/problem_set_1/exercise1_3.py``"
+
+#: ../../spinningup/exercises.rst:65
+msgid "Tensorflow version: ``spinup/exercises/tf1/problem_set_1/exercise1_3.py``"
+msgstr "Tensorflow 版本：``spinup/exercises/tf1/problem_set_1/exercise1_3.py``"
+
+#: ../../spinningup/exercises.rst:67
+msgid "**Path to Solution.**"
+msgstr "**解答檔案路徑。**"
+
+#: ../../spinningup/exercises.rst:69
+msgid "PyTorch version: ``spinup/algos/pytorch/td3/td3.py``"
+msgstr "PyTorch 版本：``spinup/algos/pytorch/td3/td3.py``"
+
+#: ../../spinningup/exercises.rst:71
+msgid "Tensorflow version: ``spinup/algos/tf1/td3/td3.py``"
+msgstr "Tensorflow 版本：``spinup/algos/tf1/td3/td3.py``"
+
+#: ../../spinningup/exercises.rst:73
+msgid ""
+"**Instructions.** Implement the main mathematical logic for the TD3 "
+"algorithm."
+msgstr ""
+"**說明。** 實作 TD3 演算法的核心數學邏輯。"
+
+#: ../../spinningup/exercises.rst:75
+msgid ""
+"As starter code, you are given the entirety of the TD3 algorithm except "
+"for the main mathematical logic (essentially, the loss functions and "
+"intermediate calculations needed for them). Find \"YOUR CODE HERE\" to "
+"begin."
+msgstr ""
+"作為起始程式碼，你已獲得 TD3 演算法的全部內容，唯獨缺少核心數學邏輯"
+"（基本上是損失函數及其所需的中間計算）。找到 \"YOUR CODE HERE\" 開始作答。"
+
+#: ../../spinningup/exercises.rst:77
+msgid "You may find it useful to review the pseudocode in our `page on TD3`_."
+msgstr "你可能會發現回顧我們 `page on TD3`_ 中的虛擬碼會很有幫助。"
+
+#: ../../spinningup/exercises.rst:79
+msgid ""
+"Implement your solution in ``exercise1_3.py``, and run that file to see "
+"the results of your work. There is no automatic checking for this "
+"exercise."
+msgstr ""
+"在 ``exercise1_3.py`` 中實作你的解答，並執行該檔案以查看你的成果。"
+"此練習沒有自動檢查功能。"
+
+#: ../../spinningup/exercises.rst:81
+msgid ""
+"**Evaluation Criteria.** Evaluate your code by running ``exercise1_3.py``"
+" with HalfCheetah-v2, InvertedPendulum-v2, and one other Gym MuJoCo "
+"environment of your choosing (set via the ``--env`` flag). It is set up "
+"to use smaller neural networks (hidden sizes [128,128]) than typical for "
+"TD3, with a maximum episode length of 150, and to run for only 10 epochs."
+" The goal is to see significant learning progress relatively quickly (in "
+"terms of wall clock time). Experiments will likely take on the order of "
+"~10 minutes."
+msgstr ""
+"**評估標準。** 透過在 HalfCheetah-v2、InvertedPendulum-v2 以及你選擇的另一個 "
+"Gym MuJoCo 環境（透過 ``--env`` 旗標設定）中執行 ``exercise1_3.py`` 來評估"
+"你的程式碼。該設定使用比典型 TD3 更小的神經網路（隱藏層大小 [128,128]），"
+"最大回合長度為 150，且僅執行 10 個訓練週期。目標是在相對較短的時間內"
+"（以實際時間計）看到顯著的學習進展。實驗大約需要 ~10 分鐘。"
+
+#: ../../spinningup/exercises.rst:83
+msgid ""
+"Use the ``--use_soln`` flag to run Spinning Up's TD3 instead of your "
+"implementation. Anecdotally, within 10 epochs, the score in HalfCheetah "
+"should go over 300, and the score in InvertedPendulum should max out at "
+"150."
+msgstr ""
+"使用 ``--use_soln`` 旗標可以執行 Spinning Up 的 TD3 而非你的實作。"
+"根據經驗，在 10 個訓練週期內，HalfCheetah 的分數應該超過 300，"
+"InvertedPendulum 的分數應該達到最高的 150。"
+
+#: ../../spinningup/exercises.rst:89
+msgid "Problem Set 2: Algorithm Failure Modes"
+msgstr "題組 2：演算法失敗模式"
+
+#: ../../spinningup/exercises.rst:91
+msgid "Exercise 2.1: Value Function Fitting in TRPO"
+msgstr "練習 2.1：TRPO 中的價值函數 (Value Function) 擬合"
+
+#: ../../spinningup/exercises.rst:93
+msgid "**Path to Exercise.** (Not applicable, there is no code for this one.)"
+msgstr "**練習檔案路徑。** （不適用，此練習沒有程式碼。）"
+
+#: ../../spinningup/exercises.rst:95
+msgid ""
+"**Path to Solution.** `Solution available here. "
+"<../spinningup/exercise2_1_soln.html>`_"
+msgstr ""
+"**解答檔案路徑。** `Solution available here. "
+"<../spinningup/exercise2_1_soln.html>`_"
+
+#: ../../spinningup/exercises.rst:97
+msgid ""
+"Many factors can impact the performance of policy gradient algorithms, "
+"but few more drastically than the quality of the learned value function "
+"used for advantage estimation."
+msgstr ""
+"許多因素會影響策略梯度 (Policy Gradient) 演算法的效能，但很少有因素比"
+"用於優勢估計 (Advantage Estimation) 的學習價值函數品質影響更大的了。"
+
+#: ../../spinningup/exercises.rst:99
+msgid ""
+"In this exercise, you will compare results between runs of TRPO where you"
+" put lots of effort into fitting the value function "
+"(``train_v_iters=80``), versus where you put very little effort into "
+"fitting the value function (``train_v_iters=0``)."
+msgstr ""
+"在這個練習中，你將比較 TRPO 在大量擬合價值函數（``train_v_iters=80``）"
+"與幾乎不擬合價值函數（``train_v_iters=0``）之間的執行結果。"
+
+#: ../../spinningup/exercises.rst:101
+msgid "**Instructions.** Run the following command:"
+msgstr "**說明。** 執行以下指令："
+
+#: ../../spinningup/exercises.rst:107
+msgid ""
+"and plot the results. (These experiments might take ~10 minutes each, and"
+" this command runs six of them.) What do you find?"
+msgstr ""
+"然後繪製結果。（這些實驗每個可能需要 ~10 分鐘，而此指令會執行六個實驗。）"
+"你發現了什麼？"
+
+#: ../../spinningup/exercises.rst:109
+msgid "Exercise 2.2: Silent Bug in DDPG"
+msgstr "練習 2.2：DDPG 中的靜默錯誤"
+
+#: ../../spinningup/exercises.rst:113
+msgid "PyTorch version: ``spinup/exercises/pytorch/problem_set_2/exercise2_2.py``"
+msgstr "PyTorch 版本：``spinup/exercises/pytorch/problem_set_2/exercise2_2.py``"
+
+#: ../../spinningup/exercises.rst:115
+msgid "Tensorflow version: ``spinup/exercises/tf1/problem_set_2/exercise2_2.py``"
+msgstr "Tensorflow 版本：``spinup/exercises/tf1/problem_set_2/exercise2_2.py``"
+
+#: ../../spinningup/exercises.rst:117
+msgid ""
+"**Path to Solution.** `Solution available here. "
+"<../spinningup/exercise2_2_soln.html>`_"
+msgstr ""
+"**解答檔案路徑。** `Solution available here. "
+"<../spinningup/exercise2_2_soln.html>`_"
+
+#: ../../spinningup/exercises.rst:119
+msgid ""
+"The hardest part of writing RL code is dealing with bugs, because "
+"failures are frequently silent. The code will appear to run correctly, "
+"but the agent's performance will degrade relative to a bug-free "
+"implementation---sometimes to the extent that it never learns anything."
+msgstr ""
+"撰寫強化學習 (Reinforcement Learning, RL) 程式碼最困難的部分是處理錯誤，"
+"因為失敗經常是靜默的。程式碼看起來會正常運行，但智能體 (Agent) 的效能會"
+"相對於無錯誤的實作有所下降——有時甚至到完全學不到任何東西的程度。"
+
+#: ../../spinningup/exercises.rst:121
+msgid ""
+"In this exercise, you will observe a bug in vivo and compare results "
+"against correct code. The bug is the same (conceptually, if not in exact "
+"implementation) for both the PyTorch and Tensorflow versions of this "
+"exercise."
+msgstr ""
+"在這個練習中，你將觀察一個實際運行中的錯誤，並將結果與正確的程式碼進行比較。"
+"這個錯誤在 PyTorch 和 Tensorflow 版本中概念上是相同的（即使具體實作可能不同）。"
+
+#: ../../spinningup/exercises.rst:123
+msgid ""
+"**Instructions.** Run ``exercise2_2.py``, which will launch DDPG "
+"experiments with and without a bug. The non-bugged version runs the "
+"default Spinning Up implementation of DDPG, using a default method for "
+"creating the actor and critic networks. The bugged version runs the same "
+"DDPG code, except uses a bugged method for creating the networks."
+msgstr ""
+"**說明。** 執行 ``exercise2_2.py``，它將啟動有錯誤和無錯誤的 DDPG 實驗。"
+"無錯誤版本使用 Spinning Up 預設的 DDPG 實作，採用預設方法建立演員 (Actor) "
+"和評論家 (Critic) 網路。有錯誤版本執行相同的 DDPG 程式碼，但使用有缺陷的"
+"方法建立網路。"
+
+#: ../../spinningup/exercises.rst:125
+msgid ""
+"There will be six experiments in all (three random seeds for each case), "
+"and each should take in the ballpark of 10 minutes. When they're "
+"finished, plot the results. What is the difference in performance with "
+"and without the bug?"
+msgstr ""
+"總共會有六個實驗（每種情況三個隨機種子），每個大約需要 10 分鐘。"
+"完成後，繪製結果。有錯誤和無錯誤的效能差異是什麼？"
+
+#: ../../spinningup/exercises.rst:127
+msgid ""
+"Without referencing the correct actor-critic code (which is to say---"
+"don't look in DDPG's ``core.py`` file), try to figure out what the bug is"
+" and explain how it breaks things."
+msgstr ""
+"在不參考正確的 actor-critic 程式碼的情況下（也就是說——不要查看 DDPG 的 "
+"``core.py`` 檔案），嘗試找出錯誤是什麼，並解釋它如何破壞了運作。"
+
+#: ../../spinningup/exercises.rst:129
+msgid ""
+"**Hint.** To figure out what's going wrong, think about how the DDPG code"
+" implements the DDPG computation graph. For the Tensorflow version, look "
+"at this excerpt:"
+msgstr ""
+"**提示。** 要找出問題所在，思考一下 DDPG 程式碼是如何實作 DDPG 計算圖的。"
+"對於 Tensorflow 版本，請看以下摘錄："
+
+#: ../../spinningup/exercises.rst:140
+msgid "How could a bug in the actor-critic code have an impact here?"
+msgstr "actor-critic 程式碼中的錯誤如何能在此處產生影響？"
+
+#: ../../spinningup/exercises.rst:142
+msgid ""
+"**Bonus.** Are there any choices of hyperparameters which would have "
+"hidden the effects of the bug?"
+msgstr ""
+"**額外題。** 是否有任何超參數的選擇可以隱藏該錯誤的影響？"
+
+#: ../../spinningup/exercises.rst:146
+msgid "Challenges"
+msgstr "挑戰"
+
+#: ../../spinningup/exercises.rst:148
+msgid "Write Code from Scratch"
+msgstr "從零開始撰寫程式碼"
+
+#: ../../spinningup/exercises.rst:150
+msgid ""
+"As we suggest in `the essay <../spinningup/spinningup.html#learn-by-"
+"doing>`_, try reimplementing various deep RL algorithms from scratch."
+msgstr ""
+"如同我們在 `the essay <../spinningup/spinningup.html#learn-by-"
+"doing>`_ 中所建議的，嘗試從零開始重新實作各種深度 RL 演算法。"
+
+#: ../../spinningup/exercises.rst:152
+msgid "Requests for Research"
+msgstr "研究徵求"
+
+#: ../../spinningup/exercises.rst:154
+msgid ""
+"If you feel comfortable with writing deep learning and deep RL code, "
+"consider trying to make progress on any of OpenAI's standing requests for"
+" research:"
+msgstr ""
+"如果你對撰寫深度學習和深度 RL 程式碼感到自在，可以考慮嘗試在 OpenAI "
+"的研究徵求中取得進展："
+
+#: ../../spinningup/exercises.rst:156
+msgid "`Requests for Research 1 <https://openai.com/requests-for-research/>`_"
+msgstr "`Requests for Research 1 <https://openai.com/requests-for-research/>`_"
+
+#: ../../spinningup/exercises.rst:157
+msgid ""
+"`Requests for Research 2 <https://blog.openai.com/requests-for-"
+"research-2/>`_"
+msgstr ""
+"`Requests for Research 2 <https://blog.openai.com/requests-for-"
+"research-2/>`_"

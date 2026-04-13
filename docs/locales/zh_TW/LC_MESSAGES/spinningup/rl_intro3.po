@@ -1,0 +1,1049 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/rl_intro3.rst:3
+msgid "Part 3: Intro to Policy Optimization"
+msgstr "第三部分：策略優化 (Policy Optimization) 簡介"
+
+#: ../../spinningup/rl_intro3.rst:7
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../spinningup/rl_intro3.rst:9
+msgid ""
+"In this section, we'll discuss the mathematical foundations of policy "
+"optimization algorithms, and connect the material to sample code. We will"
+" cover three key results in the theory of **policy gradients**:"
+msgstr ""
+"在本節中，我們將討論策略優化演算法的數學基礎，並將內容與範例程式碼連結起來。我"
+"們將涵蓋**策略梯度 (Policy Gradient)** 理論中的三個關鍵結果："
+
+#: ../../spinningup/rl_intro3.rst:11
+msgid ""
+"`the simplest equation`_ describing the gradient of policy performance "
+"with respect to policy parameters,"
+msgstr ""
+"`the simplest equation`_，描述策略效能相對於策略參數的梯度，"
+
+#: ../../spinningup/rl_intro3.rst:12
+msgid "a rule which allows us to `drop useless terms`_ from that expression,"
+msgstr "一個允許我們從該表達式中 `drop useless terms`_ 的規則，"
+
+#: ../../spinningup/rl_intro3.rst:13
+msgid "and a rule which allows us to `add useful terms`_ to that expression."
+msgstr "以及一個允許我們向該表達式中 `add useful terms`_ 的規則。"
+
+#: ../../spinningup/rl_intro3.rst:15
+msgid ""
+"In the end, we'll tie those results together and describe the advantage-"
+"based expression for the policy gradient---the version we use in our "
+"`Vanilla Policy Gradient`_ implementation."
+msgstr ""
+"最後，我們將把這些結果串聯起來，描述策略梯度的基於優勢函數 (Advantage Function)"
+" 的表達式——即我們在 `Vanilla Policy Gradient`_ 實作中使用的版本。"
+
+#: ../../spinningup/rl_intro3.rst:23
+msgid "Deriving the Simplest Policy Gradient"
+msgstr "推導最簡單的策略梯度"
+
+#: ../../spinningup/rl_intro3.rst:25
+msgid ""
+"Here, we consider the case of a stochastic, parameterized policy, "
+":math:`\\pi_{\\theta}`. We aim to maximize the expected return "
+":math:`J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{R(\\tau)}`. For the purposes of this derivation, we'll "
+"take :math:`R(\\tau)` to give the `finite-horizon undiscounted return`_, "
+"but the derivation for the infinite-horizon discounted return setting is "
+"almost identical."
+msgstr ""
+"這裡，我們考慮隨機參數化策略 (Policy) :math:`\\pi_{\\theta}` 的情況。我們的目標"
+"是最大化期望回報 (Return) :math:`J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{R(\\tau)}`。為了本次推導的目的，我們取 :math:`R(\\tau)` 為 "
+"`finite-horizon undiscounted return`_，但對於無限時間範圍折扣回報設定的推導幾乎"
+"完全相同。"
+
+#: ../../spinningup/rl_intro3.rst:29
+msgid "We would like to optimize the policy by gradient ascent, eg"
+msgstr "我們希望透過梯度上升來最佳化策略，例如"
+
+#: ../../spinningup/rl_intro3.rst:31
+#, python-brace-format
+msgid ""
+"\\theta_{k+1} = \\theta_k + \\alpha \\left. \\nabla_{\\theta} "
+"J(\\pi_{\\theta}) \\right|_{\\theta_k}."
+msgstr ""
+"\\theta_{k+1} = \\theta_k + \\alpha \\left. \\nabla_{\\theta} "
+"J(\\pi_{\\theta}) \\right|_{\\theta_k}."
+
+#: ../../spinningup/rl_intro3.rst:35
+#, python-brace-format
+msgid ""
+"The gradient of policy performance, :math:`\\nabla_{\\theta} "
+"J(\\pi_{\\theta})`, is called the **policy gradient**, and algorithms "
+"that optimize the policy this way are called **policy gradient "
+"algorithms.** (Examples include Vanilla Policy Gradient and TRPO. PPO is "
+"often referred to as a policy gradient algorithm, though this is slightly"
+" inaccurate.)"
+msgstr ""
+"策略效能的梯度 :math:`\\nabla_{\\theta} J(\\pi_{\\theta})` 被稱為**策略梯度**，"
+"以這種方式最佳化策略的演算法被稱為**策略梯度演算法**。（例子包括 Vanilla Policy "
+"Gradient 和 TRPO。PPO 通常也被稱為策略梯度演算法，儘管這略有不準確。）"
+
+#: ../../spinningup/rl_intro3.rst:37
+msgid ""
+"To actually use this algorithm, we need an expression for the policy "
+"gradient which we can numerically compute. This involves two steps: 1) "
+"deriving the analytical gradient of policy performance, which turns out "
+"to have the form of an expected value, and then 2) forming a sample "
+"estimate of that expected value, which can be computed with data from a "
+"finite number of agent-environment interaction steps."
+msgstr ""
+"要實際使用這個演算法，我們需要一個可以數值計算的策略梯度表達式。這涉及兩個步"
+"驟：1) 推導策略效能的解析梯度，結果它具有期望值的形式，然後 2) 形成該期望值的樣"
+"本估計，可以用有限次數的代理人 (Agent)-環境互動步驟的資料來計算。"
+
+#: ../../spinningup/rl_intro3.rst:39
+msgid ""
+"In this subsection, we'll find the simplest form of that expression. In "
+"later subsections, we'll show how to improve on the simplest form to get "
+"the version we actually use in standard policy gradient implementations."
+msgstr ""
+"在這個小節中，我們將找到該表達式的最簡形式。在後面的小節中，我們將展示如何改進"
+"最簡形式，以獲得我們在標準策略梯度實作中實際使用的版本。"
+
+#: ../../spinningup/rl_intro3.rst:41
+msgid ""
+"We'll begin by laying out a few facts which are useful for deriving the "
+"analytical gradient."
+msgstr "我們將從列出一些對推導解析梯度有用的事實開始。"
+
+#: ../../spinningup/rl_intro3.rst:43
+#, python-brace-format
+msgid ""
+"**1. Probability of a Trajectory.** The probability of a trajectory "
+":math:`\\tau = (s_0, a_0, ..., s_{T+1})` given that actions come from "
+":math:`\\pi_{\\theta}` is"
+msgstr ""
+"**1. 軌跡 (Trajectory) 的機率。** 在動作 (Action) 來自 "
+":math:`\\pi_{\\theta}` 的情況下，軌跡 :math:`\\tau = (s_0, a_0, ..., "
+"s_{T+1})` 的機率為"
+
+#: ../../spinningup/rl_intro3.rst:45
+#, python-brace-format
+msgid ""
+"P(\\tau|\\theta) = \\rho_0 (s_0) \\prod_{t=0}^{T} P(s_{t+1}|s_t, a_t) "
+"\\pi_{\\theta}(a_t |s_t)."
+msgstr ""
+"P(\\tau|\\theta) = \\rho_0 (s_0) \\prod_{t=0}^{T} P(s_{t+1}|s_t, a_t) "
+"\\pi_{\\theta}(a_t |s_t)."
+
+#: ../../spinningup/rl_intro3.rst:50
+msgid ""
+"**2. The Log-Derivative Trick.** The log-derivative trick is based on a "
+"simple rule from calculus: the derivative of :math:`\\log x` with respect"
+" to :math:`x` is :math:`1/x`. When rearranged and combined with chain "
+"rule, we get:"
+msgstr ""
+"**2. 對數導數技巧。** 對數導數技巧基於微積分中的一個簡單規則：:math:`\\log x` "
+"對 :math:`x` 的導數是 :math:`1/x`。重新排列並結合連鎖律，我們得到："
+
+#: ../../spinningup/rl_intro3.rst:52
+#, python-brace-format
+msgid ""
+"\\nabla_{\\theta} P(\\tau | \\theta) = P(\\tau | \\theta) "
+"\\nabla_{\\theta} \\log P(\\tau | \\theta)."
+msgstr ""
+"\\nabla_{\\theta} P(\\tau | \\theta) = P(\\tau | \\theta) "
+"\\nabla_{\\theta} \\log P(\\tau | \\theta)."
+
+#: ../../spinningup/rl_intro3.rst:57
+msgid ""
+"**3. Log-Probability of a Trajectory.** The log-prob of a trajectory is "
+"just"
+msgstr "**3. 軌跡的對數機率。** 軌跡的對數機率就是"
+
+#: ../../spinningup/rl_intro3.rst:59
+#, python-brace-format
+msgid ""
+"\\log P(\\tau|\\theta) = \\log \\rho_0 (s_0) + \\sum_{t=0}^{T} \\bigg( "
+"\\log P(s_{t+1}|s_t, a_t)  + \\log \\pi_{\\theta}(a_t |s_t)\\bigg)."
+msgstr ""
+"\\log P(\\tau|\\theta) = \\log \\rho_0 (s_0) + \\sum_{t=0}^{T} \\bigg( "
+"\\log P(s_{t+1}|s_t, a_t)  + \\log \\pi_{\\theta}(a_t |s_t)\\bigg)."
+
+#: ../../spinningup/rl_intro3.rst:64
+#, python-brace-format
+msgid ""
+"**4. Gradients of Environment Functions.** The environment has no "
+"dependence on :math:`\\theta`, so gradients of :math:`\\rho_0(s_0)`, "
+":math:`P(s_{t+1}|s_t, a_t)`, and :math:`R(\\tau)` are zero."
+msgstr ""
+"**4. 環境函數的梯度。** 環境不依賴於 :math:`\\theta`，所以 "
+":math:`\\rho_0(s_0)`、:math:`P(s_{t+1}|s_t, a_t)` 和 :math:`R(\\tau)` 的梯度"
+"為零。"
+
+#: ../../spinningup/rl_intro3.rst:66
+msgid ""
+"**5. Grad-Log-Prob of a Trajectory.** The gradient of the log-prob of a "
+"trajectory is thus"
+msgstr "**5. 軌跡的梯度對數機率。** 因此軌跡的對數機率的梯度為"
+
+#: ../../spinningup/rl_intro3.rst:68
+msgid ""
+"\\nabla_{\\theta} \\log P(\\tau | \\theta) &= \\cancel{\\nabla_{\\theta} "
+"\\log \\rho_0 (s_0)} + \\sum_{t=0}^{T} \\bigg( \\cancel{\\nabla_{\\theta}"
+" \\log P(s_{t+1}|s_t, a_t)}  + \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t"
+" |s_t)\\bigg) \\\\\n"
+"&= \\sum_{t=0}^{T} \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t)."
+msgstr ""
+"\\nabla_{\\theta} \\log P(\\tau | \\theta) &= \\cancel{\\nabla_{\\theta} "
+"\\log \\rho_0 (s_0)} + \\sum_{t=0}^{T} \\bigg( \\cancel{\\nabla_{\\theta}"
+" \\log P(s_{t+1}|s_t, a_t)}  + \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t"
+" |s_t)\\bigg) \\\\\n"
+"&= \\sum_{t=0}^{T} \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t)."
+
+#: ../../spinningup/rl_intro3.rst:74
+msgid "Putting it all together, we derive the following:"
+msgstr "將所有內容整合在一起，我們推導出以下結果："
+
+#: ../../spinningup/rl_intro3.rst:76
+msgid "Derivation for Basic Policy Gradient"
+msgstr "基本策略梯度的推導"
+
+#: ../../spinningup/rl_intro3.rst:78
+msgid ""
+"\\begin{align*}\n"
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\nabla_{\\theta} \\underE{\\tau "
+"\\sim \\pi_{\\theta}}{R(\\tau)} & \\\\\n"
+"&= \\nabla_{\\theta} \\int_{\\tau} P(\\tau|\\theta) R(\\tau) & "
+"\\text{Expand expectation} \\\\\n"
+"&= \\int_{\\tau} \\nabla_{\\theta} P(\\tau|\\theta) R(\\tau) & "
+"\\text{Bring gradient under integral} \\\\\n"
+"&= \\int_{\\tau} P(\\tau|\\theta) \\nabla_{\\theta} \\log "
+"P(\\tau|\\theta) R(\\tau) & \\text{Log-derivative trick} \\\\\n"
+"&= \\underE{\\tau \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"P(\\tau|\\theta) R(\\tau)} & \\text{Return to expectation form} \\\\\n"
+"\\therefore \\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) R(\\tau)} & \\text{Expression for grad-log-prob}"
+"\n"
+"\\end{align*}"
+msgstr ""
+"\\begin{align*}\n"
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\nabla_{\\theta} \\underE{\\tau "
+"\\sim \\pi_{\\theta}}{R(\\tau)} & \\\\\n"
+"&= \\nabla_{\\theta} \\int_{\\tau} P(\\tau|\\theta) R(\\tau) & "
+"\\text{Expand expectation} \\\\\n"
+"&= \\int_{\\tau} \\nabla_{\\theta} P(\\tau|\\theta) R(\\tau) & "
+"\\text{Bring gradient under integral} \\\\\n"
+"&= \\int_{\\tau} P(\\tau|\\theta) \\nabla_{\\theta} \\log "
+"P(\\tau|\\theta) R(\\tau) & \\text{Log-derivative trick} \\\\\n"
+"&= \\underE{\\tau \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"P(\\tau|\\theta) R(\\tau)} & \\text{Return to expectation form} \\\\\n"
+"\\therefore \\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) R(\\tau)} & \\text{Expression for grad-log-prob}"
+"\n"
+"\\end{align*}"
+
+#: ../../spinningup/rl_intro3.rst:90
+#, python-brace-format
+msgid ""
+"This is an expectation, which means that we can estimate it with a sample"
+" mean. If we collect a set of trajectories :math:`\\mathcal{D} = "
+"\\{\\tau_i\\}_{i=1,...,N}` where each trajectory is obtained by letting "
+"the agent act in the environment using the policy :math:`\\pi_{\\theta}`,"
+" the policy gradient can be estimated with"
+msgstr ""
+"這是一個期望值，意味著我們可以用樣本均值來估計它。如果我們收集一組軌跡 "
+":math:`\\mathcal{D} = \\{\\tau_i\\}_{i=1,...,N}`，其中每條軌跡是讓代理人使用策"
+"略 :math:`\\pi_{\\theta}` 在環境中行動而獲得的，那麼策略梯度可以用以下方式估計"
+
+#: ../../spinningup/rl_intro3.rst:92
+msgid ""
+"\\hat{g} = \\frac{1}{|\\mathcal{D}|} \\sum_{\\tau \\in \\mathcal{D}} "
+"\\sum_{t=0}^{T} \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) "
+"R(\\tau),"
+msgstr ""
+"\\hat{g} = \\frac{1}{|\\mathcal{D}|} \\sum_{\\tau \\in \\mathcal{D}} "
+"\\sum_{t=0}^{T} \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t) "
+"R(\\tau),"
+
+#: ../../spinningup/rl_intro3.rst:96
+#, python-brace-format
+msgid ""
+"where :math:`|\\mathcal{D}|` is the number of trajectories in "
+":math:`\\mathcal{D}` (here, :math:`N`)."
+msgstr ""
+"其中 :math:`|\\mathcal{D}|` 是 :math:`\\mathcal{D}` 中軌跡的數量（此處為 "
+":math:`N`）。"
+
+#: ../../spinningup/rl_intro3.rst:98
+#, python-brace-format
+msgid ""
+"This last expression is the simplest version of the computable expression"
+" we desired. Assuming that we have represented our policy in a way which "
+"allows us to calculate :math:`\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a|s)`, and if we are able to run the policy in the "
+"environment to collect the trajectory dataset, we can compute the policy "
+"gradient and take an update step."
+msgstr ""
+"這最後的表達式是我們期望的可計算表達式的最簡版本。假設我們以一種允許計算 "
+":math:`\\nabla_{\\theta} \\log \\pi_{\\theta}(a|s)` 的方式表示了策略，並且如果"
+"我們能在環境中運行策略來收集軌跡資料集，我們就可以計算策略梯度並進行更新步驟。"
+
+#: ../../spinningup/rl_intro3.rst:101
+msgid "Implementing the Simplest Policy Gradient"
+msgstr "實作最簡單的策略梯度"
+
+#: ../../spinningup/rl_intro3.rst:103
+msgid ""
+"We give a short PyTorch implementation of this simple version of the "
+"policy gradient algorithm in "
+"``spinup/examples/pytorch/pg_math/1_simple_pg.py``. (It can also be "
+"viewed `on github "
+"<https://github.com/openai/spinningup/blob/master/spinup/examples/pytorch/pg_math/1_simple_pg.py>`_.)"
+" It is only 128 lines long, so we highly recommend reading through it in "
+"depth. While we won't go through the entirety of the code here, we'll "
+"highlight and explain a few important pieces."
+msgstr ""
+"我們在 ``spinup/examples/pytorch/pg_math/1_simple_pg.py`` 中給出了這個簡單版本"
+"策略梯度演算法的簡短 PyTorch 實作。（也可以在 `on github "
+"<https://github.com/openai/spinningup/blob/master/spinup/examples/pytorch/pg_math/1_simple_pg.py>`_ "
+"上查看。）它只有 128 行，所以我們強烈建議深入閱讀。雖然我們不會在這裡逐一講解"
+"所有程式碼，但我們會強調和解釋一些重要的部分。"
+
+#: ../../spinningup/rl_intro3.rst:106 ../../spinningup/rl_intro3.rst:132
+#: ../../spinningup/rl_intro3.rst:160 ../../spinningup/rl_intro3.rst:175
+#: ../../spinningup/rl_intro3.rst:267 ../../spinningup/rl_intro3.rst:337
+#: ../../spinningup/rl_intro3.rst:384 ../../spinningup/rl_intro3.rst:410
+#: ../../spinningup/rl_intro3.rst:457 ../../spinningup/rl_intro3.rst:461
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../spinningup/rl_intro3.rst:108
+msgid ""
+"This section was previously written with a Tensorflow example. The old "
+"Tensorflow section can be found `here "
+"<../spinningup/extra_tf_pg_implementation.html#implementing-the-simplest-"
+"policy-gradient>`_."
+msgstr ""
+"本節之前是用 Tensorflow 範例編寫的。舊的 Tensorflow 部分可以在 `here "
+"<../spinningup/extra_tf_pg_implementation.html#implementing-the-simplest-"
+"policy-gradient>`_ 找到。"
+
+#: ../../spinningup/rl_intro3.rst:110
+msgid "**1. Making the Policy Network.**"
+msgstr "**1. 建立策略網路。**"
+
+#: ../../spinningup/rl_intro3.rst:128
+msgid ""
+"This block builds modules and functions for using a feedforward neural "
+"network categorical policy. (See the `Stochastic Policies`_ section in "
+"Part 1 for a refresher.) The output from the ``logits_net`` module can be"
+" used to construct log-probabilities and probabilities for actions, and "
+"the ``get_action`` function samples actions based on probabilities "
+"computed from the logits. (Note: this particular ``get_action`` function "
+"assumes that there will only be one ``obs`` provided, and therefore only "
+"one integer action output. That's why it uses ``.item()``, which is used "
+"to `get the contents of a Tensor with only one element`_.)"
+msgstr ""
+"這個區塊建立了使用前饋神經網路類別策略的模組和函數。（請參見第一部分的 "
+"`Stochastic Policies`_ 小節以複習。）``logits_net`` 模組的輸出可用於建構動作的"
+"對數機率和機率，``get_action`` 函數根據從 logits 計算出的機率來抽樣動作。（注"
+"意：這個特定的 ``get_action`` 函數假設只會提供一個 ``obs``，因此只有一個整數動"
+"作輸出。這就是它使用 ``.item()`` 的原因，該方法用於 `get the contents of a "
+"Tensor with only one element`_。）"
+
+#: ../../spinningup/rl_intro3.rst:130
+msgid ""
+"A lot of work in this example is getting done by the ``Categorical`` "
+"object on L36. This is a PyTorch ``Distribution`` object that wraps up "
+"some mathematical functions associated with probability distributions. In"
+" particular, it has a method for sampling from the distribution (which we"
+" use on L40) and a method for computing log probabilities of given "
+"samples (which we use later). Since PyTorch distributions are really "
+"useful for RL, check out `their documentation`_ to get a feel for how "
+"they work."
+msgstr ""
+"在這個範例中，L36 的 ``Categorical`` 物件完成了大量工作。這是一個 PyTorch "
+"``Distribution`` 物件，封裝了一些與機率分佈相關的數學函數。特別是，它有一個從分"
+"佈中抽樣的方法（我們在 L40 使用）和一個計算給定樣本的對數機率的方法（我們稍後"
+"使用）。由於 PyTorch 分佈對 RL 非常有用，請查看 `their documentation`_ 以了解它"
+"們的工作方式。"
+
+#: ../../spinningup/rl_intro3.rst:134
+msgid ""
+"Friendly reminder! When we talk about a categorical distribution having "
+"\"logits,\" what we mean is that the probabilities for each outcome are "
+"given by the Softmax function of the logits. That is, the probability for"
+" action :math:`j` under a categorical distribution with logits "
+":math:`x_j` is:"
+msgstr ""
+"友善提醒！當我們說類別分佈具有「logits」時，我們的意思是每個結果的機率由 "
+"logits 的 Softmax 函數給出。也就是說，在具有 logits :math:`x_j` 的類別分佈下，"
+"動作 :math:`j` 的機率為："
+
+#: ../../spinningup/rl_intro3.rst:136
+msgid "p_j = \\frac{\\exp(x_j)}{\\sum_{i} \\exp(x_i)}"
+msgstr "p_j = \\frac{\\exp(x_j)}{\\sum_{i} \\exp(x_i)}"
+
+#: ../../spinningup/rl_intro3.rst:145
+msgid "**2. Making the Loss Function.**"
+msgstr "**2. 建立損失函數。**"
+
+#: ../../spinningup/rl_intro3.rst:157
+msgid ""
+"In this block, we build a \"loss\" function for the policy gradient "
+"algorithm. When the right data is plugged in, the gradient of this loss "
+"is equal to the policy gradient. The right data means a set of (state, "
+"action, weight) tuples collected while acting according to the current "
+"policy, where the weight for a state-action pair is the return from the "
+"episode to which it belongs. (Although as we will show in later "
+"subsections, there are other values you can plug in for the weight which "
+"also work correctly.)"
+msgstr ""
+"在這個區塊中，我們為策略梯度演算法建立了一個「損失」函數。當插入正確的資料時，"
+"這個損失的梯度等於策略梯度。正確的資料是指按照當前策略行動時收集的一組（狀態 "
+"(State)、動作、權重）元組，其中狀態-動作對的權重是其所屬回合的回報。（儘管如我"
+"們將在後面的小節中展示的，你可以插入其他值作為權重，也能正確工作。）"
+
+#: ../../spinningup/rl_intro3.rst:162
+msgid ""
+"Even though we describe this as a loss function, it is **not** a loss "
+"function in the typical sense from supervised learning. There are two "
+"main differences from standard loss functions."
+msgstr ""
+"儘管我們將其描述為損失函數，但它**不是**監督學習中典型意義上的損失函數。它與標"
+"準損失函數有兩個主要區別。"
+
+#: ../../spinningup/rl_intro3.rst:164
+msgid ""
+"**1. The data distribution depends on the parameters.** A loss function "
+"is usually defined on a fixed data distribution which is independent of "
+"the parameters we aim to optimize. Not so here, where the data must be "
+"sampled on the most recent policy."
+msgstr ""
+"**1. 資料分佈依賴於參數。** 損失函數通常定義在與我們要最佳化的參數無關的固定資"
+"料分佈上。但這裡不是如此，資料必須從最新的策略中抽樣。"
+
+#: ../../spinningup/rl_intro3.rst:166
+#, python-brace-format
+msgid ""
+"**2. It doesn't measure performance.** A loss function usually evaluates "
+"the performance metric that we care about. Here, we care about expected "
+"return, :math:`J(\\pi_{\\theta})`, but our \"loss\" function does not "
+"approximate this at all, even in expectation. This \"loss\" function is "
+"only useful to us because, when evaluated at the current parameters, with"
+" data generated by the current parameters, it has the negative gradient "
+"of performance."
+msgstr ""
+"**2. 它不衡量效能。** 損失函數通常評估我們關心的效能指標。在這裡，我們關心的是"
+"期望回報 :math:`J(\\pi_{\\theta})`，但我們的「損失」函數根本不近似這個值，即使"
+"在期望意義上也不是。這個「損失」函數之所以對我們有用，只是因為當在當前參數處使"
+"用由當前參數生成的資料進行評估時，它具有效能的負梯度。"
+
+#: ../../spinningup/rl_intro3.rst:168
+msgid ""
+"But after that first step of gradient descent, there is no more "
+"connection to performance. This means that minimizing this \"loss\" "
+"function, for a given batch of data, has *no* guarantee whatsoever of "
+"improving expected return. You can send this loss to :math:`-\\infty` and"
+" policy performance could crater; in fact, it usually will. Sometimes a "
+"deep RL researcher might describe this outcome as the policy "
+"\"overfitting\" to a batch of data. This is descriptive, but should not "
+"be taken literally because it does not refer to generalization error."
+msgstr ""
+"但在梯度下降的第一步之後，就不再與效能有任何關聯了。這意味著對於給定的一批資"
+"料，最小化這個「損失」函數*不能*保證改善期望回報。你可以把這個損失降到 "
+":math:`-\\infty`，策略效能可能會崩潰；事實上，通常會如此。有時深度 RL 研究者可"
+"能會將這個結果描述為策略對一批資料「過擬合」。這種描述是形象的，但不應從字面上"
+"理解，因為它並非指泛化誤差。"
+
+#: ../../spinningup/rl_intro3.rst:170
+msgid ""
+"We raise this point because it is common for ML practitioners to "
+"interpret a loss function as a useful signal during training---\"if the "
+"loss goes down, all is well.\" In policy gradients, this intuition is "
+"wrong, and you should only care about average return. The loss function "
+"means nothing."
+msgstr ""
+"我們提出這一點，是因為 ML 從業者通常將損失函數解讀為訓練期間的有用信號——「如果"
+"損失下降了，一切都好。」在策略梯度中，這種直覺是錯誤的，你應該只關心平均回報。"
+"損失函數毫無意義。"
+
+#: ../../spinningup/rl_intro3.rst:177
+msgid ""
+"The approach used here to make the ``logp`` tensor--calling the "
+"``log_prob`` method of a PyTorch ``Categorical`` object--may require some"
+" modification to work with other kinds of distribution objects."
+msgstr ""
+"這裡用來建立 ``logp`` 張量的方法——呼叫 PyTorch ``Categorical`` 物件的 "
+"``log_prob`` 方法——可能需要一些修改才能與其他類型的分佈物件一起使用。"
+
+#: ../../spinningup/rl_intro3.rst:179
+msgid ""
+"For example, if you are using a `Normal distribution`_ (for a diagonal "
+"Gaussian policy), the output from calling ``policy.log_prob(act)`` will "
+"give you a Tensor containing separate log probabilities for each "
+"component of each vector-valued action. That is to say, you put in a "
+"Tensor of shape ``(batch, act_dim)``, and get out a Tensor of shape "
+"``(batch, act_dim)``, when what you need for making an RL loss is a "
+"Tensor of shape ``(batch,)``. In that case, you would sum up the log "
+"probabilities of the action components to get the log probabilities of "
+"the actions. That is, you would compute:"
+msgstr ""
+"例如，如果你使用 `Normal distribution`_（用於對角高斯策略），呼叫 "
+"``policy.log_prob(act)`` 的輸出會給你一個張量，包含每個向量值動作的每個分量的獨"
+"立對數機率。也就是說，你輸入一個形狀為 ``(batch, act_dim)`` 的張量，得到一個形"
+"狀為 ``(batch, act_dim)`` 的張量，而你建立 RL 損失所需的是一個形狀為 "
+"``(batch,)`` 的張量。在這種情況下，你需要對動作分量的對數機率求和，以獲得動作的"
+"對數機率。也就是說，你需要計算："
+
+#: ../../spinningup/rl_intro3.rst:189
+msgid "**3. Running One Epoch of Training.**"
+msgstr "**3. 運行一個訓練回合。**"
+
+#: ../../spinningup/rl_intro3.rst:259
+msgid ""
+"The ``train_one_epoch()`` function runs one \"epoch\" of policy gradient,"
+" which we define to be"
+msgstr ""
+"``train_one_epoch()`` 函數運行策略梯度的一個「epoch」，我們定義為"
+
+#: ../../spinningup/rl_intro3.rst:261
+msgid ""
+"the experience collection step (L67-102), where the agent acts for some "
+"number of episodes in the environment using the most recent policy, "
+"followed by"
+msgstr ""
+"經驗收集步驟（L67-102），其中代理人使用最新策略在環境中行動若干個回合 "
+"(Episode)，然後"
+
+#: ../../spinningup/rl_intro3.rst:263
+msgid "a single policy gradient update step (L104-111)."
+msgstr "一個策略梯度更新步驟（L104-111）。"
+
+#: ../../spinningup/rl_intro3.rst:265
+msgid ""
+"The main loop of the algorithm just repeatedly calls "
+"``train_one_epoch()``."
+msgstr "演算法的主迴圈只是重複呼叫 ``train_one_epoch()``。"
+
+#: ../../spinningup/rl_intro3.rst:269
+msgid ""
+"If you aren't already familiar with optimization in PyTorch, observe the "
+"pattern for taking one gradient descent step as shown in lines 104-111. "
+"First, clear the gradient buffers. Then, compute the loss function. Then,"
+" compute a backward pass on the loss function; this accumulates fresh "
+"gradients into the gradient buffers. Finally, take a step with the "
+"optimizer."
+msgstr ""
+"如果你還不熟悉 PyTorch 中的最佳化，請觀察第 104-111 行所示的進行一次梯度下降步"
+"驟的模式。首先，清除梯度緩衝區。然後，計算損失函數。接著，對損失函數進行反向傳"
+"播；這會將新的梯度累積到梯度緩衝區中。最後，使用優化器進行一步更新。"
+
+#: ../../spinningup/rl_intro3.rst:273
+msgid "Expected Grad-Log-Prob Lemma"
+msgstr "期望梯度對數機率引理"
+
+#: ../../spinningup/rl_intro3.rst:275
+msgid ""
+"In this subsection, we will derive an intermediate result which is "
+"extensively used throughout the theory of policy gradients. We will call "
+"it the Expected Grad-Log-Prob (EGLP) lemma. [1]_"
+msgstr ""
+"在這個小節中，我們將推導一個在策略梯度理論中被廣泛使用的中間結果。我們將其稱為"
+"期望梯度對數機率 (EGLP) 引理。[1]_"
+
+#: ../../spinningup/rl_intro3.rst:277
+#, python-brace-format
+msgid ""
+"**EGLP Lemma.** Suppose that :math:`P_{\\theta}` is a parameterized "
+"probability distribution over a random variable, :math:`x`. Then:"
+msgstr ""
+"**EGLP 引理。** 假設 :math:`P_{\\theta}` 是隨機變數 :math:`x` 上的參數化機率分"
+"佈。那麼："
+
+#: ../../spinningup/rl_intro3.rst:279
+msgid "\\underE{x \\sim P_{\\theta}}{\\nabla_{\\theta} \\log P_{\\theta}(x)} = 0."
+msgstr "\\underE{x \\sim P_{\\theta}}{\\nabla_{\\theta} \\log P_{\\theta}(x)} = 0."
+
+#: ../../spinningup/rl_intro3.rst:283
+msgid "Proof"
+msgstr "證明"
+
+#: ../../spinningup/rl_intro3.rst:285
+msgid "Recall that all probability distributions are *normalized*:"
+msgstr "回想一下，所有機率分佈都是*歸一化*的："
+
+#: ../../spinningup/rl_intro3.rst:287
+#, python-brace-format
+msgid "\\int_x P_{\\theta}(x) = 1."
+msgstr "\\int_x P_{\\theta}(x) = 1."
+
+#: ../../spinningup/rl_intro3.rst:291
+msgid "Take the gradient of both sides of the normalization condition:"
+msgstr "對歸一化條件的兩邊取梯度："
+
+#: ../../spinningup/rl_intro3.rst:293
+#, python-brace-format
+msgid "\\nabla_{\\theta} \\int_x P_{\\theta}(x) = \\nabla_{\\theta} 1 = 0."
+msgstr "\\nabla_{\\theta} \\int_x P_{\\theta}(x) = \\nabla_{\\theta} 1 = 0."
+
+#: ../../spinningup/rl_intro3.rst:297
+msgid "Use the log derivative trick to get:"
+msgstr "使用對數導數技巧得到："
+
+#: ../../spinningup/rl_intro3.rst:299
+msgid ""
+"0 &= \\nabla_{\\theta} \\int_x P_{\\theta}(x) \\\\\n"
+"&= \\int_x \\nabla_{\\theta} P_{\\theta}(x) \\\\\n"
+"&= \\int_x P_{\\theta}(x) \\nabla_{\\theta} \\log P_{\\theta}(x) \\\\\n"
+"\\therefore 0 &= \\underE{x \\sim P_{\\theta}}{\\nabla_{\\theta} \\log "
+"P_{\\theta}(x)}."
+msgstr ""
+"0 &= \\nabla_{\\theta} \\int_x P_{\\theta}(x) \\\\\n"
+"&= \\int_x \\nabla_{\\theta} P_{\\theta}(x) \\\\\n"
+"&= \\int_x P_{\\theta}(x) \\nabla_{\\theta} \\log P_{\\theta}(x) \\\\\n"
+"\\therefore 0 &= \\underE{x \\sim P_{\\theta}}{\\nabla_{\\theta} \\log "
+"P_{\\theta}(x)}."
+
+#: ../../spinningup/rl_intro3.rst:306
+msgid ""
+"The author of this article is not aware of this lemma being given a "
+"standard name anywhere in the literature. But given how often it comes "
+"up, it seems pretty worthwhile to give it some kind of name for ease of "
+"reference."
+msgstr ""
+"本文作者並不知道這個引理在文獻中有標準名稱。但鑑於它出現的頻率之高，給它取一個"
+"名稱以便引用似乎相當值得。"
+
+#: ../../spinningup/rl_intro3.rst:309
+msgid "Don't Let the Past Distract You"
+msgstr "別讓過去分散你的注意力"
+
+#: ../../spinningup/rl_intro3.rst:311
+msgid "Examine our most recent expression for the policy gradient:"
+msgstr "檢視我們最近的策略梯度表達式："
+
+#: ../../spinningup/rl_intro3.rst:313
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) R(\\tau)}."
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) R(\\tau)}."
+
+#: ../../spinningup/rl_intro3.rst:317
+msgid ""
+"Taking a step with this gradient pushes up the log-probabilities of each "
+"action in proportion to :math:`R(\\tau)`, the sum of *all rewards ever "
+"obtained*. But this doesn't make much sense."
+msgstr ""
+"使用這個梯度進行一步更新會按照 :math:`R(\\tau)`（*曾經獲得的所有獎勵 (Reward)*"
+"的總和）的比例推高每個動作的對數機率。但這沒有太大意義。"
+
+#: ../../spinningup/rl_intro3.rst:319
+msgid ""
+"Agents should really only reinforce actions on the basis of their "
+"*consequences*. Rewards obtained before taking an action have no bearing "
+"on how good that action was: only rewards that come *after*."
+msgstr ""
+"代理人實際上應該只根據動作的*後果*來強化動作。在採取動作之前獲得的獎勵與該動作"
+"的好壞無關：只有*之後*的獎勵才有關係。"
+
+#: ../../spinningup/rl_intro3.rst:321
+msgid ""
+"It turns out that this intuition shows up in the math, and we can show "
+"that the policy gradient can also be expressed by"
+msgstr ""
+"事實證明，這種直覺在數學上也成立，我們可以證明策略梯度也可以表示為"
+
+#: ../../spinningup/rl_intro3.rst:323
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1})}."
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1})}."
+
+#: ../../spinningup/rl_intro3.rst:327
+msgid ""
+"In this form, actions are only reinforced based on rewards obtained after"
+" they are taken."
+msgstr "在這種形式中，動作僅根據採取後獲得的獎勵來強化。"
+
+#: ../../spinningup/rl_intro3.rst:329
+msgid ""
+"We'll call this form the \"reward-to-go policy gradient,\" because the "
+"sum of rewards after a point in a trajectory,"
+msgstr ""
+"我們將這種形式稱為「待獲獎勵策略梯度 (Reward-to-Go Policy Gradient)」，因為軌"
+"跡中某一點之後的獎勵總和，"
+
+#: ../../spinningup/rl_intro3.rst:331
+#, python-brace-format
+msgid "\\hat{R}_t \\doteq \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}),"
+msgstr "\\hat{R}_t \\doteq \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}),"
+
+#: ../../spinningup/rl_intro3.rst:335
+msgid ""
+"is called the **reward-to-go** from that point, and this policy gradient "
+"expression depends on the reward-to-go from state-action pairs."
+msgstr ""
+"被稱為從該點開始的**待獲獎勵 (Reward-to-Go)**，而這個策略梯度表達式依賴於狀態-"
+"動作對的待獲獎勵。"
+
+#: ../../spinningup/rl_intro3.rst:339
+msgid ""
+"**But how is this better?** A key problem with policy gradients is how "
+"many sample trajectories are needed to get a low-variance sample estimate"
+" for them. The formula we started with included terms for reinforcing "
+"actions proportional to past rewards, all of which had zero mean, but "
+"nonzero variance: as a result, they would just add noise to sample "
+"estimates of the policy gradient. By removing them, we reduce the number "
+"of sample trajectories needed."
+msgstr ""
+"**但這為什麼更好？** 策略梯度的一個關鍵問題是需要多少樣本軌跡才能獲得低變異數"
+"的樣本估計。我們開始時的公式包含了按照過去獎勵的比例強化動作的項，這些項的均值"
+"都為零，但變異數不為零：因此，它們只會為策略梯度的樣本估計增加雜訊。透過移除它"
+"們，我們減少了所需的樣本軌跡數量。"
+
+#: ../../spinningup/rl_intro3.rst:341
+msgid ""
+"An (optional) proof of this claim can be found `here`_, and it ultimately"
+" depends on the EGLP lemma."
+msgstr ""
+"這個結論的（選讀）證明可以在 `here`_ 找到，它最終依賴於 EGLP 引理。"
+
+#: ../../spinningup/rl_intro3.rst:346
+msgid "Implementing Reward-to-Go Policy Gradient"
+msgstr "實作待獲獎勵策略梯度"
+
+#: ../../spinningup/rl_intro3.rst:349
+msgid ""
+"We give a short PyTorch implementation of the reward-to-go policy "
+"gradient in ``spinup/examples/pytorch/pg_math/2_rtg_pg.py``. (It can also"
+" be viewed `on github "
+"<https://github.com/openai/spinningup/blob/master/spinup/examples/pytorch/pg_math/2_rtg_pg.py>`_.)"
+msgstr ""
+"我們在 ``spinup/examples/pytorch/pg_math/2_rtg_pg.py`` 中給出了待獲獎勵策略梯"
+"度的簡短 PyTorch 實作。（也可以在 `on github "
+"<https://github.com/openai/spinningup/blob/master/spinup/examples/pytorch/pg_math/2_rtg_pg.py>`_ "
+"上查看。）"
+
+#: ../../spinningup/rl_intro3.rst:351
+msgid ""
+"The only thing that has changed from ``1_simple_pg.py`` is that we now "
+"use different weights in the loss function. The code modification is very"
+" slight: we add a new function, and change two other lines. The new "
+"function is:"
+msgstr ""
+"與 ``1_simple_pg.py`` 相比，唯一的變化是我們現在在損失函數中使用了不同的權重。"
+"程式碼修改非常微小：我們新增了一個函數，並修改了另外兩行。新函數是："
+
+#: ../../spinningup/rl_intro3.rst:365
+msgid "And then we tweak the old L91-92 from:"
+msgstr "然後我們將原本的 L91-92 從："
+
+#: ../../spinningup/rl_intro3.rst:374
+msgid "to:"
+msgstr "改為："
+
+#: ../../spinningup/rl_intro3.rst:386
+msgid ""
+"This section was previously written with a Tensorflow example. The old "
+"Tensorflow section can be found `here "
+"<../spinningup/extra_tf_pg_implementation.html#implementing-reward-to-go-"
+"policy-gradient>`_."
+msgstr ""
+"本節之前是用 Tensorflow 範例編寫的。舊的 Tensorflow 部分可以在 `here "
+"<../spinningup/extra_tf_pg_implementation.html#implementing-reward-to-go-"
+"policy-gradient>`_ 找到。"
+
+#: ../../spinningup/rl_intro3.rst:390
+msgid "Baselines in Policy Gradients"
+msgstr "策略梯度中的基準線 (Baseline)"
+
+#: ../../spinningup/rl_intro3.rst:392
+msgid ""
+"An immediate consequence of the EGLP lemma is that for any function "
+":math:`b` which only depends on state,"
+msgstr ""
+"EGLP 引理的一個直接推論是，對於任何僅依賴於狀態的函數 :math:`b`，"
+
+#: ../../spinningup/rl_intro3.rst:394
+msgid ""
+"\\underE{a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t|s_t) b(s_t)} = 0."
+msgstr ""
+"\\underE{a_t \\sim \\pi_{\\theta}}{\\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t|s_t) b(s_t)} = 0."
+
+#: ../../spinningup/rl_intro3.rst:398
+msgid ""
+"This allows us to add or subtract any number of terms like this from our "
+"expression for the policy gradient, without changing it in expectation:"
+msgstr ""
+"這允許我們從策略梯度的表達式中加入或減去任意數量的這類項，而不改變其期望值："
+
+#: ../../spinningup/rl_intro3.rst:400
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\left(\\sum_{t'=t}^T R(s_{t'}, a_{t'}, "
+"s_{t'+1}) - b(s_t)\\right)}."
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\left(\\sum_{t'=t}^T R(s_{t'}, a_{t'}, "
+"s_{t'+1}) - b(s_t)\\right)}."
+
+#: ../../spinningup/rl_intro3.rst:404
+msgid "Any function :math:`b` used in this way is called a **baseline**."
+msgstr "以這種方式使用的任何函數 :math:`b` 被稱為**基準線**。"
+
+#: ../../spinningup/rl_intro3.rst:406
+#, python-brace-format
+msgid ""
+"The most common choice of baseline is the `on-policy value function`_ "
+":math:`V^{\\pi}(s_t)`. Recall that this is the average return an agent "
+"gets if it starts in state :math:`s_t` and then acts according to policy "
+":math:`\\pi` for the rest of its life."
+msgstr ""
+"最常見的基準線選擇是 `on-policy value function`_ :math:`V^{\\pi}(s_t)`。回想一"
+"下，這是代理人從狀態 :math:`s_t` 開始，然後在其餘生命中按照策略 :math:`\\pi` "
+"行動所獲得的平均回報。"
+
+#: ../../spinningup/rl_intro3.rst:408
+#, python-brace-format
+msgid ""
+"Empirically, the choice :math:`b(s_t) = V^{\\pi}(s_t)` has the desirable "
+"effect of reducing variance in the sample estimate for the policy "
+"gradient. This results in faster and more stable policy learning. It is "
+"also appealing from a conceptual angle: it encodes the intuition that if "
+"an agent gets what it expected, it should \"feel\" neutral about it."
+msgstr ""
+"從經驗上看，選擇 :math:`b(s_t) = V^{\\pi}(s_t)` 具有降低策略梯度樣本估計變異"
+"數的理想效果。這使得策略學習更快、更穩定。從概念角度來看，它也很有吸引力：它編"
+"碼了這樣的直覺——如果代理人得到了它所期望的，它應該對此「感到」中立。"
+
+#: ../../spinningup/rl_intro3.rst:412
+#, python-brace-format
+msgid ""
+"In practice, :math:`V^{\\pi}(s_t)` cannot be computed exactly, so it has "
+"to be approximated. This is usually done with a neural network, "
+":math:`V_{\\phi}(s_t)`, which is updated concurrently with the policy (so"
+" that the value network always approximates the value function of the "
+"most recent policy)."
+msgstr ""
+"在實踐中，:math:`V^{\\pi}(s_t)` 無法精確計算，因此必須進行近似。這通常透過一個"
+"神經網路 :math:`V_{\\phi}(s_t)` 來完成，它與策略同時更新（使得價值網路始終近似"
+"最新策略的價值函數 (Value Function)）。"
+
+#: ../../spinningup/rl_intro3.rst:414
+#, python-brace-format
+msgid ""
+"The simplest method for learning :math:`V_{\\phi}`, used in most "
+"implementations of policy optimization algorithms (including VPG, TRPO, "
+"PPO, and A2C), is to minimize a mean-squared-error objective:"
+msgstr ""
+"學習 :math:`V_{\\phi}` 的最簡單方法，用於大多數策略優化演算法的實作（包括 VPG、"
+"TRPO、PPO 和 A2C），是最小化均方誤差目標："
+
+#: ../../spinningup/rl_intro3.rst:416
+msgid ""
+"\\phi_k = \\arg \\min_{\\phi} \\underE{s_t, \\hat{R}_t \\sim "
+"\\pi_k}{\\left( V_{\\phi}(s_t) - \\hat{R}_t \\right)^2},\n"
+"\n"
+msgstr ""
+"\\phi_k = \\arg \\min_{\\phi} \\underE{s_t, \\hat{R}_t \\sim "
+"\\pi_k}{\\left( V_{\\phi}(s_t) - \\hat{R}_t \\right)^2},\n"
+"\n"
+
+#: ../../spinningup/rl_intro3.rst:419
+#, python-brace-format
+msgid ""
+"where :math:`\\pi_k` is the policy at epoch :math:`k`. This is done with "
+"one or more steps of gradient descent, starting from the previous value "
+"parameters :math:`\\phi_{k-1}`."
+msgstr ""
+"其中 :math:`\\pi_k` 是第 :math:`k` 個 epoch 的策略。這透過一步或多步梯度下降完"
+"成，從先前的價值參數 :math:`\\phi_{k-1}` 開始。"
+
+#: ../../spinningup/rl_intro3.rst:423
+msgid "Other Forms of the Policy Gradient"
+msgstr "策略梯度的其他形式"
+
+#: ../../spinningup/rl_intro3.rst:425
+msgid "What we have seen so far is that the policy gradient has the general form"
+msgstr "我們到目前為止看到的是，策略梯度具有以下一般形式"
+
+#: ../../spinningup/rl_intro3.rst:427
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Phi_t},"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Phi_t},"
+
+#: ../../spinningup/rl_intro3.rst:431
+msgid "where :math:`\\Phi_t` could be any of"
+msgstr "其中 :math:`\\Phi_t` 可以是以下任何一個"
+
+#: ../../spinningup/rl_intro3.rst:433
+msgid ""
+"\\Phi_t &= R(\\tau),\n"
+"\n"
+msgstr ""
+"\\Phi_t &= R(\\tau),\n"
+"\n"
+
+#: ../../spinningup/rl_intro3.rst:435 ../../spinningup/rl_intro3.rst:439
+msgid "or"
+msgstr "或"
+
+#: ../../spinningup/rl_intro3.rst:437
+#, python-brace-format
+msgid ""
+"\\Phi_t &= \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}),\n"
+"\n"
+msgstr ""
+"\\Phi_t &= \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}),\n"
+"\n"
+
+#: ../../spinningup/rl_intro3.rst:441
+#, python-brace-format
+msgid ""
+"\\Phi_t &= \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}) - b(s_t).\n"
+"\n"
+msgstr ""
+"\\Phi_t &= \\sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}) - b(s_t).\n"
+"\n"
+
+#: ../../spinningup/rl_intro3.rst:443
+msgid ""
+"All of these choices lead to the same expected value for the policy "
+"gradient, despite having different variances. It turns out that there are"
+" two more valid choices of weights :math:`\\Phi_t` which are important to"
+" know."
+msgstr ""
+"所有這些選擇都會導致策略梯度具有相同的期望值，儘管它們的變異數不同。事實上，還"
+"有兩個有效的權重 :math:`\\Phi_t` 選擇值得了解。"
+
+#: ../../spinningup/rl_intro3.rst:445
+msgid "**1. On-Policy Action-Value Function.** The choice"
+msgstr "**1. 同策略動作價值函數 (Action-Value Function)。** 選擇"
+
+#: ../../spinningup/rl_intro3.rst:447
+msgid ""
+"\\Phi_t = Q^{\\pi_{\\theta}}(s_t, a_t)\n"
+"\n"
+msgstr ""
+"\\Phi_t = Q^{\\pi_{\\theta}}(s_t, a_t)\n"
+"\n"
+
+#: ../../spinningup/rl_intro3.rst:449
+msgid "is also valid. See `this page`_ for an (optional) proof of this claim."
+msgstr "也是有效的。請參見 `this page`_ 以獲取此結論的（選讀）證明。"
+
+#: ../../spinningup/rl_intro3.rst:451
+#, python-brace-format
+msgid ""
+"**2. The Advantage Function.** Recall that the `advantage of an action`_,"
+" defined by :math:`A^{\\pi}(s_t,a_t) = Q^{\\pi}(s_t,a_t) - "
+"V^{\\pi}(s_t)`,  describes how much better or worse it is than other "
+"actions on average (relative to the current policy). This choice,"
+msgstr ""
+"**2. 優勢函數。** 回想一下，`advantage of an action`_ 由 "
+":math:`A^{\\pi}(s_t,a_t) = Q^{\\pi}(s_t,a_t) - V^{\\pi}(s_t)` 定義，描述了它"
+"比其他動作平均好多少或差多少（相對於當前策略）。這個選擇，"
+
+#: ../../spinningup/rl_intro3.rst:453
+msgid ""
+"\\Phi_t = A^{\\pi_{\\theta}}(s_t, a_t)\n"
+"\n"
+msgstr ""
+"\\Phi_t = A^{\\pi_{\\theta}}(s_t, a_t)\n"
+"\n"
+
+#: ../../spinningup/rl_intro3.rst:455
+msgid ""
+"is also valid. The proof is that it's equivalent to using :math:`\\Phi_t "
+"= Q^{\\pi_{\\theta}}(s_t, a_t)` and then using a value function baseline,"
+" which we are always free to do."
+msgstr ""
+"也是有效的。證明是它等價於使用 :math:`\\Phi_t = Q^{\\pi_{\\theta}}(s_t, a_t)` "
+"然後使用價值函數基準線，而我們總是可以這樣做的。"
+
+#: ../../spinningup/rl_intro3.rst:459
+msgid ""
+"The formulation of policy gradients with advantage functions is extremely"
+" common, and there are many different ways of estimating the advantage "
+"function used by different algorithms."
+msgstr ""
+"使用優勢函數的策略梯度公式非常常見，不同的演算法有許多不同的方式來估計優勢函"
+"數。"
+
+#: ../../spinningup/rl_intro3.rst:463
+msgid ""
+"For a more detailed treatment of this topic, you should read the paper on"
+" `Generalized Advantage Estimation`_ (GAE), which goes into depth about "
+"different choices of :math:`\\Phi_t` in the background sections."
+msgstr ""
+"關於這個主題的更詳細論述，你應該閱讀 `Generalized Advantage Estimation`_"
+"（GAE，廣義優勢估計）的論文，它在背景部分深入討論了 :math:`\\Phi_t` 的不同選"
+"擇。"
+
+#: ../../spinningup/rl_intro3.rst:465
+msgid ""
+"That paper then goes on to describe GAE, a method for approximating the "
+"advantage function in policy optimization algorithms which enjoys "
+"widespread use. For instance, Spinning Up's implementations of VPG, TRPO,"
+" and PPO make use of it. As a result, we strongly advise you to study it."
+msgstr ""
+"該論文接著描述了 GAE，一種在策略優化演算法中近似優勢函數的方法，被廣泛使用。例"
+"如，Spinning Up 的 VPG、TRPO 和 PPO 實作都使用了它。因此，我們強烈建議你去研"
+"讀它。"
+
+#: ../../spinningup/rl_intro3.rst:469
+msgid "Recap"
+msgstr "回顧"
+
+#: ../../spinningup/rl_intro3.rst:471
+msgid ""
+"In this chapter, we described the basic theory of policy gradient methods"
+" and connected some of the early results to code examples. The interested"
+" student should continue from here by studying how the later results "
+"(value function baselines and the advantage formulation of policy "
+"gradients) translate into Spinning Up's implementation of `Vanilla Policy"
+" Gradient`_."
+msgstr ""
+"在本章中，我們描述了策略梯度方法的基本理論，並將一些早期結果與程式碼範例連結起"
+"來。感興趣的讀者應該從這裡繼續學習，研究後續結果（價值函數基準線和策略梯度的優"
+"勢函數公式）如何轉化為 Spinning Up 的 `Vanilla Policy Gradient`_ 實作。"

@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/extra_pg_proof2.rst:3
+msgid "Extra Material"
+msgstr "補充材料"
+
+#: ../../spinningup/extra_pg_proof2.rst:6
+msgid "Proof for Using Q-Function in Policy Gradient Formula"
+msgstr "在策略梯度公式中使用 Q 函數的證明"
+
+#: ../../spinningup/extra_pg_proof2.rst:8
+msgid "In this section, we will show that"
+msgstr "在本節中，我們將證明"
+
+#: ../../spinningup/extra_pg_proof2.rst:10
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\Big( \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big) Q^{\\pi_{\\theta}}(s_t, a_t)},"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\Big( \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\Big) Q^{\\pi_{\\theta}}(s_t, a_t)},"
+
+#: ../../spinningup/extra_pg_proof2.rst:14
+msgid ""
+"for the finite-horizon undiscounted return setting. (An analagous result "
+"holds in the infinite-horizon discounted case using basically the same "
+"proof.)"
+msgstr ""
+"此結論適用於有限時間範圍（finite-horizon）無折扣回報的情境。"
+"（在無限時間範圍折扣回報的情況下，基本上使用相同的證明也可得到類似的結果。）"
+
+#: ../../spinningup/extra_pg_proof2.rst:17
+#, python-brace-format
+msgid ""
+"The proof of this claim depends on the `law of iterated expectations`_. "
+"First, let's rewrite the expression for the policy gradient, starting "
+"from the reward-to-go form (using the notation :math:`\\hat{R}_t = "
+"\\sum_{t'=t}^T R(s_t', a_t', s_{t'+1})` to help shorten things):"
+msgstr ""
+"此結論的證明依賴於 `law of iterated expectations`_（疊代期望法則）。"
+"首先，讓我們從 reward-to-go 形式開始改寫策略梯度的表達式"
+"（使用記號 :math:`\\hat{R}_t = "
+"\\sum_{t'=t}^T R(s_t', a_t', s_{t'+1})` 來簡化表示）："
+
+#: ../../spinningup/extra_pg_proof2.rst:19
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\hat{R}_t} \\\\\n"
+"&= \\sum_{t=0}^{T} \\underE{\\tau \\sim \\pi_{\\theta}}{\\nabla_{\\theta}"
+" \\log \\pi_{\\theta}(a_t |s_t) \\hat{R}_t}"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\\sum_{t=0}^{T} \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\hat{R}_t} \\\\\n"
+"&= \\sum_{t=0}^{T} \\underE{\\tau \\sim \\pi_{\\theta}}{\\nabla_{\\theta}"
+" \\log \\pi_{\\theta}(a_t |s_t) \\hat{R}_t}"
+
+#: ../../spinningup/extra_pg_proof2.rst:24
+#, python-brace-format
+msgid ""
+"Define :math:`\\tau_{:t} = (s_0, a_0, ..., s_t, a_t)` as the trajectory "
+"up to time :math:`t`, and :math:`\\tau_{t:}` as the remainder of the "
+"trajectory after that. By the law of iterated expectations, we can break "
+"up the preceding expression into:"
+msgstr ""
+"定義 :math:`\\tau_{:t} = (s_0, a_0, ..., s_t, a_t)` 為到時間步 :math:`t` 為止的軌跡，"
+"而 :math:`\\tau_{t:}` 為之後的剩餘軌跡。根據疊代期望法則，我們可以將上述表達式拆分為："
+
+#: ../../spinningup/extra_pg_proof2.rst:26
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\sum_{t=0}^{T} "
+"\\underE{\\tau_{:t} \\sim \\pi_{\\theta}}{ \\underE{\\tau_{t:} \\sim "
+"\\pi_{\\theta}}{ \\left. \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t)"
+" \\hat{R}_t \\right| \\tau_{:t}}}"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\sum_{t=0}^{T} "
+"\\underE{\\tau_{:t} \\sim \\pi_{\\theta}}{ \\underE{\\tau_{t:} \\sim "
+"\\pi_{\\theta}}{ \\left. \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t |s_t)"
+" \\hat{R}_t \\right| \\tau_{:t}}}"
+
+#: ../../spinningup/extra_pg_proof2.rst:30
+#, python-brace-format
+msgid ""
+"The grad-log-prob is constant with respect to the inner expectation "
+"(because it depends on :math:`s_t` and :math:`a_t`, which the inner "
+"expectation conditions on as fixed in :math:`\\tau_{:t}`), so it can be "
+"pulled out, leaving:"
+msgstr ""
+"梯度對數機率（grad-log-prob）相對於內層期望值是常數"
+"（因為它依賴於 :math:`s_t` 和 :math:`a_t`，而這些在內層期望值中"
+"作為 :math:`\\tau_{:t}` 的一部分被視為固定值），因此可以提到外面，得到："
+
+#: ../../spinningup/extra_pg_proof2.rst:32
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\sum_{t=0}^{T} "
+"\\underE{\\tau_{:t} \\sim \\pi_{\\theta}}{ \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\underE{\\tau_{t:} \\sim \\pi_{\\theta}}{ "
+"\\left. \\hat{R}_t \\right| \\tau_{:t}}}"
+msgstr ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) &= \\sum_{t=0}^{T} "
+"\\underE{\\tau_{:t} \\sim \\pi_{\\theta}}{ \\nabla_{\\theta} \\log "
+"\\pi_{\\theta}(a_t |s_t) \\underE{\\tau_{t:} \\sim \\pi_{\\theta}}{ "
+"\\left. \\hat{R}_t \\right| \\tau_{:t}}}"
+
+#: ../../spinningup/extra_pg_proof2.rst:36
+msgid ""
+"In Markov Decision Processes, the future only depends on the most recent "
+"state and action. As a result, the inner expectation---which expects over"
+" the future, conditioned on the entirety of the past (everything up to "
+"time :math:`t`)---is equal to the same expectation if it only conditioned"
+" on the last timestep (just :math:`(s_t,a_t)`):"
+msgstr ""
+"在馬可夫決策過程（Markov Decision Process）中，未來僅取決於最近的狀態和動作。"
+"因此，內層期望值——對未來求期望，以整個過去（直到時間步 :math:`t` 的所有事件）為條件——"
+"等同於僅以最後一個時間步（即 :math:`(s_t,a_t)`）為條件的期望值："
+
+#: ../../spinningup/extra_pg_proof2.rst:38
+msgid ""
+"\\underE{\\tau_{t:} \\sim \\pi_{\\theta}}{ \\left. \\hat{R}_t \\right| "
+"\\tau_{:t}} = \\underE{\\tau_{t:} \\sim \\pi_{\\theta}}{ \\left. "
+"\\hat{R}_t \\right| s_t, a_t},"
+msgstr ""
+"\\underE{\\tau_{t:} \\sim \\pi_{\\theta}}{ \\left. \\hat{R}_t \\right| "
+"\\tau_{:t}} = \\underE{\\tau_{t:} \\sim \\pi_{\\theta}}{ \\left. "
+"\\hat{R}_t \\right| s_t, a_t},"
+
+#: ../../spinningup/extra_pg_proof2.rst:42
+msgid ""
+"which is the *definition* of :math:`Q^{\\pi_{\\theta}}(s_t, a_t)`: the "
+"expected return, starting from state :math:`s_t` and action :math:`a_t`, "
+"when acting on-policy for the rest of the trajectory."
+msgstr ""
+"而這正是 :math:`Q^{\\pi_{\\theta}}(s_t, a_t)` 的 *定義*：從狀態 :math:`s_t` "
+"和動作 :math:`a_t` 出發，在軌跡的其餘部分依照當前策略行動時的期望回報。"
+
+#: ../../spinningup/extra_pg_proof2.rst:44
+msgid "The result follows immediately."
+msgstr "結論隨即成立。"

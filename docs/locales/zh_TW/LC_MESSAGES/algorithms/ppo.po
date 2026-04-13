@@ -1,0 +1,787 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../algorithms/ppo.rst:3
+msgid "Proximal Policy Optimization"
+msgstr "近端策略優化 (Proximal Policy Optimization)"
+
+#: ../../algorithms/ppo.rst:6
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../algorithms/ppo.rst:9
+msgid "Background"
+msgstr "背景"
+
+#: ../../algorithms/ppo.rst:12
+msgid "(Previously: `Background for TRPO`_)"
+msgstr "（先前章節：`Background for TRPO`_）"
+
+#: ../../algorithms/ppo.rst:16
+msgid ""
+"PPO is motivated by the same question as TRPO: how can we take the "
+"biggest possible improvement step on a policy using the data we currently"
+" have, without stepping so far that we accidentally cause performance "
+"collapse? Where TRPO tries to solve this problem with a complex second-"
+"order method, PPO is a family of first-order methods that use a few other"
+" tricks to keep new policies close to old. PPO methods are significantly "
+"simpler to implement, and empirically seem to perform at least as well as"
+" TRPO."
+msgstr ""
+"PPO 的動機與 TRPO 相同：如何利用目前擁有的資料，在策略上邁出盡可能大的改進步"
+"伐，同時不會因步伐過大而意外導致性能崩潰？TRPO 試圖用複雜的二階方法來解決這"
+"個問題，而 PPO 是一系列一階方法，使用一些其他技巧來保持新策略與舊策略的接近。"
+"PPO 的方法在實作上簡單得多，且在經驗上表現至少與 TRPO 一樣好。"
+
+#: ../../algorithms/ppo.rst:18
+msgid "There are two primary variants of PPO: PPO-Penalty and PPO-Clip."
+msgstr "PPO 有兩個主要變體：PPO-Penalty 和 PPO-Clip。"
+
+#: ../../algorithms/ppo.rst:20
+msgid ""
+"**PPO-Penalty** approximately solves a KL-constrained update like TRPO, "
+"but penalizes the KL-divergence in the objective function instead of "
+"making it a hard constraint, and automatically adjusts the penalty "
+"coefficient over the course of training so that it's scaled "
+"appropriately."
+msgstr ""
+"**PPO-Penalty** 近似地解決了像 TRPO 一樣的 KL 約束更新問題，但將 KL 散度 "
+"(KL-Divergence) 作為目標函數中的懲罰項，而非硬約束，並在訓練過程中自動調整懲"
+"罰係數以使其適當縮放。"
+
+#: ../../algorithms/ppo.rst:22
+msgid ""
+"**PPO-Clip** doesn't have a KL-divergence term in the objective and "
+"doesn't have a constraint at all. Instead relies on specialized clipping "
+"in the objective function to remove incentives for the new policy to get "
+"far from the old policy."
+msgstr ""
+"**PPO-Clip** 在目標函數中沒有 KL 散度項，也完全沒有約束條件。它依賴目標函數中"
+"特殊的裁剪 (Clipping) 機制，來消除新策略偏離舊策略的動機。"
+
+#: ../../algorithms/ppo.rst:24
+msgid "Here, we'll focus only on PPO-Clip (the primary variant used at OpenAI)."
+msgstr "在此，我們僅專注於 PPO-Clip（OpenAI 使用的主要變體）。"
+
+#: ../../algorithms/ppo.rst:27
+msgid "Quick Facts"
+msgstr "快速概覽"
+
+#: ../../algorithms/ppo.rst:29
+msgid "PPO is an on-policy algorithm."
+msgstr "PPO 是一種同策略 (On-policy) 演算法。"
+
+#: ../../algorithms/ppo.rst:30
+msgid ""
+"PPO can be used for environments with either discrete or continuous "
+"action spaces."
+msgstr "PPO 可用於具有離散或連續動作空間 (Action Space) 的環境。"
+
+#: ../../algorithms/ppo.rst:31
+msgid "The Spinning Up implementation of PPO supports parallelization with MPI."
+msgstr "Spinning Up 的 PPO 實作支援透過 MPI 進行平行化。"
+
+#: ../../algorithms/ppo.rst:34
+msgid "Key Equations"
+msgstr "關鍵方程式"
+
+#: ../../algorithms/ppo.rst:36
+msgid "PPO-clip updates policies via"
+msgstr "PPO-Clip 透過以下方式更新策略"
+
+#: ../../algorithms/ppo.rst:38
+msgid ""
+"\\theta_{k+1} = \\arg \\max_{\\theta} \\underset{s,a \\sim "
+"\\pi_{\\theta_k}}{{\\mathrm E}}\\left[\n"
+"    L(s,a,\\theta_k, \\theta)\\right],"
+msgstr ""
+
+#: ../../algorithms/ppo.rst:43
+msgid ""
+"typically taking multiple steps of (usually minibatch) SGD to maximize "
+"the objective. Here :math:`L` is given by"
+msgstr ""
+"通常透過多步（通常是小批次）SGD 來最大化目標函數。這裡 :math:`L` 定義為"
+
+#: ../../algorithms/ppo.rst:45
+msgid ""
+"L(s,a,\\theta_k,\\theta) = \\min\\left(\n"
+"\\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_k}(a|s)}  "
+"A^{\\pi_{\\theta_k}}(s,a), \\;\\;\n"
+"\\text{clip}\\left(\\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_k}(a|s)}, 1 "
+"- \\epsilon, 1+\\epsilon \\right) A^{\\pi_{\\theta_k}}(s,a)\n"
+"\\right),"
+msgstr ""
+
+#: ../../algorithms/ppo.rst:52
+msgid ""
+"in which :math:`\\epsilon` is a (small) hyperparameter which roughly says"
+" how far away the new policy is allowed to go from the old."
+msgstr ""
+"其中 :math:`\\epsilon` 是一個（較小的）超參數，大致決定了新策略允許偏離舊策略"
+"的程度。"
+
+#: ../../algorithms/ppo.rst:54
+msgid ""
+"This is a pretty complex expression, and it's hard to tell at first "
+"glance what it's doing, or how it helps keep the new policy close to the "
+"old policy. As it turns out, there's a considerably simplified version "
+"[1]_ of this objective which is a bit easier to grapple with (and is also"
+" the version we implement in our code):"
+msgstr ""
+"這是一個相當複雜的表達式，乍看之下很難理解它在做什麼，或者它如何幫助保持新策"
+"略接近舊策略。事實上，存在一個大幅簡化的版本 [1]_，更容易理解（也是我們在程式"
+"碼中實作的版本）："
+
+#: ../../algorithms/ppo.rst:56
+msgid ""
+"L(s,a,\\theta_k,\\theta) = \\min\\left(\n"
+"\\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_k}(a|s)}  "
+"A^{\\pi_{\\theta_k}}(s,a), \\;\\;\n"
+"g(\\epsilon, A^{\\pi_{\\theta_k}}(s,a))\n"
+"\\right),"
+msgstr ""
+
+#: ../../algorithms/ppo.rst:63
+msgid "where"
+msgstr "其中"
+
+#: ../../algorithms/ppo.rst:65
+msgid ""
+"g(\\epsilon, A) = \\left\\{\n"
+"    \\begin{array}{ll}\n"
+"    (1 + \\epsilon) A & A \\geq 0 \\\\\n"
+"    (1 - \\epsilon) A & A < 0.\n"
+"    \\end{array}\n"
+"    \\right."
+msgstr ""
+
+#: ../../algorithms/ppo.rst:74
+msgid ""
+"To figure out what intuition to take away from this, let's look at a "
+"single state-action pair :math:`(s,a)`, and think of cases."
+msgstr ""
+"為了弄清楚從中可以得到什麼直覺，讓我們看一個單一的狀態-動作對 "
+":math:`(s,a)`，並考慮不同情況。"
+
+#: ../../algorithms/ppo.rst:76
+msgid ""
+"**Advantage is positive**: Suppose the advantage for that state-action "
+"pair is positive, in which case its contribution to the objective reduces"
+" to"
+msgstr ""
+"**優勢為正**：假設該狀態-動作對的優勢函數 (Advantage Function) 為正，這種情況"
+"下它對目標函數的貢獻簡化為"
+
+#: ../../algorithms/ppo.rst:78
+msgid ""
+"L(s,a,\\theta_k,\\theta) = \\min\\left(\n"
+"\\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_k}(a|s)}, (1 + \\epsilon)\n"
+"\\right)  A^{\\pi_{\\theta_k}}(s,a)."
+msgstr ""
+
+#: ../../algorithms/ppo.rst:84
+msgid ""
+"Because the advantage is positive, the objective will increase if the "
+"action becomes more likely---that is, if :math:`\\pi_{\\theta}(a|s)` "
+"increases. But the min in this term puts a limit to how *much* the "
+"objective can increase. Once :math:`\\pi_{\\theta}(a|s) > (1+\\epsilon) "
+"\\pi_{\\theta_k}(a|s)`, the min kicks in and this term hits a ceiling of "
+":math:`(1+\\epsilon) A^{\\pi_{\\theta_k}}(s,a)`. Thus: *the new policy "
+"does not benefit by going far away from the old policy*."
+msgstr ""
+"因為優勢為正，如果動作變得更有可能——即 :math:`\\pi_{\\theta}(a|s)` 增大——目標"
+"函數就會增加。但這一項中的 min 對目標函數能增加*多少*設了上限。一旦 "
+":math:`\\pi_{\\theta}(a|s) > (1+\\epsilon) \\pi_{\\theta_k}(a|s)`，min 就會"
+"生效，該項達到 :math:`(1+\\epsilon) A^{\\pi_{\\theta_k}}(s,a)` 的上界。因此："
+"*新策略不會因遠離舊策略而獲益*。"
+
+#: ../../algorithms/ppo.rst:86
+msgid ""
+"**Advantage is negative**: Suppose the advantage for that state-action "
+"pair is negative, in which case its contribution to the objective reduces"
+" to"
+msgstr ""
+"**優勢為負**：假設該狀態-動作對的優勢為負，這種情況下它對目標函數的貢獻簡化為"
+
+#: ../../algorithms/ppo.rst:88
+msgid ""
+"L(s,a,\\theta_k,\\theta) = \\max\\left(\n"
+"\\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_k}(a|s)}, (1 - \\epsilon)\n"
+"\\right)  A^{\\pi_{\\theta_k}}(s,a)."
+msgstr ""
+
+#: ../../algorithms/ppo.rst:94
+msgid ""
+"Because the advantage is negative, the objective will increase if the "
+"action becomes less likely---that is, if :math:`\\pi_{\\theta}(a|s)` "
+"decreases. But the max in this term puts a limit to how *much* the "
+"objective can increase. Once :math:`\\pi_{\\theta}(a|s) < (1-\\epsilon) "
+"\\pi_{\\theta_k}(a|s)`, the max kicks in and this term hits a ceiling of "
+":math:`(1-\\epsilon) A^{\\pi_{\\theta_k}}(s,a)`. Thus, again: *the new "
+"policy does not benefit by going far away from the old policy*."
+msgstr ""
+"因為優勢為負，如果動作變得更不可能——即 :math:`\\pi_{\\theta}(a|s)` 減小——目標"
+"函數就會增加。但這一項中的 max 對目標函數能增加*多少*設了上限。一旦 "
+":math:`\\pi_{\\theta}(a|s) < (1-\\epsilon) \\pi_{\\theta_k}(a|s)`，max 就會"
+"生效，該項達到 :math:`(1-\\epsilon) A^{\\pi_{\\theta_k}}(s,a)` 的上界。因此，"
+"再次說明：*新策略不會因遠離舊策略而獲益*。"
+
+#: ../../algorithms/ppo.rst:96
+msgid ""
+"What we have seen so far is that clipping serves as a regularizer by "
+"removing incentives for the policy to change dramatically, and the "
+"hyperparameter :math:`\\epsilon` corresponds to how far away the new "
+"policy can go from the old while still profiting the objective."
+msgstr ""
+"到目前為止我們所看到的是，裁剪作為一種正則化手段，消除了策略劇烈變化的動機，"
+"而超參數 :math:`\\epsilon` 對應著新策略在仍能使目標函數獲益的情況下，可以偏離"
+"舊策略的程度。"
+
+#: ../../algorithms/ppo.rst:98 ../../algorithms/ppo.rst:155
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../algorithms/ppo.rst:100
+msgid ""
+"While this kind of clipping goes a long way towards ensuring reasonable "
+"policy updates, it is still possible to end up with a new policy which is"
+" too far from the old policy, and there are a bunch of tricks used by "
+"different PPO implementations to stave this off. In our implementation "
+"here, we use a particularly simple method: early stopping. If the mean "
+"KL-divergence of the new policy from the old grows beyond a threshold, we"
+" stop taking gradient steps."
+msgstr ""
+"雖然這種裁剪機制在確保合理的策略更新方面走了很長一段路，但仍有可能得到一個與"
+"舊策略相差過遠的新策略，不同的 PPO 實作使用了各種技巧來避免這種情況。在我們的"
+"實作中，我們使用了一種特別簡單的方法：提前停止 (Early Stopping)。如果新策略與"
+"舊策略的平均 KL 散度超過閾值，我們就停止進行梯度更新。"
+
+#: ../../algorithms/ppo.rst:102
+msgid ""
+"When you feel comfortable with the basic math and implementation details,"
+" it's worth checking out other implementations to see how they handle "
+"this issue!"
+msgstr ""
+"當你對基本數學和實作細節感到自在時，值得去查看其他實作是如何處理這個問題的！"
+
+#: ../../algorithms/ppo.rst:105
+msgid ""
+"See `this note`_ for a derivation of the simplified form of the PPO-Clip "
+"objective."
+msgstr "參見 `this note`_ 以獲得 PPO-Clip 目標函數簡化形式的推導。"
+
+#: ../../algorithms/ppo.rst:112
+msgid "Exploration vs. Exploitation"
+msgstr "探索與利用"
+
+#: ../../algorithms/ppo.rst:114
+msgid ""
+"PPO trains a stochastic policy in an on-policy way. This means that it "
+"explores by sampling actions according to the latest version of its "
+"stochastic policy. The amount of randomness in action selection depends "
+"on both initial conditions and the training procedure. Over the course of"
+" training, the policy typically becomes progressively less random, as the"
+" update rule encourages it to exploit rewards that it has already found. "
+"This may cause the policy to get trapped in local optima."
+msgstr ""
+"PPO 以同策略的方式訓練一個隨機策略 (Stochastic Policy)。這意味著它透過根據"
+"最新版本的隨機策略取樣動作來進行探索 (Exploration)。動作選擇的隨機程度取決於"
+"初始條件和訓練過程。在訓練過程中，策略通常會逐漸變得不那麼隨機，因為更新規則"
+"會鼓勵它利用 (Exploitation) 已經發現的獎勵。這可能導致策略陷入局部最優解 "
+"(Local Optima)。"
+
+#: ../../algorithms/ppo.rst:118
+msgid "Pseudocode"
+msgstr "虛擬碼"
+
+#: ../../algorithms/ppo.rst:120
+msgid ""
+"\\begin{algorithm}[H]\n"
+"    \\caption{PPO-Clip}\n"
+"    \\label{alg1}\n"
+"\\begin{algorithmic}[1]\n"
+"    \\STATE Input: initial policy parameters $\\theta_0$, initial value "
+"function parameters $\\phi_0$\n"
+"    \\FOR{$k = 0,1,2,...$}\n"
+"    \\STATE Collect set of trajectories ${\\mathcal D}_k = \\{\\tau_i\\}$"
+" by running policy $\\pi_k = \\pi(\\theta_k)$ in the environment.\n"
+"    \\STATE Compute rewards-to-go $\\hat{R}_t$.\n"
+"    \\STATE Compute advantage estimates, $\\hat{A}_t$ (using any method "
+"of advantage estimation) based on the current value function "
+"$V_{\\phi_k}$.\n"
+"    \\STATE Update the policy by maximizing the PPO-Clip objective:\n"
+"        \\begin{equation*}\n"
+"        \\theta_{k+1} = \\arg \\max_{\\theta} \\frac{1}{|{\\mathcal D}_k|"
+" T} \\sum_{\\tau \\in {\\mathcal D}_k} \\sum_{t=0}^T \\min\\left(\n"
+"            \\frac{\\pi_{\\theta}(a_t|s_t)}{\\pi_{\\theta_k}(a_t|s_t)}  "
+"A^{\\pi_{\\theta_k}}(s_t,a_t), \\;\\;\n"
+"            g(\\epsilon, A^{\\pi_{\\theta_k}}(s_t,a_t))\n"
+"        \\right),\n"
+"        \\end{equation*}\n"
+"        typically via stochastic gradient ascent with Adam.\n"
+"    \\STATE Fit value function by regression on mean-squared error:\n"
+"        \\begin{equation*}\n"
+"        \\phi_{k+1} = \\arg \\min_{\\phi} \\frac{1}{|{\\mathcal D}_k| T} "
+"\\sum_{\\tau \\in {\\mathcal D}_k} \\sum_{t=0}^T\\left( V_{\\phi} (s_t) -"
+" \\hat{R}_t \\right)^2,\n"
+"        \\end{equation*}\n"
+"        typically via some gradient descent algorithm.\n"
+"    \\ENDFOR\n"
+"\\end{algorithmic}\n"
+"\\end{algorithm}"
+msgstr ""
+
+#: ../../algorithms/ppo.rst:153
+msgid "Documentation"
+msgstr "文件說明"
+
+#: ../../algorithms/ppo.rst:157
+msgid ""
+"In what follows, we give documentation for the PyTorch and Tensorflow "
+"implementations of PPO in Spinning Up. They have nearly identical "
+"function calls and docstrings, except for details relating to model "
+"construction. However, we include both full docstrings for completeness."
+msgstr ""
+"以下提供 Spinning Up 中 PPO 的 PyTorch 和 Tensorflow 實作文件。它們的函式呼叫"
+"和文件字串幾乎相同，僅在模型建構的細節上有所不同。不過，為求完整性，我們同時"
+"收錄了兩者的完整文件字串。"
+
+#: ../../algorithms/ppo.rst:161
+msgid "Documentation: PyTorch Version"
+msgstr "文件說明：PyTorch 版本"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:1
+msgid "Proximal Policy Optimization (by clipping),"
+msgstr "近端策略優化（透過裁剪），"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:3
+msgid "with early stopping based on approximate KL"
+msgstr "具有基於近似 KL 散度的提前停止機制"
+
+#: ../../algorithms/ppo.rst
+msgid "Parameters"
+msgstr "參數"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:5
+msgid ""
+"A function which creates a copy of the environment. The environment must "
+"satisfy the OpenAI Gym API."
+msgstr "一個用於建立環境副本的函式。環境必須符合 OpenAI Gym API。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:7
+msgid ""
+"The constructor method for a PyTorch Module with a ``step`` method, an "
+"``act`` method, a ``pi`` module, and a ``v`` module. The ``step`` method "
+"should accept a batch of observations and return:  ===========  "
+"================  ====================================== Symbol       "
+"Shape             Description ===========  ================  "
+"====================================== ``a``        (batch, act_dim)  | "
+"Numpy array of actions for each                                | "
+"observation. ``v``        (batch,)          | Numpy array of value "
+"estimates                                | for the provided observations."
+" ``logp_a``   (batch,)          | Numpy array of log probs for the"
+"                                | actions in ``a``. ===========  "
+"================  ======================================  The ``act`` "
+"method behaves the same as ``step`` but only returns ``a``.  The ``pi`` "
+"module's forward call should accept a batch of observations and "
+"optionally a batch of actions, and return:  ===========  ================"
+"  ====================================== Symbol       Shape             "
+"Description ===========  ================  "
+"====================================== ``pi``       N/A               | "
+"Torch Distribution object, containing                                | a "
+"batch of distributions describing                                | the "
+"policy for the provided observations. ``logp_a``   (batch,)          | "
+"Optional (only returned if batch of                                | "
+"actions is given). Tensor containing                                | the"
+" log probability, according to                                | the "
+"policy, of the provided actions.                                | If "
+"actions not given, will contain                                | "
+"``None``. ===========  ================  "
+"======================================  The ``v`` module's forward call "
+"should accept a batch of observations and return:  ===========  "
+"================  ====================================== Symbol       "
+"Shape             Description ===========  ================  "
+"====================================== ``v``        (batch,)          | "
+"Tensor containing the value estimates                                | "
+"for the provided observations. (Critical:                                "
+"| make sure to flatten this!) ===========  ================  "
+"======================================"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:7
+msgid ""
+"The constructor method for a PyTorch Module with a ``step`` method, an "
+"``act`` method, a ``pi`` module, and a ``v`` module. The ``step`` method "
+"should accept a batch of observations and return:"
+msgstr ""
+"一個 PyTorch Module 的建構方法，需具有 ``step`` 方法、``act`` 方法、"
+"``pi`` 模組和 ``v`` 模組。``step`` 方法應接受一批觀測值並回傳："
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:13 spinup.algos.pytorch.ppo.ppo.ppo:29
+#: spinup.algos.pytorch.ppo.ppo.ppo:46
+msgid "Symbol"
+msgstr "符號"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:13 spinup.algos.pytorch.ppo.ppo.ppo:29
+#: spinup.algos.pytorch.ppo.ppo.ppo:46
+msgid "Shape"
+msgstr "形狀"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:13 spinup.algos.pytorch.ppo.ppo.ppo:29
+#: spinup.algos.pytorch.ppo.ppo.ppo:46
+msgid "Description"
+msgstr "描述"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:15
+msgid "``a``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:15
+msgid "(batch, act_dim)"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:15
+msgid "Numpy array of actions for each"
+msgstr "每個觀測對應動作的"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:16
+msgid "observation."
+msgstr "Numpy 陣列。"
+
+#: ../../algorithms/ppo.rst:192 of spinup.algos.pytorch.ppo.ppo.ppo:17
+#: spinup.algos.pytorch.ppo.ppo.ppo:48
+msgid "``v``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:17 spinup.algos.pytorch.ppo.ppo.ppo:19
+#: spinup.algos.pytorch.ppo.ppo.ppo:34 spinup.algos.pytorch.ppo.ppo.ppo:48
+msgid "(batch,)"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:17
+msgid "Numpy array of value estimates"
+msgstr "所提供觀測之價值估計的"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:18
+msgid "for the provided observations."
+msgstr "Numpy 陣列。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:19 spinup.algos.pytorch.ppo.ppo.ppo:34
+msgid "``logp_a``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:19
+msgid "Numpy array of log probs for the"
+msgstr "``a`` 中動作的對數機率"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:20
+msgid "actions in ``a``."
+msgstr "Numpy 陣列。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:23
+msgid "The ``act`` method behaves the same as ``step`` but only returns ``a``."
+msgstr "``act`` 方法的行為與 ``step`` 相同，但僅回傳 ``a``。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:25
+msgid ""
+"The ``pi`` module's forward call should accept a batch of observations "
+"and optionally a batch of actions, and return:"
+msgstr ""
+"``pi`` 模組的前向呼叫應接受一批觀測值，以及可選的一批動作，並回傳："
+
+#: ../../algorithms/ppo.rst:191 of spinup.algos.pytorch.ppo.ppo.ppo:31
+msgid "``pi``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:31
+msgid "N/A"
+msgstr ""
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:31
+msgid "Torch Distribution object, containing"
+msgstr "Torch Distribution 物件，包含"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:32
+msgid "a batch of distributions describing"
+msgstr "一批描述所提供觀測之"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:33
+msgid "the policy for the provided observations."
+msgstr "策略的分佈。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:34
+msgid "Optional (only returned if batch of"
+msgstr "可選（僅在提供動作批次時"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:35
+msgid "actions is given). Tensor containing"
+msgstr "回傳）。包含依據策略計算的"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:36
+msgid "the log probability, according to"
+msgstr "所提供動作之對數機率"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:37
+msgid "the policy, of the provided actions."
+msgstr "的 Tensor。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:38
+msgid "If actions not given, will contain"
+msgstr "若未提供動作，將包含"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:39
+msgid "``None``."
+msgstr "``None``。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:42
+msgid ""
+"The ``v`` module's forward call should accept a batch of observations and"
+" return:"
+msgstr "``v`` 模組的前向呼叫應接受一批觀測值並回傳："
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:48
+msgid "Tensor containing the value estimates"
+msgstr "包含所提供觀測之價值估計的"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:49
+msgid "for the provided observations. (Critical:"
+msgstr "Tensor。（重要："
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:50
+msgid "make sure to flatten this!)"
+msgstr "請確保將其展平！）"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:52
+msgid "Any kwargs appropriate for the ActorCritic object you provided to PPO."
+msgstr "任何適用於您提供給 PPO 的 ActorCritic 物件的關鍵字引數。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:55
+msgid "Seed for random number generators."
+msgstr "隨機數產生器的種子。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:57
+msgid ""
+"Number of steps of interaction (state-action pairs) for the agent and the"
+" environment in each epoch."
+msgstr "每個訓練週期 (Epoch) 中代理程式與環境互動的步數（狀態-動作對）。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:60
+msgid ""
+"Number of epochs of interaction (equivalent to number of policy updates) "
+"to perform."
+msgstr "要執行的互動訓練週期數（等同於策略更新次數）。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:63
+msgid "Discount factor. (Always between 0 and 1.)"
+msgstr "折扣因子 (Discount Factor)。（始終介於 0 和 1 之間。）"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:65
+msgid ""
+"Hyperparameter for clipping in the policy objective. Roughly: how far can"
+" the new policy go from the old policy while still profiting (improving "
+"the objective function)? The new policy can still go farther than the "
+"clip_ratio says, but it doesn't help on the objective anymore. (Usually "
+"small, 0.1 to 0.3.) Typically denoted by :math:`\\epsilon`."
+msgstr ""
+"策略目標函數中裁剪的超參數。大致含義：新策略可以偏離舊策略多遠，同時仍能獲益"
+"（改善目標函數）？新策略仍可以超出 clip_ratio 所指定的範圍，但不再對目標函數有"
+"幫助。（通常較小，0.1 到 0.3。）通常記為 :math:`\\epsilon`。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:72
+msgid "Learning rate for policy optimizer."
+msgstr "策略優化器的學習率。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:74
+msgid "Learning rate for value function optimizer."
+msgstr "價值函數 (Value Function) 優化器的學習率。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:76
+msgid ""
+"Maximum number of gradient descent steps to take on policy loss per "
+"epoch. (Early stopping may cause optimizer to take fewer than this.)"
+msgstr ""
+"每個訓練週期對策略損失函數執行的最大梯度下降步數。（提前停止可能導致優化器執行"
+"的步數少於此值。）"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:80
+msgid "Number of gradient descent steps to take on value function per epoch."
+msgstr "每個訓練週期對價值函數執行的梯度下降步數。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:83
+msgid "Lambda for GAE-Lambda. (Always between 0 and 1, close to 1.)"
+msgstr "廣義優勢估計 (GAE-Lambda) 的 Lambda 值。（始終介於 0 和 1 之間，接近 1。）"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:86
+msgid "Maximum length of trajectory / episode / rollout."
+msgstr "軌跡／回合／展開的最大長度。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:88
+msgid ""
+"Roughly what KL divergence we think is appropriate between new and old "
+"policies after an update. This will get used for early stopping. (Usually"
+" small, 0.01 or 0.05.)"
+msgstr ""
+"大致上我們認為更新後新舊策略之間合適的 KL 散度。這將用於提前停止。（通常較"
+"小，0.01 或 0.05。）"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:92
+msgid "Keyword args for EpochLogger."
+msgstr "EpochLogger 的關鍵字引數。"
+
+#: of spinup.algos.pytorch.ppo.ppo.ppo:94
+msgid ""
+"How often (in terms of gap between epochs) to save the current policy and"
+" value function."
+msgstr "儲存當前策略和價值函數的頻率（以訓練週期之間的間隔表示）。"
+
+#: ../../algorithms/ppo.rst:166
+msgid "Saved Model Contents: PyTorch Version"
+msgstr "儲存的模型內容：PyTorch 版本"
+
+#: ../../algorithms/ppo.rst:168
+msgid ""
+"The PyTorch saved model can be loaded with ``ac = "
+"torch.load('path/to/model.pt')``, yielding an actor-critic object "
+"(``ac``) that has the properties described in the docstring for "
+"``ppo_pytorch``."
+msgstr ""
+"PyTorch 儲存的模型可透過 ``ac = torch.load('path/to/model.pt')`` 載入，"
+"會得到一個演員-評論家 (Actor-Critic) 物件（``ac``），具有 ``ppo_pytorch`` "
+"文件字串中描述的屬性。"
+
+#: ../../algorithms/ppo.rst:170
+msgid "You can get actions from this model with"
+msgstr "你可以用以下方式從此模型取得動作"
+
+#: ../../algorithms/ppo.rst:178
+msgid "Documentation: Tensorflow Version"
+msgstr "文件說明：Tensorflow 版本"
+
+#: ../../algorithms/ppo.rst:183
+msgid "Saved Model Contents: Tensorflow Version"
+msgstr "儲存的模型內容：Tensorflow 版本"
+
+#: ../../algorithms/ppo.rst:185
+msgid "The computation graph saved by the logger includes:"
+msgstr "記錄器儲存的計算圖包含："
+
+#: ../../algorithms/ppo.rst:188
+msgid "Key"
+msgstr "鍵"
+
+#: ../../algorithms/ppo.rst:188
+msgid "Value"
+msgstr "值"
+
+#: ../../algorithms/ppo.rst:190
+msgid "``x``"
+msgstr ""
+
+#: ../../algorithms/ppo.rst:190
+msgid "Tensorflow placeholder for state input."
+msgstr "用於狀態輸入的 Tensorflow 佔位符。"
+
+#: ../../algorithms/ppo.rst:191
+msgid "Samples an action from the agent, conditioned on states in ``x``."
+msgstr "根據 ``x`` 中的狀態，從代理程式取樣一個動作。"
+
+#: ../../algorithms/ppo.rst:192
+msgid "Gives value estimate for states in ``x``."
+msgstr "給出 ``x`` 中狀態的價值估計。"
+
+#: ../../algorithms/ppo.rst:195
+msgid "This saved model can be accessed either by"
+msgstr "此儲存的模型可以透過以下方式存取"
+
+#: ../../algorithms/ppo.rst:197
+msgid "running the trained policy with the `test_policy.py`_ tool,"
+msgstr "使用 `test_policy.py`_ 工具執行訓練好的策略，"
+
+#: ../../algorithms/ppo.rst:198
+msgid "or loading the whole saved graph into a program with `restore_tf_graph`_."
+msgstr "或使用 `restore_tf_graph`_ 將整個儲存的計算圖載入到程式中。"
+
+#: ../../algorithms/ppo.rst:204
+msgid "References"
+msgstr "參考文獻"
+
+#: ../../algorithms/ppo.rst:207
+msgid "Relevant Papers"
+msgstr "相關論文"
+
+#: ../../algorithms/ppo.rst:209
+msgid "`Proximal Policy Optimization Algorithms`_, Schulman et al. 2017"
+msgstr "`Proximal Policy Optimization Algorithms`_, Schulman et al. 2017"
+
+#: ../../algorithms/ppo.rst:210
+msgid ""
+"`High Dimensional Continuous Control Using Generalized Advantage "
+"Estimation`_, Schulman et al. 2016"
+msgstr ""
+"`High Dimensional Continuous Control Using Generalized Advantage "
+"Estimation`_, Schulman et al. 2016"
+
+#: ../../algorithms/ppo.rst:211
+msgid ""
+"`Emergence of Locomotion Behaviours in Rich Environments`_, Heess et al. "
+"2017"
+msgstr ""
+"`Emergence of Locomotion Behaviours in Rich Environments`_, Heess et al. "
+"2017"
+
+#: ../../algorithms/ppo.rst:218
+msgid "Why These Papers?"
+msgstr "為什麼選擇這些論文？"
+
+#: ../../algorithms/ppo.rst:220
+msgid ""
+"Schulman 2017 is included because it is the original paper describing "
+"PPO. Schulman 2016 is included because our implementation of PPO makes "
+"use of Generalized Advantage Estimation for computing the policy "
+"gradient. Heess 2017 is included because it presents a large-scale "
+"empirical analysis of behaviors learned by PPO agents in complex "
+"environments (although it uses PPO-penalty instead of PPO-clip)."
+msgstr ""
+"收錄 Schulman 2017 是因為它是描述 PPO 的原始論文。收錄 Schulman 2016 是因為"
+"我們的 PPO 實作使用了廣義優勢估計 (Generalized Advantage Estimation) 來計算"
+"策略梯度。收錄 Heess 2017 是因為它呈現了 PPO 代理程式在複雜環境中學習到的行為"
+"的大規模實證分析（儘管它使用的是 PPO-Penalty 而非 PPO-Clip）。"
+
+#: ../../algorithms/ppo.rst:225
+msgid "Other Public Implementations"
+msgstr "其他公開實作"
+
+#: ../../algorithms/ppo.rst:227
+msgid "Baselines_"
+msgstr "Baselines_"
+
+#: ../../algorithms/ppo.rst:228
+msgid "ModularRL_ (Caution: this implements PPO-penalty instead of PPO-clip.)"
+msgstr "ModularRL_（注意：此實作為 PPO-Penalty 而非 PPO-Clip。）"
+
+#: ../../algorithms/ppo.rst:229
+msgid "rllab_ (Caution: this implements PPO-penalty instead of PPO-clip.)"
+msgstr "rllab_（注意：此實作為 PPO-Penalty 而非 PPO-Clip。）"
+
+#: ../../algorithms/ppo.rst:230
+msgid "`rllib (Ray)`_"
+msgstr "`rllib (Ray)`_"

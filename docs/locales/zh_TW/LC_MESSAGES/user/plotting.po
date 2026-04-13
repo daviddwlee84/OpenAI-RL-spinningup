@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../user/plotting.rst:3
+msgid "Plotting Results"
+msgstr "繪製結果"
+
+#: ../../user/plotting.rst:5
+msgid ""
+"Spinning Up ships with a simple plotting utility for interpreting "
+"results. Run it with:"
+msgstr "Spinning Up 附帶了一個簡單的繪圖工具用於解讀結果。使用以下命令執行："
+
+#: ../../user/plotting.rst:14
+msgid "**Positional Arguments:**"
+msgstr "**位置引數：**"
+
+#: ../../user/plotting.rst:18
+msgid ""
+"*strings*. As many log directories (or prefixes to log directories, which"
+" the plotter will autocomplete internally) as you'd like to plot from. "
+"Logdirs will be searched recursively for experiment outputs."
+msgstr ""
+"*strings*。你想要繪製的任意數量的日誌目錄"
+"（或日誌目錄的前綴，繪圖工具會在內部自動補全）。"
+"系統會遞迴搜尋日誌目錄以尋找實驗輸出。"
+
+#: ../../user/plotting.rst:20
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../user/plotting.rst:22
+msgid ""
+"The internal autocompleting is really handy! Suppose you have run several"
+" experiments, with the aim of comparing performance between different "
+"algorithms, resulting in a log directory structure of:"
+msgstr ""
+"內部自動補全功能非常方便！假設你已經執行了幾個實驗，"
+"目的是比較不同演算法之間的效能，產生了如下的日誌目錄結構："
+
+#: ../../user/plotting.rst:34
+msgid "You can easily produce a graph comparing algo1 and algo2 with:"
+msgstr "你可以輕鬆地使用以下命令產生比較 algo1 和 algo2 的圖表："
+
+#: ../../user/plotting.rst:40
+msgid ""
+"relying on the autocomplete to find both ``data/bench_algo1`` and "
+"``data/bench_algo2``."
+msgstr ""
+"利用自動補全功能來找到 ``data/bench_algo1`` 和 ``data/bench_algo2``。"
+
+#: ../../user/plotting.rst:42
+msgid "**Optional Arguments:**"
+msgstr "**可選引數：**"
+
+#: ../../user/plotting.rst:46
+msgid ""
+"*strings*. Optional way to specify legend for the plot. The plotter "
+"legend will automatically use the ``exp_name`` from the ``config.json`` "
+"file, unless you tell it otherwise through this flag. This only works if "
+"you provide a name for each directory that will get plotted. (Note: this "
+"may not be the same as the number of logdir args you provide! Recall that"
+" the plotter looks for autocompletes of the logdir args: there may be "
+"more than one match for a given logdir prefix, and you will need to "
+"provide a legend string for each one of those matches---unless you have "
+"removed some of them as candidates via selection or exclusion rules "
+"(below).)"
+msgstr ""
+"*strings*。指定圖表圖例的可選方式。"
+"繪圖工具的圖例會自動使用 ``config.json`` 檔案中的 ``exp_name``，除非你透過此旗標另行指定。"
+"此功能僅在你為每個要繪製的目錄提供名稱時才有效。"
+"（注意：這可能與你提供的日誌目錄引數數量不同！"
+"請記住繪圖工具會自動補全日誌目錄引數：一個日誌目錄前綴可能有多個匹配項，"
+"你需要為每個匹配項提供一個圖例字串——除非你已透過選擇或排除規則（見下文）移除了部分候選項。）"
+
+#: ../../user/plotting.rst:50
+msgid "*string*. Pick what column from data is used for the x-axis."
+msgstr "*string*。選擇資料中的哪一欄用作 x 軸。"
+
+#: ../../user/plotting.rst:54
+msgid ""
+"*strings*. Pick what columns from data to graph on the y-axis. Submitting"
+" multiple values will produce multiple graphs. Defaults to "
+"``Performance``, which is not an actual output of any algorithm. Instead,"
+" ``Performance`` refers to either ``AverageEpRet``, the correct "
+"performance measure for the on-policy algorithms, or "
+"``AverageTestEpRet``, the correct performance measure for the off-policy "
+"algorithms. The plotter will automatically figure out which of "
+"``AverageEpRet`` or ``AverageTestEpRet`` to report for each separate "
+"logdir."
+msgstr ""
+"*strings*。選擇資料中的哪些欄位繪製在 y 軸上。提供多個值會產生多個圖表。"
+"預設為 ``Performance``，這不是任何演算法的實際輸出。"
+"``Performance`` 實際上指的是 ``AverageEpRet``（同策略演算法的正確效能指標）"
+"或 ``AverageTestEpRet``（離策略演算法的正確效能指標）。"
+"繪圖工具會自動判斷每個日誌目錄應報告 ``AverageEpRet`` 還是 ``AverageTestEpRet``。"
+
+#: ../../user/plotting.rst:58
+msgid ""
+"Optional flag. By default, the plotter shows y-values which are averaged "
+"across all results that share an ``exp_name``, which is typically a set "
+"of identical experiments that only vary in random seed. But if you'd like"
+" to see all of those curves separately, use the ``--count`` flag."
+msgstr ""
+"可選旗標。預設情況下，繪圖工具顯示的 y 值是所有共享相同 ``exp_name`` 的結果的平均值，"
+"這通常是一組僅隨機種子不同的相同實驗。"
+"如果你想分別查看所有這些曲線，請使用 ``--count`` 旗標。"
+
+#: ../../user/plotting.rst:62
+msgid ""
+"*int*. Smooth data by averaging it over a fixed window. This parameter "
+"says how wide the averaging window will be."
+msgstr "*int*。透過固定窗口平均來平滑資料。此參數指定平均窗口的寬度。"
+
+#: ../../user/plotting.rst:66
+msgid ""
+"*strings*. Optional selection rule: the plotter will only show curves "
+"from logdirs that contain all of these substrings."
+msgstr ""
+"*strings*。可選的篩選規則：繪圖工具只會顯示日誌目錄包含所有這些子字串的曲線。"
+
+#: ../../user/plotting.rst:70
+msgid ""
+"*strings*. Optional exclusion rule: plotter will only show curves from "
+"logdirs that do not contain these substrings."
+msgstr ""
+"*strings*。可選的排除規則：繪圖工具只會顯示日誌目錄不包含這些子字串的曲線。"

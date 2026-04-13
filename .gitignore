@@ -8,3 +8,13 @@ data/
 .vscode/
 .DS_Store
 _build/
+
+# uv
+.venv/
+uv.lock
+
+# Sphinx build output
+docs/_build/
+
+# Compiled gettext
+docs/locales/*/LC_MESSAGES/*.mo

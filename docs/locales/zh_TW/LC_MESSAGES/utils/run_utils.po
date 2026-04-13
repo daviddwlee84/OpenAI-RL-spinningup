@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../utils/run_utils.rst:3
+msgid "Run Utils"
+msgstr "Run Utils（執行工具）"
+
+#: ../../utils/run_utils.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../utils/run_utils.rst:8
+msgid "ExperimentGrid"
+msgstr "ExperimentGrid"
+
+#: ../../utils/run_utils.rst:10
+msgid ""
+"Spinning Up ships with a tool called ExperimentGrid for making "
+"hyperparameter ablations easier. This is based on (but simpler than) `the"
+" rllab tool`_ called VariantGenerator."
+msgstr ""
+"Spinning Up 內建了一個名為 ExperimentGrid 的工具，用於簡化超參數消融實驗"
+"（hyperparameter ablation）。這是基於（但比其更簡單的）`the rllab tool`_ 中名為 "
+"VariantGenerator 的工具。"
+
+#: of spinup.utils.run_utils.ExperimentGrid:1
+msgid "Tool for running many experiments given hyperparameter ranges."
+msgstr "根據超參數範圍執行多組實驗的工具。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.add:1
+msgid "Add a parameter (key) to the grid config, with potential values (vals)."
+msgstr "將一個參數（key）及其可能的值（vals）加入網格設定中。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.add:3
+msgid ""
+"By default, if a shorthand isn't given, one is automatically generated "
+"from the key using the first three letters of each colon-separated term. "
+"To disable this behavior, change ``DEFAULT_SHORTHAND`` in the "
+"``spinup/user_config.py`` file to ``False``."
+msgstr ""
+"預設情況下，如果未提供縮寫，會自動從 key 中每個以冒號分隔的詞彙取前三個字母"
+"來產生縮寫。要停用此行為，請將 ``spinup/user_config.py`` 檔案中的 "
+"``DEFAULT_SHORTHAND`` 改為 ``False``。"
+
+#: ../../utils/run_utils.rst
+msgid "Parameters"
+msgstr "參數"
+
+#: of spinup.utils.run_utils.ExperimentGrid.add:8
+msgid "Name of parameter."
+msgstr "參數名稱。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.add:10
+msgid "Allowed values of parameter."
+msgstr "參數的允許值。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.add:12
+msgid ""
+"Optional, shortened name of parameter. For example, maybe the parameter "
+"``steps_per_epoch`` is shortened to ``steps``."
+msgstr ""
+"可選的參數縮寫名稱。例如，參數 ``steps_per_epoch`` 可以縮寫為 ``steps``。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.add:16
+msgid ""
+"When constructing variant names, force the inclusion of this parameter "
+"into the name."
+msgstr "在建構變體名稱時，強制將此參數包含在名稱中。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.print:1
+msgid "Print a helpful report about the experiment grid."
+msgstr "印出關於實驗網格的實用報告。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.run:1
+msgid "Run each variant in the grid with function 'thunk'."
+msgstr "使用函式 'thunk' 執行網格中的每個變體。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.run:3
+msgid ""
+"Note: 'thunk' must be either a callable function, or a string. If it is a"
+" string, it must be the name of a parameter whose values are all callable"
+" functions."
+msgstr ""
+"注意：'thunk' 必須是可呼叫的函式或字串。如果是字串，它必須是一個參數名稱，"
+"且該參數的所有值都必須是可呼叫的函式。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.run:7
+msgid ""
+"Uses ``call_experiment`` to actually launch each experiment, and gives "
+"each variant a name using ``self.variant_name()``."
+msgstr ""
+"使用 ``call_experiment`` 來實際啟動每個實驗，並透過 ``self.variant_name()`` "
+"為每個變體命名。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.run:10
+msgid ""
+"Maintenance note: the args for ExperimentGrid.run should track closely to"
+" the args for call_experiment. However, ``seed`` is omitted because we "
+"presume the user may add it as a parameter in the grid."
+msgstr ""
+"維護說明：ExperimentGrid.run 的引數應與 call_experiment 的引數密切對應。"
+"但 ``seed`` 被省略了，因為我們假設使用者可能會將它作為網格中的參數來添加。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variant_name:1
+msgid "Given a variant (dict of valid param/value pairs), make an exp_name."
+msgstr "根據一個變體（有效的參數／值對組成的 dict），產生 exp_name。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variant_name:3
+msgid ""
+"A variant's name is constructed as the grid name (if you've given it "
+"one), plus param names (or shorthands if available) and values separated "
+"by underscores."
+msgstr ""
+"變體的名稱由網格名稱（如果有指定的話）加上參數名稱（或可用的縮寫）和值組成，"
+"以底線分隔。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variant_name:7
+msgid "Note: if ``seed`` is a parameter, it is not included in the name."
+msgstr "注意：如果 ``seed`` 是參數之一，它不會被包含在名稱中。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:1
+msgid "Makes a list of dicts, where each dict is a valid config in the grid."
+msgstr "產生一個 dict 的列表，其中每個 dict 是網格中的一個有效設定。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:3
+msgid "There is special handling for variant parameters whose names take the form"
+msgstr "對於名稱採用以下形式的變體參數，有特殊的處理方式"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:6
+msgid "``'full:param:name'``."
+msgstr "``'full:param:name'``。"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:8
+msgid ""
+"The colons are taken to indicate that these parameters should have a "
+"nested dict structure. eg, if there are two params,"
+msgstr ""
+"冒號被視為表示這些參數應具有巢狀的 dict 結構。例如，如果有兩個參數，"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:12
+msgid "Key"
+msgstr "鍵"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:12
+msgid "Val"
+msgstr "值"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:14
+msgid "``'base:param:a'``"
+msgstr "``'base:param:a'``"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:14
+msgid "1"
+msgstr "1"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:15
+msgid "``'base:param:b'``"
+msgstr "``'base:param:b'``"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:15
+msgid "2"
+msgstr "2"
+
+#: of spinup.utils.run_utils.ExperimentGrid.variants:18
+msgid "the variant dict will have the structure"
+msgstr "則變體 dict 將具有以下結構"
+
+#: ../../utils/run_utils.rst:19
+msgid "Calling Experiments"
+msgstr "呼叫實驗"
+
+#: of spinup.utils.run_utils.call_experiment:1
+msgid "Run a function (thunk) with hyperparameters (kwargs), plus configuration."
+msgstr "使用超參數（kwargs）和設定來執行一個函式（thunk）。"
+
+#: of spinup.utils.run_utils.call_experiment:3
+msgid ""
+"This wraps a few pieces of functionality which are useful when you want "
+"to run many experiments in sequence, including logger configuration and "
+"splitting into multiple processes for MPI."
+msgstr ""
+"這封裝了一些在你想要依序執行多個實驗時很有用的功能，包括 logger 設定和為 "
+"MPI 分割成多個程序。"
+
+#: of spinup.utils.run_utils.call_experiment:7
+msgid ""
+"There's also a SpinningUp-specific convenience added into executing the "
+"thunk: if ``env_name`` is one of the kwargs passed to call_experiment, "
+"it's assumed that the thunk accepts an argument called ``env_fn``, and "
+"that the ``env_fn`` should make a gym environment with the given "
+"``env_name``."
+msgstr ""
+"在執行 thunk 時還加入了 Spinning Up 特有的便利功能：如果 ``env_name`` 是傳給 "
+"call_experiment 的 kwargs 之一，則假設 thunk 接受一個名為 ``env_fn`` 的引數，"
+"且 ``env_fn`` 應使用給定的 ``env_name`` 建立一個 gym 環境。"
+
+#: of spinup.utils.run_utils.call_experiment:12
+msgid ""
+"The way the experiment is actually executed is slightly complicated: the "
+"function is serialized to a string, and then ``run_entrypoint.py`` is "
+"executed in a subprocess call with the serialized string as an argument. "
+"``run_entrypoint.py`` unserializes the function call and executes it. We "
+"choose to do it this way---instead of just calling the function directly "
+"here---to avoid leaking state between successive experiments."
+msgstr ""
+"實驗的實際執行方式稍微複雜一些：函式會被序列化為字串，然後在子程序中以序列化的"
+"字串作為引數執行 ``run_entrypoint.py``。``run_entrypoint.py`` 會反序列化函式"
+"呼叫並執行它。我們選擇這種方式——而不是直接在此處呼叫函式——是為了避免連續實驗"
+"之間的狀態洩漏。"
+
+#: of spinup.utils.run_utils.call_experiment:19
+#: spinup.utils.run_utils.setup_logger_kwargs:24
+msgid "Name for experiment."
+msgstr "實驗名稱。"
+
+#: of spinup.utils.run_utils.call_experiment:21
+msgid "A python function."
+msgstr "一個 Python 函式。"
+
+#: of spinup.utils.run_utils.call_experiment:23
+msgid "Seed for random number generators."
+msgstr "隨機數產生器的種子。"
+
+#: of spinup.utils.run_utils.call_experiment:25
+msgid ""
+"Number of MPI processes to split into. Also accepts 'auto', which will "
+"set up as many procs as there are cpus on the machine."
+msgstr ""
+"要分割成的 MPI 程序數量。也接受 'auto'，這會設定與機器上 CPU 數量相同的程序數。"
+
+#: of spinup.utils.run_utils.call_experiment:29
+msgid ""
+"Used in configuring the logger, to decide where to store experiment "
+"results. Note: if left as None, data_dir will default to "
+"``DEFAULT_DATA_DIR`` from ``spinup/user_config.py``."
+msgstr ""
+"用於設定 logger，以決定實驗結果的儲存位置。注意：如果保留為 None，data_dir "
+"將預設為 ``spinup/user_config.py`` 中的 ``DEFAULT_DATA_DIR``。"
+
+#: of spinup.utils.run_utils.call_experiment:33
+msgid "All kwargs to pass to thunk."
+msgstr "傳給 thunk 的所有 kwargs。"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:1
+msgid "Sets up the output_dir for a logger and returns a dict for logger kwargs."
+msgstr "為 logger 設定 output_dir 並回傳一個包含 logger kwargs 的 dict。"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:3
+msgid "If no seed is given and datestamp is false,"
+msgstr "如果未提供 seed 且 datestamp 為 false，"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:9
+msgid "If a seed is given and datestamp is false,"
+msgstr "如果提供了 seed 且 datestamp 為 false，"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:15
+msgid "If datestamp is true, amend to"
+msgstr "如果 datestamp 為 true，則修改為"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:21
+msgid ""
+"You can force datestamp=True by setting ``FORCE_DATESTAMP=True`` in "
+"``spinup/user_config.py``."
+msgstr ""
+"你可以在 ``spinup/user_config.py`` 中設定 ``FORCE_DATESTAMP=True`` 來強制啟用 "
+"datestamp=True。"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:26
+msgid "Seed for random number generators used by experiment."
+msgstr "實驗所使用的隨機數產生器的種子。"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:28
+msgid ""
+"Path to folder where results should be saved. Default is the "
+"``DEFAULT_DATA_DIR`` in ``spinup/user_config.py``."
+msgstr ""
+"結果儲存資料夾的路徑。預設為 ``spinup/user_config.py`` 中的 "
+"``DEFAULT_DATA_DIR``。"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:31
+msgid "Whether to include a date and timestamp in the name of the save directory."
+msgstr "是否在儲存目錄的名稱中包含日期和時間戳記。"
+
+#: ../../utils/run_utils.rst
+msgid "Returns"
+msgstr "回傳值"
+
+#: of spinup.utils.run_utils.setup_logger_kwargs:35
+msgid "logger_kwargs, a dict containing output_dir and exp_name."
+msgstr "logger_kwargs，一個包含 output_dir 和 exp_name 的 dict。"

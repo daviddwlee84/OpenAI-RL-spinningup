@@ -1,0 +1,241 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../user/installation.rst:3
+msgid "Installation"
+msgstr "安裝"
+
+#: ../../user/installation.rst:6
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../user/installation.rst:8
+msgid "Spinning Up requires Python3, OpenAI Gym, and OpenMPI."
+msgstr "Spinning Up 需要 Python3、OpenAI Gym 和 OpenMPI。"
+
+#: ../../user/installation.rst:10
+msgid ""
+"Spinning Up is currently only supported on Linux and OSX. It may be "
+"possible to install on Windows, though this hasn't been extensively "
+"tested. [#]_"
+msgstr ""
+"Spinning Up 目前僅支援 Linux 和 OSX。在 Windows 上也許可以安裝，"
+"但尚未經過充分測試。[#]_"
+
+#: ../../user/installation.rst:12 ../../user/installation.rst:42
+#: ../../user/installation.rst:86 ../../user/installation.rst:121
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../user/installation.rst:14
+msgid ""
+"Many examples and benchmarks in Spinning Up refer to RL environments that"
+" use the `MuJoCo`_ physics engine. MuJoCo is a proprietary software that "
+"requires a license, which is free to trial and free for students, but "
+"otherwise is not free. As a result, installing it is optional, but "
+"because of its importance to the research community---it is the de facto "
+"standard for benchmarking deep RL algorithms in continuous control---it "
+"is preferred."
+msgstr ""
+"Spinning Up 中的許多範例和基準測試 (Benchmark) 使用了基於 `MuJoCo`_ 物理引擎的"
+"強化學習 (Reinforcement Learning, RL) 環境。MuJoCo 是一款需要授權的商業軟體，"
+"提供免費試用且對學生免費，但其他情況下並非免費。因此，安裝它是可選的，"
+"但由於它在研究社群中的重要性——它是連續控制 (Continuous Control) 領域中"
+"深度強化學習 (Deep RL) 演算法基準測試的事實標準——建議安裝。"
+
+#: ../../user/installation.rst:16
+msgid ""
+"Don't worry if you decide not to install MuJoCo, though. You can "
+"definitely get started in RL by running RL algorithms on the `Classic "
+"Control`_ and `Box2d`_ environments in Gym, which are totally free to "
+"use."
+msgstr ""
+"不過，如果你決定不安裝 MuJoCo 也不用擔心。你完全可以使用 Gym 中的 "
+"`Classic Control`_ 和 `Box2d`_ 環境來執行 RL 演算法，這些環境完全免費。"
+
+#: ../../user/installation.rst:18
+msgid ""
+"It looks like at least one person has figured out `a workaround for "
+"running on Windows`_. If you try another way and succeed, please let us "
+"know how you did it!"
+msgstr ""
+"看起來至少有一個人找到了 `a workaround for running on Windows`_。"
+"如果你嘗試了其他方法並成功了，請告訴我們你是怎麼做到的！"
+
+#: ../../user/installation.rst:26
+msgid "Installing Python"
+msgstr "安裝 Python"
+
+#: ../../user/installation.rst:28
+msgid ""
+"We recommend installing Python through Anaconda. Anaconda is a library "
+"that includes Python and many useful packages for Python, as well as an "
+"environment manager called conda that makes package management simple."
+msgstr ""
+"我們建議透過 Anaconda 安裝 Python。Anaconda 是一個包含 Python 及許多實用 "
+"Python 套件的發行版，同時也包含一個名為 conda 的環境管理工具，"
+"讓套件管理變得簡單。"
+
+#: ../../user/installation.rst:30
+msgid ""
+"Follow `the installation instructions`_ for Anaconda here. Download and "
+"install Anaconda3 (at time of writing, `Anaconda3-5.3.0`_). Then create a"
+" conda Python 3.6 env for organizing packages used in Spinning Up:"
+msgstr ""
+"請按照 `the installation instructions`_ 來安裝 Anaconda。下載並安裝 "
+"Anaconda3（撰寫本文時為 `Anaconda3-5.3.0`_）。然後建立一個 conda Python 3.6 "
+"環境，用於管理 Spinning Up 所使用的套件："
+
+#: ../../user/installation.rst:36
+msgid ""
+"To use Python from the environment you just created, activate the "
+"environment with:"
+msgstr "要使用你剛建立的環境中的 Python，請用以下指令啟動環境："
+
+#: ../../user/installation.rst:44
+msgid ""
+"If you're new to python environments and package management, this stuff "
+"can quickly get confusing or overwhelming, and you'll probably hit some "
+"snags along the way. (Especially, you should expect problems like, \"I "
+"just installed this thing, but it says it's not found when I try to use "
+"it!\") You may want to read through some clean explanations about what "
+"package management is, why it's a good idea, and what commands you'll "
+"typically have to execute to correctly use it."
+msgstr ""
+"如果你是 Python 環境和套件管理的新手，這些東西很快就會讓人感到困惑或不知所措，"
+"而且你在過程中可能會遇到一些障礙。（特別是，你應該預期會遇到這樣的問題：「我剛裝了"
+"這個東西，但當我嘗試使用時，它卻說找不到！」）你可能會想閱讀一些清楚的說明，"
+"了解什麼是套件管理、為什麼它是好主意，以及通常需要執行哪些指令來正確使用它。"
+
+#: ../../user/installation.rst:46
+msgid ""
+"`FreeCodeCamp`_ has a good explanation worth reading. There's a shorter "
+"description on `Towards Data Science`_ which is also helpful and "
+"informative. Finally, if you're an extremely patient person, you may want"
+" to read the (dry, but very informative) `documentation page from "
+"Conda`_."
+msgstr ""
+"`FreeCodeCamp`_ 有一篇值得閱讀的好文章。`Towards Data Science`_ 上也有一篇"
+"較短的介紹，同樣有幫助且資訊豐富。最後，如果你是一個非常有耐心的人，"
+"你可能會想閱讀（枯燥但非常有用的） `documentation page from Conda`_。"
+
+#: ../../user/installation.rst:57
+msgid "Installing OpenMPI"
+msgstr "安裝 OpenMPI"
+
+#: ../../user/installation.rst:60
+msgid "Ubuntu"
+msgstr "Ubuntu"
+
+#: ../../user/installation.rst:68
+msgid "Mac OS X"
+msgstr "Mac OS X"
+
+#: ../../user/installation.rst:69
+msgid ""
+"Installation of system packages on Mac requires Homebrew_. With Homebrew "
+"installed, run the follwing:"
+msgstr ""
+"在 Mac 上安裝系統套件需要 Homebrew_。安裝好 Homebrew 後，"
+"執行以下指令："
+
+#: ../../user/installation.rst:78
+msgid "Installing Spinning Up"
+msgstr "安裝 Spinning Up"
+
+#: ../../user/installation.rst:88
+msgid ""
+"Spinning Up defaults to installing everything in Gym **except** the "
+"MuJoCo environments. In case you run into any trouble with the Gym "
+"installation, check out the `Gym`_ github page for help. If you want the "
+"MuJoCo environments, see the optional installation section below."
+msgstr ""
+"Spinning Up 預設會安裝 Gym 中的所有環境，**除了** MuJoCo 環境。"
+"如果你在安裝 Gym 時遇到任何問題，請查閱 `Gym`_ 的 GitHub 頁面尋求幫助。"
+"如果你需要 MuJoCo 環境，請參閱下方的選擇性安裝章節。"
+
+#: ../../user/installation.rst:93
+msgid "Check Your Install"
+msgstr "檢查安裝"
+
+#: ../../user/installation.rst:95
+msgid ""
+"To see if you've successfully installed Spinning Up, try running PPO in "
+"the LunarLander-v2 environment with"
+msgstr ""
+"要確認你是否已成功安裝 Spinning Up，請嘗試使用以下指令在 LunarLander-v2 "
+"環境中執行 PPO："
+
+#: ../../user/installation.rst:101
+msgid ""
+"This might run for around 10 minutes, and you can leave it going in the "
+"background while you continue reading through documentation. This won't "
+"train the agent to completion, but will run it for long enough that you "
+"can see *some* learning progress when the results come in."
+msgstr ""
+"這可能會執行大約 10 分鐘，你可以讓它在背景執行，同時繼續閱讀文件。"
+"這不會將代理人 (Agent) 訓練到完全收斂，但執行時間足以讓你在結果出來時"
+"看到 *一些* 學習進展。"
+
+#: ../../user/installation.rst:103
+msgid "After it finishes training, watch a video of the trained policy with"
+msgstr "訓練完成後，使用以下指令觀看已訓練策略 (Policy) 的影片："
+
+#: ../../user/installation.rst:109
+msgid "And plot the results with"
+msgstr "然後使用以下指令繪製結果："
+
+#: ../../user/installation.rst:117
+msgid "Installing MuJoCo (Optional)"
+msgstr "安裝 MuJoCo（選擇性）"
+
+#: ../../user/installation.rst:119
+msgid ""
+"First, go to the `mujoco-py`_ github page. Follow the installation "
+"instructions in the README, which describe how to install the MuJoCo "
+"physics engine and the mujoco-py package (which allows the use of MuJoCo "
+"from Python)."
+msgstr ""
+"首先，前往 `mujoco-py`_ 的 GitHub 頁面。按照 README 中的安裝說明操作，"
+"其中描述了如何安裝 MuJoCo 物理引擎和 mujoco-py 套件"
+"（該套件允許從 Python 中使用 MuJoCo）。"
+
+#: ../../user/installation.rst:123
+msgid ""
+"In order to use the MuJoCo simulator, you will need to get a `MuJoCo "
+"license`_. Free 30-day licenses are available to anyone, and free 1-year "
+"licenses are available to full-time students."
+msgstr ""
+"要使用 MuJoCo 模擬器，你需要取得 `MuJoCo license`_。任何人都可以獲得免費的 "
+"30 天授權，全職學生則可以獲得免費的一年期授權。"
+
+#: ../../user/installation.rst:125
+msgid ""
+"Once you have installed MuJoCo, install the corresponding Gym "
+"environments with"
+msgstr "安裝好 MuJoCo 後，使用以下指令安裝對應的 Gym 環境："
+
+#: ../../user/installation.rst:131
+msgid ""
+"And then check that things are working by running PPO in the Walker2d-v2 "
+"environment with"
+msgstr ""
+"然後透過以下指令在 Walker2d-v2 環境中執行 PPO，確認一切是否正常運作："

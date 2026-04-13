@@ -1,0 +1,1194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/keypapers.rst:3
+msgid "Key Papers in Deep RL"
+msgstr "深度強化學習 (Deep RL) 關鍵論文"
+
+#: ../../spinningup/keypapers.rst:5
+msgid ""
+"What follows is a list of papers in deep RL that are worth reading. This "
+"is *far* from comprehensive, but should provide a useful starting point "
+"for someone looking to do research in the field."
+msgstr ""
+"以下是一份值得閱讀的深度 RL 論文清單。這份清單 *遠非* 詳盡無遺，但對於"
+"想在這個領域進行研究的人來說，應該能提供一個有用的起點。"
+
+#: ../../spinningup/keypapers.rst:9
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../spinningup/keypapers.rst:12
+msgid "1. Model-Free RL"
+msgstr "1. 無模型強化學習 (Model-Free RL)"
+
+#: ../../spinningup/keypapers.rst:15
+msgid "a. Deep Q-Learning"
+msgstr "a. 深度 Q 學習 (Deep Q-Learning)"
+
+#: ../../spinningup/keypapers.rst:18
+msgid ""
+"`Playing Atari with Deep Reinforcement Learning "
+"<https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf>`_, Mnih et al, 2013. "
+"**Algorithm: DQN.**"
+msgstr ""
+"`Playing Atari with Deep Reinforcement Learning "
+"<https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf>`_, Mnih et al, 2013. "
+"**演算法：DQN。**"
+
+#: ../../spinningup/keypapers.rst:20
+msgid ""
+"`Deep Recurrent Q-Learning for Partially Observable MDPs "
+"<https://arxiv.org/abs/1507.06527>`_, Hausknecht and Stone, 2015. "
+"**Algorithm: Deep Recurrent Q-Learning.**"
+msgstr ""
+"`Deep Recurrent Q-Learning for Partially Observable MDPs "
+"<https://arxiv.org/abs/1507.06527>`_, Hausknecht and Stone, 2015. "
+"**演算法：Deep Recurrent Q-Learning。**"
+
+#: ../../spinningup/keypapers.rst:22
+msgid ""
+"`Dueling Network Architectures for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1511.06581>`_, Wang et al, 2015. **Algorithm: "
+"Dueling DQN.**"
+msgstr ""
+"`Dueling Network Architectures for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1511.06581>`_, Wang et al, 2015. **演算法："
+"Dueling DQN。**"
+
+#: ../../spinningup/keypapers.rst:24
+msgid ""
+"`Deep Reinforcement Learning with Double Q-learning "
+"<https://arxiv.org/abs/1509.06461>`_, Hasselt et al 2015. **Algorithm: "
+"Double DQN.**"
+msgstr ""
+"`Deep Reinforcement Learning with Double Q-learning "
+"<https://arxiv.org/abs/1509.06461>`_, Hasselt et al 2015. **演算法："
+"Double DQN。**"
+
+#: ../../spinningup/keypapers.rst:26
+msgid ""
+"`Prioritized Experience Replay <https://arxiv.org/abs/1511.05952>`_, "
+"Schaul et al, 2015. **Algorithm: Prioritized Experience Replay (PER).**"
+msgstr ""
+"`Prioritized Experience Replay <https://arxiv.org/abs/1511.05952>`_, "
+"Schaul et al, 2015. **演算法：Prioritized Experience Replay (PER)。**"
+
+#: ../../spinningup/keypapers.rst:28
+msgid ""
+"`Rainbow: Combining Improvements in Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1710.02298>`_, Hessel et al, 2017. **Algorithm: "
+"Rainbow DQN.**"
+msgstr ""
+"`Rainbow: Combining Improvements in Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1710.02298>`_, Hessel et al, 2017. **演算法："
+"Rainbow DQN。**"
+
+#: ../../spinningup/keypapers.rst:32
+msgid "b. Policy Gradients"
+msgstr "b. 策略梯度 (Policy Gradients)"
+
+#: ../../spinningup/keypapers.rst:35
+msgid ""
+"`Asynchronous Methods for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1602.01783>`_, Mnih et al, 2016. **Algorithm: "
+"A3C.**"
+msgstr ""
+"`Asynchronous Methods for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1602.01783>`_, Mnih et al, 2016. **演算法："
+"A3C。**"
+
+#: ../../spinningup/keypapers.rst:37
+msgid ""
+"`Trust Region Policy Optimization <https://arxiv.org/abs/1502.05477>`_, "
+"Schulman et al, 2015. **Algorithm: TRPO.**"
+msgstr ""
+"`Trust Region Policy Optimization <https://arxiv.org/abs/1502.05477>`_, "
+"Schulman et al, 2015. **演算法：TRPO。**"
+
+#: ../../spinningup/keypapers.rst:39
+msgid ""
+"`High-Dimensional Continuous Control Using Generalized Advantage "
+"Estimation <https://arxiv.org/abs/1506.02438>`_, Schulman et al, 2015. "
+"**Algorithm: GAE.**"
+msgstr ""
+"`High-Dimensional Continuous Control Using Generalized Advantage "
+"Estimation <https://arxiv.org/abs/1506.02438>`_, Schulman et al, 2015. "
+"**演算法：GAE。**"
+
+#: ../../spinningup/keypapers.rst:41
+msgid ""
+"`Proximal Policy Optimization Algorithms "
+"<https://arxiv.org/abs/1707.06347>`_, Schulman et al, 2017. **Algorithm: "
+"PPO-Clip, PPO-Penalty.**"
+msgstr ""
+"`Proximal Policy Optimization Algorithms "
+"<https://arxiv.org/abs/1707.06347>`_, Schulman et al, 2017. **演算法："
+"PPO-Clip、PPO-Penalty。**"
+
+#: ../../spinningup/keypapers.rst:43
+msgid ""
+"`Emergence of Locomotion Behaviours in Rich Environments "
+"<https://arxiv.org/abs/1707.02286>`_, Heess et al, 2017. **Algorithm: "
+"PPO-Penalty.**"
+msgstr ""
+"`Emergence of Locomotion Behaviours in Rich Environments "
+"<https://arxiv.org/abs/1707.02286>`_, Heess et al, 2017. **演算法："
+"PPO-Penalty。**"
+
+#: ../../spinningup/keypapers.rst:45
+msgid ""
+"`Scalable trust-region method for deep reinforcement learning using "
+"Kronecker-factored approximation <https://arxiv.org/abs/1708.05144>`_, Wu"
+" et al, 2017. **Algorithm: ACKTR.**"
+msgstr ""
+"`Scalable trust-region method for deep reinforcement learning using "
+"Kronecker-factored approximation <https://arxiv.org/abs/1708.05144>`_, Wu"
+" et al, 2017. **演算法：ACKTR。**"
+
+#: ../../spinningup/keypapers.rst:47
+msgid ""
+"`Sample Efficient Actor-Critic with Experience Replay "
+"<https://arxiv.org/abs/1611.01224>`_, Wang et al, 2016. **Algorithm: "
+"ACER.**"
+msgstr ""
+"`Sample Efficient Actor-Critic with Experience Replay "
+"<https://arxiv.org/abs/1611.01224>`_, Wang et al, 2016. **演算法："
+"ACER。**"
+
+#: ../../spinningup/keypapers.rst:49
+msgid ""
+"`Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement "
+"Learning with a Stochastic Actor <https://arxiv.org/abs/1801.01290>`_, "
+"Haarnoja et al, 2018. **Algorithm: SAC.**"
+msgstr ""
+"`Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement "
+"Learning with a Stochastic Actor <https://arxiv.org/abs/1801.01290>`_, "
+"Haarnoja et al, 2018. **演算法：SAC。**"
+
+#: ../../spinningup/keypapers.rst:52
+msgid "c. Deterministic Policy Gradients"
+msgstr "c. 確定性策略梯度 (Deterministic Policy Gradients)"
+
+#: ../../spinningup/keypapers.rst:55
+msgid ""
+"`Deterministic Policy Gradient Algorithms "
+"<http://proceedings.mlr.press/v32/silver14.pdf>`_, Silver et al, 2014. "
+"**Algorithm: DPG.**"
+msgstr ""
+"`Deterministic Policy Gradient Algorithms "
+"<http://proceedings.mlr.press/v32/silver14.pdf>`_, Silver et al, 2014. "
+"**演算法：DPG。**"
+
+#: ../../spinningup/keypapers.rst:57
+msgid ""
+"`Continuous Control With Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1509.02971>`_, Lillicrap et al, 2015. **Algorithm:"
+" DDPG.**"
+msgstr ""
+"`Continuous Control With Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1509.02971>`_, Lillicrap et al, 2015. **演算法："
+"DDPG。**"
+
+#: ../../spinningup/keypapers.rst:59
+msgid ""
+"`Addressing Function Approximation Error in Actor-Critic Methods "
+"<https://arxiv.org/abs/1802.09477>`_, Fujimoto et al, 2018. **Algorithm: "
+"TD3.**"
+msgstr ""
+"`Addressing Function Approximation Error in Actor-Critic Methods "
+"<https://arxiv.org/abs/1802.09477>`_, Fujimoto et al, 2018. **演算法："
+"TD3。**"
+
+#: ../../spinningup/keypapers.rst:63
+msgid "d. Distributional RL"
+msgstr "d. 分佈式強化學習 (Distributional RL)"
+
+#: ../../spinningup/keypapers.rst:65
+msgid ""
+"`A Distributional Perspective on Reinforcement Learning "
+"<https://arxiv.org/abs/1707.06887>`_, Bellemare et al, 2017. **Algorithm:"
+" C51.**"
+msgstr ""
+"`A Distributional Perspective on Reinforcement Learning "
+"<https://arxiv.org/abs/1707.06887>`_, Bellemare et al, 2017. **演算法："
+"C51。**"
+
+#: ../../spinningup/keypapers.rst:67
+msgid ""
+"`Distributional Reinforcement Learning with Quantile Regression "
+"<https://arxiv.org/abs/1710.10044>`_, Dabney et al, 2017. **Algorithm: "
+"QR-DQN.**"
+msgstr ""
+"`Distributional Reinforcement Learning with Quantile Regression "
+"<https://arxiv.org/abs/1710.10044>`_, Dabney et al, 2017. **演算法："
+"QR-DQN。**"
+
+#: ../../spinningup/keypapers.rst:69
+msgid ""
+"`Implicit Quantile Networks for Distributional Reinforcement Learning "
+"<https://arxiv.org/abs/1806.06923>`_, Dabney et al, 2018. **Algorithm: "
+"IQN.**"
+msgstr ""
+"`Implicit Quantile Networks for Distributional Reinforcement Learning "
+"<https://arxiv.org/abs/1806.06923>`_, Dabney et al, 2018. **演算法："
+"IQN。**"
+
+#: ../../spinningup/keypapers.rst:71
+msgid ""
+"`Dopamine: A Research Framework for Deep Reinforcement Learning "
+"<https://openreview.net/forum?id=ByG_3s09KX>`_, Anonymous, 2018. "
+"**Contribution:** Introduces Dopamine, a code repository containing "
+"implementations of DQN, C51, IQN, and Rainbow. `Code link. "
+"<https://github.com/google/dopamine>`_"
+msgstr ""
+"`Dopamine: A Research Framework for Deep Reinforcement Learning "
+"<https://openreview.net/forum?id=ByG_3s09KX>`_, Anonymous, 2018. "
+"**貢獻：** 介紹了 Dopamine，一個包含 DQN、C51、IQN 和 Rainbow 實作的"
+"程式碼庫。`Code link. "
+"<https://github.com/google/dopamine>`_"
+
+#: ../../spinningup/keypapers.rst:74
+msgid "e. Policy Gradients with Action-Dependent Baselines"
+msgstr "e. 帶動作相依基線的策略梯度 (Policy Gradients with Action-Dependent Baselines)"
+
+#: ../../spinningup/keypapers.rst:76
+msgid ""
+"`Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic "
+"<https://arxiv.org/abs/1611.02247>`_, Gu et al, 2016. **Algorithm: "
+"Q-Prop.**"
+msgstr ""
+"`Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic "
+"<https://arxiv.org/abs/1611.02247>`_, Gu et al, 2016. **演算法："
+"Q-Prop。**"
+
+#: ../../spinningup/keypapers.rst:78
+msgid ""
+"`Action-depedent Control Variates for Policy Optimization via Stein's "
+"Identity <https://arxiv.org/abs/1710.11198>`_, Liu et al, 2017. "
+"**Algorithm: Stein Control Variates.**"
+msgstr ""
+"`Action-depedent Control Variates for Policy Optimization via Stein's "
+"Identity <https://arxiv.org/abs/1710.11198>`_, Liu et al, 2017. "
+"**演算法：Stein Control Variates。**"
+
+#: ../../spinningup/keypapers.rst:80
+msgid ""
+"`The Mirage of Action-Dependent Baselines in Reinforcement Learning "
+"<https://arxiv.org/abs/1802.10031>`_, Tucker et al, 2018. "
+"**Contribution:** interestingly, critiques and reevaluates claims from "
+"earlier papers (including Q-Prop and stein control variates) and finds "
+"important methodological errors in them."
+msgstr ""
+"`The Mirage of Action-Dependent Baselines in Reinforcement Learning "
+"<https://arxiv.org/abs/1802.10031>`_, Tucker et al, 2018. "
+"**貢獻：** 有趣的是，本文批判並重新評估了早期論文（包括 Q-Prop 和 "
+"Stein control variates）的主張，並發現了其中重要的方法論錯誤。"
+
+#: ../../spinningup/keypapers.rst:84
+msgid "f. Path-Consistency Learning"
+msgstr "f. 路徑一致性學習 (Path-Consistency Learning)"
+
+#: ../../spinningup/keypapers.rst:86
+msgid ""
+"`Bridging the Gap Between Value and Policy Based Reinforcement Learning "
+"<https://arxiv.org/abs/1702.08892>`_, Nachum et al, 2017. **Algorithm: "
+"PCL.**"
+msgstr ""
+"`Bridging the Gap Between Value and Policy Based Reinforcement Learning "
+"<https://arxiv.org/abs/1702.08892>`_, Nachum et al, 2017. **演算法："
+"PCL。**"
+
+#: ../../spinningup/keypapers.rst:88
+msgid ""
+"`Trust-PCL: An Off-Policy Trust Region Method for Continuous Control "
+"<https://arxiv.org/abs/1707.01891>`_, Nachum et al, 2017. **Algorithm: "
+"Trust-PCL.**"
+msgstr ""
+"`Trust-PCL: An Off-Policy Trust Region Method for Continuous Control "
+"<https://arxiv.org/abs/1707.01891>`_, Nachum et al, 2017. **演算法："
+"Trust-PCL。**"
+
+#: ../../spinningup/keypapers.rst:91
+msgid "g. Other Directions for Combining Policy-Learning and Q-Learning"
+msgstr "g. 結合策略學習與 Q 學習的其他方向"
+
+#: ../../spinningup/keypapers.rst:93
+msgid ""
+"`Combining Policy Gradient and Q-learning "
+"<https://arxiv.org/abs/1611.01626>`_, O'Donoghue et al, 2016. "
+"**Algorithm: PGQL.**"
+msgstr ""
+"`Combining Policy Gradient and Q-learning "
+"<https://arxiv.org/abs/1611.01626>`_, O'Donoghue et al, 2016. "
+"**演算法：PGQL。**"
+
+#: ../../spinningup/keypapers.rst:95
+msgid ""
+"`The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for "
+"Reinforcement Learning <https://arxiv.org/abs/1704.04651>`_, Gruslys et "
+"al, 2017. **Algorithm: Reactor.**"
+msgstr ""
+"`The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for "
+"Reinforcement Learning <https://arxiv.org/abs/1704.04651>`_, Gruslys et "
+"al, 2017. **演算法：Reactor。**"
+
+#: ../../spinningup/keypapers.rst:97
+msgid ""
+"`Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient "
+"Estimation for Deep Reinforcement Learning "
+"<http://papers.nips.cc/paper/6974-interpolated-policy-gradient-merging-"
+"on-policy-and-off-policy-gradient-estimation-for-deep-reinforcement-"
+"learning>`_, Gu et al, 2017. **Algorithm: IPG.**"
+msgstr ""
+"`Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient "
+"Estimation for Deep Reinforcement Learning "
+"<http://papers.nips.cc/paper/6974-interpolated-policy-gradient-merging-"
+"on-policy-and-off-policy-gradient-estimation-for-deep-reinforcement-"
+"learning>`_, Gu et al, 2017. **演算法：IPG。**"
+
+#: ../../spinningup/keypapers.rst:99
+msgid ""
+"`Equivalence Between Policy Gradients and Soft Q-Learning "
+"<https://arxiv.org/abs/1704.06440>`_, Schulman et al, 2017. "
+"**Contribution:** Reveals a theoretical link between these two families "
+"of RL algorithms."
+msgstr ""
+"`Equivalence Between Policy Gradients and Soft Q-Learning "
+"<https://arxiv.org/abs/1704.06440>`_, Schulman et al, 2017. "
+"**貢獻：** 揭示了這兩個 RL 演算法家族之間的理論聯繫。"
+
+#: ../../spinningup/keypapers.rst:103
+msgid "h. Evolutionary Algorithms"
+msgstr "h. 演化演算法 (Evolutionary Algorithms)"
+
+#: ../../spinningup/keypapers.rst:105
+msgid ""
+"`Evolution Strategies as a Scalable Alternative to Reinforcement Learning"
+" <https://arxiv.org/abs/1703.03864>`_, Salimans et al, 2017. **Algorithm:"
+" ES.**"
+msgstr ""
+"`Evolution Strategies as a Scalable Alternative to Reinforcement Learning"
+" <https://arxiv.org/abs/1703.03864>`_, Salimans et al, 2017. **演算法："
+"ES。**"
+
+#: ../../spinningup/keypapers.rst:110
+msgid "2. Exploration"
+msgstr "2. 探索 (Exploration)"
+
+#: ../../spinningup/keypapers.rst:113
+msgid "a. Intrinsic Motivation"
+msgstr "a. 內在動機 (Intrinsic Motivation)"
+
+#: ../../spinningup/keypapers.rst:115
+msgid ""
+"`VIME: Variational Information Maximizing Exploration "
+"<https://arxiv.org/abs/1605.09674>`_, Houthooft et al, 2016. **Algorithm:"
+" VIME.**"
+msgstr ""
+"`VIME: Variational Information Maximizing Exploration "
+"<https://arxiv.org/abs/1605.09674>`_, Houthooft et al, 2016. **演算法："
+"VIME。**"
+
+#: ../../spinningup/keypapers.rst:117
+msgid ""
+"`Unifying Count-Based Exploration and Intrinsic Motivation "
+"<https://arxiv.org/abs/1606.01868>`_, Bellemare et al, 2016. **Algorithm:"
+" CTS-based Pseudocounts.**"
+msgstr ""
+"`Unifying Count-Based Exploration and Intrinsic Motivation "
+"<https://arxiv.org/abs/1606.01868>`_, Bellemare et al, 2016. **演算法："
+"CTS-based Pseudocounts。**"
+
+#: ../../spinningup/keypapers.rst:119
+msgid ""
+"`Count-Based Exploration with Neural Density Models "
+"<https://arxiv.org/abs/1703.01310>`_, Ostrovski et al, 2017. **Algorithm:"
+" PixelCNN-based Pseudocounts.**"
+msgstr ""
+"`Count-Based Exploration with Neural Density Models "
+"<https://arxiv.org/abs/1703.01310>`_, Ostrovski et al, 2017. **演算法："
+"PixelCNN-based Pseudocounts。**"
+
+#: ../../spinningup/keypapers.rst:121
+msgid ""
+"`#Exploration: A Study of Count-Based Exploration for Deep Reinforcement "
+"Learning <https://arxiv.org/abs/1611.04717>`_, Tang et al, 2016. "
+"**Algorithm: Hash-based Counts.**"
+msgstr ""
+"`#Exploration: A Study of Count-Based Exploration for Deep Reinforcement "
+"Learning <https://arxiv.org/abs/1611.04717>`_, Tang et al, 2016. "
+"**演算法：Hash-based Counts。**"
+
+#: ../../spinningup/keypapers.rst:123
+msgid ""
+"`EX2: Exploration with Exemplar Models for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1703.01260>`_, Fu et al, 2017. **Algorithm: EX2.**"
+msgstr ""
+"`EX2: Exploration with Exemplar Models for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1703.01260>`_, Fu et al, 2017. **演算法：EX2。**"
+
+#: ../../spinningup/keypapers.rst:125
+msgid ""
+"`Curiosity-driven Exploration by Self-supervised Prediction "
+"<https://arxiv.org/abs/1705.05363>`_, Pathak et al, 2017. **Algorithm: "
+"Intrinsic Curiosity Module (ICM).**"
+msgstr ""
+"`Curiosity-driven Exploration by Self-supervised Prediction "
+"<https://arxiv.org/abs/1705.05363>`_, Pathak et al, 2017. **演算法："
+"Intrinsic Curiosity Module (ICM)。**"
+
+#: ../../spinningup/keypapers.rst:127
+msgid ""
+"`Large-Scale Study of Curiosity-Driven Learning "
+"<https://arxiv.org/abs/1808.04355>`_, Burda et al, 2018. "
+"**Contribution:** Systematic analysis of how surprisal-based intrinsic "
+"motivation performs in a wide variety of environments."
+msgstr ""
+"`Large-Scale Study of Curiosity-Driven Learning "
+"<https://arxiv.org/abs/1808.04355>`_, Burda et al, 2018. "
+"**貢獻：** 系統性分析了基於驚奇度的內在動機在各種環境中的表現。"
+
+#: ../../spinningup/keypapers.rst:129
+msgid ""
+"`Exploration by Random Network Distillation "
+"<https://arxiv.org/abs/1810.12894>`_, Burda et al, 2018. **Algorithm: "
+"RND.**"
+msgstr ""
+"`Exploration by Random Network Distillation "
+"<https://arxiv.org/abs/1810.12894>`_, Burda et al, 2018. **演算法："
+"RND。**"
+
+#: ../../spinningup/keypapers.rst:133
+msgid "b. Unsupervised RL"
+msgstr "b. 無監督強化學習 (Unsupervised RL)"
+
+#: ../../spinningup/keypapers.rst:135
+msgid ""
+"`Variational Intrinsic Control <https://arxiv.org/abs/1611.07507>`_, "
+"Gregor et al, 2016. **Algorithm: VIC.**"
+msgstr ""
+"`Variational Intrinsic Control <https://arxiv.org/abs/1611.07507>`_, "
+"Gregor et al, 2016. **演算法：VIC。**"
+
+#: ../../spinningup/keypapers.rst:137
+msgid ""
+"`Diversity is All You Need: Learning Skills without a Reward Function "
+"<https://arxiv.org/abs/1802.06070>`_, Eysenbach et al, 2018. **Algorithm:"
+" DIAYN.**"
+msgstr ""
+"`Diversity is All You Need: Learning Skills without a Reward Function "
+"<https://arxiv.org/abs/1802.06070>`_, Eysenbach et al, 2018. **演算法："
+"DIAYN。**"
+
+#: ../../spinningup/keypapers.rst:139
+msgid ""
+"`Variational Option Discovery Algorithms "
+"<https://arxiv.org/abs/1807.10299>`_, Achiam et al, 2018. **Algorithm: "
+"VALOR.**"
+msgstr ""
+"`Variational Option Discovery Algorithms "
+"<https://arxiv.org/abs/1807.10299>`_, Achiam et al, 2018. **演算法："
+"VALOR。**"
+
+#: ../../spinningup/keypapers.rst:143
+msgid "3. Transfer and Multitask RL"
+msgstr "3. 遷移與多任務強化學習 (Transfer and Multitask RL)"
+
+#: ../../spinningup/keypapers.rst:145
+msgid ""
+"`Progressive Neural Networks <https://arxiv.org/abs/1606.04671>`_, Rusu "
+"et al, 2016. **Algorithm: Progressive Networks.**"
+msgstr ""
+"`Progressive Neural Networks <https://arxiv.org/abs/1606.04671>`_, Rusu "
+"et al, 2016. **演算法：Progressive Networks。**"
+
+#: ../../spinningup/keypapers.rst:147
+msgid ""
+"`Universal Value Function Approximators "
+"<http://proceedings.mlr.press/v37/schaul15.pdf>`_, Schaul et al, 2015. "
+"**Algorithm: UVFA.**"
+msgstr ""
+"`Universal Value Function Approximators "
+"<http://proceedings.mlr.press/v37/schaul15.pdf>`_, Schaul et al, 2015. "
+"**演算法：UVFA。**"
+
+#: ../../spinningup/keypapers.rst:149
+msgid ""
+"`Reinforcement Learning with Unsupervised Auxiliary Tasks "
+"<https://arxiv.org/abs/1611.05397>`_, Jaderberg et al, 2016. **Algorithm:"
+" UNREAL.**"
+msgstr ""
+"`Reinforcement Learning with Unsupervised Auxiliary Tasks "
+"<https://arxiv.org/abs/1611.05397>`_, Jaderberg et al, 2016. **演算法："
+"UNREAL。**"
+
+#: ../../spinningup/keypapers.rst:151
+msgid ""
+"`The Intentional Unintentional Agent: Learning to Solve Many Continuous "
+"Control Tasks Simultaneously <https://arxiv.org/abs/1707.03300>`_, Cabi "
+"et al, 2017. **Algorithm: IU Agent.**"
+msgstr ""
+"`The Intentional Unintentional Agent: Learning to Solve Many Continuous "
+"Control Tasks Simultaneously <https://arxiv.org/abs/1707.03300>`_, Cabi "
+"et al, 2017. **演算法：IU Agent。**"
+
+#: ../../spinningup/keypapers.rst:153
+msgid ""
+"`PathNet: Evolution Channels Gradient Descent in Super Neural Networks "
+"<https://arxiv.org/abs/1701.08734>`_, Fernando et al, 2017. **Algorithm: "
+"PathNet.**"
+msgstr ""
+"`PathNet: Evolution Channels Gradient Descent in Super Neural Networks "
+"<https://arxiv.org/abs/1701.08734>`_, Fernando et al, 2017. **演算法："
+"PathNet。**"
+
+#: ../../spinningup/keypapers.rst:155
+msgid ""
+"`Mutual Alignment Transfer Learning <https://arxiv.org/abs/1707.07907>`_,"
+" Wulfmeier et al, 2017. **Algorithm: MATL.**"
+msgstr ""
+"`Mutual Alignment Transfer Learning <https://arxiv.org/abs/1707.07907>`_,"
+" Wulfmeier et al, 2017. **演算法：MATL。**"
+
+#: ../../spinningup/keypapers.rst:157
+msgid ""
+"`Learning an Embedding Space for Transferable Robot Skills "
+"<https://openreview.net/forum?id=rk07ZXZRb&noteId=rk07ZXZRb>`_, Hausman "
+"et al, 2018."
+msgstr ""
+"`Learning an Embedding Space for Transferable Robot Skills "
+"<https://openreview.net/forum?id=rk07ZXZRb&noteId=rk07ZXZRb>`_, Hausman "
+"et al, 2018."
+
+#: ../../spinningup/keypapers.rst:159
+msgid ""
+"`Hindsight Experience Replay <https://arxiv.org/abs/1707.01495>`_, "
+"Andrychowicz et al, 2017. **Algorithm: Hindsight Experience Replay "
+"(HER).**"
+msgstr ""
+"`Hindsight Experience Replay <https://arxiv.org/abs/1707.01495>`_, "
+"Andrychowicz et al, 2017. **演算法：Hindsight Experience Replay "
+"(HER)。**"
+
+#: ../../spinningup/keypapers.rst:162
+msgid "4. Hierarchy"
+msgstr "4. 層級式學習 (Hierarchy)"
+
+#: ../../spinningup/keypapers.rst:164
+msgid ""
+"`Strategic Attentive Writer for Learning Macro-Actions "
+"<https://arxiv.org/abs/1606.04695>`_, Vezhnevets et al, 2016. "
+"**Algorithm: STRAW.**"
+msgstr ""
+"`Strategic Attentive Writer for Learning Macro-Actions "
+"<https://arxiv.org/abs/1606.04695>`_, Vezhnevets et al, 2016. "
+"**演算法：STRAW。**"
+
+#: ../../spinningup/keypapers.rst:166
+msgid ""
+"`FeUdal Networks for Hierarchical Reinforcement Learning "
+"<https://arxiv.org/abs/1703.01161>`_, Vezhnevets et al, 2017. "
+"**Algorithm: Feudal Networks**"
+msgstr ""
+"`FeUdal Networks for Hierarchical Reinforcement Learning "
+"<https://arxiv.org/abs/1703.01161>`_, Vezhnevets et al, 2017. "
+"**演算法：Feudal Networks**"
+
+#: ../../spinningup/keypapers.rst:168
+msgid ""
+"`Data-Efficient Hierarchical Reinforcement Learning "
+"<https://arxiv.org/abs/1805.08296>`_, Nachum et al, 2018. **Algorithm: "
+"HIRO.**"
+msgstr ""
+"`Data-Efficient Hierarchical Reinforcement Learning "
+"<https://arxiv.org/abs/1805.08296>`_, Nachum et al, 2018. **演算法："
+"HIRO。**"
+
+#: ../../spinningup/keypapers.rst:171
+msgid "5. Memory"
+msgstr "5. 記憶 (Memory)"
+
+#: ../../spinningup/keypapers.rst:173
+msgid ""
+"`Model-Free Episodic Control <https://arxiv.org/abs/1606.04460>`_, "
+"Blundell et al, 2016. **Algorithm: MFEC.**"
+msgstr ""
+"`Model-Free Episodic Control <https://arxiv.org/abs/1606.04460>`_, "
+"Blundell et al, 2016. **演算法：MFEC。**"
+
+#: ../../spinningup/keypapers.rst:176
+msgid ""
+"`Neural Episodic Control <https://arxiv.org/abs/1703.01988>`_, Pritzel et"
+" al, 2017. **Algorithm: NEC.**"
+msgstr ""
+"`Neural Episodic Control <https://arxiv.org/abs/1703.01988>`_, Pritzel et"
+" al, 2017. **演算法：NEC。**"
+
+#: ../../spinningup/keypapers.rst:178
+msgid ""
+"`Neural Map: Structured Memory for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1702.08360>`_, Parisotto and Salakhutdinov, 2017. "
+"**Algorithm: Neural Map.**"
+msgstr ""
+"`Neural Map: Structured Memory for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1702.08360>`_, Parisotto and Salakhutdinov, 2017. "
+"**演算法：Neural Map。**"
+
+#: ../../spinningup/keypapers.rst:180
+msgid ""
+"`Unsupervised Predictive Memory in a Goal-Directed Agent "
+"<https://arxiv.org/abs/1803.10760>`_, Wayne et al, 2018. **Algorithm: "
+"MERLIN.**"
+msgstr ""
+"`Unsupervised Predictive Memory in a Goal-Directed Agent "
+"<https://arxiv.org/abs/1803.10760>`_, Wayne et al, 2018. **演算法："
+"MERLIN。**"
+
+#: ../../spinningup/keypapers.rst:182
+msgid ""
+"`Relational Recurrent Neural Networks "
+"<https://arxiv.org/abs/1806.01822>`_, Santoro et al, 2018. **Algorithm: "
+"RMC.**"
+msgstr ""
+"`Relational Recurrent Neural Networks "
+"<https://arxiv.org/abs/1806.01822>`_, Santoro et al, 2018. **演算法："
+"RMC。**"
+
+#: ../../spinningup/keypapers.rst:185
+msgid "6. Model-Based RL"
+msgstr "6. 基於模型的強化學習 (Model-Based RL)"
+
+#: ../../spinningup/keypapers.rst:188
+msgid "a. Model is Learned"
+msgstr "a. 學習模型"
+
+#: ../../spinningup/keypapers.rst:190
+msgid ""
+"`Imagination-Augmented Agents for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1707.06203>`_, Weber et al, 2017. **Algorithm: "
+"I2A.**"
+msgstr ""
+"`Imagination-Augmented Agents for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1707.06203>`_, Weber et al, 2017. **演算法："
+"I2A。**"
+
+#: ../../spinningup/keypapers.rst:192
+msgid ""
+"`Neural Network Dynamics for Model-Based Deep Reinforcement Learning with"
+" Model-Free Fine-Tuning <https://arxiv.org/abs/1708.02596>`_, Nagabandi "
+"et al, 2017. **Algorithm: MBMF.**"
+msgstr ""
+"`Neural Network Dynamics for Model-Based Deep Reinforcement Learning with"
+" Model-Free Fine-Tuning <https://arxiv.org/abs/1708.02596>`_, Nagabandi "
+"et al, 2017. **演算法：MBMF。**"
+
+#: ../../spinningup/keypapers.rst:194
+msgid ""
+"`Model-Based Value Expansion for Efficient Model-Free Reinforcement "
+"Learning <https://arxiv.org/abs/1803.00101>`_, Feinberg et al, 2018. "
+"**Algorithm: MVE.**"
+msgstr ""
+"`Model-Based Value Expansion for Efficient Model-Free Reinforcement "
+"Learning <https://arxiv.org/abs/1803.00101>`_, Feinberg et al, 2018. "
+"**演算法：MVE。**"
+
+#: ../../spinningup/keypapers.rst:196
+msgid ""
+"`Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value "
+"Expansion <https://arxiv.org/abs/1807.01675>`_, Buckman et al, 2018. "
+"**Algorithm: STEVE.**"
+msgstr ""
+"`Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value "
+"Expansion <https://arxiv.org/abs/1807.01675>`_, Buckman et al, 2018. "
+"**演算法：STEVE。**"
+
+#: ../../spinningup/keypapers.rst:198
+msgid ""
+"`Model-Ensemble Trust-Region Policy Optimization "
+"<https://openreview.net/forum?id=SJJinbWRZ&noteId=SJJinbWRZ>`_, Kurutach "
+"et al, 2018. **Algorithm: ME-TRPO.**"
+msgstr ""
+"`Model-Ensemble Trust-Region Policy Optimization "
+"<https://openreview.net/forum?id=SJJinbWRZ&noteId=SJJinbWRZ>`_, Kurutach "
+"et al, 2018. **演算法：ME-TRPO。**"
+
+#: ../../spinningup/keypapers.rst:200
+msgid ""
+"`Model-Based Reinforcement Learning via Meta-Policy Optimization "
+"<https://arxiv.org/abs/1809.05214>`_, Clavera et al, 2018. **Algorithm: "
+"MB-MPO.**"
+msgstr ""
+"`Model-Based Reinforcement Learning via Meta-Policy Optimization "
+"<https://arxiv.org/abs/1809.05214>`_, Clavera et al, 2018. **演算法："
+"MB-MPO。**"
+
+#: ../../spinningup/keypapers.rst:202
+msgid ""
+"`Recurrent World Models Facilitate Policy Evolution "
+"<https://arxiv.org/abs/1809.01999>`_, Ha and Schmidhuber, 2018."
+msgstr ""
+"`Recurrent World Models Facilitate Policy Evolution "
+"<https://arxiv.org/abs/1809.01999>`_, Ha and Schmidhuber, 2018."
+
+#: ../../spinningup/keypapers.rst:205
+msgid "b. Model is Given"
+msgstr "b. 給定模型"
+
+#: ../../spinningup/keypapers.rst:207
+msgid ""
+"`Mastering Chess and Shogi by Self-Play with a General Reinforcement "
+"Learning Algorithm <https://arxiv.org/abs/1712.01815>`_, Silver et al, "
+"2017. **Algorithm: AlphaZero.**"
+msgstr ""
+"`Mastering Chess and Shogi by Self-Play with a General Reinforcement "
+"Learning Algorithm <https://arxiv.org/abs/1712.01815>`_, Silver et al, "
+"2017. **演算法：AlphaZero。**"
+
+#: ../../spinningup/keypapers.rst:209
+msgid ""
+"`Thinking Fast and Slow with Deep Learning and Tree Search "
+"<https://arxiv.org/abs/1705.08439>`_, Anthony et al, 2017. **Algorithm: "
+"ExIt.**"
+msgstr ""
+"`Thinking Fast and Slow with Deep Learning and Tree Search "
+"<https://arxiv.org/abs/1705.08439>`_, Anthony et al, 2017. **演算法："
+"ExIt。**"
+
+#: ../../spinningup/keypapers.rst:212
+msgid "7. Meta-RL"
+msgstr "7. 元強化學習 (Meta-RL)"
+
+#: ../../spinningup/keypapers.rst:214
+msgid ""
+"`RL^2: Fast Reinforcement Learning via Slow Reinforcement Learning "
+"<https://arxiv.org/abs/1611.02779>`_, Duan et al, 2016. **Algorithm: "
+"RL^2.**"
+msgstr ""
+"`RL^2: Fast Reinforcement Learning via Slow Reinforcement Learning "
+"<https://arxiv.org/abs/1611.02779>`_, Duan et al, 2016. **演算法："
+"RL^2。**"
+
+#: ../../spinningup/keypapers.rst:216
+msgid ""
+"`Learning to Reinforcement Learn <https://arxiv.org/abs/1611.05763>`_, "
+"Wang et al, 2016."
+msgstr ""
+"`Learning to Reinforcement Learn <https://arxiv.org/abs/1611.05763>`_, "
+"Wang et al, 2016."
+
+#: ../../spinningup/keypapers.rst:218
+msgid ""
+"`Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks "
+"<https://arxiv.org/abs/1703.03400>`_, Finn et al, 2017. **Algorithm: "
+"MAML.**"
+msgstr ""
+"`Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks "
+"<https://arxiv.org/abs/1703.03400>`_, Finn et al, 2017. **演算法："
+"MAML。**"
+
+#: ../../spinningup/keypapers.rst:220
+msgid ""
+"`A Simple Neural Attentive Meta-Learner "
+"<https://openreview.net/forum?id=B1DmUzWAW&noteId=B1DmUzWAW>`_, Mishra et"
+" al, 2018. **Algorithm: SNAIL.**"
+msgstr ""
+"`A Simple Neural Attentive Meta-Learner "
+"<https://openreview.net/forum?id=B1DmUzWAW&noteId=B1DmUzWAW>`_, Mishra et"
+" al, 2018. **演算法：SNAIL。**"
+
+#: ../../spinningup/keypapers.rst:223
+msgid "8. Scaling RL"
+msgstr "8. 擴展強化學習 (Scaling RL)"
+
+#: ../../spinningup/keypapers.rst:225
+msgid ""
+"`Accelerated Methods for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1803.02811>`_, Stooke and Abbeel, 2018. "
+"**Contribution:** Systematic analysis of parallelization in deep RL "
+"across algorithms."
+msgstr ""
+"`Accelerated Methods for Deep Reinforcement Learning "
+"<https://arxiv.org/abs/1803.02811>`_, Stooke and Abbeel, 2018. "
+"**貢獻：** 系統性分析了深度 RL 中跨演算法的平行化。"
+
+#: ../../spinningup/keypapers.rst:227
+msgid ""
+"`IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-"
+"Learner Architectures <https://arxiv.org/abs/1802.01561>`_, Espeholt et "
+"al, 2018. **Algorithm: IMPALA.**"
+msgstr ""
+"`IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-"
+"Learner Architectures <https://arxiv.org/abs/1802.01561>`_, Espeholt et "
+"al, 2018. **演算法：IMPALA。**"
+
+#: ../../spinningup/keypapers.rst:229
+msgid ""
+"`Distributed Prioritized Experience Replay "
+"<https://openreview.net/forum?id=H1Dy---0Z>`_, Horgan et al, 2018. "
+"**Algorithm: Ape-X.**"
+msgstr ""
+"`Distributed Prioritized Experience Replay "
+"<https://openreview.net/forum?id=H1Dy---0Z>`_, Horgan et al, 2018. "
+"**演算法：Ape-X。**"
+
+#: ../../spinningup/keypapers.rst:231
+msgid ""
+"`Recurrent Experience Replay in Distributed Reinforcement Learning "
+"<https://openreview.net/forum?id=r1lyTjAqYX>`_, Anonymous, 2018. "
+"**Algorithm: R2D2.**"
+msgstr ""
+"`Recurrent Experience Replay in Distributed Reinforcement Learning "
+"<https://openreview.net/forum?id=r1lyTjAqYX>`_, Anonymous, 2018. "
+"**演算法：R2D2。**"
+
+#: ../../spinningup/keypapers.rst:233
+msgid ""
+"`RLlib: Abstractions for Distributed Reinforcement Learning "
+"<https://arxiv.org/abs/1712.09381>`_, Liang et al, 2017. "
+"**Contribution:** A scalable library of RL algorithm implementations. "
+"`Documentation link. <https://ray.readthedocs.io/en/latest/rllib.html>`_"
+msgstr ""
+"`RLlib: Abstractions for Distributed Reinforcement Learning "
+"<https://arxiv.org/abs/1712.09381>`_, Liang et al, 2017. "
+"**貢獻：** 一個可擴展的 RL 演算法實作函式庫。"
+"`Documentation link. <https://ray.readthedocs.io/en/latest/rllib.html>`_"
+
+#: ../../spinningup/keypapers.rst:237
+msgid "9. RL in the Real World"
+msgstr "9. 真實世界中的強化學習 (RL in the Real World)"
+
+#: ../../spinningup/keypapers.rst:239
+msgid ""
+"`Benchmarking Reinforcement Learning Algorithms on Real-World Robots "
+"<https://arxiv.org/abs/1809.07731>`_, Mahmood et al, 2018."
+msgstr ""
+"`Benchmarking Reinforcement Learning Algorithms on Real-World Robots "
+"<https://arxiv.org/abs/1809.07731>`_, Mahmood et al, 2018."
+
+#: ../../spinningup/keypapers.rst:241
+msgid ""
+"`Learning Dexterous In-Hand Manipulation "
+"<https://arxiv.org/abs/1808.00177>`_, OpenAI, 2018."
+msgstr ""
+"`Learning Dexterous In-Hand Manipulation "
+"<https://arxiv.org/abs/1808.00177>`_, OpenAI, 2018."
+
+#: ../../spinningup/keypapers.rst:243
+msgid ""
+"`QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic "
+"Manipulation <https://arxiv.org/abs/1806.10293>`_, Kalashnikov et al, "
+"2018. **Algorithm: QT-Opt.**"
+msgstr ""
+"`QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic "
+"Manipulation <https://arxiv.org/abs/1806.10293>`_, Kalashnikov et al, "
+"2018. **演算法：QT-Opt。**"
+
+#: ../../spinningup/keypapers.rst:245
+msgid ""
+"`Horizon: Facebook's Open Source Applied Reinforcement Learning Platform "
+"<https://arxiv.org/abs/1811.00260>`_, Gauci et al, 2018."
+msgstr ""
+"`Horizon: Facebook's Open Source Applied Reinforcement Learning Platform "
+"<https://arxiv.org/abs/1811.00260>`_, Gauci et al, 2018."
+
+#: ../../spinningup/keypapers.rst:249
+msgid "10. Safety"
+msgstr "10. 安全性 (Safety)"
+
+#: ../../spinningup/keypapers.rst:251
+msgid ""
+"`Concrete Problems in AI Safety <https://arxiv.org/abs/1606.06565>`_, "
+"Amodei et al, 2016. **Contribution:** establishes a taxonomy of safety "
+"problems, serving as an important jumping-off point for future research. "
+"We need to solve these!"
+msgstr ""
+"`Concrete Problems in AI Safety <https://arxiv.org/abs/1606.06565>`_, "
+"Amodei et al, 2016. **貢獻：** 建立了安全性問題的分類體系，作為未來研究的"
+"重要起點。我們需要解決這些問題！"
+
+#: ../../spinningup/keypapers.rst:253
+msgid ""
+"`Deep Reinforcement Learning From Human Preferences "
+"<https://arxiv.org/abs/1706.03741>`_, Christiano et al, 2017. "
+"**Algorithm: LFP.**"
+msgstr ""
+"`Deep Reinforcement Learning From Human Preferences "
+"<https://arxiv.org/abs/1706.03741>`_, Christiano et al, 2017. "
+"**演算法：LFP。**"
+
+#: ../../spinningup/keypapers.rst:255
+msgid ""
+"`Constrained Policy Optimization <https://arxiv.org/abs/1705.10528>`_, "
+"Achiam et al, 2017. **Algorithm: CPO.**"
+msgstr ""
+"`Constrained Policy Optimization <https://arxiv.org/abs/1705.10528>`_, "
+"Achiam et al, 2017. **演算法：CPO。**"
+
+#: ../../spinningup/keypapers.rst:257
+msgid ""
+"`Safe Exploration in Continuous Action Spaces "
+"<https://arxiv.org/abs/1801.08757>`_, Dalal et al, 2018. **Algorithm: "
+"DDPG+Safety Layer.**"
+msgstr ""
+"`Safe Exploration in Continuous Action Spaces "
+"<https://arxiv.org/abs/1801.08757>`_, Dalal et al, 2018. **演算法："
+"DDPG+Safety Layer。**"
+
+#: ../../spinningup/keypapers.rst:259
+msgid ""
+"`Trial without Error: Towards Safe Reinforcement Learning via Human "
+"Intervention <https://arxiv.org/abs/1707.05173>`_, Saunders et al, 2017. "
+"**Algorithm: HIRL.**"
+msgstr ""
+"`Trial without Error: Towards Safe Reinforcement Learning via Human "
+"Intervention <https://arxiv.org/abs/1707.05173>`_, Saunders et al, 2017. "
+"**演算法：HIRL。**"
+
+#: ../../spinningup/keypapers.rst:261
+msgid ""
+"`Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement "
+"Learning <https://arxiv.org/abs/1711.06782>`_, Eysenbach et al, 2017. "
+"**Algorithm: Leave No Trace.**"
+msgstr ""
+"`Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement "
+"Learning <https://arxiv.org/abs/1711.06782>`_, Eysenbach et al, 2017. "
+"**演算法：Leave No Trace。**"
+
+#: ../../spinningup/keypapers.rst:265
+msgid "11. Imitation Learning and Inverse Reinforcement Learning"
+msgstr "11. 模仿學習與逆強化學習 (Imitation Learning and Inverse Reinforcement Learning)"
+
+#: ../../spinningup/keypapers.rst:267
+msgid ""
+"`Modeling Purposeful Adaptive Behavior with the Principle of Maximum "
+"Causal Entropy <http://www.cs.cmu.edu/~bziebart/publications/thesis-"
+"bziebart.pdf>`_, Ziebart 2010. **Contributions:** Crisp formulation of "
+"maximum entropy IRL."
+msgstr ""
+"`Modeling Purposeful Adaptive Behavior with the Principle of Maximum "
+"Causal Entropy <http://www.cs.cmu.edu/~bziebart/publications/thesis-"
+"bziebart.pdf>`_, Ziebart 2010. **貢獻：** 提出了最大熵逆強化學習 "
+"(Maximum Entropy IRL) 的簡潔公式化。"
+
+#: ../../spinningup/keypapers.rst:269
+msgid ""
+"`Guided Cost Learning: Deep Inverse Optimal Control via Policy "
+"Optimization <https://arxiv.org/abs/1603.00448>`_, Finn et al, 2016. "
+"**Algorithm: GCL.**"
+msgstr ""
+"`Guided Cost Learning: Deep Inverse Optimal Control via Policy "
+"Optimization <https://arxiv.org/abs/1603.00448>`_, Finn et al, 2016. "
+"**演算法：GCL。**"
+
+#: ../../spinningup/keypapers.rst:271
+msgid ""
+"`Generative Adversarial Imitation Learning "
+"<https://arxiv.org/abs/1606.03476>`_, Ho and Ermon, 2016. **Algorithm: "
+"GAIL.**"
+msgstr ""
+"`Generative Adversarial Imitation Learning "
+"<https://arxiv.org/abs/1606.03476>`_, Ho and Ermon, 2016. **演算法："
+"GAIL。**"
+
+#: ../../spinningup/keypapers.rst:273
+msgid ""
+"`DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based "
+"Character Skills "
+"<https://xbpeng.github.io/projects/DeepMimic/2018_TOG_DeepMimic.pdf>`_, "
+"Peng et al, 2018. **Algorithm: DeepMimic.**"
+msgstr ""
+"`DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based "
+"Character Skills "
+"<https://xbpeng.github.io/projects/DeepMimic/2018_TOG_DeepMimic.pdf>`_, "
+"Peng et al, 2018. **演算法：DeepMimic。**"
+
+#: ../../spinningup/keypapers.rst:275
+msgid ""
+"`Variational Discriminator Bottleneck: Improving Imitation Learning, "
+"Inverse RL, and GANs by Constraining Information Flow "
+"<https://arxiv.org/abs/1810.00821>`_, Peng et al, 2018. **Algorithm: "
+"VAIL.**"
+msgstr ""
+"`Variational Discriminator Bottleneck: Improving Imitation Learning, "
+"Inverse RL, and GANs by Constraining Information Flow "
+"<https://arxiv.org/abs/1810.00821>`_, Peng et al, 2018. **演算法："
+"VAIL。**"
+
+#: ../../spinningup/keypapers.rst:277
+msgid ""
+"`One-Shot High-Fidelity Imitation: Training Large-Scale Deep Nets with RL"
+" <https://arxiv.org/abs/1810.05017>`_, Le Paine et al, 2018. **Algorithm:"
+" MetaMimic.**"
+msgstr ""
+"`One-Shot High-Fidelity Imitation: Training Large-Scale Deep Nets with RL"
+" <https://arxiv.org/abs/1810.05017>`_, Le Paine et al, 2018. **演算法："
+"MetaMimic。**"
+
+#: ../../spinningup/keypapers.rst:281
+msgid "12. Reproducibility, Analysis, and Critique"
+msgstr "12. 可重現性、分析與批判 (Reproducibility, Analysis, and Critique)"
+
+#: ../../spinningup/keypapers.rst:283
+msgid ""
+"`Benchmarking Deep Reinforcement Learning for Continuous Control "
+"<https://arxiv.org/abs/1604.06778>`_, Duan et al, 2016. **Contribution: "
+"rllab.**"
+msgstr ""
+"`Benchmarking Deep Reinforcement Learning for Continuous Control "
+"<https://arxiv.org/abs/1604.06778>`_, Duan et al, 2016. **貢獻："
+"rllab。**"
+
+#: ../../spinningup/keypapers.rst:285
+msgid ""
+"`Reproducibility of Benchmarked Deep Reinforcement Learning Tasks for "
+"Continuous Control <https://arxiv.org/abs/1708.04133>`_, Islam et al, "
+"2017."
+msgstr ""
+"`Reproducibility of Benchmarked Deep Reinforcement Learning Tasks for "
+"Continuous Control <https://arxiv.org/abs/1708.04133>`_, Islam et al, "
+"2017."
+
+#: ../../spinningup/keypapers.rst:287
+msgid ""
+"`Deep Reinforcement Learning that Matters "
+"<https://arxiv.org/abs/1709.06560>`_, Henderson et al, 2017."
+msgstr ""
+"`Deep Reinforcement Learning that Matters "
+"<https://arxiv.org/abs/1709.06560>`_, Henderson et al, 2017."
+
+#: ../../spinningup/keypapers.rst:289
+msgid ""
+"`Where Did My Optimum Go?: An Empirical Analysis of Gradient Descent "
+"Optimization in Policy Gradient Methods "
+"<https://arxiv.org/abs/1810.02525>`_, Henderson et al, 2018."
+msgstr ""
+"`Where Did My Optimum Go?: An Empirical Analysis of Gradient Descent "
+"Optimization in Policy Gradient Methods "
+"<https://arxiv.org/abs/1810.02525>`_, Henderson et al, 2018."
+
+#: ../../spinningup/keypapers.rst:291
+msgid ""
+"`Are Deep Policy Gradient Algorithms Truly Policy Gradient Algorithms? "
+"<https://arxiv.org/abs/1811.02553>`_, Ilyas et al, 2018."
+msgstr ""
+"`Are Deep Policy Gradient Algorithms Truly Policy Gradient Algorithms? "
+"<https://arxiv.org/abs/1811.02553>`_, Ilyas et al, 2018."
+
+#: ../../spinningup/keypapers.rst:293
+msgid ""
+"`Simple Random Search Provides a Competitive Approach to Reinforcement "
+"Learning <https://arxiv.org/abs/1803.07055>`_, Mania et al, 2018."
+msgstr ""
+"`Simple Random Search Provides a Competitive Approach to Reinforcement "
+"Learning <https://arxiv.org/abs/1803.07055>`_, Mania et al, 2018."
+
+#: ../../spinningup/keypapers.rst:295
+msgid ""
+"`Benchmarking Model-Based Reinforcement Learning "
+"<https://arxiv.org/abs/1907.02057>`_, Wang et al, 2019."
+msgstr ""
+"`Benchmarking Model-Based Reinforcement Learning "
+"<https://arxiv.org/abs/1907.02057>`_, Wang et al, 2019."
+
+#: ../../spinningup/keypapers.rst:298
+msgid "13. Bonus: Classic Papers in RL Theory or Review"
+msgstr "13. 附錄：強化學習理論或綜述的經典論文"
+
+#: ../../spinningup/keypapers.rst:300
+msgid ""
+"`Policy Gradient Methods for Reinforcement Learning with Function "
+"Approximation <https://papers.nips.cc/paper/1713-policy-gradient-methods-"
+"for-reinforcement-learning-with-function-approximation.pdf>`_, Sutton et "
+"al, 2000. **Contributions:** Established policy gradient theorem and "
+"showed convergence of policy gradient algorithm for arbitrary policy "
+"classes."
+msgstr ""
+"`Policy Gradient Methods for Reinforcement Learning with Function "
+"Approximation <https://papers.nips.cc/paper/1713-policy-gradient-methods-"
+"for-reinforcement-learning-with-function-approximation.pdf>`_, Sutton et "
+"al, 2000. **貢獻：** 建立了策略梯度定理，並證明了策略梯度演算法對任意"
+"策略類別的收斂性。"
+
+#: ../../spinningup/keypapers.rst:302
+msgid ""
+"`An Analysis of Temporal-Difference Learning with Function Approximation "
+"<http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf>`_, Tsitsiklis and "
+"Van Roy, 1997. **Contributions:** Variety of convergence results and "
+"counter-examples for value-learning methods in RL."
+msgstr ""
+"`An Analysis of Temporal-Difference Learning with Function Approximation "
+"<http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf>`_, Tsitsiklis and "
+"Van Roy, 1997. **貢獻：** 提供了 RL 中價值學習方法的各種收斂結果和反例。"
+
+#: ../../spinningup/keypapers.rst:304
+#, python-format
+msgid ""
+"`Reinforcement Learning of Motor Skills with Policy Gradients "
+"<http://www.kyb.mpg.de/fileadmin/user_upload/files/publications/attachments"
+"/Neural-Netw-2008-21-682_4867%5b0%5d.pdf>`_, Peters and Schaal, 2008. "
+"**Contributions:** Thorough review of policy gradient methods at the "
+"time, many of which are still serviceable descriptions of deep RL "
+"methods."
+msgstr ""
+"`Reinforcement Learning of Motor Skills with Policy Gradients "
+"<http://www.kyb.mpg.de/fileadmin/user_upload/files/publications/attachments"
+"/Neural-Netw-2008-21-682_4867%5b0%5d.pdf>`_, Peters and Schaal, 2008. "
+"**貢獻：** 對當時策略梯度方法的全面回顧，其中許多至今仍然是對深度 RL "
+"方法的有效描述。"
+
+#: ../../spinningup/keypapers.rst:306
+msgid ""
+"`Approximately Optimal Approximate Reinforcement Learning "
+"<https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings"
+"/KakadeLangford-icml2002.pdf>`_, Kakade and Langford, 2002. "
+"**Contributions:** Early roots for monotonic improvement theory, later "
+"leading to theoretical justification for TRPO and other algorithms."
+msgstr ""
+"`Approximately Optimal Approximate Reinforcement Learning "
+"<https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings"
+"/KakadeLangford-icml2002.pdf>`_, Kakade and Langford, 2002. "
+"**貢獻：** 單調改進理論 (Monotonic Improvement Theory) 的早期根源，後來為 "
+"TRPO 和其他演算法提供了理論依據。"
+
+#: ../../spinningup/keypapers.rst:308
+msgid ""
+"`A Natural Policy Gradient <https://papers.nips.cc/paper/2073-a-natural-"
+"policy-gradient.pdf>`_, Kakade, 2002. **Contributions:** Brought natural "
+"gradients into RL, later leading to TRPO, ACKTR, and several other "
+"methods in deep RL."
+msgstr ""
+"`A Natural Policy Gradient <https://papers.nips.cc/paper/2073-a-natural-"
+"policy-gradient.pdf>`_, Kakade, 2002. **貢獻：** 將自然梯度 "
+"(Natural Gradients) 引入 RL，後來促成了 TRPO、ACKTR 和深度 RL 中的"
+"其他幾種方法。"
+
+#: ../../spinningup/keypapers.rst:310
+msgid ""
+"`Algorithms for Reinforcement Learning "
+"<https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf>`_, "
+"Szepesvari, 2009. **Contributions:** Unbeatable reference on RL before "
+"deep RL, containing foundations and theoretical background."
+msgstr ""
+"`Algorithms for Reinforcement Learning "
+"<https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf>`_, "
+"Szepesvari, 2009. **貢獻：** 深度 RL 出現之前無與倫比的 RL 參考資料，"
+"包含基礎知識和理論背景。"

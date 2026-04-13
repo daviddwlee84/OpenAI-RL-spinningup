@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../utils/mpi.rst:3
+msgid "MPI Tools"
+msgstr "MPI 工具"
+
+#: ../../utils/mpi.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../utils/mpi.rst:8
+msgid "Core MPI Utilities"
+msgstr "核心 MPI 工具"
+
+#: of spinup.utils.mpi_tools.mpi_avg:1
+msgid "Average a scalar or vector over MPI processes."
+msgstr "在 MPI 程序間對純量或向量取平均值。"
+
+#: of spinup.utils.mpi_tools.mpi_fork:1
+msgid "Re-launches the current script with workers linked by MPI."
+msgstr "以 MPI 連結的 worker 重新啟動目前的腳本。"
+
+#: of spinup.utils.mpi_tools.mpi_fork:3
+msgid "Also, terminates the original process that launched it."
+msgstr "同時終止啟動它的原始程序。"
+
+#: of spinup.utils.mpi_tools.mpi_fork:5
+msgid ""
+"Taken almost without modification from the Baselines function of the "
+"`same name`_."
+msgstr ""
+"幾乎未經修改地取自 Baselines 中 `same name`_ 的同名函式。"
+
+#: ../../utils/mpi.rst
+msgid "Parameters"
+msgstr "參數"
+
+#: of spinup.utils.mpi_tools.mpi_fork:10
+msgid "Number of process to split into."
+msgstr "要分割成的程序數量。"
+
+#: of spinup.utils.mpi_tools.mpi_fork:12
+msgid "Bind each MPI process to a core."
+msgstr "將每個 MPI 程序綁定到一個 CPU 核心。"
+
+#: of spinup.utils.mpi_tools.mpi_statistics_scalar:1
+msgid "Get mean/std and optional min/max of scalar x across MPI processes."
+msgstr "取得純量 x 在所有 MPI 程序間的平均值／標準差，以及可選的最小值／最大值。"
+
+#: of spinup.utils.mpi_tools.mpi_statistics_scalar:3
+msgid "An array containing samples of the scalar to produce statistics for."
+msgstr "包含要計算統計量之純量樣本的陣列。"
+
+#: of spinup.utils.mpi_tools.mpi_statistics_scalar:5
+msgid "If true, return min and max of x in addition to mean and std."
+msgstr "如果為 true，除了平均值和標準差外，還回傳 x 的最小值和最大值。"
+
+#: of spinup.utils.mpi_tools.num_procs:1
+msgid "Count active MPI processes."
+msgstr "計算活躍的 MPI 程序數量。"
+
+#: of spinup.utils.mpi_tools.proc_id:1
+msgid "Get rank of calling process."
+msgstr "取得呼叫程序的 rank。"
+
+#: ../../utils/mpi.rst:15
+msgid "MPI + PyTorch Utilities"
+msgstr "MPI + PyTorch 工具"
+
+#: ../../utils/mpi.rst:17
+msgid ""
+"``spinup.utils.mpi_pytorch`` contains a few tools to make it easy to do "
+"data-parallel PyTorch optimization across MPI processes. The two main "
+"ingredients are syncing parameters and averaging gradients before they "
+"are used by the adaptive optimizer. Also there's a hacky fix for a "
+"problem where the PyTorch instance in each separate process tries to get "
+"too many threads, and they start to clobber each other."
+msgstr ""
+"``spinup.utils.mpi_pytorch`` 包含一些工具，使得跨 MPI 程序進行資料並行的 "
+"PyTorch 最佳化變得容易。兩個主要組成部分是：在自適應最佳化器使用梯度之前，"
+"同步參數和對梯度取平均值。此外還有一個針對以下問題的臨時修正：每個獨立程序中的 "
+"PyTorch 實例嘗試取得過多的執行緒，導致它們開始互相干擾。"
+
+#: ../../utils/mpi.rst:19
+msgid "The pattern for using these tools looks something like this:"
+msgstr "使用這些工具的模式大致如下："
+
+#: ../../utils/mpi.rst:21
+msgid ""
+"At the beginning of the training script, call "
+"``setup_pytorch_for_mpi()``. (Avoids clobbering problem.)"
+msgstr ""
+"在訓練腳本的開頭，呼叫 ``setup_pytorch_for_mpi()``。（避免互相干擾的問題。）"
+
+#: ../../utils/mpi.rst:23
+msgid "After you've constructed a PyTorch module, call ``sync_params(module)``."
+msgstr "在建構好 PyTorch module 後，呼叫 ``sync_params(module)``。"
+
+#: ../../utils/mpi.rst:25
+msgid ""
+"Then, during gradient descent, call ``mpi_avg_grads`` after the backward "
+"pass, like so:"
+msgstr ""
+"然後，在梯度下降過程中，在反向傳播（backward pass）之後呼叫 ``mpi_avg_grads``，"
+"如下所示："
+
+#: of spinup.utils.mpi_pytorch.mpi_avg_grads:1
+msgid "Average contents of gradient buffers across MPI processes."
+msgstr "在 MPI 程序間對梯度緩衝區的內容取平均值。"
+
+#: of spinup.utils.mpi_pytorch.setup_pytorch_for_mpi:1
+msgid ""
+"Avoid slowdowns caused by each separate process's PyTorch using more than"
+" its fair share of CPU resources."
+msgstr ""
+"避免因每個獨立程序的 PyTorch 使用超過其合理份額的 CPU 資源而導致的效能下降。"
+
+#: of spinup.utils.mpi_pytorch.sync_params:1
+msgid "Sync all parameters of module across all MPI processes."
+msgstr "在所有 MPI 程序間同步 module 的所有參數。"
+
+#: ../../utils/mpi.rst:40
+msgid "MPI + Tensorflow Utilities"
+msgstr "MPI + Tensorflow 工具"
+
+#: ../../utils/mpi.rst:42
+msgid ""
+"The ``spinup.utils.mpi_tf`` contains a a few tools to make it easy to use"
+" the AdamOptimizer across many MPI processes. This is a bit hacky---if "
+"you're looking for something more sophisticated and general-purpose, "
+"consider `horovod`_."
+msgstr ""
+"``spinup.utils.mpi_tf`` 包含一些工具，使得跨多個 MPI 程序使用 AdamOptimizer "
+"變得容易。這種做法有點不正規——如果你需要更精緻且通用的方案，請考慮使用 "
+"`horovod`_。"

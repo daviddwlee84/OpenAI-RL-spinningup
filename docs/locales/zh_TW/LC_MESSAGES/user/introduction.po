@@ -1,0 +1,404 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../user/introduction.rst:3
+msgid "Introduction"
+msgstr "簡介"
+
+#: ../../user/introduction.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../user/introduction.rst:8
+msgid "What This Is"
+msgstr "這是什麼"
+
+#: ../../user/introduction.rst:10
+msgid ""
+"Welcome to Spinning Up in Deep RL! This is an educational resource "
+"produced by OpenAI that makes it easier to learn about deep reinforcement"
+" learning (deep RL)."
+msgstr ""
+"歡迎來到 Spinning Up in Deep RL！這是一份由 OpenAI 製作的教育資源，"
+"旨在幫助你更輕鬆地學習深度強化學習 (Deep Reinforcement Learning, deep RL)。"
+
+#: ../../user/introduction.rst:12
+msgid ""
+"For the unfamiliar: `reinforcement learning`_ (RL) is a machine learning "
+"approach for teaching agents how to solve tasks by trial and error. Deep "
+"RL refers to the combination of RL with `deep learning`_."
+msgstr ""
+"如果你還不熟悉：`reinforcement learning`_（強化學習，Reinforcement Learning，RL）"
+"是一種機器學習 (Machine Learning) 方法，透過試誤法 (Trial and Error) 來教導"
+"代理人 (Agent) 如何解決任務。Deep RL 指的是將 RL 與\\ `deep learning`_"
+"（深度學習，Deep Learning）相結合。"
+
+#: ../../user/introduction.rst:14
+msgid "This module contains a variety of helpful resources, including:"
+msgstr "本模組包含多種實用資源，包括："
+
+#: ../../user/introduction.rst:16
+msgid ""
+"a short `introduction`_ to RL terminology, kinds of algorithms, and basic"
+" theory,"
+msgstr ""
+"一份簡短的 RL 術語、演算法 (Algorithm) 類型與基礎理論的\\ `introduction`_\\ ，"
+
+#: ../../user/introduction.rst:17
+msgid "an `essay`_ about how to grow into an RL research role,"
+msgstr "一篇關於如何成長為 RL 研究者的\\ `essay`_\\ ，"
+
+#: ../../user/introduction.rst:18
+msgid "a `curated list`_ of important papers organized by topic,"
+msgstr "一份按主題整理的重要論文\\ `curated list`_\\ ，"
+
+#: ../../user/introduction.rst:19
+msgid ""
+"a well-documented `code repo`_ of short, standalone implementations of "
+"key algorithms,"
+msgstr ""
+"一個文件齊全的\\ `code repo`_\\ ，包含簡短、獨立的關鍵演算法實作，"
+
+#: ../../user/introduction.rst:20
+msgid "and a few `exercises`_ to serve as warm-ups."
+msgstr "以及一些作為暖身的\\ `exercises`_\\ 。"
+
+#: ../../user/introduction.rst:27
+msgid "Why We Built This"
+msgstr "我們為什麼建立這個"
+
+#: ../../user/introduction.rst:29
+msgid "One of the single most common questions that we hear is"
+msgstr "我們最常聽到的問題之一是"
+
+#: ../../user/introduction.rst:31
+msgid "If I want to contribute to AI safety, how do I get started?"
+msgstr "如果我想為 AI 安全做出貢獻，我該如何入門？"
+
+#: ../../user/introduction.rst:33
+msgid ""
+"At OpenAI, we believe that deep learning generally---and deep "
+"reinforcement learning specifically---will play central roles in the "
+"development of powerful AI technology. To ensure that AI is safe, we have"
+" to come up with safety strategies and algorithms that are compatible "
+"with this paradigm. As a result, we encourage everyone who asks this "
+"question to study these fields."
+msgstr ""
+"在 OpenAI，我們相信深度學習整體而言——以及深度強化學習具體而言——將在"
+"強大 AI 技術的發展中扮演核心角色。為了確保 AI 的安全性，我們必須提出"
+"與此範式 (Paradigm) 相容的安全策略 (Policy) 與演算法。因此，我們鼓勵"
+"每一位提出這個問題的人去研讀這些領域。"
+
+#: ../../user/introduction.rst:35
+msgid ""
+"However, while there are many resources to help people quickly ramp up on"
+" deep learning, deep reinforcement learning is more challenging to break "
+"into. To begin with, a student of deep RL needs to have some background "
+"in math, coding, and regular deep learning. Beyond that, they need both a"
+" high-level view of the field---an awareness of what topics are studied "
+"in it, why they matter, and what's been done already---and careful "
+"instruction on how to connect algorithm theory to algorithm code."
+msgstr ""
+"然而，儘管有許多資源可以幫助人們快速上手深度學習，深度強化學習卻更難以"
+"入門。首先，學習 deep RL 的學生需要具備一些數學、程式設計和一般深度學習"
+"的基礎。此外，他們還需要對該領域有全局觀——了解哪些主題正在被研究、"
+"為什麼重要、以及已經完成了哪些工作——同時還需要關於如何將演算法理論"
+"與演算法程式碼連結起來的詳細指導。"
+
+#: ../../user/introduction.rst:37
+msgid ""
+"The high-level view is hard to come by because of how new the field is. "
+"There is not yet a standard deep RL textbook, so most of the knowledge is"
+" locked up in either papers or lecture series, which can take a long time"
+" to parse and digest. And learning to implement deep RL algorithms is "
+"typically painful, because either"
+msgstr ""
+"由於這個領域太新，全局觀很難獲得。目前還沒有標準的 deep RL 教科書，"
+"因此大部分知識都封存在論文或系列講座中，需要花很長時間來解讀和消化。"
+"而學習實作 deep RL 演算法通常也很痛苦，因為"
+
+#: ../../user/introduction.rst:39
+msgid ""
+"the paper that publishes an algorithm omits or inadvertently obscures key"
+" design details,"
+msgstr "發表演算法的論文省略或無意中模糊了關鍵的設計細節，"
+
+#: ../../user/introduction.rst:40
+msgid ""
+"or widely-public implementations of an algorithm are hard to read, hiding"
+" how the code lines up with the algorithm."
+msgstr "或者廣泛公開的演算法實作難以閱讀，隱藏了程式碼與演算法之間的對應關係。"
+
+#: ../../user/introduction.rst:42
+msgid ""
+"While fantastic repos like garage_, Baselines_, and rllib_ make it easier"
+" for researchers who are already in the field to make progress, they "
+"build algorithms into frameworks in ways that involve many non-obvious "
+"choices and trade-offs, which makes them hard to learn from. "
+"Consequently, the field of deep RL has a pretty high barrier to entry---"
+"for new researchers as well as practitioners and hobbyists."
+msgstr ""
+"雖然像 garage_、Baselines_ 和 rllib_ 這樣優秀的程式庫讓已經在該領域的"
+"研究人員更容易取得進展，但它們將演算法構建到框架中的方式涉及許多不明顯"
+"的選擇和權衡，這使得它們很難用來學習。因此，deep RL 領域的入門門檻相當"
+"高——對於新研究者、實務工作者和業餘愛好者都是如此。"
+
+#: ../../user/introduction.rst:44
+msgid ""
+"So our package here is designed to serve as the missing middle step for "
+"people who are excited by deep RL, and would like to learn how to use it "
+"or make a contribution, but don't have a clear sense of what to study or "
+"how to transmute algorithms into code. We've tried to make this as "
+"helpful a launching point as possible."
+msgstr ""
+"因此，我們的這個套件旨在為那些對 deep RL 感到興奮、想要學習如何使用它"
+"或做出貢獻、但不清楚該學什麼或如何將演算法轉化為程式碼的人，提供缺失"
+"的中間階梯。我們努力使它成為一個盡可能有幫助的起點。"
+
+#: ../../user/introduction.rst:46
+msgid ""
+"That said, practitioners aren't the only people who can (or should) "
+"benefit from these materials. Solving AI safety will require people with "
+"a wide range of expertise and perspectives, and many relevant professions"
+" have no connection to engineering or computer science at all. "
+"Nonetheless, everyone involved will need to learn enough about the "
+"technology to make informed decisions, and several pieces of Spinning Up "
+"address that need."
+msgstr ""
+"話雖如此，實務工作者並不是唯一能夠（或應該）從這些教材中受益的人。"
+"解決 AI 安全問題需要具備各種專業知識和觀點的人才，而許多相關職業與工程"
+"或電腦科學完全沒有關聯。儘管如此，每個參與者都需要對技術有足夠的了解"
+"才能做出明智的決策，而 Spinning Up 的多個部分正是為此需求而設計的。"
+
+#: ../../user/introduction.rst:51
+msgid "How This Serves Our Mission"
+msgstr "這如何服務於我們的使命"
+
+#: ../../user/introduction.rst:53
+msgid ""
+"OpenAI's mission_ is to ensure the safe development of AGI and the broad "
+"distribution of benefits from AI more generally. Teaching tools like "
+"Spinning Up help us make progress on both of these objectives."
+msgstr ""
+"OpenAI 的 mission_ 是確保通用人工智慧 (Artificial General Intelligence, AGI) "
+"的安全發展，以及更廣泛地讓 AI 的益處普惠大眾。像 Spinning Up 這樣的教學"
+"工具幫助我們在這兩個目標上取得進展。"
+
+#: ../../user/introduction.rst:55
+msgid ""
+"To begin with, we move closer to broad distribution of benefits any time "
+"we help people understand what AI is and how it works. This empowers "
+"people to think critically about the many issues we anticipate will arise"
+" as AI becomes more sophisticated and important in our lives."
+msgstr ""
+"首先，每當我們幫助人們理解 AI 是什麼以及它如何運作時，我們就更接近於"
+"讓益處普惠大眾的目標。這使人們有能力批判性地思考我們預期隨著 AI 變得"
+"更加精密和重要而將出現的許多議題。"
+
+#: ../../user/introduction.rst:57
+msgid ""
+"Also, critically, `we need people to help "
+"<https://jobs.lever.co/openai>`_ us work on making sure that AGI is safe."
+" This requires a skill set which is currently in short supply because of "
+"how new the field is. We know that many people are interested in helping "
+"us, but don't know how---here is what you should study! If you can become"
+" an expert on this material, you can make a difference on AI safety."
+msgstr ""
+"同樣關鍵的是，\\ `we need people to help "
+"<https://jobs.lever.co/openai>`_\\ 我們致力於確保 AGI 的安全。由於這個領域"
+"太新，目前所需的技能組合供不應求。我們知道很多人有興趣幫助我們，但不知道"
+"該怎麼做——這就是你應該學習的內容！如果你能成為這些教材的專家，你就能"
+"在 AI 安全方面發揮影響力。"
+
+#: ../../user/introduction.rst:62
+msgid "Code Design Philosophy"
+msgstr "程式碼設計理念"
+
+#: ../../user/introduction.rst:64
+msgid "The algorithm implementations in the Spinning Up repo are designed to be"
+msgstr "Spinning Up 程式庫中的演算法實作被設計為"
+
+#: ../../user/introduction.rst:66
+msgid "as simple as possible while still being reasonably good,"
+msgstr "在保持相當好的效能的同時盡可能簡單，"
+
+#: ../../user/introduction.rst:67
+msgid ""
+"and highly-consistent with each other to expose fundamental similarities "
+"between algorithms."
+msgstr "並且彼此之間高度一致，以揭示演算法之間的根本相似性。"
+
+#: ../../user/introduction.rst:69
+msgid ""
+"They are almost completely self-contained, with virtually no common code "
+"shared between them (except for logging, saving, loading, and `MPI "
+"<https://en.wikipedia.org/wiki/Message_Passing_Interface>`_ utilities), "
+"so that an interested person can study each algorithm separately without "
+"having to dig through an endless chain of dependencies to see how "
+"something is done. The implementations are patterned so that they come as"
+" close to pseudocode as possible, to minimize the gap between theory and "
+"code."
+msgstr ""
+"它們幾乎完全是自包含的，彼此之間幾乎沒有共用程式碼（除了日誌記錄、"
+"儲存、載入和 `MPI "
+"<https://en.wikipedia.org/wiki/Message_Passing_Interface>`_ 工具之外），"
+"這樣有興趣的人可以單獨研究每個演算法，而不必挖掘無盡的依賴鏈來了解某件"
+"事是如何完成的。這些實作的編排方式盡可能接近虛擬碼 (Pseudocode)，"
+"以最小化理論與程式碼之間的差距。"
+
+#: ../../user/introduction.rst:71
+msgid ""
+"Importantly, they're all structured similarly, so if you clearly "
+"understand one, jumping into the next is painless."
+msgstr ""
+"重要的是，它們的結構都很相似，所以如果你完全理解了其中一個，"
+"跳到下一個就毫無障礙。"
+
+#: ../../user/introduction.rst:73
+msgid ""
+"We tried to minimize the number of tricks used in each algorithm's "
+"implementation, and minimize the differences between otherwise-similar "
+"algorithms. To give some examples of removed tricks: we omit "
+"regularization_ terms present in the original Soft-Actor Critic code, as "
+"well as `observation normalization`_ from all algorithms. For an example "
+"of where we've removed differences between algorithms: our "
+"implementations of DDPG, TD3, and SAC all follow a convention of running "
+"gradient descent updates after fixed intervals of environment "
+"interaction. (By contrast, other public implementations of these "
+"algorithms usually take slightly different approaches from each other, "
+"making them a little bit harder to compare.)"
+msgstr ""
+"我們盡量減少每個演算法實作中使用的技巧，並盡量減少原本相似的演算法之間"
+"的差異。舉一些移除技巧的例子：我們省略了原始 Soft-Actor Critic 程式碼中的 "
+"regularization_ 項，以及所有演算法中的\\ `observation normalization`_\\ 。"
+"關於我們消除演算法間差異的例子：我們的 DDPG、TD3 和 SAC 實作都遵循在"
+"固定間隔的環境互動之後執行梯度下降 (Gradient Descent) 更新的慣例。"
+"（相比之下，這些演算法的其他公開實作通常彼此之間採用略有不同的方法，"
+"使它們稍微難以比較。）"
+
+#: ../../user/introduction.rst:75
+msgid ""
+"All algorithms are \"reasonably good\" in the sense that they achieve "
+"roughly the intended performance, but don't necessarily match the best "
+"reported results in the literature on every task. Consequently, be "
+"careful if using any of these implementations for scientific benchmarking"
+" comparisons. Details on each implementation's specific performance level"
+" can be found on our `benchmarks`_ page."
+msgstr ""
+"所有演算法都是「相當好的」，意思是它們大致達到了預期的效能，但不一定"
+"在每個任務上都能匹配文獻中報告的最佳結果。因此，如果將這些實作用於科學"
+"基準測試 (Benchmark) 比較，請務必謹慎。每個實作的具體效能水準的詳細資訊"
+"可以在我們的\\ `benchmarks`_\\ 頁面找到。"
+
+#: ../../user/introduction.rst:79
+msgid "Long-Term Support and Support History"
+msgstr "長期支援與支援歷史"
+
+#: ../../user/introduction.rst:81
+msgid ""
+"Spinning Up is currently in maintenance mode. If there are any breaking "
+"bugs, we'll repair them to ensure that Spinning Up can continue to help "
+"people study deep RL."
+msgstr ""
+"Spinning Up 目前處於維護模式。如果出現任何嚴重的錯誤，我們會進行修復，"
+"以確保 Spinning Up 能繼續幫助人們學習 deep RL。"
+
+#: ../../user/introduction.rst:83
+msgid "Support history so far:"
+msgstr "目前為止的支援歷史："
+
+#: ../../user/introduction.rst:85
+msgid "**Nov 8, 2018:** Initial release!"
+msgstr "**Nov 8, 2018：** 初始發布！"
+
+#: ../../user/introduction.rst:87
+msgid ""
+"**Nov, 2018:** Release was followed by a three-week period of high-"
+"bandwidth support."
+msgstr ""
+"**Nov, 2018：** 發布後接續了為期三週的高強度支援期。"
+
+#: ../../user/introduction.rst:89
+msgid ""
+"**April, 2019:** Approximately six months after release, we conducted an "
+"internal review of Spinning Up based on feedback from the community. The "
+"review surfaced interest in a few key features:"
+msgstr ""
+"**April, 2019：** 發布約六個月後，我們根據社群的回饋對 Spinning Up "
+"進行了內部審查。審查中浮現了對幾個關鍵功能的興趣："
+
+#: ../../user/introduction.rst:91
+msgid ""
+"**Implementations in Other Neural Network Libraries.** Several people "
+"expressed interest in seeing Spinning Up use alternatives to Tensorflow "
+"v1 for the RL implementations. A few members of the community even "
+"developed their own PyTorch versions of Spinning Up algorithms, such as "
+"Kashif Rasul's `Fired Up`_,  Kai Arulkumaran's `Spinning Up Basic`_, and "
+"Misha Laskin's `Torching Up`_. As a result, making this kind of \"Rosetta"
+" Stone\" for deep RL became a high priority for future work."
+msgstr ""
+"**使用其他神經網路函式庫的實作。** 一些人表達了希望 Spinning Up 使用 "
+"Tensorflow v1 以外的替代方案來實作 RL 的興趣。社群中甚至有幾位成員開發了"
+"自己的 PyTorch 版本 Spinning Up 演算法，例如 Kashif Rasul 的 `Fired Up`_、"
+"Kai Arulkumaran 的 `Spinning Up Basic`_，以及 Misha Laskin 的 "
+"`Torching Up`_。因此，為 deep RL 製作這種「羅塞塔石碑」"
+"成為了未來工作的高優先事項。"
+
+#: ../../user/introduction.rst:93
+msgid ""
+"**Open Source RL Environments.** Many people expressed an interest in "
+"seeing Spinning Up use more open source RL environments (eg `PyBullet`_) "
+"for benchmarks, examples, and exercises."
+msgstr ""
+"**開源 RL 環境 (Environment)。** 許多人表達了希望 Spinning Up 使用更多"
+"開源 RL 環境（例如 `PyBullet`_）來進行基準測試、範例和練習的興趣。"
+
+#: ../../user/introduction.rst:95
+msgid ""
+"**More Algorithms.** There was some interest in seeing other algorithms "
+"included in Spinning Up, especially Deep Q-Networks."
+msgstr ""
+"**更多演算法。** 一些人對在 Spinning Up 中加入其他演算法感興趣，"
+"特別是 Deep Q-Networks。"
+
+#: ../../user/introduction.rst:97
+msgid "**Jan, 2020:** The PyTorch update to Spinning Up was released!"
+msgstr "**Jan, 2020：** Spinning Up 的 PyTorch 更新版本發布了！"
+
+#: ../../user/introduction.rst:99
+msgid ""
+"**Future:** No major updates are currently planned for Spinning Up. In "
+"the event it makes sense for us to release an additional update, "
+"following what we found in the 6-month review, the next-highest priority "
+"features are to focus more on open source RL environments and adding "
+"algorithms."
+msgstr ""
+"**未來：** 目前沒有計劃對 Spinning Up 進行重大更新。如果我們決定發布額外"
+"的更新，根據我們在六個月審查中的發現，下一個最高優先級的功能是更多地"
+"關注開源 RL 環境和新增演算法。"
+
+#: ../../user/introduction.rst:101
+msgid ""
+"Additionally, as discussed in the blog post, Spinning Up has been "
+"integrated into the curriculum for our Scholars_ and Fellows_ programs."
+msgstr ""
+"此外，如部落格文章中所述，Spinning Up 已被納入我們的 Scholars_ 和 "
+"Fellows_ 計畫的課程中。"

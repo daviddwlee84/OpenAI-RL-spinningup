@@ -1,0 +1,360 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../user/algorithms.rst:3
+msgid "Algorithms"
+msgstr "演算法"
+
+#: ../../user/algorithms.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../user/algorithms.rst:8
+msgid "What's Included"
+msgstr "包含哪些內容"
+
+#: ../../user/algorithms.rst:10
+msgid "The following algorithms are implemented in the Spinning Up package:"
+msgstr "Spinning Up 套件中實作了以下演算法："
+
+#: ../../user/algorithms.rst:12
+msgid "`Vanilla Policy Gradient`_ (VPG)"
+msgstr "`Vanilla Policy Gradient`_ (VPG, 基本策略梯度)"
+
+#: ../../user/algorithms.rst:13
+msgid "`Trust Region Policy Optimization`_ (TRPO)"
+msgstr "`Trust Region Policy Optimization`_ (TRPO, 信賴域策略最佳化)"
+
+#: ../../user/algorithms.rst:14
+msgid "`Proximal Policy Optimization`_ (PPO)"
+msgstr "`Proximal Policy Optimization`_ (PPO, 近端策略最佳化)"
+
+#: ../../user/algorithms.rst:15
+msgid "`Deep Deterministic Policy Gradient`_ (DDPG)"
+msgstr "`Deep Deterministic Policy Gradient`_ (DDPG, 深度確定性策略梯度)"
+
+#: ../../user/algorithms.rst:16
+msgid "`Twin Delayed DDPG`_ (TD3)"
+msgstr "`Twin Delayed DDPG`_ (TD3, 雙延遲 DDPG)"
+
+#: ../../user/algorithms.rst:17
+msgid "`Soft Actor-Critic`_ (SAC)"
+msgstr "`Soft Actor-Critic`_ (SAC, 軟演員-評論家)"
+
+#: ../../user/algorithms.rst:19
+msgid ""
+"They are all implemented with `MLP`_ (non-recurrent) actor-critics, "
+"making them suitable for fully-observed, non-image-based RL environments,"
+" e.g. the `Gym Mujoco`_ environments."
+msgstr ""
+"這些演算法都使用 `MLP`_（多層感知器，非遞迴）的演員-評論家 (actor-critic) 架構實作，"
+"適用於完全可觀測、非影像的強化學習 (Reinforcement Learning, RL) 環境，"
+"例如 `Gym Mujoco`_ 環境。"
+
+#: ../../user/algorithms.rst:21
+msgid ""
+"Spinning Up has two implementations for each algorithm (except for TRPO):"
+" one that uses `PyTorch`_ as the neural network library, and one that "
+"uses `Tensorflow v1`_ as the neural network library. (TRPO is currently "
+"only available in Tensorflow.)"
+msgstr ""
+"Spinning Up 為每個演算法（TRPO 除外）提供了兩種實作版本："
+"一種使用 `PyTorch`_ 作為神經網路函式庫，另一種使用 `Tensorflow v1`_ 作為神經網路函式庫。"
+"（TRPO 目前僅有 Tensorflow 版本。）"
+
+#: ../../user/algorithms.rst:36
+msgid "Why These Algorithms?"
+msgstr "為什麼選擇這些演算法？"
+
+#: ../../user/algorithms.rst:38
+msgid ""
+"We chose the core deep RL algorithms in this package to reflect useful "
+"progressions of ideas from the recent history of the field, culminating "
+"in two algorithms in particular---PPO and SAC---which are close to state "
+"of the art on reliability and sample efficiency among policy-learning "
+"algorithms. They also expose some of the trade-offs that get made in "
+"designing and using algorithms in deep RL."
+msgstr ""
+"我們選擇這些核心深度 RL 演算法，是為了展現該領域近年來有用的思想演進，"
+"最終聚焦於兩個演算法——PPO 和 SAC——它們在策略學習 (policy learning) 演算法中，"
+"於可靠性和樣本效率 (sample efficiency) 方面接近最先進水準。"
+"這些演算法也揭示了深度 RL 演算法設計與使用中的一些取捨。"
+
+#: ../../user/algorithms.rst:41
+msgid "The On-Policy Algorithms"
+msgstr "同策略演算法 (On-Policy Algorithms)"
+
+#: ../../user/algorithms.rst:43
+msgid ""
+"Vanilla Policy Gradient is the most basic, entry-level algorithm in the "
+"deep RL space because it completely predates the advent of deep RL "
+"altogether. The core elements of VPG go all the way back to the late 80s "
+"/ early 90s. It started a trail of research which ultimately led to "
+"stronger algorithms such as TRPO and then PPO soon after."
+msgstr ""
+"基本策略梯度 (Vanilla Policy Gradient) 是深度 RL 領域中最基礎的入門演算法，"
+"因為它完全早於深度 RL 的出現。VPG 的核心要素可以追溯到 1980 年代末 / 1990 年代初。"
+"它開啟了一系列研究，最終催生出更強大的演算法，如 TRPO，隨後不久又有了 PPO。"
+
+#: ../../user/algorithms.rst:45
+msgid ""
+"A key feature of this line of work is that all of these algorithms are "
+"*on-policy*: that is, they don't use old data, which makes them weaker on"
+" sample efficiency. But this is for a good reason: these algorithms "
+"directly optimize the objective you care about---policy performance---and"
+" it works out mathematically that you need on-policy data to calculate "
+"the updates. So, this family of algorithms trades off sample efficiency "
+"in favor of stability---but you can see the progression of techniques "
+"(from VPG to TRPO to PPO) working to make up the deficit on sample "
+"efficiency."
+msgstr ""
+"這一系列工作的關鍵特點是，所有這些演算法都是*同策略 (on-policy)* 的："
+"也就是說，它們不使用舊資料，這使得樣本效率較低。"
+"但這是有充分理由的：這些演算法直接最佳化你關心的目標——策略效能 (policy performance)——"
+"而從數學上來說，你需要同策略資料才能計算更新。"
+"因此，這一類演算法以犧牲樣本效率來換取穩定性——"
+"但你可以看到技術的演進（從 VPG 到 TRPO 再到 PPO）正在努力彌補樣本效率上的不足。"
+
+#: ../../user/algorithms.rst:49
+msgid "The Off-Policy Algorithms"
+msgstr "離策略演算法 (Off-Policy Algorithms)"
+
+#: ../../user/algorithms.rst:51
+msgid ""
+"DDPG is a similarly foundational algorithm to VPG, although much younger"
+"---the theory of deterministic policy gradients, which led to DDPG, "
+"wasn't published until 2014. DDPG is closely connected to Q-learning "
+"algorithms, and it concurrently learns a Q-function and a policy which "
+"are updated to improve each other."
+msgstr ""
+"DDPG 是與 VPG 同樣具有奠基意義的演算法，但要年輕得多——"
+"催生 DDPG 的確定性策略梯度 (deterministic policy gradient) 理論直到 2014 年才發表。"
+"DDPG 與 Q 學習 (Q-learning) 演算法密切相關，"
+"它同時學習一個 Q 函數 (Q-function) 和一個策略 (policy)，兩者透過互相更新來共同改善。"
+
+#: ../../user/algorithms.rst:53
+msgid ""
+"Algorithms like DDPG and Q-Learning are *off-policy*, so they are able to"
+" reuse old data very efficiently. They gain this benefit by exploiting "
+"Bellman's equations for optimality, which a Q-function can be trained to "
+"satisfy using *any* environment interaction data (as long as there's "
+"enough experience from the high-reward areas in the environment)."
+msgstr ""
+"像 DDPG 和 Q-Learning 這類演算法是*離策略 (off-policy)* 的，因此能夠非常高效地重複使用舊資料。"
+"它們透過利用 Bellman 最優方程式來獲得這一優勢，"
+"Q 函數可以使用*任何*環境互動資料進行訓練（只要有足夠來自環境中高獎勵區域的經驗）。"
+
+#: ../../user/algorithms.rst:55
+msgid ""
+"But problematically, there are no guarantees that doing a good job of "
+"satisfying Bellman's equations leads to having great policy performance. "
+"*Empirically* one can get great performance---and when it happens, the "
+"sample efficiency is wonderful---but the absence of guarantees makes "
+"algorithms in this class potentially brittle and unstable. TD3 and SAC "
+"are descendants of DDPG which make use of a variety of insights to "
+"mitigate these issues."
+msgstr ""
+"但問題在於，沒有任何保證能證明良好地滿足 Bellman 方程式就能帶來出色的策略效能。"
+"*從經驗上*來看確實可以獲得很好的效能——而且一旦成功，樣本效率非常出色——"
+"但缺乏保證使得這類演算法可能脆弱且不穩定。"
+"TD3 和 SAC 是 DDPG 的後繼演算法，運用了多種見解來緩解這些問題。"
+
+#: ../../user/algorithms.rst:59
+msgid "Code Format"
+msgstr "程式碼格式"
+
+#: ../../user/algorithms.rst:61
+msgid ""
+"All implementations in Spinning Up adhere to a standard template. They "
+"are split into two files: an algorithm file, which contains the core "
+"logic of the algorithm, and a core file, which contains various utilities"
+" needed to run the algorithm."
+msgstr ""
+"Spinning Up 中的所有實作都遵循一個標準範本。"
+"它們被分成兩個檔案：一個演算法檔案，包含演算法的核心邏輯；"
+"一個核心檔案，包含執行演算法所需的各種工具函式。"
+
+#: ../../user/algorithms.rst:63
+msgid ""
+"The algorithm file always starts with a class definition for an "
+"experience buffer object, which is used to store information from agent-"
+"environment interactions. Next, there is a single function which runs the"
+" algorithm. The algorithm function follows a template that is roughly the"
+" same across the PyTorch and Tensorflow versions, but we'll break it down"
+" for each separately below. Finally, there's some support in each "
+"algorithm file for directly running the algorithm in Gym environments "
+"from the command line (though this is not the recommended way to run the "
+"algorithms---we'll describe how to do that on the `Running Experiments`_ "
+"page)."
+msgstr ""
+"演算法檔案總是以一個經驗緩衝區 (experience buffer) 物件的類別定義開始，"
+"用於儲存代理 (agent) 與環境互動的資訊。"
+"接著是一個執行演算法的函式。演算法函式遵循的範本在 PyTorch 和 Tensorflow 版本中大致相同，"
+"但我們會在下方分別說明。最後，每個演算法檔案都支援從命令列直接在 Gym 環境中執行演算法"
+"（但這不是推薦的執行方式——我們將在 `Running Experiments`_ 頁面說明推薦的做法）。"
+
+#: ../../user/algorithms.rst:68
+msgid "The Algorithm Function: PyTorch Version"
+msgstr "演算法函式：PyTorch 版本"
+
+#: ../../user/algorithms.rst:70
+msgid ""
+"The algorithm function for a PyTorch implementation performs the "
+"following tasks in (roughly) this order:"
+msgstr "PyTorch 實作的演算法函式大致按以下順序執行這些任務："
+
+#: ../../user/algorithms.rst:72 ../../user/algorithms.rst:105
+msgid "Logger setup"
+msgstr "設定記錄器 (Logger)"
+
+#: ../../user/algorithms.rst:74 ../../user/algorithms.rst:107
+msgid "Random seed setting"
+msgstr "設定隨機種子"
+
+#: ../../user/algorithms.rst:76 ../../user/algorithms.rst:109
+msgid "Environment instantiation"
+msgstr "建立環境實例"
+
+#: ../../user/algorithms.rst:78
+msgid ""
+"Constructing the actor-critic PyTorch module via the ``actor_critic`` "
+"function passed to the algorithm function as an argument"
+msgstr ""
+"透過傳入演算法函式的 ``actor_critic`` 函式參數，建構演員-評論家 PyTorch 模組"
+
+#: ../../user/algorithms.rst:80 ../../user/algorithms.rst:115
+msgid "Instantiating the experience buffer"
+msgstr "建立經驗緩衝區實例"
+
+#: ../../user/algorithms.rst:82
+msgid ""
+"Setting up callable loss functions that also provide diagnostics specific"
+" to the algorithm"
+msgstr "設定可呼叫的損失函數，這些函數也提供特定於該演算法的診斷資訊"
+
+#: ../../user/algorithms.rst:84
+msgid "Making PyTorch optimizers"
+msgstr "建立 PyTorch 最佳化器"
+
+#: ../../user/algorithms.rst:86 ../../user/algorithms.rst:123
+msgid "Setting up model saving through the logger"
+msgstr "透過記錄器設定模型儲存"
+
+#: ../../user/algorithms.rst:88
+msgid ""
+"Setting up an update function that runs one epoch of optimization or one "
+"step of descent"
+msgstr "設定更新函式，執行一個週期 (epoch) 的最佳化或一步梯度下降"
+
+#: ../../user/algorithms.rst:90 ../../user/algorithms.rst:127
+msgid "Running the main loop of the algorithm:"
+msgstr "執行演算法的主迴圈："
+
+#: ../../user/algorithms.rst:92 ../../user/algorithms.rst:129
+msgid "Run the agent in the environment"
+msgstr "在環境中執行代理"
+
+#: ../../user/algorithms.rst:94 ../../user/algorithms.rst:131
+msgid ""
+"Periodically update the parameters of the agent according to the main "
+"equations of the algorithm"
+msgstr "根據演算法的主要方程式，定期更新代理的參數"
+
+#: ../../user/algorithms.rst:96 ../../user/algorithms.rst:133
+msgid "Log key performance metrics and save agent"
+msgstr "記錄關鍵效能指標並儲存代理"
+
+#: ../../user/algorithms.rst:101
+msgid "The Algorithm Function: Tensorflow Version"
+msgstr "演算法函式：Tensorflow 版本"
+
+#: ../../user/algorithms.rst:103
+msgid ""
+"The algorithm function for a Tensorflow implementation performs the "
+"following tasks in (roughly) this order:"
+msgstr "Tensorflow 實作的演算法函式大致按以下順序執行這些任務："
+
+#: ../../user/algorithms.rst:111
+msgid "Making placeholders for the computation graph"
+msgstr "為計算圖 (computation graph) 建立佔位符"
+
+#: ../../user/algorithms.rst:113
+msgid ""
+"Building the actor-critic computation graph via the ``actor_critic`` "
+"function passed to the algorithm function as an argument"
+msgstr ""
+"透過傳入演算法函式的 ``actor_critic`` 函式參數，建構演員-評論家計算圖"
+
+#: ../../user/algorithms.rst:117
+msgid ""
+"Building the computation graph for loss functions and diagnostics "
+"specific to the algorithm"
+msgstr "建構特定於該演算法的損失函數和診斷資訊的計算圖"
+
+#: ../../user/algorithms.rst:119
+msgid "Making training ops"
+msgstr "建立訓練操作 (training ops)"
+
+#: ../../user/algorithms.rst:121
+msgid "Making the TF Session and initializing parameters"
+msgstr "建立 TF Session 並初始化參數"
+
+#: ../../user/algorithms.rst:125
+msgid ""
+"Defining functions needed for running the main loop of the algorithm "
+"(e.g. the core update function, get action function, and test agent "
+"function, depending on the algorithm)"
+msgstr ""
+"定義執行演算法主迴圈所需的函式"
+"（例如核心更新函式、取得動作函式和測試代理函式，依演算法而定）"
+
+#: ../../user/algorithms.rst:138
+msgid "The Core File"
+msgstr "核心檔案"
+
+#: ../../user/algorithms.rst:140
+msgid ""
+"The core files don't adhere as closely as the algorithms files to a "
+"template, but do have some approximate structure:"
+msgstr "核心檔案不像演算法檔案那樣嚴格遵循範本，但大致有以下結構："
+
+#: ../../user/algorithms.rst:142
+msgid "**Tensorflow only:** Functions related to making and managing placeholders"
+msgstr "**僅限 Tensorflow：**與建立和管理佔位符相關的函式"
+
+#: ../../user/algorithms.rst:144
+msgid ""
+"Functions for building sections of computation graph relevant to the "
+"``actor_critic`` method for a particular algorithm"
+msgstr "為特定演算法的 ``actor_critic`` 方法建構相關計算圖區段的函式"
+
+#: ../../user/algorithms.rst:146
+msgid "Any other useful functions"
+msgstr "其他有用的函式"
+
+#: ../../user/algorithms.rst:148
+msgid ""
+"Implementations for an MLP actor-critic compatible with the algorithm, "
+"where both the policy and the value function(s) are represented by simple"
+" MLPs"
+msgstr ""
+"與演算法相容的 MLP 演員-評論家實作，"
+"其中策略和價值函數 (value function) 都由簡單的 MLP 表示"

@@ -1,0 +1,444 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../user/saving_and_loading.rst:3
+msgid "Experiment Outputs"
+msgstr "實驗輸出"
+
+#: ../../user/saving_and_loading.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../user/saving_and_loading.rst:7
+msgid "In this section we'll cover"
+msgstr "在本節中，我們將涵蓋"
+
+#: ../../user/saving_and_loading.rst:9
+msgid "what outputs come from Spinning Up algorithm implementations,"
+msgstr "Spinning Up 演算法實作會產生哪些輸出，"
+
+#: ../../user/saving_and_loading.rst:10
+msgid "what formats they're stored in and how they're organized,"
+msgstr "這些輸出以什麼格式儲存以及如何組織，"
+
+#: ../../user/saving_and_loading.rst:11
+msgid "where they are stored and how you can change that,"
+msgstr "它們儲存在哪裡以及你如何更改儲存位置，"
+
+#: ../../user/saving_and_loading.rst:12
+msgid "and how to load and run trained policies."
+msgstr "以及如何載入和執行已訓練的策略。"
+
+#: ../../user/saving_and_loading.rst:14 ../../user/saving_and_loading.rst:51
+#: ../../user/saving_and_loading.rst:55 ../../user/saving_and_loading.rst:59
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../user/saving_and_loading.rst:16
+msgid ""
+"Spinning Up implementations currently have no way to resume training for "
+"partially-trained agents. If you consider this feature important, please "
+"let us know---or consider it a hacking project!"
+msgstr ""
+"Spinning Up 的實作目前無法恢復部分訓練過的代理的訓練。"
+"如果你認為此功能很重要，請告訴我們——或者把它當作一個自行改造的專案！"
+
+#: ../../user/saving_and_loading.rst:19
+msgid "Algorithm Outputs"
+msgstr "演算法輸出"
+
+#: ../../user/saving_and_loading.rst:21
+msgid ""
+"Each algorithm is set up to save a training run's hyperparameter "
+"configuration, learning progress, trained agent and value functions, and "
+"a copy of the environment if possible (to make it easy to load up the "
+"agent and environment simultaneously). The output directory contains the "
+"following:"
+msgstr ""
+"每個演算法都設定為儲存訓練過程的超參數配置、學習進度、已訓練的代理和價值函數，"
+"以及環境的副本（如果可能的話），以便於同時載入代理和環境。輸出目錄包含以下內容："
+
+#: ../../user/saving_and_loading.rst:24
+msgid "**Output Directory Structure**"
+msgstr "**輸出目錄結構**"
+
+#: ../../user/saving_and_loading.rst:26
+msgid "``pyt_save/``"
+msgstr "``pyt_save/``"
+
+#: ../../user/saving_and_loading.rst:26
+msgid "**PyTorch implementations only.** A directory containing"
+msgstr "**僅限 PyTorch 實作。**一個包含以下內容的目錄"
+
+#: ../../user/saving_and_loading.rst:27 ../../user/saving_and_loading.rst:31
+msgid "everything needed to restore the trained agent and value"
+msgstr "還原已訓練的代理和價值"
+
+#: ../../user/saving_and_loading.rst:28
+msgid "functions. (`Details for PyTorch saves below.`_)"
+msgstr "函數所需的所有內容。（`Details for PyTorch saves below.`_）"
+
+#: ../../user/saving_and_loading.rst:30
+msgid "``tf1_save/``"
+msgstr "``tf1_save/``"
+
+#: ../../user/saving_and_loading.rst:30
+msgid "**Tensorflow implementations only.** A directory containing"
+msgstr "**僅限 Tensorflow 實作。**一個包含以下內容的目錄"
+
+#: ../../user/saving_and_loading.rst:32
+msgid "functions. (`Details for Tensorflow saves below.`_)"
+msgstr "函數所需的所有內容。（`Details for Tensorflow saves below.`_）"
+
+#: ../../user/saving_and_loading.rst:34
+msgid "``config.json``"
+msgstr "``config.json``"
+
+#: ../../user/saving_and_loading.rst:34
+msgid "A dict containing an as-complete-as-possible description"
+msgstr "一個字典，包含盡可能完整的描述，說明"
+
+#: ../../user/saving_and_loading.rst:35
+msgid "of the args and kwargs you used to launch the training"
+msgstr "你用來啟動訓練函式的引數和"
+
+#: ../../user/saving_and_loading.rst:36
+msgid "function. If you passed in something which can't be"
+msgstr "關鍵字引數。如果你傳入了無法"
+
+#: ../../user/saving_and_loading.rst:37
+msgid "serialized to JSON, it should get handled gracefully by the"
+msgstr "序列化為 JSON 的內容，記錄器會妥善處理，"
+
+#: ../../user/saving_and_loading.rst:38
+msgid "logger, and the config file will represent it with a string."
+msgstr "配置檔案會以字串形式表示。"
+
+#: ../../user/saving_and_loading.rst:39
+msgid "Note: this is meant for record-keeping only. Launching an"
+msgstr "注意：這僅用於記錄保存。目前不支援"
+
+#: ../../user/saving_and_loading.rst:40
+msgid "experiment from a config file is not currently supported."
+msgstr "從配置檔案啟動實驗。"
+
+#: ../../user/saving_and_loading.rst:42
+msgid "``progress.txt``"
+msgstr "``progress.txt``"
+
+#: ../../user/saving_and_loading.rst:42
+msgid "A tab-separated value file containing records of the metrics"
+msgstr "一個以 Tab 分隔的值檔案，包含記錄器在"
+
+#: ../../user/saving_and_loading.rst:43
+msgid "recorded by the logger throughout training. eg, ``Epoch``,"
+msgstr "整個訓練過程中記錄的指標，例如 ``Epoch``、"
+
+#: ../../user/saving_and_loading.rst:44
+msgid "``AverageEpRet``, etc."
+msgstr "``AverageEpRet`` 等。"
+
+#: ../../user/saving_and_loading.rst:46
+msgid "``vars.pkl``"
+msgstr "``vars.pkl``"
+
+#: ../../user/saving_and_loading.rst:46
+msgid "A pickle file containing anything about the algorithm state"
+msgstr "一個 pickle 檔案，包含任何應該被儲存的"
+
+#: ../../user/saving_and_loading.rst:47
+msgid "which should get stored. Currently, all algorithms only use"
+msgstr "演算法狀態。目前，所有演算法僅使用"
+
+#: ../../user/saving_and_loading.rst:48
+msgid "this to save a copy of the environment."
+msgstr "此檔案來儲存環境的副本。"
+
+#: ../../user/saving_and_loading.rst:53
+msgid ""
+"Sometimes environment-saving fails because the environment can't be "
+"pickled, and ``vars.pkl`` is empty. This is known to be a problem for Gym"
+" Box2D environments in older versions of Gym, which can't be saved in "
+"this manner."
+msgstr ""
+"有時環境儲存會失敗，因為環境無法被 pickle 序列化，此時 ``vars.pkl`` 會是空的。"
+"這在舊版 Gym 的 Box2D 環境中是已知問題，這些環境無法以此方式儲存。"
+
+#: ../../user/saving_and_loading.rst:57
+msgid ""
+"As of 1/30/20, the save directory structure has changed slightly. "
+"Previously, Tensorflow graphs were saved in the ``simple_save/`` folder; "
+"this has been replaced with ``tf1_save/``."
+msgstr ""
+"自 2020 年 1 月 30 日起，儲存目錄結構略有變更。"
+"以前，Tensorflow 計算圖儲存在 ``simple_save/`` 資料夾中；現已改為 ``tf1_save/``。"
+
+#: ../../user/saving_and_loading.rst:61
+msgid ""
+"The only file in here that you should ever have to use \"by hand\" is the"
+" ``config.json`` file. Our agent testing utility will load things from "
+"the ``tf1_save/`` or ``pyt_save/`` directory, and our plotter interprets "
+"the contents of ``progress.txt``, and those are the correct tools for "
+"interfacing with these outputs. But there is no tooling for "
+"``config.json``---it's just there so that if you forget what "
+"hyperparameters you ran an experiment with, you can double-check."
+msgstr ""
+"這裡唯一你可能需要「手動」使用的檔案是 ``config.json``。"
+"我們的代理測試工具會從 ``tf1_save/`` 或 ``pyt_save/`` 目錄載入內容，"
+"而繪圖工具會解讀 ``progress.txt`` 的內容，這些才是存取這些輸出的正確工具。"
+"但 ``config.json`` 沒有專用工具——它存在的目的只是讓你在忘記實驗使用了哪些超參數時可以查閱。"
+
+#: ../../user/saving_and_loading.rst:66
+msgid "PyTorch Save Directory Info"
+msgstr "PyTorch 儲存目錄資訊"
+
+#: ../../user/saving_and_loading.rst:69
+msgid "The ``pyt_save`` directory contains:"
+msgstr "``pyt_save`` 目錄包含："
+
+#: ../../user/saving_and_loading.rst:72
+msgid "**Pyt_Save Directory Structure**"
+msgstr "**Pyt_Save 目錄結構**"
+
+#: ../../user/saving_and_loading.rst:74
+msgid "``model.pt``"
+msgstr "``model.pt``"
+
+#: ../../user/saving_and_loading.rst:74
+msgid "A file created with ``torch.save``, essentially just a"
+msgstr "使用 ``torch.save`` 建立的檔案，本質上就是"
+
+#: ../../user/saving_and_loading.rst:75
+msgid "pickled PyTorch ``nn.Module``. Loading it will restore"
+msgstr "一個經 pickle 序列化的 PyTorch ``nn.Module``。載入後將還原"
+
+#: ../../user/saving_and_loading.rst:76
+msgid "a trained agent as an ActorCritic object with an ``act``"
+msgstr "已訓練的代理，作為具有 ``act``"
+
+#: ../../user/saving_and_loading.rst:77
+msgid "method."
+msgstr "方法的 ActorCritic 物件。"
+
+#: ../../user/saving_and_loading.rst:82
+msgid "Tensorflow Save Directory Info"
+msgstr "Tensorflow 儲存目錄資訊"
+
+#: ../../user/saving_and_loading.rst:85
+msgid "The ``tf1_save`` directory contains:"
+msgstr "``tf1_save`` 目錄包含："
+
+#: ../../user/saving_and_loading.rst:88
+msgid "**TF1_Save Directory Structure**"
+msgstr "**TF1_Save 目錄結構**"
+
+#: ../../user/saving_and_loading.rst:90
+msgid "``variables/``"
+msgstr "``variables/``"
+
+#: ../../user/saving_and_loading.rst:90
+msgid "A directory containing outputs from the Tensorflow Saver."
+msgstr "一個包含 Tensorflow Saver 輸出的目錄。"
+
+#: ../../user/saving_and_loading.rst:91
+msgid "See documentation for `Tensorflow SavedModel`_."
+msgstr "請參閱 `Tensorflow SavedModel`_ 文件。"
+
+#: ../../user/saving_and_loading.rst:93
+msgid "``model_info.pkl``"
+msgstr "``model_info.pkl``"
+
+#: ../../user/saving_and_loading.rst:93
+msgid "A dict containing information (map from key to tensor name)"
+msgstr "一個包含資訊的字典（從鍵到張量名稱的映射），"
+
+#: ../../user/saving_and_loading.rst:94
+msgid "which helps us unpack the saved model after loading."
+msgstr "幫助我們在載入後解包已儲存的模型。"
+
+#: ../../user/saving_and_loading.rst:96
+msgid "``saved_model.pb``"
+msgstr "``saved_model.pb``"
+
+#: ../../user/saving_and_loading.rst:96
+msgid "A protocol buffer, needed for a `Tensorflow SavedModel`_."
+msgstr "一個 protocol buffer 檔案，`Tensorflow SavedModel`_ 所需。"
+
+#: ../../user/saving_and_loading.rst:104
+msgid "Save Directory Location"
+msgstr "儲存目錄位置"
+
+#: ../../user/saving_and_loading.rst:106
+msgid ""
+"Experiment results will, by default, be saved in the same directory as "
+"the Spinning Up package, in a folder called ``data``:"
+msgstr ""
+"實驗結果預設會儲存在與 Spinning Up 套件相同目錄下名為 ``data`` 的資料夾中："
+
+#: ../../user/saving_and_loading.rst:120
+msgid ""
+"You can change the default results directory by modifying "
+"``DEFAULT_DATA_DIR`` in ``spinup/user_config.py``."
+msgstr ""
+"你可以透過修改 ``spinup/user_config.py`` 中的 ``DEFAULT_DATA_DIR`` 來更改預設結果目錄。"
+
+#: ../../user/saving_and_loading.rst:124
+msgid "Loading and Running Trained Policies"
+msgstr "載入和執行已訓練的策略"
+
+#: ../../user/saving_and_loading.rst:128
+msgid "If Environment Saves Successfully"
+msgstr "如果環境儲存成功"
+
+#: ../../user/saving_and_loading.rst:130
+msgid ""
+"For cases where the environment is successfully saved alongside the "
+"agent, it's a cinch to watch the trained agent act in the environment "
+"using:"
+msgstr ""
+"對於環境與代理一起成功儲存的情況，使用以下命令即可輕鬆觀看已訓練代理在環境中的表現："
+
+#: ../../user/saving_and_loading.rst:138
+msgid "There are a few flags for options:"
+msgstr "有幾個選項旗標："
+
+#: ../../user/saving_and_loading.rst:143
+msgid ""
+"*int*. Maximum length of test episode / trajectory / rollout. The default"
+" of 0 means no maximum episode length---episodes only end when the agent "
+"has reached a terminal state in the environment. (Note: setting L=0 will "
+"not prevent Gym envs wrapped by TimeLimit wrappers from ending when they "
+"reach their pre-set maximum episode length.)"
+msgstr ""
+"*int*。測試回合 (episode) / 軌跡 (trajectory) / 展開 (rollout) 的最大長度。"
+"預設值 0 表示沒有最大回合長度——回合僅在代理到達環境的終止狀態時才結束。"
+"（注意：設定 L=0 不會阻止被 TimeLimit 包裝器包裝的 Gym 環境在達到預設最大回合長度時結束。）"
+
+#: ../../user/saving_and_loading.rst:147
+msgid "*int*. Number of test episodes to run the agent for."
+msgstr "*int*。對代理執行的測試回合數。"
+
+#: ../../user/saving_and_loading.rst:151
+msgid ""
+"Do not render the test episodes to the screen. In this case, "
+"``test_policy`` will only print the episode returns and lengths. (Use "
+"case: the renderer slows down the testing process, and you just want to "
+"get a fast sense of how the agent is performing, so you don't "
+"particularly care to watch it.)"
+msgstr ""
+"不將測試回合渲染到螢幕上。在這種情況下，``test_policy`` 只會印出回合回報 (return) 和長度。"
+"（使用情境：渲染器會減慢測試過程，而你只想快速了解代理的表現，不特別需要觀看。）"
+
+#: ../../user/saving_and_loading.rst:155
+msgid ""
+"*int*. This is an option for a special case which is not supported by "
+"algorithms in this package as-shipped, but which they are easily modified"
+" to do. Use case: Sometimes it's nice to watch trained agents from many "
+"different points in training (eg watch at iteration 50, 100, 150, etc.). "
+"The logger can do this---save snapshots of the agent from those different"
+" points, so they can be run and watched later. In this case, you use this"
+" flag to specify which iteration to run. But again: spinup algorithms by "
+"default only save snapshots of the most recent agent, overwriting the old"
+" snapshots."
+msgstr ""
+"*int*。這是一個特殊情況的選項，此套件出廠時不支援，但很容易修改以實現。"
+"使用情境：有時候觀看訓練過程中不同時間點的代理表現很有用（例如觀看第 50、100、150 次迭代等）。"
+"記錄器可以做到這點——儲存代理在不同時間點的快照，以便之後執行和觀看。"
+"在這種情況下，你使用此旗標指定要執行的迭代次數。"
+"但請注意：Spinning Up 演算法預設只儲存最新代理的快照，會覆蓋舊的快照。"
+
+#: ../../user/saving_and_loading.rst:157
+msgid "The default value of this flag means \"use the latest snapshot.\""
+msgstr "此旗標的預設值表示「使用最新的快照」。"
+
+#: ../../user/saving_and_loading.rst:159
+msgid ""
+"To modify an algo so it does produce multiple snapshots, find the "
+"following line (which is present in all of the algorithms):"
+msgstr "若要修改演算法使其產生多個快照，請找到以下程式碼行（所有演算法中都有）："
+
+#: ../../user/saving_and_loading.rst:165
+msgid "and tweak it to"
+msgstr "並將其修改為"
+
+#: ../../user/saving_and_loading.rst:171
+msgid ""
+"Make sure to then also set ``save_freq`` to something reasonable (because"
+" if it defaults to 1, for instance, you'll flood your output directory "
+"with one ``save`` folder for each snapshot---which adds up fast)."
+msgstr ""
+"請確保同時將 ``save_freq`` 設定為合理的值"
+"（因為如果保持預設值 1，你的輸出目錄會充滿每個快照一個的 ``save`` 資料夾——數量很快就會累積）。"
+
+#: ../../user/saving_and_loading.rst:176
+msgid ""
+"Another special case, which is only used for SAC. The Spinning Up SAC "
+"implementation trains a stochastic policy, but is evaluated using the "
+"deterministic *mean* of the action distribution. ``test_policy`` will "
+"default to using the stochastic policy trained by SAC, but you should set"
+" the deterministic flag to watch the deterministic mean policy (the "
+"correct evaluation policy for SAC). This flag is not used for any other "
+"algorithms."
+msgstr ""
+"另一個特殊情況，僅用於 SAC。Spinning Up 的 SAC 實作訓練的是隨機策略 (stochastic policy)，"
+"但使用動作分佈的確定性*平均值*進行評估。``test_policy`` 預設使用 SAC 訓練的隨機策略，"
+"但你應該設定 deterministic 旗標以觀看確定性平均策略"
+"（SAC 的正確評估策略）。此旗標不用於其他任何演算法。"
+
+#: ../../user/saving_and_loading.rst:181
+msgid "Environment Not Found Error"
+msgstr "環境未找到錯誤"
+
+#: ../../user/saving_and_loading.rst:183
+msgid ""
+"If the environment wasn't saved successfully, you can expect "
+"``test_policy.py`` to crash with something that looks like"
+msgstr ""
+"如果環境未成功儲存，``test_policy.py`` 會崩潰並顯示類似以下的錯誤訊息"
+
+#: ../../user/saving_and_loading.rst:199
+msgid ""
+"In this case, watching your agent perform is slightly more of a pain but "
+"not impossible, as long as you can recreate your environment easily. Try "
+"the following in IPython:"
+msgstr ""
+"在這種情況下，觀看代理的表現會稍微麻煩一些，但只要你能輕鬆重建環境就不是不可能。"
+"可以在 IPython 中嘗試以下操作："
+
+#: ../../user/saving_and_loading.rst:213
+msgid "Using Trained Value Functions"
+msgstr "使用已訓練的價值函數"
+
+#: ../../user/saving_and_loading.rst:215
+msgid ""
+"The ``test_policy.py`` tool doesn't help you look at trained value "
+"functions, and if you want to use those, you will have to do some digging"
+" by hand. For the PyTorch case, load the saved model file with "
+"``torch.load`` and check the documentation for each algorithm to see what"
+" modules the ActorCritic object has. For the Tensorflow case, load the "
+"saved computation graph with the `restore_tf_graph`_ function, and check "
+"the documentation for each algorithm to see what functions were saved."
+msgstr ""
+"``test_policy.py`` 工具無法幫助你查看已訓練的價值函數，如果你想使用它們，需要自行探索。"
+"對於 PyTorch 的情況，使用 ``torch.load`` 載入已儲存的模型檔案，"
+"並查閱各演算法的文件以了解 ActorCritic 物件包含哪些模組。"
+"對於 Tensorflow 的情況，使用 `restore_tf_graph`_ 函式載入已儲存的計算圖，"
+"並查閱各演算法的文件以了解哪些函式已被儲存。"

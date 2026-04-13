@@ -1,0 +1,36 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/rl_intro4.rst:3
+msgid "Limitations and Frontiers"
+msgstr "限制與前沿"
+
+#: ../../spinningup/rl_intro4.rst:7
+msgid "Reward Design"
+msgstr "獎勵設計"
+
+#: ../../spinningup/rl_intro4.rst:11
+msgid "Sample Complexity"
+msgstr "樣本複雜度"
+
+#: ../../spinningup/rl_intro4.rst:15
+msgid "Long-Horizon Tasks"
+msgstr "長期視野任務"

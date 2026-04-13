@@ -1,0 +1,37 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../etc/author.rst:3
+msgid "About the Author"
+msgstr "關於作者"
+
+#: ../../etc/author.rst:5
+msgid ""
+"Spinning Up in Deep RL was primarily developed by Josh Achiam, a research"
+" scientist on the OpenAI Safety Team and PhD student at UC Berkeley "
+"advised by Pieter Abbeel. Josh studies topics related to safety in deep "
+"reinforcement learning, and has previously published work on `safe "
+"exploration`_."
+msgstr ""
+"Spinning Up in Deep RL 主要由 Josh Achiam 開發，他是 OpenAI Safety Team "
+"的研究科學家，同時也是 UC Berkeley 由 Pieter Abbeel 指導的博士生。Josh "
+"研究與深度強化學習（deep reinforcement learning）安全性相關的主題，"
+"並曾發表過關於 `safe exploration`_（安全探索）的研究。"

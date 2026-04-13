@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../etc/acknowledgements.rst:3
+msgid "Acknowledgements"
+msgstr "致謝"
+
+#: ../../etc/acknowledgements.rst:5
+msgid ""
+"We gratefully acknowledge the contributions of the many people who helped"
+" get this project off of the ground, including people who beta tested the"
+" software, gave feedback on the material, improved dependencies of "
+"Spinning Up code in service of this release, or otherwise supported the "
+"project. Given the number of people who were involved at various points, "
+"this list of names may not be exhaustive. (If you think you should have "
+"been listed here, please do not hesitate to reach out.)"
+msgstr ""
+"我們衷心感謝所有幫助這個專案順利啟動的人們的貢獻，包括參與軟體 beta 測試、"
+"提供教材回饋、為此次發布改進 Spinning Up 程式碼依賴項，或以其他方式支持"
+"本專案的人們。鑑於在各個階段參與的人數眾多，此名單可能並不完整。"
+"（如果你認為你應該被列在這裡，請不要猶豫，隨時與我們聯繫。）"
+
+#: ../../etc/acknowledgements.rst:7
+msgid ""
+"In no particular order, thank you Alex Ray, Amanda Askell, Ben Garfinkel,"
+" Christy Dennison, Coline Devin, Daniel Zeigler, Dylan Hadfield-Menell, "
+"Ge Yang, Greg Khan, Jack Clark, Jonas Rothfuss, Larissa Schiavo, Leandro "
+"Castelao, Lilian Weng, Maddie Hall, Matthias Plappert, Miles Brundage, "
+"Peter Zokhov, and Pieter Abbeel."
+msgstr ""
+"排名不分先後，感謝 Alex Ray、Amanda Askell、Ben Garfinkel、Christy Dennison、"
+"Coline Devin、Daniel Zeigler、Dylan Hadfield-Menell、Ge Yang、Greg Khan、"
+"Jack Clark、Jonas Rothfuss、Larissa Schiavo、Leandro Castelao、Lilian Weng、"
+"Maddie Hall、Matthias Plappert、Miles Brundage、Peter Zokhov 和 Pieter Abbeel。"
+
+#: ../../etc/acknowledgements.rst:9
+msgid ""
+"We are also grateful to Pieter Abbeel's group at Berkeley, and the Center"
+" for Human-Compatible AI, for giving feedback on presentations about "
+"Spinning Up."
+msgstr ""
+"我們也感謝 Pieter Abbeel 在 Berkeley 的研究團隊以及 Center for "
+"Human-Compatible AI 對 Spinning Up 相關演講提供的回饋。"

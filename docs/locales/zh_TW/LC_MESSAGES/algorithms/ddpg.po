@@ -1,0 +1,873 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../algorithms/ddpg.rst:3
+msgid "Deep Deterministic Policy Gradient"
+msgstr "深度確定性策略梯度 (Deep Deterministic Policy Gradient)"
+
+#: ../../algorithms/ddpg.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../algorithms/ddpg.rst:8
+msgid "Background"
+msgstr "背景"
+
+#: ../../algorithms/ddpg.rst:10
+msgid ""
+"(Previously: `Introduction to RL Part 1: The Optimal Q-Function and the "
+"Optimal Action`_)"
+msgstr ""
+"（先前章節：`Introduction to RL Part 1: The Optimal Q-Function and the "
+"Optimal Action`_）"
+
+#: ../../algorithms/ddpg.rst:14
+msgid ""
+"Deep Deterministic Policy Gradient (DDPG) is an algorithm which "
+"concurrently learns a Q-function and a policy. It uses off-policy data "
+"and the Bellman equation to learn the Q-function, and uses the Q-function"
+" to learn the policy."
+msgstr ""
+"深度確定性策略梯度 (DDPG) 是一種同時學習 Q 函數 (Q-Function) 和策略的演算法。"
+"它使用離策略 (Off-policy) 資料和 Bellman 方程式來學習 Q 函數，並使用 Q 函數來"
+"學習策略。"
+
+#: ../../algorithms/ddpg.rst:16
+msgid ""
+"This approach is closely connected to Q-learning, and is motivated the "
+"same way: if you know the optimal action-value function :math:`Q^*(s,a)`,"
+" then in any given state, the optimal action :math:`a^*(s)` can be found "
+"by solving"
+msgstr ""
+"這種方法與 Q-learning 密切相關，動機也相同：如果你知道最優動作-價值函數 "
+":math:`Q^*(s,a)`，那麼在任何給定狀態下，最優動作 :math:`a^*(s)` 可以透過求解"
+"以下問題得到"
+
+#: ../../algorithms/ddpg.rst:18
+msgid "a^*(s) = \\arg \\max_a Q^*(s,a)."
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:22
+msgid ""
+"DDPG interleaves learning an approximator to :math:`Q^*(s,a)` with "
+"learning an approximator to :math:`a^*(s)`, and it does so in a way which"
+" is specifically adapted for environments with continuous action spaces. "
+"But what does it mean that DDPG is adapted *specifically* for "
+"environments with continuous action spaces? It relates to how we compute "
+"the max over actions in :math:`\\max_a Q^*(s,a)`."
+msgstr ""
+"DDPG 交替學習 :math:`Q^*(s,a)` 的近似器和 :math:`a^*(s)` 的近似器，並且以一"
+"種專門適應連續動作空間 (Action Space) 環境的方式進行。但 DDPG *專門*適應連續"
+"動作空間環境是什麼意思呢？這與我們如何計算 :math:`\\max_a Q^*(s,a)` 中對動作"
+"取最大值有關。"
+
+#: ../../algorithms/ddpg.rst:24
+msgid ""
+"When there are a finite number of discrete actions, the max poses no "
+"problem, because we can just compute the Q-values for each action "
+"separately and directly compare them. (This also immediately gives us the"
+" action which maximizes the Q-value.) But when the action space is "
+"continuous, we can't exhaustively evaluate the space, and solving the "
+"optimization problem is highly non-trivial. Using a normal optimization "
+"algorithm would make calculating :math:`\\max_a Q^*(s,a)` a painfully "
+"expensive subroutine. And since it would need to be run every time the "
+"agent wants to take an action in the environment, this is unacceptable."
+msgstr ""
+"當離散動作數量有限時，取最大值不成問題，因為我們可以分別計算每個動作的 Q 值並"
+"直接比較。（這也立即給出了使 Q 值最大化的動作。）但當動作空間是連續的時候，我"
+"們無法窮舉地評估整個空間，求解這個最佳化問題非常困難。使用一般的最佳化演算法"
+"會使計算 :math:`\\max_a Q^*(s,a)` 成為一個代價極其高昂的子程式。而且由於每次"
+"代理程式要在環境中執行動作時都需要執行它，這是不可接受的。"
+
+#: ../../algorithms/ddpg.rst:26
+msgid ""
+"Because the action space is continuous, the function :math:`Q^*(s,a)` is "
+"presumed to be differentiable with respect to the action argument. This "
+"allows us to set up an efficient, gradient-based learning rule for a "
+"policy :math:`\\mu(s)` which exploits that fact. Then, instead of running"
+" an expensive optimization subroutine each time we wish to compute "
+":math:`\\max_a Q(s,a)`, we can approximate it with :math:`\\max_a Q(s,a) "
+"\\approx Q(s,\\mu(s))`. See the Key Equations section details."
+msgstr ""
+"因為動作空間是連續的，函數 :math:`Q^*(s,a)` 被假設對動作引數可微分。這使我們"
+"能夠為策略 :math:`\\mu(s)` 建立一個高效的、基於梯度的學習規則來利用這一事實。"
+"然後，我們不需要每次計算 :math:`\\max_a Q(s,a)` 時都執行昂貴的最佳化子程式，"
+"而是可以用 :math:`\\max_a Q(s,a) \\approx Q(s,\\mu(s))` 來近似它。詳見關鍵方"
+"程式章節。"
+
+#: ../../algorithms/ddpg.rst:30
+msgid "Quick Facts"
+msgstr "快速概覽"
+
+#: ../../algorithms/ddpg.rst:32
+msgid "DDPG is an off-policy algorithm."
+msgstr "DDPG 是一種離策略 (Off-policy) 演算法。"
+
+#: ../../algorithms/ddpg.rst:33
+msgid "DDPG can only be used for environments with continuous action spaces."
+msgstr "DDPG 只能用於具有連續動作空間的環境。"
+
+#: ../../algorithms/ddpg.rst:34
+msgid ""
+"DDPG can be thought of as being deep Q-learning for continuous action "
+"spaces."
+msgstr "DDPG 可以被視為連續動作空間版本的深度 Q-learning。"
+
+#: ../../algorithms/ddpg.rst:35
+msgid "The Spinning Up implementation of DDPG does not support parallelization."
+msgstr "Spinning Up 的 DDPG 實作不支援平行化。"
+
+#: ../../algorithms/ddpg.rst:38
+msgid "Key Equations"
+msgstr "關鍵方程式"
+
+#: ../../algorithms/ddpg.rst:40
+msgid ""
+"Here, we'll explain the math behind the two parts of DDPG: learning a Q "
+"function, and learning a policy."
+msgstr "在此，我們將解釋 DDPG 兩個部分背後的數學：學習 Q 函數和學習策略。"
+
+#: ../../algorithms/ddpg.rst:43
+msgid "The Q-Learning Side of DDPG"
+msgstr "DDPG 的 Q-Learning 面向"
+
+#: ../../algorithms/ddpg.rst:45
+msgid ""
+"First, let's recap the Bellman equation describing the optimal action-"
+"value function, :math:`Q^*(s,a)`. It's given by"
+msgstr ""
+"首先，讓我們回顧描述最優動作-價值函數 :math:`Q^*(s,a)` 的 Bellman 方程式。"
+"它定義為"
+
+#: ../../algorithms/ddpg.rst:47
+#, python-brace-format
+msgid ""
+"Q^*(s,a) = \\underset{s' \\sim P}{{\\mathrm E}}\\left[r(s,a) + \\gamma "
+"\\max_{a'} Q^*(s', a')\\right]"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:51
+msgid ""
+"where :math:`s' \\sim P` is shorthand for saying that the next state, "
+":math:`s'`, is sampled by the environment from a distribution "
+":math:`P(\\cdot| s,a)`."
+msgstr ""
+"其中 :math:`s' \\sim P` 是簡寫，表示下一個狀態 :math:`s'` 是環境從分佈 "
+":math:`P(\\cdot| s,a)` 中取樣的。"
+
+#: ../../algorithms/ddpg.rst:53
+#, python-brace-format
+msgid ""
+"This Bellman equation is the starting point for learning an approximator "
+"to :math:`Q^*(s,a)`. Suppose the approximator is a neural network "
+":math:`Q_{\\phi}(s,a)`, with parameters :math:`\\phi`, and that we have "
+"collected a set :math:`{\\mathcal D}` of transitions :math:`(s,a,r,s',d)`"
+" (where :math:`d` indicates whether state :math:`s'` is terminal). We can"
+" set up a **mean-squared Bellman error (MSBE)** function, which tells us "
+"roughly how closely :math:`Q_{\\phi}` comes to satisfying the Bellman "
+"equation:"
+msgstr ""
+"這個 Bellman 方程式是學習 :math:`Q^*(s,a)` 近似器的起點。假設近似器是一個參數"
+"為 :math:`\\phi` 的神經網路 :math:`Q_{\\phi}(s,a)`，且我們已收集了一組轉移 "
+":math:`{\\mathcal D}`，包含 :math:`(s,a,r,s',d)`（其中 :math:`d` 表示狀態 "
+":math:`s'` 是否為終止狀態）。我們可以建立一個**均方 Bellman 誤差 (MSBE)** 函"
+"數，大致告訴我們 :math:`Q_{\\phi}` 多接近滿足 Bellman 方程式："
+
+#: ../../algorithms/ddpg.rst:55
+msgid ""
+"L(\\phi, {\\mathcal D}) = \\underset{(s,a,r,s',d) \\sim {\\mathcal "
+"D}}{{\\mathrm E}}\\left[\n"
+"    \\Bigg( Q_{\\phi}(s,a) - \\left(r + \\gamma (1 - d) \\max_{a'} "
+"Q_{\\phi}(s',a') \\right) \\Bigg)^2\n"
+"    \\right]"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:61
+msgid ""
+"Here, in evaluating :math:`(1-d)`, we've used a Python convention of "
+"evaluating ``True`` to 1 and ``False`` to zero. Thus, when "
+"``d==True``---which is to say, when :math:`s'` is a terminal state---the "
+"Q-function should show that the agent gets no additional rewards after "
+"the current state. (This choice of notation corresponds to what we later "
+"implement in code.)"
+msgstr ""
+"在這裡，在計算 :math:`(1-d)` 時，我們使用了 Python 的慣例，將 ``True`` 視為 "
+"1，``False`` 視為零。因此，當 ``d==True``——也就是說，當 :math:`s'` 是終止狀態"
+"時——Q 函數應該顯示代理程式在當前狀態之後不會獲得額外獎勵。（這種符號選擇與我"
+"們後續在程式碼中的實作相對應。）"
+
+#: ../../algorithms/ddpg.rst:63
+msgid ""
+"Q-learning algorithms for function approximators, such as DQN (and all "
+"its variants) and DDPG, are largely based on minimizing this MSBE loss "
+"function. There are two main tricks employed by all of them which are "
+"worth describing, and then a specific detail for DDPG."
+msgstr ""
+"用於函數近似器的 Q-learning 演算法，如 DQN（及其所有變體）和 DDPG，主要基於最"
+"小化這個 MSBE 損失函數。它們都使用了兩個值得描述的主要技巧，以及一個 DDPG 的"
+"特定細節。"
+
+#: ../../algorithms/ddpg.rst:65
+#, python-brace-format
+msgid ""
+"**Trick One: Replay Buffers.** All standard algorithms for training a "
+"deep neural network to approximate :math:`Q^*(s,a)` make use of an "
+"experience replay buffer. This is the set :math:`{\\mathcal D}` of "
+"previous experiences. In order for the algorithm to have stable behavior,"
+" the replay buffer should be large enough to contain a wide range of "
+"experiences, but it may not always be good to keep everything. If you "
+"only use the very-most recent data, you will overfit to that and things "
+"will break; if you use too much experience, you may slow down your "
+"learning. This may take some tuning to get right."
+msgstr ""
+"**技巧一：經驗回放緩衝區 (Replay Buffer)。** 所有用於訓練深度神經網路以近似 "
+":math:`Q^*(s,a)` 的標準演算法都使用經驗回放緩衝區。這就是先前經驗的集合 "
+":math:`{\\mathcal D}`。為了使演算法具有穩定的行為，回放緩衝區應該足夠大以包含"
+"廣泛的經驗，但保留所有內容並不總是好的。如果你只使用最近的資料，你會過度擬合"
+"並導致問題；如果你使用太多經驗，可能會減慢學習速度。這可能需要一些調整才能做"
+"好。"
+
+#: ../../algorithms/ddpg.rst:67 ../../algorithms/ddpg.rst:123
+#: ../../algorithms/ddpg.rst:176
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../algorithms/ddpg.rst:69
+msgid ""
+"We've mentioned that DDPG is an off-policy algorithm: this is as good a "
+"point as any to highlight why and how. Observe that the replay buffer "
+"*should* contain old experiences, even though they might have been "
+"obtained using an outdated policy. Why are we able to use these at all? "
+"The reason is that the Bellman equation *doesn't care* which transition "
+"tuples are used, or how the actions were selected, or what happens after "
+"a given transition, because the optimal Q-function should satisfy the "
+"Bellman equation for *all* possible transitions. So any transitions that "
+"we've ever experienced are fair game when trying to fit a Q-function "
+"approximator via MSBE minimization."
+msgstr ""
+"我們已經提到 DDPG 是一種離策略演算法：這裡正好可以重點說明原因和方式。注意回"
+"放緩衝區*應該*包含舊的經驗，即使這些經驗可能是用過時的策略獲得的。為什麼我們"
+"能使用這些舊經驗呢？原因在於 Bellman 方程式*不在乎*使用的是哪些轉移元組，也"
+"不在乎動作是如何選擇的，或者給定轉移之後發生了什麼，因為最優 Q 函數應該對*所"
+"有*可能的轉移都滿足 Bellman 方程式。所以我們曾經歷過的任何轉移，在透過 MSBE "
+"最小化來擬合 Q 函數近似器時都是可以使用的。"
+
+#: ../../algorithms/ddpg.rst:71
+msgid ""
+"**Trick Two: Target Networks.** Q-learning algorithms make use of "
+"**target networks**. The term"
+msgstr ""
+"**技巧二：目標網路 (Target Network)。** Q-learning 演算法使用**目標網路**。"
+"以下這一項"
+
+#: ../../algorithms/ddpg.rst:73
+#, python-brace-format
+msgid "r + \\gamma (1 - d) \\max_{a'} Q_{\\phi}(s',a')"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:77
+msgid ""
+"is called the **target**, because when we minimize the MSBE loss, we are "
+"trying to make the Q-function be more like this target. Problematically, "
+"the target depends on the same parameters we are trying to train: "
+":math:`\\phi`. This makes MSBE minimization unstable. The solution is to "
+"use a set of parameters which comes close to :math:`\\phi`, but with a "
+"time delay---that is to say, a second network, called the target network,"
+" which lags the first. The parameters of the target network are denoted "
+":math:`\\phi_{\\text{targ}}`."
+msgstr ""
+"被稱為**目標值**，因為當我們最小化 MSBE 損失時，我們試圖讓 Q 函數更接近這個"
+"目標值。問題在於，目標值依賴於我們正在訓練的相同參數 :math:`\\phi`。這使得 "
+"MSBE 最小化變得不穩定。解決方案是使用一組接近 :math:`\\phi` 但有時間延遲的參"
+"數——也就是說，使用第二個網路，稱為目標網路，它滯後於第一個網路。目標網路的參數"
+"記為 :math:`\\phi_{\\text{targ}}`。"
+
+#: ../../algorithms/ddpg.rst:79
+msgid ""
+"In DQN-based algorithms, the target network is just copied over from the "
+"main network every some-fixed-number of steps. In DDPG-style algorithms, "
+"the target network is updated once per main network update by polyak "
+"averaging:"
+msgstr ""
+"在基於 DQN 的演算法中，目標網路每隔固定步數從主網路直接複製。在 DDPG 風格的"
+"演算法中，目標網路在每次主網路更新時透過 Polyak 平均進行一次更新："
+
+#: ../../algorithms/ddpg.rst:81
+msgid ""
+"\\phi_{\\text{targ}} \\leftarrow \\rho \\phi_{\\text{targ}} + (1 - \\rho)"
+" \\phi,"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:85
+msgid ""
+"where :math:`\\rho` is a hyperparameter between 0 and 1 (usually close to"
+" 1). (This hyperparameter is called ``polyak`` in our code)."
+msgstr ""
+"其中 :math:`\\rho` 是一個介於 0 和 1 之間的超參數（通常接近 1）。（此超參數在"
+"我們的程式碼中稱為 ``polyak``）。"
+
+#: ../../algorithms/ddpg.rst:88
+msgid ""
+"**DDPG Detail: Calculating the Max Over Actions in the Target.** As "
+"mentioned earlier: computing the maximum over actions in the target is a "
+"challenge in continuous action spaces. DDPG deals with this by using a "
+"**target policy network** to compute an action which approximately "
+"maximizes :math:`Q_{\\phi_{\\text{targ}}}`. The target policy network is "
+"found the same way as the target Q-function: by polyak averaging the "
+"policy parameters over the course of training."
+msgstr ""
+"**DDPG 細節：計算目標值中對動作的最大化。** 如前所述：在連續動作空間中計算目"
+"標值中對動作的最大化是一個挑戰。DDPG 透過使用**目標策略網路**來計算一個近似最"
+"大化 :math:`Q_{\\phi_{\\text{targ}}}` 的動作來解決此問題。目標策略網路的獲得"
+"方式與目標 Q 函數相同：在訓練過程中對策略參數進行 Polyak 平均。"
+
+#: ../../algorithms/ddpg.rst:90
+msgid ""
+"Putting it all together, Q-learning in DDPG is performed by minimizing "
+"the following MSBE loss with stochastic gradient descent:"
+msgstr ""
+"綜合以上所有內容，DDPG 中的 Q-learning 是透過隨機梯度下降 (Stochastic "
+"Gradient Descent) 最小化以下 MSBE 損失來執行的："
+
+#: ../../algorithms/ddpg.rst:92
+msgid ""
+"L(\\phi, {\\mathcal D}) = \\underset{(s,a,r,s',d) \\sim {\\mathcal "
+"D}}{{\\mathrm E}}\\left[\n"
+"    \\Bigg( Q_{\\phi}(s,a) - \\left(r + \\gamma (1 - d) "
+"Q_{\\phi_{\\text{targ}}}(s', \\mu_{\\theta_{\\text{targ}}}(s')) \\right) "
+"\\Bigg)^2\n"
+"    \\right],"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:98
+msgid "where :math:`\\mu_{\\theta_{\\text{targ}}}` is the target policy."
+msgstr "其中 :math:`\\mu_{\\theta_{\\text{targ}}}` 是目標策略。"
+
+#: ../../algorithms/ddpg.rst:102
+msgid "The Policy Learning Side of DDPG"
+msgstr "DDPG 的策略學習面向"
+
+#: ../../algorithms/ddpg.rst:104
+#, python-brace-format
+msgid ""
+"Policy learning in DDPG is fairly simple. We want to learn a "
+"deterministic policy :math:`\\mu_{\\theta}(s)` which gives the action "
+"that maximizes :math:`Q_{\\phi}(s,a)`. Because the action space is "
+"continuous, and we assume the Q-function is differentiable with respect "
+"to action, we can just perform gradient ascent (with respect to policy "
+"parameters only) to solve"
+msgstr ""
+"DDPG 中的策略學習相當簡單。我們想要學習一個確定性策略 (Deterministic Policy) "
+":math:`\\mu_{\\theta}(s)`，它給出使 :math:`Q_{\\phi}(s,a)` 最大化的動作。因為"
+"動作空間是連續的，且我們假設 Q 函數對動作可微分，我們可以直接執行梯度上升 "
+"(Gradient Ascent)（僅對策略參數）來求解"
+
+#: ../../algorithms/ddpg.rst:106
+msgid ""
+"\\max_{\\theta} \\underset{s \\sim {\\mathcal D}}{{\\mathrm E}}\\left[ "
+"Q_{\\phi}(s, \\mu_{\\theta}(s)) \\right]."
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:110
+msgid "Note that the Q-function parameters are treated as constants here."
+msgstr "注意這裡 Q 函數的參數被視為常數。"
+
+#: ../../algorithms/ddpg.rst:115
+msgid "Exploration vs. Exploitation"
+msgstr "探索與利用"
+
+#: ../../algorithms/ddpg.rst:117
+msgid ""
+"DDPG trains a deterministic policy in an off-policy way. Because the "
+"policy is deterministic, if the agent were to explore on-policy, in the "
+"beginning it would probably not try a wide enough variety of actions to "
+"find useful learning signals. To make DDPG policies explore better, we "
+"add noise to their actions at training time. The authors of the original "
+"DDPG paper recommended time-correlated `OU noise`_, but more recent "
+"results suggest that uncorrelated, mean-zero Gaussian noise works "
+"perfectly well. Since the latter is simpler, it is preferred. To "
+"facilitate getting higher-quality training data, you may reduce the scale"
+" of the noise over the course of training. (We do not do this in our "
+"implementation, and keep noise scale fixed throughout.)"
+msgstr ""
+"DDPG 以離策略的方式訓練一個確定性策略。因為策略是確定性的，如果代理程式進行"
+"同策略探索 (Exploration)，在初期可能不會嘗試足夠多樣的動作來找到有用的學習信"
+"號。為了讓 DDPG 策略更好地探索，我們在訓練時為動作添加雜訊。原始 DDPG 論文的"
+"作者推薦時間相關的 `OU noise`_（OU 雜訊），但更近期的結果表明，不相關的零均值"
+"高斯雜訊效果也很好。由於後者更簡單，因此更受青睞。為了促進獲得更高品質的訓練"
+"資料，你可以在訓練過程中逐步降低雜訊的強度。（我們在實作中不這樣做，在整個訓"
+"練過程中保持雜訊強度固定。）"
+
+#: ../../algorithms/ddpg.rst:119
+msgid ""
+"At test time, to see how well the policy exploits what it has learned, we"
+" do not add noise to the actions."
+msgstr "在測試時，為了觀察策略如何利用 (Exploitation) 所學到的知識，我們不對動作添加雜訊。"
+
+#: ../../algorithms/ddpg.rst:125
+msgid ""
+"Our DDPG implementation uses a trick to improve exploration at the start "
+"of training. For a fixed number of steps at the beginning (set with the "
+"``start_steps`` keyword argument), the agent takes actions which are "
+"sampled from a uniform random distribution over valid actions. After "
+"that, it returns to normal DDPG exploration."
+msgstr ""
+"我們的 DDPG 實作使用了一個技巧來改善訓練初期的探索。在開始的固定步數內（透過"
+" ``start_steps`` 關鍵字引數設定），代理程式從有效動作的均勻隨機分佈中取樣動"
+"作。之後，它恢復到正常的 DDPG 探索方式。"
+
+#: ../../algorithms/ddpg.rst:129
+msgid "Pseudocode"
+msgstr "虛擬碼"
+
+#: ../../algorithms/ddpg.rst:131
+msgid ""
+"\\begin{algorithm}[H]\n"
+"    \\caption{Deep Deterministic Policy Gradient}\n"
+"    \\label{alg1}\n"
+"\\begin{algorithmic}[1]\n"
+"    \\STATE Input: initial policy parameters $\\theta$, Q-function "
+"parameters $\\phi$, empty replay buffer $\\mathcal{D}$\n"
+"    \\STATE Set target parameters equal to main parameters "
+"$\\theta_{\\text{targ}} \\leftarrow \\theta$, $\\phi_{\\text{targ}} "
+"\\leftarrow \\phi$\n"
+"    \\REPEAT\n"
+"        \\STATE Observe state $s$ and select action $a = "
+"\\text{clip}(\\mu_{\\theta}(s) + \\epsilon, a_{Low}, a_{High})$, where "
+"$\\epsilon \\sim \\mathcal{N}$\n"
+"        \\STATE Execute $a$ in the environment\n"
+"        \\STATE Observe next state $s'$, reward $r$, and done signal $d$ "
+"to indicate whether $s'$ is terminal\n"
+"        \\STATE Store $(s,a,r,s',d)$ in replay buffer $\\mathcal{D}$\n"
+"        \\STATE If $s'$ is terminal, reset environment state.\n"
+"        \\IF{it's time to update}\n"
+"            \\FOR{however many updates}\n"
+"                \\STATE Randomly sample a batch of transitions, $B = \\{ "
+"(s,a,r,s',d) \\}$ from $\\mathcal{D}$\n"
+"                \\STATE Compute targets\n"
+"                \\begin{equation*}\n"
+"                    y(r,s',d) = r + \\gamma (1-d) "
+"Q_{\\phi_{\\text{targ}}}(s', \\mu_{\\theta_{\\text{targ}}}(s'))\n"
+"                \\end{equation*}\n"
+"                \\STATE Update Q-function by one step of gradient descent"
+" using\n"
+"                \\begin{equation*}\n"
+"                    \\nabla_{\\phi} \\frac{1}{|B|}\\sum_{(s,a,r,s',d) "
+"\\in B} \\left( Q_{\\phi}(s,a) - y(r,s',d) \\right)^2\n"
+"                \\end{equation*}\n"
+"                \\STATE Update policy by one step of gradient ascent "
+"using\n"
+"                \\begin{equation*}\n"
+"                    \\nabla_{\\theta} \\frac{1}{|B|}\\sum_{s \\in "
+"B}Q_{\\phi}(s, \\mu_{\\theta}(s))\n"
+"                \\end{equation*}\n"
+"                \\STATE Update target networks with\n"
+"                \\begin{align*}\n"
+"                    \\phi_{\\text{targ}} &\\leftarrow \\rho "
+"\\phi_{\\text{targ}} + (1-\\rho) \\phi \\\\\n"
+"                    \\theta_{\\text{targ}} &\\leftarrow \\rho "
+"\\theta_{\\text{targ}} + (1-\\rho) \\theta\n"
+"                \\end{align*}\n"
+"            \\ENDFOR\n"
+"        \\ENDIF\n"
+"    \\UNTIL{convergence}\n"
+"\\end{algorithmic}\n"
+"\\end{algorithm}"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:174
+msgid "Documentation"
+msgstr "文件說明"
+
+#: ../../algorithms/ddpg.rst:178
+msgid ""
+"In what follows, we give documentation for the PyTorch and Tensorflow "
+"implementations of DDPG in Spinning Up. They have nearly identical "
+"function calls and docstrings, except for details relating to model "
+"construction. However, we include both full docstrings for completeness."
+msgstr ""
+"以下提供 Spinning Up 中 DDPG 的 PyTorch 和 Tensorflow 實作文件。它們的函式呼"
+"叫和文件字串幾乎相同，僅在模型建構的細節上有所不同。不過，為求完整性，我們同"
+"時收錄了兩者的完整文件字串。"
+
+#: ../../algorithms/ddpg.rst:182
+msgid "Documentation: PyTorch Version"
+msgstr "文件說明：PyTorch 版本"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:1
+msgid "Deep Deterministic Policy Gradient (DDPG)"
+msgstr "深度確定性策略梯度 (DDPG)"
+
+#: ../../algorithms/ddpg.rst
+msgid "Parameters"
+msgstr "參數"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:4
+msgid ""
+"A function which creates a copy of the environment. The environment must "
+"satisfy the OpenAI Gym API."
+msgstr "一個用於建立環境副本的函式。環境必須符合 OpenAI Gym API。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:6
+msgid ""
+"The constructor method for a PyTorch Module with an ``act`` method, a "
+"``pi`` module, and a ``q`` module. The ``act`` method and ``pi`` module "
+"should accept batches of observations as inputs, and ``q`` should accept "
+"a batch of observations and a batch of actions as inputs. When called, "
+"these should return:  ===========  ================  "
+"====================================== Call         Output Shape      "
+"Description ===========  ================  "
+"====================================== ``act``      (batch, act_dim)  | "
+"Numpy array of actions for each                                | "
+"observation. ``pi``       (batch, act_dim)  | Tensor containing actions "
+"from policy                                | given observations. ``q``"
+"        (batch,)          | Tensor containing the current estimate"
+"                                | of Q* for the provided observations"
+"                                | and actions. (Critical: make sure to"
+"                                | flatten this!) ===========  "
+"================  ======================================"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:6
+msgid ""
+"The constructor method for a PyTorch Module with an ``act`` method, a "
+"``pi`` module, and a ``q`` module. The ``act`` method and ``pi`` module "
+"should accept batches of observations as inputs, and ``q`` should accept "
+"a batch of observations and a batch of actions as inputs. When called, "
+"these should return:"
+msgstr ""
+"一個 PyTorch Module 的建構方法，需具有 ``act`` 方法、``pi`` 模組和 ``q`` 模"
+"組。``act`` 方法和 ``pi`` 模組應接受批次觀測值作為輸入，``q`` 應接受一批觀測"
+"值和一批動作作為輸入。呼叫時，它們應回傳："
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:13
+msgid "Call"
+msgstr "呼叫"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:13
+msgid "Output Shape"
+msgstr "輸出形狀"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:13
+msgid "Description"
+msgstr "描述"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:15
+msgid "``act``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:15
+#: spinup.algos.pytorch.ddpg.ddpg.ddpg:17
+msgid "(batch, act_dim)"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:15
+msgid "Numpy array of actions for each"
+msgstr "每個觀測對應動作的"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:16
+msgid "observation."
+msgstr "Numpy 陣列。"
+
+#: ../../algorithms/ddpg.rst:213 of spinup.algos.pytorch.ddpg.ddpg.ddpg:17
+msgid "``pi``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:17
+msgid "Tensor containing actions from policy"
+msgstr "包含策略根據觀測值產生之"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:18
+msgid "given observations."
+msgstr "動作的 Tensor。"
+
+#: ../../algorithms/ddpg.rst:215 of spinup.algos.pytorch.ddpg.ddpg.ddpg:19
+msgid "``q``"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:19
+msgid "(batch,)"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:19
+msgid "Tensor containing the current estimate"
+msgstr "包含所提供觀測值和動作的"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:20
+msgid "of Q* for the provided observations"
+msgstr "當前 Q* 估計值的 Tensor。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:21
+msgid "and actions. (Critical: make sure to"
+msgstr "（重要：請確保"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:22
+msgid "flatten this!)"
+msgstr "將其展平！）"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:24
+msgid "Any kwargs appropriate for the ActorCritic object you provided to DDPG."
+msgstr "任何適用於您提供給 DDPG 的 ActorCritic 物件的關鍵字引數。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:27
+msgid "Seed for random number generators."
+msgstr "隨機數產生器的種子。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:29
+msgid ""
+"Number of steps of interaction (state-action pairs) for the agent and the"
+" environment in each epoch."
+msgstr "每個訓練週期 (Epoch) 中代理程式與環境互動的步數（狀態-動作對）。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:32
+msgid "Number of epochs to run and train agent."
+msgstr "執行和訓練代理程式的訓練週期數。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:34
+msgid "Maximum length of replay buffer."
+msgstr "回放緩衝區的最大長度。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:36
+msgid "Discount factor. (Always between 0 and 1.)"
+msgstr "折扣因子 (Discount Factor)。（始終介於 0 和 1 之間。）"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:38
+msgid ""
+"Interpolation factor in polyak averaging for target networks. Target "
+"networks are updated towards main networks according to:  .. math:: "
+"\\theta_{\\text{targ}} \\leftarrow     \\rho \\theta_{\\text{targ}} + "
+"(1-\\rho) \\theta  where :math:`\\rho` is polyak. (Always between 0 and "
+"1, usually close to 1.)"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:38
+msgid ""
+"Interpolation factor in polyak averaging for target networks. Target "
+"networks are updated towards main networks according to:"
+msgstr "目標網路 Polyak 平均的內插因子。目標網路根據以下公式向主網路更新："
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:42
+msgid ""
+"\\theta_{\\text{targ}} \\leftarrow\n"
+"\\rho \\theta_{\\text{targ}} + (1-\\rho) \\theta\n"
+"\n"
+msgstr ""
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:45
+msgid ""
+"where :math:`\\rho` is polyak. (Always between 0 and 1, usually close to "
+"1.)"
+msgstr "其中 :math:`\\rho` 是 polyak。（始終介於 0 和 1 之間，通常接近 1。）"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:48
+msgid "Learning rate for policy."
+msgstr "策略的學習率。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:50
+msgid "Learning rate for Q-networks."
+msgstr "Q 網路的學習率。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:52
+msgid "Minibatch size for SGD."
+msgstr "SGD 的小批次大小。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:54
+msgid ""
+"Number of steps for uniform-random action selection, before running real "
+"policy. Helps exploration."
+msgstr "在執行真正策略之前，均勻隨機動作選擇的步數。有助於探索。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:57
+msgid ""
+"Number of env interactions to collect before starting to do gradient "
+"descent updates. Ensures replay buffer is full enough for useful updates."
+msgstr ""
+"在開始進行梯度下降更新之前要收集的環境互動次數。確保回放緩衝區有足夠的資料以"
+"進行有效的更新。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:61
+msgid ""
+"Number of env interactions that should elapse between gradient descent "
+"updates. Note: Regardless of how long you wait between updates, the ratio"
+" of env steps to gradient steps is locked to 1."
+msgstr ""
+"梯度下降更新之間應經過的環境互動次數。注意：無論更新之間等待多久，環境步數與"
+"梯度步數的比率鎖定為 1。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:66
+msgid ""
+"Stddev for Gaussian exploration noise added to policy at training time. "
+"(At test time, no noise is added.)"
+msgstr "訓練時添加到策略的高斯探索雜訊的標準差。（測試時不添加雜訊。）"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:69
+msgid ""
+"Number of episodes to test the deterministic policy at the end of each "
+"epoch."
+msgstr "每個訓練週期結束時測試確定性策略的回合數。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:72
+msgid "Maximum length of trajectory / episode / rollout."
+msgstr "軌跡／回合／展開的最大長度。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:74
+msgid "Keyword args for EpochLogger."
+msgstr "EpochLogger 的關鍵字引數。"
+
+#: of spinup.algos.pytorch.ddpg.ddpg.ddpg:76
+msgid ""
+"How often (in terms of gap between epochs) to save the current policy and"
+" value function."
+msgstr "儲存當前策略和價值函數的頻率（以訓練週期之間的間隔表示）。"
+
+#: ../../algorithms/ddpg.rst:187
+msgid "Saved Model Contents: PyTorch Version"
+msgstr "儲存的模型內容：PyTorch 版本"
+
+#: ../../algorithms/ddpg.rst:189
+msgid ""
+"The PyTorch saved model can be loaded with ``ac = "
+"torch.load('path/to/model.pt')``, yielding an actor-critic object "
+"(``ac``) that has the properties described in the docstring for "
+"``ddpg_pytorch``."
+msgstr ""
+"PyTorch 儲存的模型可透過 ``ac = torch.load('path/to/model.pt')`` 載入，"
+"會得到一個演員-評論家 (Actor-Critic) 物件（``ac``），具有 ``ddpg_pytorch`` "
+"文件字串中描述的屬性。"
+
+#: ../../algorithms/ddpg.rst:191
+msgid "You can get actions from this model with"
+msgstr "你可以用以下方式從此模型取得動作"
+
+#: ../../algorithms/ddpg.rst:199
+msgid "Documentation: Tensorflow Version"
+msgstr "文件說明：Tensorflow 版本"
+
+#: ../../algorithms/ddpg.rst:204
+msgid "Saved Model Contents: Tensorflow Version"
+msgstr "儲存的模型內容：Tensorflow 版本"
+
+#: ../../algorithms/ddpg.rst:206
+msgid "The computation graph saved by the logger includes:"
+msgstr "記錄器儲存的計算圖包含："
+
+#: ../../algorithms/ddpg.rst:209
+msgid "Key"
+msgstr "鍵"
+
+#: ../../algorithms/ddpg.rst:209
+msgid "Value"
+msgstr "值"
+
+#: ../../algorithms/ddpg.rst:211
+msgid "``x``"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:211
+msgid "Tensorflow placeholder for state input."
+msgstr "用於狀態輸入的 Tensorflow 佔位符。"
+
+#: ../../algorithms/ddpg.rst:212
+msgid "``a``"
+msgstr ""
+
+#: ../../algorithms/ddpg.rst:212
+msgid "Tensorflow placeholder for action input."
+msgstr "用於動作輸入的 Tensorflow 佔位符。"
+
+#: ../../algorithms/ddpg.rst:213
+msgid "Deterministically computes an action from the agent, conditioned"
+msgstr "根據 ``x`` 中的狀態，"
+
+#: ../../algorithms/ddpg.rst:214
+msgid "on states in ``x``."
+msgstr "從代理程式確定性地計算一個動作。"
+
+#: ../../algorithms/ddpg.rst:215
+msgid "Gives action-value estimate for states in ``x`` and actions in ``a``."
+msgstr "給出 ``x`` 中狀態和 ``a`` 中動作的動作-價值估計。"
+
+#: ../../algorithms/ddpg.rst:218
+msgid "This saved model can be accessed either by"
+msgstr "此儲存的模型可以透過以下方式存取"
+
+#: ../../algorithms/ddpg.rst:220
+msgid "running the trained policy with the `test_policy.py`_ tool,"
+msgstr "使用 `test_policy.py`_ 工具執行訓練好的策略，"
+
+#: ../../algorithms/ddpg.rst:221
+msgid "or loading the whole saved graph into a program with `restore_tf_graph`_."
+msgstr "或使用 `restore_tf_graph`_ 將整個儲存的計算圖載入到程式中。"
+
+#: ../../algorithms/ddpg.rst:228
+msgid "References"
+msgstr "參考文獻"
+
+#: ../../algorithms/ddpg.rst:231
+msgid "Relevant Papers"
+msgstr "相關論文"
+
+#: ../../algorithms/ddpg.rst:233
+msgid "`Deterministic Policy Gradient Algorithms`_, Silver et al. 2014"
+msgstr "`Deterministic Policy Gradient Algorithms`_, Silver et al. 2014"
+
+#: ../../algorithms/ddpg.rst:234
+msgid ""
+"`Continuous Control With Deep Reinforcement Learning`_, Lillicrap et al. "
+"2016"
+msgstr ""
+"`Continuous Control With Deep Reinforcement Learning`_, Lillicrap et al. "
+"2016"
+
+#: ../../algorithms/ddpg.rst:241
+msgid "Why These Papers?"
+msgstr "為什麼選擇這些論文？"
+
+#: ../../algorithms/ddpg.rst:243
+msgid ""
+"Silver 2014 is included because it establishes the theory underlying "
+"deterministic policy gradients (DPG). Lillicrap 2016 is included because "
+"it adapts the theoretically-grounded DPG algorithm to the deep RL "
+"setting, giving DDPG."
+msgstr ""
+"收錄 Silver 2014 是因為它建立了確定性策略梯度 (DPG) 的理論基礎。收錄 "
+"Lillicrap 2016 是因為它將理論上有根據的 DPG 演算法適應到深度強化學習環境中，"
+"產生了 DDPG。"
+
+#: ../../algorithms/ddpg.rst:248
+msgid "Other Public Implementations"
+msgstr "其他公開實作"
+
+#: ../../algorithms/ddpg.rst:250
+msgid "Baselines_"
+msgstr "Baselines_"
+
+#: ../../algorithms/ddpg.rst:251
+msgid "rllab_"
+msgstr "rllab_"
+
+#: ../../algorithms/ddpg.rst:252
+msgid "`rllib (Ray)`_"
+msgstr "`rllib (Ray)`_"
+
+#: ../../algorithms/ddpg.rst:253
+msgid "`TD3 release repo`_"
+msgstr "`TD3 release repo`_"

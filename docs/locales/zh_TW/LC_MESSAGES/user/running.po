@@ -1,0 +1,579 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../user/running.rst:3
+msgid "Running Experiments"
+msgstr "執行實驗"
+
+#: ../../user/running.rst:6
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../user/running.rst:8
+msgid ""
+"One of the best ways to get a feel for deep RL is to run the algorithms "
+"and see how they perform on different tasks. The Spinning Up code library"
+" makes small-scale (local) experiments easy to do, and in this section, "
+"we'll discuss two ways to run them: either from the command line, or "
+"through function calls in scripts."
+msgstr ""
+"要深入了解深度強化學習 (deep RL)，最好的方式之一就是執行演算法並觀察它們在不同任務上的表現。"
+"Spinning Up 程式庫讓小規模（本地）實驗變得容易進行，"
+"在本節中，我們將討論兩種執行方式：從命令列執行，或透過腳本中的函式呼叫執行。"
+
+#: ../../user/running.rst:12
+msgid "Launching from the Command Line"
+msgstr "從命令列啟動"
+
+#: ../../user/running.rst:15
+msgid ""
+"Spinning Up ships with ``spinup/run.py``, a convenient tool that lets you"
+" easily launch any algorithm (with any choices of hyperparameters) from "
+"the command line. It also serves as a thin wrapper over the utilities for"
+" watching trained policies and plotting, although we will not discuss "
+"that functionality on this page (for those details, see the pages on "
+"`experiment outputs`_ and `plotting`_)."
+msgstr ""
+"Spinning Up 附帶了 ``spinup/run.py``，這是一個方便的工具，"
+"讓你可以從命令列輕鬆啟動任何演算法（使用任意超參數 (hyperparameter) 選擇）。"
+"它也是觀察已訓練策略和繪圖工具的輕量封裝，"
+"不過我們不會在本頁討論該功能（詳情請參閱 `experiment outputs`_ 和 `plotting`_ 頁面）。"
+
+#: ../../user/running.rst:17
+msgid "The standard way to run a Spinning Up algorithm from the command line is"
+msgstr "從命令列執行 Spinning Up 演算法的標準方式是"
+
+#: ../../user/running.rst:23
+msgid "eg:"
+msgstr "例如："
+
+#: ../../user/running.rst:32 ../../user/running.rst:96
+#: ../../user/running.rst:106
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../user/running.rst:34
+msgid ""
+"If you are using ZShell: ZShell interprets square brackets as special "
+"characters. Spinning Up uses square brackets in a few ways for command "
+"line arguments; make sure to escape them, or try the solution recommended"
+" `here <http://kinopyo.com/en/blog/escape-square-bracket-by-default-in-"
+"zsh>`_ if you want to escape them by default."
+msgstr ""
+"如果你使用 ZShell：ZShell 會將方括號視為特殊字元。"
+"Spinning Up 在命令列引數中以幾種方式使用方括號；請確保對它們進行跳脫，"
+"或者如果你想預設跳脫方括號，可以嘗試 `這裡 <http://kinopyo.com/en/blog/escape-square-bracket-by-default-in-"
+"zsh>`_ 推薦的解決方案。"
+
+#: ../../user/running.rst:36
+msgid "Detailed Quickstart Guide"
+msgstr "詳細快速入門指南"
+
+#: ../../user/running.rst:44
+msgid ""
+"runs PPO in the ``Ant-v2`` Gym environment, with various settings "
+"controlled by the flags."
+msgstr ""
+"在 ``Ant-v2`` Gym 環境中執行 PPO，各種設定由旗標控制。"
+
+#: ../../user/running.rst:46
+msgid ""
+"By default, the PyTorch version will run (except for with TRPO, since "
+"Spinning Up doesn't have a PyTorch TRPO yet). Substitute ``ppo`` with "
+"``ppo_tf1`` for the Tensorflow version."
+msgstr ""
+"預設情況下會執行 PyTorch 版本（TRPO 除外，因為 Spinning Up 尚未提供 PyTorch 版的 TRPO）。"
+"若要使用 Tensorflow 版本，請將 ``ppo`` 替換為 ``ppo_tf1``。"
+
+#: ../../user/running.rst:48
+msgid ""
+"``clip_ratio``, ``hid``, and ``act`` are flags to set some algorithm "
+"hyperparameters. You can provide multiple values for hyperparameters to "
+"run multiple experiments. Check the docs to see what hyperparameters you "
+"can set (click here for the `PPO documentation`_)."
+msgstr ""
+"``clip_ratio``、``hid`` 和 ``act`` 是用於設定部分演算法超參數的旗標。"
+"你可以為超參數提供多個值以執行多個實驗。"
+"請查閱文件以了解可設定的超參數（點此查看 `PPO documentation`_）。"
+
+#: ../../user/running.rst:50
+msgid ""
+"``hid`` and ``act`` are `special shortcut flags`_ for setting the hidden "
+"sizes and activation function for the neural networks trained by the "
+"algorithm."
+msgstr ""
+"``hid`` 和 ``act`` 是 `special shortcut flags`_，"
+"用於設定演算法所訓練的神經網路的隱藏層大小和激活函數。"
+
+#: ../../user/running.rst:52
+msgid ""
+"The ``seed`` flag sets the seed for the random number generator. RL "
+"algorithms have high variance, so try multiple seeds to get a feel for "
+"how performance varies."
+msgstr ""
+"``seed`` 旗標設定隨機數產生器的種子。"
+"RL 演算法具有很高的變異性，因此可以嘗試多個種子來了解效能的變化情況。"
+
+#: ../../user/running.rst:54
+msgid ""
+"The ``dt`` flag ensures that the save directory names will have "
+"timestamps in them (otherwise they don't, unless you set "
+"``FORCE_DATESTAMP=True`` in ``spinup/user_config.py``)."
+msgstr ""
+"``dt`` 旗標確保儲存目錄名稱中包含時間戳記"
+"（否則不會包含，除非你在 ``spinup/user_config.py`` 中設定 ``FORCE_DATESTAMP=True``）。"
+
+#: ../../user/running.rst:56
+msgid ""
+"The ``data_dir`` flag allows you to set the save folder for results. The "
+"default value is set by ``DEFAULT_DATA_DIR`` in "
+"``spinup/user_config.py``, which will be a subfolder ``data`` in the "
+"``spinningup`` folder (unless you change it)."
+msgstr ""
+"``data_dir`` 旗標允許你設定結果的儲存資料夾。"
+"預設值由 ``spinup/user_config.py`` 中的 ``DEFAULT_DATA_DIR`` 設定，"
+"預設為 ``spinningup`` 資料夾下的 ``data`` 子資料夾（除非你修改它）。"
+
+#: ../../user/running.rst:58
+msgid ""
+"`Save directory names`_ are based on ``exp_name`` and any flags which "
+"have multiple values. Instead of the full flag, a shorthand will appear "
+"in the directory name. Shorthands can be provided by the user in square "
+"brackets after the flag, like ``--hid[h]``; otherwise, shorthands are "
+"substrings of the flag (``clip_ratio`` becomes ``cli``). To illustrate, "
+"the save directory for the run with ``clip_ratio=0.1``, ``hid=[32,32]``, "
+"and ``seed=10`` will be:"
+msgstr ""
+"`Save directory names`_ 基於 ``exp_name`` 以及具有多個值的旗標。"
+"目錄名稱中會使用簡寫而非完整的旗標名稱。"
+"使用者可以在旗標後的方括號中提供簡寫，如 ``--hid[h]``；"
+"否則，簡寫會是旗標的子字串（``clip_ratio`` 會變成 ``cli``）。"
+"舉例來說，``clip_ratio=0.1``、``hid=[32,32]`` 和 ``seed=10`` 的執行，"
+"其儲存目錄會是："
+
+#: ../../user/running.rst:69
+msgid "Choosing PyTorch or Tensorflow from the Command Line"
+msgstr "從命令列選擇 PyTorch 或 Tensorflow"
+
+#: ../../user/running.rst:71
+msgid "To use a PyTorch version of an algorithm, run with"
+msgstr "若要使用演算法的 PyTorch 版本，請執行"
+
+#: ../../user/running.rst:77
+msgid "To use a Tensorflow version of an algorithm, run with"
+msgstr "若要使用演算法的 Tensorflow 版本，請執行"
+
+#: ../../user/running.rst:83
+msgid ""
+"If you run ``python -m spinup.run [algo]`` without ``_pytorch`` or "
+"``_tf1``, the runner will look in ``spinup/user_config.py`` for which "
+"version it should default to for that algorithm."
+msgstr ""
+"如果執行 ``python -m spinup.run [algo]`` 時未加上 ``_pytorch`` 或 ``_tf1``，"
+"執行器會在 ``spinup/user_config.py`` 中查找該演算法應預設使用的版本。"
+
+#: ../../user/running.rst:86
+msgid "Setting Hyperparameters from the Command Line"
+msgstr "從命令列設定超參數"
+
+#: ../../user/running.rst:88
+msgid ""
+"Every hyperparameter in every algorithm can be controlled directly from "
+"the command line. If ``kwarg`` is a valid keyword arg for the function "
+"call of an algorithm, you can set values for it with the flag "
+"``--kwarg``. To find out what keyword args are available, see either the "
+"docs page for an algorithm, or try"
+msgstr ""
+"每個演算法的每個超參數都可以直接從命令列控制。"
+"如果 ``kwarg`` 是演算法函式呼叫的有效關鍵字引數，"
+"你可以使用 ``--kwarg`` 旗標來設定其值。"
+"要查看有哪些可用的關鍵字引數，請參閱演算法的文件頁面，或嘗試"
+
+#: ../../user/running.rst:94
+msgid "to see a readout of the docstring."
+msgstr "以查看文件字串的輸出。"
+
+#: ../../user/running.rst:98
+msgid ""
+"Values pass through ``eval()`` before being used, so you can describe "
+"some functions and objects directly from the command line. For example:"
+msgstr ""
+"值在使用前會通過 ``eval()`` 處理，因此你可以直接從命令列描述一些函式和物件。例如："
+
+#: ../../user/running.rst:104
+msgid ""
+"sets ``torch.nn.ELU`` as the activation function. (Tensorflow equivalent:"
+" run ``ppo_tf1`` with ``--act tf.nn.elu``.)"
+msgstr ""
+"將 ``torch.nn.ELU`` 設為激活函數。"
+"（Tensorflow 等效方式：執行 ``ppo_tf1`` 並加上 ``--act tf.nn.elu``。）"
+
+#: ../../user/running.rst:108
+msgid ""
+"There's some nice handling for kwargs that take dict values. Instead of "
+"having to provide"
+msgstr "對於接受字典值的關鍵字引數，有一些便利的處理方式。你不必提供"
+
+#: ../../user/running.rst:114
+msgid "you can give"
+msgstr "而是可以給"
+
+#: ../../user/running.rst:120
+msgid "to get the same result."
+msgstr "來獲得相同的結果。"
+
+#: ../../user/running.rst:123
+msgid "Launching Multiple Experiments at Once"
+msgstr "同時啟動多個實驗"
+
+#: ../../user/running.rst:125
+msgid ""
+"You can launch multiple experiments, to be executed **in series**, by "
+"simply providing more than one value for a given argument. (An experiment"
+" for each possible combination of values will be launched.)"
+msgstr ""
+"你可以透過為指定引數提供多個值來啟動多個實驗，這些實驗會**依序**執行。"
+"（每種可能的值組合都會啟動一個實驗。）"
+
+#: ../../user/running.rst:127
+msgid ""
+"For example, to launch otherwise-equivalent runs with different random "
+"seeds (0, 10, and 20), do:"
+msgstr "例如，若要以不同的隨機種子（0、10 和 20）啟動其他條件相同的實驗，請執行："
+
+#: ../../user/running.rst:133
+msgid ""
+"Experiments don't launch in parallel because they soak up enough "
+"resources that executing several at the same time wouldn't get a speedup."
+msgstr ""
+"實驗不會平行啟動，因為它們會消耗大量資源，同時執行多個實驗不會帶來加速效果。"
+
+#: ../../user/running.rst:138
+msgid "Special Flags"
+msgstr "特殊旗標"
+
+#: ../../user/running.rst:140
+msgid "A few flags receive special treatment."
+msgstr "有幾個旗標會受到特殊處理。"
+
+#: ../../user/running.rst:144
+msgid "Environment Flag"
+msgstr "環境旗標"
+
+#: ../../user/running.rst:148
+msgid ""
+"*string*. The name of an environment in the OpenAI Gym. All Spinning Up "
+"algorithms are implemented as functions that accept ``env_fn`` as an "
+"argument, where ``env_fn`` must be a callable function that builds a copy"
+" of the RL environment. Since the most common use case is Gym "
+"environments, though, all of which are built through "
+"``gym.make(env_name)``, we allow you to just specify ``env_name`` (or "
+"``env`` for short) at the command line, which gets converted to a lambda-"
+"function that builds the correct gym environment."
+msgstr ""
+"*string*。OpenAI Gym 中的環境名稱。所有 Spinning Up 演算法都實作為接受 ``env_fn`` "
+"引數的函式，其中 ``env_fn`` 必須是一個可呼叫函式，用於建構 RL 環境的副本。"
+"不過，由於最常見的使用情境是 Gym 環境，而這些環境都是透過 ``gym.make(env_name)`` "
+"建構的，因此我們允許你在命令列中僅指定 ``env_name``（或簡寫為 ``env``），"
+"它會被轉換為一個建構正確 Gym 環境的 lambda 函式。"
+
+#: ../../user/running.rst:152
+msgid "Shortcut Flags"
+msgstr "捷徑旗標"
+
+#: ../../user/running.rst:154
+msgid ""
+"Some algorithm arguments are relatively long, and we enabled shortcuts "
+"for them:"
+msgstr "部分演算法引數名稱較長，我們為它們提供了捷徑："
+
+#: ../../user/running.rst:158
+msgid ""
+"*list of ints*. Sets the sizes of the hidden layers in the neural "
+"networks (policies and value functions)."
+msgstr ""
+"*list of ints*。設定神經網路（策略和價值函數）中隱藏層的大小。"
+
+#: ../../user/running.rst:162
+msgid ""
+"*tf op*. The activation function for the neural networks in the actor and"
+" critic."
+msgstr "*tf op*。演員 (actor) 和評論家 (critic) 神經網路的激活函數。"
+
+#: ../../user/running.rst:164
+msgid "These flags are valid for all current Spinning Up algorithms."
+msgstr "這些旗標適用於所有目前的 Spinning Up 演算法。"
+
+#: ../../user/running.rst:167
+msgid "Config Flags"
+msgstr "設定旗標"
+
+#: ../../user/running.rst:169
+msgid ""
+"These flags are not hyperparameters of any algorithm, but change the "
+"experimental configuration in some way."
+msgstr "這些旗標不是任何演算法的超參數，而是以某種方式更改實驗配置。"
+
+#: ../../user/running.rst:173
+msgid ""
+"*int*. If this flag is set, the experiment is launched with this many "
+"processes, one per cpu, connected by MPI. Some algorithms are amenable to"
+" this sort of parallelization but not all. An error will be raised if you"
+" try setting ``num_cpu`` > 1 for an incompatible algorithm. You can also "
+"set ``--num_cpu auto``, which will automatically use as many CPUs as are "
+"available on the machine."
+msgstr ""
+"*int*。如果設定此旗標，實驗會以指定數量的處理程序啟動，每個 CPU 一個，透過 MPI 連接。"
+"部分演算法適合這種平行化方式，但並非全部。"
+"如果你嘗試對不相容的演算法設定 ``num_cpu`` > 1，會引發錯誤。"
+"你也可以設定 ``--num_cpu auto``，這會自動使用機器上可用的所有 CPU。"
+
+#: ../../user/running.rst:177
+msgid ""
+"*string*. The experiment name. This is used in naming the save directory "
+"for each experiment. The default is \"cmd\" + [algo name]."
+msgstr ""
+"*string*。實驗名稱。用於命名每個實驗的儲存目錄。預設值為 \"cmd\" + [演算法名稱]。"
+
+#: ../../user/running.rst:181
+msgid ""
+"*path*. Set the base save directory for this experiment or set of "
+"experiments. If none is given, the ``DEFAULT_DATA_DIR`` in "
+"``spinup/user_config.py`` will be used."
+msgstr ""
+"*path*。設定此實驗或實驗組的基底儲存目錄。"
+"如果未指定，將使用 ``spinup/user_config.py`` 中的 ``DEFAULT_DATA_DIR``。"
+
+#: ../../user/running.rst:185
+msgid ""
+"*bool*. Include date and time in the name for the save directory of the "
+"experiment."
+msgstr "*bool*。在實驗的儲存目錄名稱中包含日期和時間。"
+
+#: ../../user/running.rst:189
+msgid "Where Results are Saved"
+msgstr "結果儲存位置"
+
+#: ../../user/running.rst:191
+msgid ""
+"Results for a particular experiment (a single run of a configuration of "
+"hyperparameters) are stored in"
+msgstr "特定實驗（一組超參數配置的單次執行）的結果儲存在"
+
+#: ../../user/running.rst:197
+msgid "where"
+msgstr "其中"
+
+#: ../../user/running.rst:199
+msgid ""
+"``data_dir`` is the value of the ``--data_dir`` flag (defaults to "
+"``DEFAULT_DATA_DIR`` from ``spinup/user_config.py`` if ``--data_dir`` is "
+"not given),"
+msgstr ""
+"``data_dir`` 是 ``--data_dir`` 旗標的值"
+"（如果未指定 ``--data_dir``，則預設為 ``spinup/user_config.py`` 中的 ``DEFAULT_DATA_DIR``），"
+
+#: ../../user/running.rst:200
+msgid ""
+"the ``outer_prefix`` is a ``YY-MM-DD_`` timestamp if the ``--datestamp`` "
+"flag is raised, otherwise nothing,"
+msgstr ""
+"``outer_prefix`` 在啟用 ``--datestamp`` 旗標時為 ``YY-MM-DD_`` 時間戳記，否則為空，"
+
+#: ../../user/running.rst:201
+msgid ""
+"the ``inner_prefix`` is a ``YY-MM-DD_HH-MM-SS-`` timestamp if the "
+"``--datestamp`` flag is raised, otherwise nothing,"
+msgstr ""
+"``inner_prefix`` 在啟用 ``--datestamp`` 旗標時為 ``YY-MM-DD_HH-MM-SS-`` 時間戳記，否則為空，"
+
+#: ../../user/running.rst:202
+msgid ""
+"and ``suffix`` is a special string based on the experiment "
+"hyperparameters."
+msgstr "``suffix`` 是根據實驗超參數產生的特殊字串。"
+
+#: ../../user/running.rst:205
+msgid "How is Suffix Determined?"
+msgstr "後綴是如何決定的？"
+
+#: ../../user/running.rst:207
+msgid ""
+"Suffixes are only included if you run multiple experiments at once, and "
+"they only include references to hyperparameters that differ across "
+"experiments, except for random seed. The goal is to make sure that "
+"results for similar experiments (ones which share all params except seed)"
+" are grouped in the same folder."
+msgstr ""
+"後綴僅在你同時執行多個實驗時才會包含，而且只包含各實驗間不同的超參數"
+"（隨機種子除外）的引用。目的是確保相似的實驗"
+"（除種子外所有參數都相同的實驗）的結果被歸類在同一個資料夾中。"
+
+#: ../../user/running.rst:209
+msgid ""
+"Suffixes are constructed by combining *shorthands* for hyperparameters "
+"with their values, where a shorthand is either 1) constructed "
+"automatically from the hyperparameter name or 2) supplied by the user. "
+"The user can supply a shorthand by writing in square brackets after the "
+"kwarg flag."
+msgstr ""
+"後綴由超參數的*簡寫*與其值組合而成，簡寫可以是 1) 從超參數名稱自動產生，"
+"或 2) 由使用者提供。使用者可以在關鍵字引數旗標後的方括號中提供簡寫。"
+
+#: ../../user/running.rst:211
+msgid "For example, consider:"
+msgstr "例如，考慮以下情況："
+
+#: ../../user/running.rst:217
+msgid ""
+"Here, the ``--hid`` flag is given a **user-supplied shorthand**, ``h``. "
+"The ``--act`` flag is not given a shorthand by the user, so one will be "
+"constructed for it automatically."
+msgstr ""
+"這裡，``--hid`` 旗標被給予了**使用者提供的簡寫** ``h``。"
+"``--act`` 旗標沒有使用者提供的簡寫，因此會自動產生一個。"
+
+#: ../../user/running.rst:219
+msgid "The suffixes produced in this case are:"
+msgstr "在此情況下產生的後綴為："
+
+#: ../../user/running.rst:227
+msgid ""
+"Note that the ``h`` was given by the user. the ``ac-act`` shorthand was "
+"constructed from ``ac_kwargs:activation`` (the true name for the ``act`` "
+"flag)."
+msgstr ""
+"請注意，``h`` 是由使用者提供的。``ac-act`` 簡寫是從 ``ac_kwargs:activation``"
+"（``act`` 旗標的真實名稱）自動產生的。"
+
+#: ../../user/running.rst:231
+msgid "Extra"
+msgstr "補充"
+
+#: ../../user/running.rst:233
+msgid "You Don't Actually Need to Know This One"
+msgstr "這個你其實不需要知道"
+
+#: ../../user/running.rst:235
+msgid ""
+"Each individual algorithm is located in a file "
+"``spinup/algos/BACKEND/ALGO_NAME/ALGO_NAME.py``, and these files can be "
+"run directly from the command line with a limited set of arguments (some "
+"of which differ from what's available to ``spinup/run.py``). The command "
+"line support in the individual algorithm files is essentially vestigial, "
+"however, and this is **not** a recommended way to perform experiments."
+msgstr ""
+"每個演算法位於 ``spinup/algos/BACKEND/ALGO_NAME/ALGO_NAME.py`` 檔案中，"
+"這些檔案可以從命令列直接執行，但支援的引數有限"
+"（部分引數與 ``spinup/run.py`` 提供的不同）。"
+"然而，個別演算法檔案中的命令列支援基本上是遺留功能，"
+"**不**建議以此方式進行實驗。"
+
+#: ../../user/running.rst:237
+msgid ""
+"This documentation page will not describe those command line calls, and "
+"will *only* describe calls through ``spinup/run.py``."
+msgstr ""
+"本文件頁面不會描述那些命令列呼叫方式，*僅*描述透過 ``spinup/run.py`` 的呼叫。"
+
+#: ../../user/running.rst:240
+msgid "Launching from Scripts"
+msgstr "從腳本啟動"
+
+#: ../../user/running.rst:242
+msgid ""
+"Each algorithm is implemented as a python function, which can be imported"
+" directly from the ``spinup`` package, eg"
+msgstr ""
+"每個演算法都實作為 Python 函式，可以直接從 ``spinup`` 套件匯入，例如"
+
+#: ../../user/running.rst:246
+msgid ""
+"See the documentation page for each algorithm for a complete account of "
+"possible arguments. These methods can be used to set up specialized "
+"custom experiments, for example:"
+msgstr ""
+"請參閱各演算法的文件頁面以了解完整的引數說明。"
+"這些方法可用於設定專門的自訂實驗，例如："
+
+#: ../../user/running.rst:264
+msgid "Using ExperimentGrid"
+msgstr "使用 ExperimentGrid"
+
+#: ../../user/running.rst:266
+msgid ""
+"It's often useful in machine learning research to run the same algorithm "
+"with many possible hyperparameters. Spinning Up ships with a simple tool "
+"for facilitating this, called `ExperimentGrid`_."
+msgstr ""
+"在機器學習研究中，使用多種超參數組合執行相同演算法通常很有用。"
+"Spinning Up 附帶了一個簡單的工具來協助此功能，名為 `ExperimentGrid`_。"
+
+#: ../../user/running.rst:269
+msgid "Consider the example in ``spinup/examples/pytorch/bench_ppo_cartpole.py``:"
+msgstr "以 ``spinup/examples/pytorch/bench_ppo_cartpole.py`` 中的範例為例："
+
+#: ../../user/running.rst:294
+msgid ""
+"(An equivalent Tensorflow example is available in "
+"``spinup/examples/tf1/bench_ppo_cartpole.py``.)"
+msgstr ""
+"（等效的 Tensorflow 範例可在 ``spinup/examples/tf1/bench_ppo_cartpole.py`` 中找到。）"
+
+#: ../../user/running.rst:296
+msgid "After making the ExperimentGrid object, parameters are added to it with"
+msgstr "建立 ExperimentGrid 物件後，透過以下方式新增參數"
+
+#: ../../user/running.rst:302
+msgid ""
+"where ``in_name`` forces a parameter to appear in the experiment name, "
+"even if it has the same value across all experiments."
+msgstr ""
+"其中 ``in_name`` 強制將參數顯示在實驗名稱中，即使該參數在所有實驗中的值都相同。"
+
+#: ../../user/running.rst:304
+msgid "After all parameters have been added,"
+msgstr "在所有參數都新增完畢後，"
+
+#: ../../user/running.rst:310
+msgid ""
+"runs all experiments in the grid (one experiment per valid "
+"configuration), by providing the configurations as kwargs to the function"
+" ``thunk``. ``ExperimentGrid.run`` uses a function named "
+"`call_experiment`_ to launch ``thunk``, and ``**run_kwargs`` specify "
+"behaviors for ``call_experiment``. See `the documentation page`_ for "
+"details."
+msgstr ""
+"透過將配置作為關鍵字引數傳遞給函式 ``thunk``，"
+"執行網格中的所有實驗（每個有效配置一個實驗）。"
+"``ExperimentGrid.run`` 使用名為 `call_experiment`_ 的函式來啟動 ``thunk``，"
+"``**run_kwargs`` 指定 ``call_experiment`` 的行為。詳情請參閱 `the documentation page`_。"
+
+#: ../../user/running.rst:312
+msgid ""
+"Except for the absence of shortcut kwargs (you can't use ``hid`` for "
+"``ac_kwargs:hidden_sizes`` in ``ExperimentGrid``), the basic behavior of "
+"``ExperimentGrid`` is the same as running things from the command line. "
+"(In fact, ``spinup.run`` uses an ``ExperimentGrid`` under the hood.)"
+msgstr ""
+"除了沒有捷徑關鍵字引數（在 ``ExperimentGrid`` 中不能用 ``hid`` 代替 "
+"``ac_kwargs:hidden_sizes``）之外，``ExperimentGrid`` 的基本行為與從命令列執行相同。"
+"（事實上，``spinup.run`` 底層就是使用 ``ExperimentGrid``。）"

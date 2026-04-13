@@ -1,0 +1,249 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/bench.rst:3
+msgid "Benchmarks for Spinning Up Implementations"
+msgstr "Spinning Up 實作的基準測試"
+
+#: ../../spinningup/bench.rst:5
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../spinningup/bench.rst:7
+msgid ""
+"We benchmarked the Spinning Up algorithm implementations in five "
+"environments from the MuJoCo_ Gym task suite: HalfCheetah, Hopper, "
+"Walker2d, Swimmer, and Ant."
+msgstr ""
+"我們在 MuJoCo_ Gym 任務套件中的五個環境上，對 Spinning Up 的演算法實作進行了"
+"基準測試：HalfCheetah、Hopper、Walker2d、Swimmer 和 Ant。"
+
+#: ../../spinningup/bench.rst:12
+msgid "Performance in Each Environment"
+msgstr "各環境中的表現"
+
+#: ../../spinningup/bench.rst:15
+msgid "HalfCheetah: PyTorch Versions"
+msgstr "HalfCheetah：PyTorch 版本"
+
+#: ../../spinningup/bench.rst:20
+msgid ""
+"3M timestep benchmark for HalfCheetah-v3 using **PyTorch** "
+"implementations."
+msgstr ""
+"使用 **PyTorch** 實作的 HalfCheetah-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:24
+msgid "HalfCheetah: Tensorflow Versions"
+msgstr "HalfCheetah：Tensorflow 版本"
+
+#: ../../spinningup/bench.rst:29
+msgid ""
+"3M timestep benchmark for HalfCheetah-v3 using **Tensorflow** "
+"implementations."
+msgstr ""
+"使用 **Tensorflow** 實作的 HalfCheetah-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:34
+msgid "Hopper: PyTorch Versions"
+msgstr "Hopper：PyTorch 版本"
+
+#: ../../spinningup/bench.rst:39
+msgid "3M timestep benchmark for Hopper-v3 using **PyTorch** implementations."
+msgstr "使用 **PyTorch** 實作的 Hopper-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:43
+msgid "Hopper: Tensorflow Versions"
+msgstr "Hopper：Tensorflow 版本"
+
+#: ../../spinningup/bench.rst:48
+msgid "3M timestep benchmark for Hopper-v3 using **Tensorflow** implementations."
+msgstr "使用 **Tensorflow** 實作的 Hopper-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:54
+msgid "Walker2d: PyTorch Versions"
+msgstr "Walker2d：PyTorch 版本"
+
+#: ../../spinningup/bench.rst:59
+msgid "3M timestep benchmark for Walker2d-v3 using **PyTorch** implementations."
+msgstr "使用 **PyTorch** 實作的 Walker2d-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:63
+msgid "Walker2d: Tensorflow Versions"
+msgstr "Walker2d：Tensorflow 版本"
+
+#: ../../spinningup/bench.rst:68
+msgid ""
+"3M timestep benchmark for Walker2d-v3 using **Tensorflow** "
+"implementations."
+msgstr ""
+"使用 **Tensorflow** 實作的 Walker2d-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:73
+msgid "Swimmer: PyTorch Versions"
+msgstr "Swimmer：PyTorch 版本"
+
+#: ../../spinningup/bench.rst:78
+msgid "3M timestep benchmark for Swimmer-v3 using **PyTorch** implementations."
+msgstr "使用 **PyTorch** 實作的 Swimmer-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:82
+msgid "Swimmer: Tensorflow Versions"
+msgstr "Swimmer：Tensorflow 版本"
+
+#: ../../spinningup/bench.rst:87
+msgid "3M timestep benchmark for Swimmer-v3 using **Tensorflow** implementations."
+msgstr "使用 **Tensorflow** 實作的 Swimmer-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:92
+msgid "Ant: PyTorch Versions"
+msgstr "Ant：PyTorch 版本"
+
+#: ../../spinningup/bench.rst:97
+msgid "3M timestep benchmark for Ant-v3 using **PyTorch** implementations."
+msgstr "使用 **PyTorch** 實作的 Ant-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:101
+msgid "Ant: Tensorflow Versions"
+msgstr "Ant：Tensorflow 版本"
+
+#: ../../spinningup/bench.rst:106
+msgid "3M timestep benchmark for Ant-v3 using **Tensorflow** implementations."
+msgstr "使用 **Tensorflow** 實作的 Ant-v3 三百萬時間步基準測試。"
+
+#: ../../spinningup/bench.rst:110
+msgid "Experiment Details"
+msgstr "實驗細節"
+
+#: ../../spinningup/bench.rst:112
+msgid ""
+"**Random seeds.** All experiments were run for 10 random seeds each. "
+"Graphs show the average (solid line) and std dev (shaded) of performance "
+"over random seed over the course of training."
+msgstr ""
+"**隨機種子 (Random Seeds)。** 所有實驗均使用 10 個隨機種子分別執行。"
+"圖表顯示了訓練過程中各隨機種子的效能平均值（實線）和標準差（陰影區域）。"
+
+#: ../../spinningup/bench.rst:114
+msgid ""
+"**Performance metric.** Performance for the on-policy algorithms is "
+"measured as the average trajectory return across the batch collected at "
+"each epoch. Performance for the off-policy algorithms is measured once "
+"every 10,000 steps by running the deterministic policy (or, in the case "
+"of SAC, the mean policy) without action noise for ten trajectories, and "
+"reporting the average return over those test trajectories."
+msgstr ""
+"**效能指標。** 同策略 (On-policy) 演算法的效能以每個訓練週期 (Epoch) 收集的"
+"批次中軌跡回報 (Trajectory Return) 的平均值來衡量。離策略 (Off-policy) 演算法"
+"的效能每 10,000 步測量一次，方法是在不加動作雜訊的情況下運行確定性策略 "
+"(Deterministic Policy)（或者在 SAC 的情況下，運行平均策略）十條軌跡，並報告"
+"這些測試軌跡的平均回報。"
+
+#: ../../spinningup/bench.rst:116
+msgid ""
+"**Network architectures.** The on-policy algorithms use networks of size "
+"(64, 32) with tanh units for both the policy and the value function. The "
+"off-policy algorithms use networks of size (256, 256) with relu units."
+msgstr ""
+"**網路架構。** 同策略演算法的策略 (Policy) 和價值函數 (Value Function) 均使用"
+"大小為 (64, 32) 且帶有 tanh 啟動函數的網路。離策略演算法使用大小為 "
+"(256, 256) 且帶有 relu 啟動函數的網路。"
+
+#: ../../spinningup/bench.rst:118
+msgid ""
+"**Batch size.** The on-policy algorithms collected 4000 steps of agent-"
+"environment interaction per batch update. The off-policy algorithms used "
+"minibatches of size 100 at each gradient descent step."
+msgstr ""
+"**批次大小 (Batch Size)。** 同策略演算法每次批次更新收集 4000 步的智能體-"
+"環境互動資料。離策略演算法在每個梯度下降 (Gradient Descent) 步驟中使用大小為 "
+"100 的小批次 (Minibatch)。"
+
+#: ../../spinningup/bench.rst:120
+msgid ""
+"All other hyperparameters are left at default settings for the Spinning "
+"Up implementations. See algorithm pages for details."
+msgstr ""
+"所有其他超參數 (Hyperparameters) 均保留 Spinning Up 實作的預設值。"
+"詳情請參閱各演算法頁面。"
+
+#: ../../spinningup/bench.rst:122
+msgid "Learning curves are smoothed by averaging over a window of 11 epochs."
+msgstr "學習曲線透過在 11 個訓練週期的視窗內取平均值進行平滑處理。"
+
+#: ../../spinningup/bench.rst:124
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../spinningup/bench.rst:126
+msgid ""
+"By comparison to the literature, the Spinning Up implementations of DDPG,"
+" TD3, and SAC are roughly at-parity with the best reported results for "
+"these algorithms. As a result, you can use the Spinning Up "
+"implementations of these algorithms for research purposes."
+msgstr ""
+"與文獻相比，Spinning Up 的 DDPG、TD3 和 SAC 實作與這些演算法的最佳報告結果"
+"大致持平。因此，你可以將這些演算法的 Spinning Up 實作用於研究目的。"
+
+#: ../../spinningup/bench.rst:128
+msgid ""
+"The Spinning Up implementations of VPG, TRPO, and PPO are overall a bit "
+"weaker than the best reported results for these algorithms. This is due "
+"to the absence of some standard tricks (such as observation normalization"
+" and normalized value regression targets) from our implementations. For "
+"research comparisons, you should use the implementations of TRPO or PPO "
+"from `OpenAI Baselines`_."
+msgstr ""
+"Spinning Up 的 VPG、TRPO 和 PPO 實作整體上比這些演算法的最佳報告結果稍弱。"
+"這是因為我們的實作中缺少一些標準技巧（如觀測值正規化和正規化的價值迴歸目標）。"
+"如需用於研究比較，你應該使用 `OpenAI Baselines`_ 中的 TRPO 或 PPO 實作。"
+
+#: ../../spinningup/bench.rst:134
+msgid "PyTorch vs Tensorflow"
+msgstr "PyTorch 與 Tensorflow 比較"
+
+#: ../../spinningup/bench.rst:137
+msgid ""
+"We provide graphs for head-to-head comparisons between the PyTorch and "
+"Tensorflow implementations of each algorithm at the following pages:"
+msgstr ""
+"我們在以下頁面提供了每個演算法的 PyTorch 和 Tensorflow 實作之間的"
+"對比圖表："
+
+#: ../../spinningup/bench.rst:139
+msgid "`VPG Head-to-Head`_"
+msgstr "`VPG Head-to-Head`_"
+
+#: ../../spinningup/bench.rst:141
+msgid "`PPO Head-to-Head`_"
+msgstr "`PPO Head-to-Head`_"
+
+#: ../../spinningup/bench.rst:143
+msgid "`DDPG Head-to-Head`_"
+msgstr "`DDPG Head-to-Head`_"
+
+#: ../../spinningup/bench.rst:145
+msgid "`TD3 Head-to-Head`_"
+msgstr "`TD3 Head-to-Head`_"
+
+#: ../../spinningup/bench.rst:147
+msgid "`SAC Head-to-Head`_"
+msgstr "`SAC Head-to-Head`_"

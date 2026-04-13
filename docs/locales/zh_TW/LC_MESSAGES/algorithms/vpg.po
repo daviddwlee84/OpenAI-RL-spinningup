@@ -1,0 +1,597 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../algorithms/vpg.rst:3 of spinup.algos.pytorch.vpg.vpg.vpg:1
+msgid "Vanilla Policy Gradient"
+msgstr "原始策略梯度 (Vanilla Policy Gradient)"
+
+#: ../../algorithms/vpg.rst:6
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: ../../algorithms/vpg.rst:9
+msgid "Background"
+msgstr "背景"
+
+#: ../../algorithms/vpg.rst:11
+msgid "(Previously: `Introduction to RL, Part 3`_)"
+msgstr "（先前章節：`Introduction to RL, Part 3`_）"
+
+#: ../../algorithms/vpg.rst:15
+msgid ""
+"The key idea underlying policy gradients is to push up the probabilities "
+"of actions that lead to higher return, and push down the probabilities of"
+" actions that lead to lower return, until you arrive at the optimal "
+"policy."
+msgstr ""
+"策略梯度 (Policy Gradient) 的核心思想是：提高能帶來較高回報 (Return) 的動作"
+"的機率，並降低帶來較低回報的動作的機率，直到達到最優策略。"
+
+#: ../../algorithms/vpg.rst:18
+msgid "Quick Facts"
+msgstr "快速概覽"
+
+#: ../../algorithms/vpg.rst:20
+msgid "VPG is an on-policy algorithm."
+msgstr "VPG 是一種同策略 (On-policy) 演算法。"
+
+#: ../../algorithms/vpg.rst:21
+msgid ""
+"VPG can be used for environments with either discrete or continuous "
+"action spaces."
+msgstr "VPG 可用於具有離散或連續動作空間 (Action Space) 的環境。"
+
+#: ../../algorithms/vpg.rst:22
+msgid "The Spinning Up implementation of VPG supports parallelization with MPI."
+msgstr "Spinning Up 的 VPG 實作支援透過 MPI 進行平行化。"
+
+#: ../../algorithms/vpg.rst:25
+msgid "Key Equations"
+msgstr "關鍵方程式"
+
+#: ../../algorithms/vpg.rst:27
+#, python-brace-format
+msgid ""
+"Let :math:`\\pi_{\\theta}` denote a policy with parameters "
+":math:`\\theta`, and :math:`J(\\pi_{\\theta})` denote the expected "
+"finite-horizon undiscounted return of the policy. The gradient of "
+":math:`J(\\pi_{\\theta})` is"
+msgstr ""
+"令 :math:`\\pi_{\\theta}` 表示參數為 :math:`\\theta` 的策略，"
+":math:`J(\\pi_{\\theta})` 表示該策略的期望有限時域無折扣回報。"
+":math:`J(\\pi_{\\theta})` 的梯度為"
+
+#: ../../algorithms/vpg.rst:29
+msgid ""
+"\\nabla_{\\theta} J(\\pi_{\\theta}) = \\underE{\\tau \\sim "
+"\\pi_{\\theta}}{\n"
+"    \\sum_{t=0}^{T} \\nabla_{\\theta} \\log \\pi_{\\theta}(a_t|s_t) "
+"A^{\\pi_{\\theta}}(s_t,a_t)\n"
+"    },"
+msgstr ""
+
+#: ../../algorithms/vpg.rst:35
+msgid ""
+"where :math:`\\tau` is a trajectory and :math:`A^{\\pi_{\\theta}}` is the"
+" advantage function for the current policy."
+msgstr ""
+"其中 :math:`\\tau` 是一條軌跡 (Trajectory)，:math:`A^{\\pi_{\\theta}}` "
+"是當前策略的優勢函數 (Advantage Function)。"
+
+#: ../../algorithms/vpg.rst:37
+msgid ""
+"The policy gradient algorithm works by updating policy parameters via "
+"stochastic gradient ascent on policy performance:"
+msgstr "策略梯度演算法透過對策略性能進行隨機梯度上升 (Stochastic Gradient Ascent) 來更新策略參數："
+
+#: ../../algorithms/vpg.rst:39
+#, python-brace-format
+msgid "\\theta_{k+1} = \\theta_k + \\alpha \\nabla_{\\theta} J(\\pi_{\\theta_k})"
+msgstr ""
+
+#: ../../algorithms/vpg.rst:43
+msgid ""
+"Policy gradient implementations typically compute advantage function "
+"estimates based on the infinite-horizon discounted return, despite "
+"otherwise using the finite-horizon undiscounted policy gradient formula."
+msgstr ""
+"策略梯度的實作通常基於無限時域折扣回報來計算優勢函數估計值，儘管其他部分使用"
+"的是有限時域無折扣的策略梯度公式。"
+
+#: ../../algorithms/vpg.rst:46
+msgid "Exploration vs. Exploitation"
+msgstr "探索與利用"
+
+#: ../../algorithms/vpg.rst:48
+msgid ""
+"VPG trains a stochastic policy in an on-policy way. This means that it "
+"explores by sampling actions according to the latest version of its "
+"stochastic policy. The amount of randomness in action selection depends "
+"on both initial conditions and the training procedure. Over the course of"
+" training, the policy typically becomes progressively less random, as the"
+" update rule encourages it to exploit rewards that it has already found. "
+"This may cause the policy to get trapped in local optima."
+msgstr ""
+"VPG 以同策略的方式訓練一個隨機策略 (Stochastic Policy)。這意味著它透過根據"
+"最新版本的隨機策略取樣動作來進行探索 (Exploration)。動作選擇的隨機程度取決於"
+"初始條件和訓練過程。在訓練過程中，策略通常會逐漸變得不那麼隨機，因為更新規則"
+"會鼓勵它利用 (Exploitation) 已經發現的獎勵。這可能導致策略陷入局部最優解 "
+"(Local Optima)。"
+
+#: ../../algorithms/vpg.rst:52
+msgid "Pseudocode"
+msgstr "虛擬碼"
+
+#: ../../algorithms/vpg.rst:54
+msgid ""
+"\\begin{algorithm}[H]\n"
+"    \\caption{Vanilla Policy Gradient Algorithm}\n"
+"    \\label{alg1}\n"
+"\\begin{algorithmic}[1]\n"
+"    \\STATE Input: initial policy parameters $\\theta_0$, initial value "
+"function parameters $\\phi_0$\n"
+"    \\FOR{$k = 0,1,2,...$}\n"
+"    \\STATE Collect set of trajectories ${\\mathcal D}_k = \\{\\tau_i\\}$"
+" by running policy $\\pi_k = \\pi(\\theta_k)$ in the environment.\n"
+"    \\STATE Compute rewards-to-go $\\hat{R}_t$.\n"
+"    \\STATE Compute advantage estimates, $\\hat{A}_t$ (using any method "
+"of advantage estimation) based on the current value function "
+"$V_{\\phi_k}$.\n"
+"    \\STATE Estimate policy gradient as\n"
+"        \\begin{equation*}\n"
+"        \\hat{g}_k = \\frac{1}{|{\\mathcal D}_k|} \\sum_{\\tau \\in "
+"{\\mathcal D}_k} \\sum_{t=0}^T \\left. \\nabla_{\\theta} "
+"\\log\\pi_{\\theta}(a_t|s_t)\\right|_{\\theta_k} \\hat{A}_t.\n"
+"        \\end{equation*}\n"
+"    \\STATE Compute policy update, either using standard gradient ascent,"
+"\n"
+"        \\begin{equation*}\n"
+"        \\theta_{k+1} = \\theta_k + \\alpha_k \\hat{g}_k,\n"
+"        \\end{equation*}\n"
+"        or via another gradient ascent algorithm like Adam.\n"
+"    \\STATE Fit value function by regression on mean-squared error:\n"
+"        \\begin{equation*}\n"
+"        \\phi_{k+1} = \\arg \\min_{\\phi} \\frac{1}{|{\\mathcal D}_k| T} "
+"\\sum_{\\tau \\in {\\mathcal D}_k} \\sum_{t=0}^T\\left( V_{\\phi} (s_t) -"
+" \\hat{R}_t \\right)^2,\n"
+"        \\end{equation*}\n"
+"        typically via some gradient descent algorithm.\n"
+"    \\ENDFOR\n"
+"\\end{algorithmic}\n"
+"\\end{algorithm}"
+msgstr ""
+
+#: ../../algorithms/vpg.rst:86
+msgid "Documentation"
+msgstr "文件說明"
+
+#: ../../algorithms/vpg.rst:88
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../algorithms/vpg.rst:90
+msgid ""
+"In what follows, we give documentation for the PyTorch and Tensorflow "
+"implementations of VPG in Spinning Up. They have nearly identical "
+"function calls and docstrings, except for details relating to model "
+"construction. However, we include both full docstrings for completeness."
+msgstr ""
+"以下提供 Spinning Up 中 VPG 的 PyTorch 和 Tensorflow 實作文件。它們的函式呼叫"
+"和文件字串幾乎相同，僅在模型建構的細節上有所不同。不過，為求完整性，我們同時"
+"收錄了兩者的完整文件字串。"
+
+#: ../../algorithms/vpg.rst:94
+msgid "Documentation: PyTorch Version"
+msgstr "文件說明：PyTorch 版本"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:3
+msgid "(with GAE-Lambda for advantage estimation)"
+msgstr "（使用 GAE-Lambda 進行優勢估計）"
+
+#: ../../algorithms/vpg.rst
+msgid "Parameters"
+msgstr "參數"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:5
+msgid ""
+"A function which creates a copy of the environment. The environment must "
+"satisfy the OpenAI Gym API."
+msgstr "一個用於建立環境副本的函式。環境必須符合 OpenAI Gym API。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:7
+msgid ""
+"The constructor method for a PyTorch Module with a ``step`` method, an "
+"``act`` method, a ``pi`` module, and a ``v`` module. The ``step`` method "
+"should accept a batch of observations and return:  ===========  "
+"================  ====================================== Symbol       "
+"Shape             Description ===========  ================  "
+"====================================== ``a``        (batch, act_dim)  | "
+"Numpy array of actions for each                                | "
+"observation. ``v``        (batch,)          | Numpy array of value "
+"estimates                                | for the provided observations."
+" ``logp_a``   (batch,)          | Numpy array of log probs for the"
+"                                | actions in ``a``. ===========  "
+"================  ======================================  The ``act`` "
+"method behaves the same as ``step`` but only returns ``a``.  The ``pi`` "
+"module's forward call should accept a batch of observations and "
+"optionally a batch of actions, and return:  ===========  ================"
+"  ====================================== Symbol       Shape             "
+"Description ===========  ================  "
+"====================================== ``pi``       N/A               | "
+"Torch Distribution object, containing                                | a "
+"batch of distributions describing                                | the "
+"policy for the provided observations. ``logp_a``   (batch,)          | "
+"Optional (only returned if batch of                                | "
+"actions is given). Tensor containing                                | the"
+" log probability, according to                                | the "
+"policy, of the provided actions.                                | If "
+"actions not given, will contain                                | "
+"``None``. ===========  ================  "
+"======================================  The ``v`` module's forward call "
+"should accept a batch of observations and return:  ===========  "
+"================  ====================================== Symbol       "
+"Shape             Description ===========  ================  "
+"====================================== ``v``        (batch,)          | "
+"Tensor containing the value estimates                                | "
+"for the provided observations. (Critical:                                "
+"| make sure to flatten this!) ===========  ================  "
+"======================================"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:7
+msgid ""
+"The constructor method for a PyTorch Module with a ``step`` method, an "
+"``act`` method, a ``pi`` module, and a ``v`` module. The ``step`` method "
+"should accept a batch of observations and return:"
+msgstr ""
+"一個 PyTorch Module 的建構方法，需具有 ``step`` 方法、``act`` 方法、"
+"``pi`` 模組和 ``v`` 模組。``step`` 方法應接受一批觀測值並回傳："
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:13 spinup.algos.pytorch.vpg.vpg.vpg:29
+#: spinup.algos.pytorch.vpg.vpg.vpg:46
+msgid "Symbol"
+msgstr "符號"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:13 spinup.algos.pytorch.vpg.vpg.vpg:29
+#: spinup.algos.pytorch.vpg.vpg.vpg:46
+msgid "Shape"
+msgstr "形狀"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:13 spinup.algos.pytorch.vpg.vpg.vpg:29
+#: spinup.algos.pytorch.vpg.vpg.vpg:46
+msgid "Description"
+msgstr "描述"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:15
+msgid "``a``"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:15
+msgid "(batch, act_dim)"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:15
+msgid "Numpy array of actions for each"
+msgstr "每個觀測對應動作的"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:16
+msgid "observation."
+msgstr "Numpy 陣列。"
+
+#: ../../algorithms/vpg.rst:125 of spinup.algos.pytorch.vpg.vpg.vpg:17
+#: spinup.algos.pytorch.vpg.vpg.vpg:48
+msgid "``v``"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:17 spinup.algos.pytorch.vpg.vpg.vpg:19
+#: spinup.algos.pytorch.vpg.vpg.vpg:34 spinup.algos.pytorch.vpg.vpg.vpg:48
+msgid "(batch,)"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:17
+msgid "Numpy array of value estimates"
+msgstr "所提供觀測之價值估計的"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:18
+msgid "for the provided observations."
+msgstr "Numpy 陣列。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:19 spinup.algos.pytorch.vpg.vpg.vpg:34
+msgid "``logp_a``"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:19
+msgid "Numpy array of log probs for the"
+msgstr "``a`` 中動作的對數機率"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:20
+msgid "actions in ``a``."
+msgstr "Numpy 陣列。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:23
+msgid "The ``act`` method behaves the same as ``step`` but only returns ``a``."
+msgstr "``act`` 方法的行為與 ``step`` 相同，但僅回傳 ``a``。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:25
+msgid ""
+"The ``pi`` module's forward call should accept a batch of observations "
+"and optionally a batch of actions, and return:"
+msgstr ""
+"``pi`` 模組的前向呼叫應接受一批觀測值，以及可選的一批動作，並回傳："
+
+#: ../../algorithms/vpg.rst:124 of spinup.algos.pytorch.vpg.vpg.vpg:31
+msgid "``pi``"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:31
+msgid "N/A"
+msgstr ""
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:31
+msgid "Torch Distribution object, containing"
+msgstr "Torch Distribution 物件，包含"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:32
+msgid "a batch of distributions describing"
+msgstr "一批描述所提供觀測之"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:33
+msgid "the policy for the provided observations."
+msgstr "策略的分佈。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:34
+msgid "Optional (only returned if batch of"
+msgstr "可選（僅在提供動作批次時"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:35
+msgid "actions is given). Tensor containing"
+msgstr "回傳）。包含依據策略計算的"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:36
+msgid "the log probability, according to"
+msgstr "所提供動作之對數機率"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:37
+msgid "the policy, of the provided actions."
+msgstr "的 Tensor。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:38
+msgid "If actions not given, will contain"
+msgstr "若未提供動作，將包含"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:39
+msgid "``None``."
+msgstr "``None``。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:42
+msgid ""
+"The ``v`` module's forward call should accept a batch of observations and"
+" return:"
+msgstr "``v`` 模組的前向呼叫應接受一批觀測值並回傳："
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:48
+msgid "Tensor containing the value estimates"
+msgstr "包含所提供觀測之價值估計的"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:49
+msgid "for the provided observations. (Critical:"
+msgstr "Tensor。（重要："
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:50
+msgid "make sure to flatten this!)"
+msgstr "請確保將其展平！）"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:52
+msgid "Any kwargs appropriate for the ActorCritic object you provided to VPG."
+msgstr "任何適用於您提供給 VPG 的 ActorCritic 物件的關鍵字引數。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:55
+msgid "Seed for random number generators."
+msgstr "隨機數產生器的種子。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:57
+msgid ""
+"Number of steps of interaction (state-action pairs) for the agent and the"
+" environment in each epoch."
+msgstr "每個訓練週期 (Epoch) 中代理程式與環境互動的步數（狀態-動作對）。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:60
+msgid ""
+"Number of epochs of interaction (equivalent to number of policy updates) "
+"to perform."
+msgstr "要執行的互動訓練週期數（等同於策略更新次數）。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:63
+msgid "Discount factor. (Always between 0 and 1.)"
+msgstr "折扣因子 (Discount Factor)。（始終介於 0 和 1 之間。）"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:65
+msgid "Learning rate for policy optimizer."
+msgstr "策略優化器的學習率。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:67
+msgid "Learning rate for value function optimizer."
+msgstr "價值函數 (Value Function) 優化器的學習率。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:69
+msgid "Number of gradient descent steps to take on value function per epoch."
+msgstr "每個訓練週期對價值函數執行的梯度下降 (Gradient Descent) 步數。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:72
+msgid "Lambda for GAE-Lambda. (Always between 0 and 1, close to 1.)"
+msgstr "廣義優勢估計 (GAE-Lambda) 的 Lambda 值。（始終介於 0 和 1 之間，接近 1。）"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:75
+msgid "Maximum length of trajectory / episode / rollout."
+msgstr "軌跡／回合／展開的最大長度。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:77
+msgid "Keyword args for EpochLogger."
+msgstr "EpochLogger 的關鍵字引數。"
+
+#: of spinup.algos.pytorch.vpg.vpg.vpg:79
+msgid ""
+"How often (in terms of gap between epochs) to save the current policy and"
+" value function."
+msgstr "儲存當前策略和價值函數的頻率（以訓練週期之間的間隔表示）。"
+
+#: ../../algorithms/vpg.rst:99
+msgid "Saved Model Contents: PyTorch Version"
+msgstr "儲存的模型內容：PyTorch 版本"
+
+#: ../../algorithms/vpg.rst:101
+msgid ""
+"The PyTorch saved model can be loaded with ``ac = "
+"torch.load('path/to/model.pt')``, yielding an actor-critic object "
+"(``ac``) that has the properties described in the docstring for "
+"``vpg_pytorch``."
+msgstr ""
+"PyTorch 儲存的模型可透過 ``ac = torch.load('path/to/model.pt')`` 載入，"
+"會得到一個演員-評論家 (Actor-Critic) 物件（``ac``），具有 ``vpg_pytorch`` "
+"文件字串中描述的屬性。"
+
+#: ../../algorithms/vpg.rst:103
+msgid "You can get actions from this model with"
+msgstr "你可以用以下方式從此模型取得動作"
+
+#: ../../algorithms/vpg.rst:111
+msgid "Documentation: Tensorflow Version"
+msgstr "文件說明：Tensorflow 版本"
+
+#: ../../algorithms/vpg.rst:116
+msgid "Saved Model Contents: Tensorflow Version"
+msgstr "儲存的模型內容：Tensorflow 版本"
+
+#: ../../algorithms/vpg.rst:118
+msgid "The computation graph saved by the logger includes:"
+msgstr "記錄器儲存的計算圖包含："
+
+#: ../../algorithms/vpg.rst:121
+msgid "Key"
+msgstr "鍵"
+
+#: ../../algorithms/vpg.rst:121
+msgid "Value"
+msgstr "值"
+
+#: ../../algorithms/vpg.rst:123
+msgid "``x``"
+msgstr ""
+
+#: ../../algorithms/vpg.rst:123
+msgid "Tensorflow placeholder for state input."
+msgstr "用於狀態輸入的 Tensorflow 佔位符。"
+
+#: ../../algorithms/vpg.rst:124
+msgid "Samples an action from the agent, conditioned on states in ``x``."
+msgstr "根據 ``x`` 中的狀態，從代理程式取樣一個動作。"
+
+#: ../../algorithms/vpg.rst:125
+msgid "Gives value estimate for states in ``x``."
+msgstr "給出 ``x`` 中狀態的價值估計。"
+
+#: ../../algorithms/vpg.rst:128
+msgid "This saved model can be accessed either by"
+msgstr "此儲存的模型可以透過以下方式存取"
+
+#: ../../algorithms/vpg.rst:130
+msgid "running the trained policy with the `test_policy.py`_ tool,"
+msgstr "使用 `test_policy.py`_ 工具執行訓練好的策略，"
+
+#: ../../algorithms/vpg.rst:131
+msgid "or loading the whole saved graph into a program with `restore_tf_graph`_."
+msgstr "或使用 `restore_tf_graph`_ 將整個儲存的計算圖載入到程式中。"
+
+#: ../../algorithms/vpg.rst:137
+msgid "References"
+msgstr "參考文獻"
+
+#: ../../algorithms/vpg.rst:140
+msgid "Relevant Papers"
+msgstr "相關論文"
+
+#: ../../algorithms/vpg.rst:142
+msgid ""
+"`Policy Gradient Methods for Reinforcement Learning with Function "
+"Approximation`_, Sutton et al. 2000"
+msgstr ""
+"`Policy Gradient Methods for Reinforcement Learning with Function "
+"Approximation`_, Sutton et al. 2000"
+
+#: ../../algorithms/vpg.rst:143
+msgid ""
+"`Optimizing Expectations: From Deep Reinforcement Learning to Stochastic "
+"Computation Graphs`_, Schulman 2016(a)"
+msgstr ""
+"`Optimizing Expectations: From Deep Reinforcement Learning to Stochastic "
+"Computation Graphs`_, Schulman 2016(a)"
+
+#: ../../algorithms/vpg.rst:144
+msgid ""
+"`Benchmarking Deep Reinforcement Learning for Continuous Control`_, Duan "
+"et al. 2016"
+msgstr ""
+"`Benchmarking Deep Reinforcement Learning for Continuous Control`_, Duan "
+"et al. 2016"
+
+#: ../../algorithms/vpg.rst:145
+msgid ""
+"`High Dimensional Continuous Control Using Generalized Advantage "
+"Estimation`_, Schulman et al. 2016(b)"
+msgstr ""
+"`High Dimensional Continuous Control Using Generalized Advantage "
+"Estimation`_, Schulman et al. 2016(b)"
+
+#: ../../algorithms/vpg.rst:153
+msgid "Why These Papers?"
+msgstr "為什麼選擇這些論文？"
+
+#: ../../algorithms/vpg.rst:155
+msgid ""
+"Sutton 2000 is included because it is a timeless classic of reinforcement"
+" learning theory, and contains references to the earlier work which led "
+"to modern policy gradients. Schulman 2016(a) is included because Chapter "
+"2 contains a lucid introduction to the theory of policy gradient "
+"algorithms, including pseudocode. Duan 2016 is a clear, recent benchmark "
+"paper that shows how vanilla policy gradient in the deep RL setting (eg "
+"with neural network policies and Adam as the optimizer) compares with "
+"other deep RL algorithms. Schulman 2016(b) is included because our "
+"implementation of VPG makes use of Generalized Advantage Estimation for "
+"computing the policy gradient."
+msgstr ""
+"收錄 Sutton 2000 是因為它是強化學習理論中的經典之作，並包含了通往現代策略梯度"
+"的早期研究參考文獻。收錄 Schulman 2016(a) 是因為第二章包含了策略梯度演算法理"
+"論的清晰介紹，包括虛擬碼。Duan 2016 是一篇清晰的近期基準論文，展示了深度強化"
+"學習環境下的原始策略梯度（例如使用神經網路策略和 Adam 優化器）與其他深度強化學"
+"習演算法的比較。收錄 Schulman 2016(b) 是因為我們的 VPG 實作使用了廣義優勢估計"
+" (Generalized Advantage Estimation) 來計算策略梯度。"
+
+#: ../../algorithms/vpg.rst:159
+msgid "Other Public Implementations"
+msgstr "其他公開實作"
+
+#: ../../algorithms/vpg.rst:161
+msgid "rllab_"
+msgstr "rllab_"
+
+#: ../../algorithms/vpg.rst:162
+msgid "`rllib (Ray)`_"
+msgstr "`rllib (Ray)`_"

@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, OpenAI
+# This file is distributed under the same license as the Spinning Up
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spinning Up \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 16:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../spinningup/exercise2_2_soln.rst:3
+msgid "Solution to Exercise 2.2"
+msgstr "練習 2.2 的解答"
+
+#: ../../spinningup/exercise2_2_soln.rst:8
+msgid ""
+"Learning curves for DDPG in HalfCheetah-v2 for bugged and non-bugged "
+"actor-critic implementations, averaged over three random seeds."
+msgstr ""
+"DDPG 在 HalfCheetah-v2 環境中有 bug 和無 bug 的 actor-critic 實作的學習曲線，"
+"結果為三個隨機種子的平均值。"
+
+#: ../../spinningup/exercise2_2_soln.rst:11
+msgid "You Should Know"
+msgstr "你應該知道"
+
+#: ../../spinningup/exercise2_2_soln.rst:13
+msgid ""
+"This page will give the solution primarily in terms of a detailed "
+"analysis of the Tensorflow version of this exercise. However, the problem"
+" in the PyTorch version is basically the same and so is its solution."
+msgstr ""
+"本頁主要透過詳細分析此練習的 Tensorflow 版本來提供解答。"
+"不過，PyTorch 版本中的問題基本上相同，其解法也是一樣的。"
+
+#: ../../spinningup/exercise2_2_soln.rst:17
+msgid "The Bug in the Code: Tensorflow Version"
+msgstr "程式碼中的 Bug：Tensorflow 版本"
+
+#: ../../spinningup/exercise2_2_soln.rst:19
+msgid "The only difference between the correct actor-critic code,"
+msgstr "正確的 actor-critic 程式碼"
+
+#: ../../spinningup/exercise2_2_soln.rst:39
+msgid "and the bugged actor-critic code,"
+msgstr "與有 bug 的 actor-critic 程式碼之間的唯一區別是，"
+
+#: ../../spinningup/exercise2_2_soln.rst:59
+msgid ""
+"is the tensor shape for the Q-functions. The correct version squeezes "
+"ouputs so that they have shape ``[batch size]``, whereas the bugged "
+"version doesn't, resulting in Q-functions with shape ``[batch size, 1]``."
+msgstr ""
+"Q 函數的張量形狀。正確的版本會壓縮（squeeze）輸出使其形狀為 ``[batch size]``，"
+"而有 bug 的版本則不會，導致 Q 函數的形狀為 ``[batch size, 1]``。"
+
+#: ../../spinningup/exercise2_2_soln.rst:63
+msgid "The Bug in the Code: PyTorch Version"
+msgstr "程式碼中的 Bug：PyTorch 版本"
+
+#: ../../spinningup/exercise2_2_soln.rst:65
+msgid ""
+"In the PyTorch version of the exercise, the difference is virtually the "
+"same. The correct actor-critic code computes a forward pass on the "
+"Q-function that squeezes its output:"
+msgstr ""
+"在此練習的 PyTorch 版本中，差異實際上是相同的。正確的 actor-critic 程式碼"
+"在 Q 函數的前向傳播中會壓縮其輸出："
+
+#: ../../spinningup/exercise2_2_soln.rst:85
+msgid "while the bugged version does not:"
+msgstr "而有 bug 的版本則不會："
+
+#: ../../spinningup/exercise2_2_soln.rst:103
+msgid "How it Gums Up the Works: Tensorflow Version"
+msgstr "它是如何搞砸一切的：Tensorflow 版本"
+
+#: ../../spinningup/exercise2_2_soln.rst:105
+msgid ""
+"Consider the excerpt from the part in the code that builds the DDPG "
+"computation graph:"
+msgstr "考慮程式碼中建構 DDPG 計算圖的以下片段："
+
+#: ../../spinningup/exercise2_2_soln.rst:116
+msgid ""
+"This is where the tensor shape issue comes into play. It's important to "
+"know that ``r_ph`` and ``d_ph`` have shape ``[batch size]``."
+msgstr ""
+"這就是張量形狀問題發揮作用的地方。重要的是要知道 ``r_ph`` 和 ``d_ph`` "
+"的形狀為 ``[batch size]``。"
+
+#: ../../spinningup/exercise2_2_soln.rst:118
+msgid ""
+"The line that produces the Bellman backup was written with the assumption"
+" that it would add together tensors with the same shape. However, this "
+"line can **also** add together tensors with different shapes, as long as "
+"they're broadcast-compatible."
+msgstr ""
+"產生 Bellman backup 的那行程式碼是在假設會將相同形狀的張量相加的前提下編寫的。"
+"然而，這行程式碼**也**可以將不同形狀的張量相加，只要它們是廣播相容（broadcast-compatible）的。"
+
+#: ../../spinningup/exercise2_2_soln.rst:120
+msgid ""
+"Tensors with shapes ``[batch size]`` and ``[batch size, 1]`` are "
+"broadcast compatible, but the behavior is not actually what you might "
+"expect! Check out this example:"
+msgstr ""
+"形狀為 ``[batch size]`` 和 ``[batch size, 1]`` 的張量是廣播相容的，"
+"但其行為並不是你預期的！看看這個例子："
+
+#: ../../spinningup/exercise2_2_soln.rst:157
+msgid ""
+"Adding or multiplying a shape ``[5]`` tensor by a shape ``[5,1]`` tensor "
+"returns a shape ``[5,5]`` tensor!"
+msgstr ""
+"將形狀為 ``[5]`` 的張量與形狀為 ``[5,1]`` 的張量相加或相乘，"
+"會得到形狀為 ``[5,5]`` 的張量！"
+
+#: ../../spinningup/exercise2_2_soln.rst:159
+msgid ""
+"When you don't squeeze the Q-functions, ``q_pi_targ`` has shape ``[batch "
+"size, 1]``, and the backup---and in turn, the whole Q-loss---gets totally"
+" messed up."
+msgstr ""
+"當你不壓縮 Q 函數時，``q_pi_targ`` 的形狀為 ``[batch size, 1]``，"
+"backup——進而整個 Q 損失——就會完全出錯。"
+
+#: ../../spinningup/exercise2_2_soln.rst:161
+msgid ""
+"Broadcast error 1: ``(1 - d_ph) * q_pi_targ`` becomes a ``[batch size, "
+"batch size]`` tensor containing the outer product of the mask with the "
+"target network Q-values."
+msgstr ""
+"廣播錯誤 1：``(1 - d_ph) * q_pi_targ`` 變成了一個 ``[batch size, batch size]`` "
+"的張量，包含遮罩與目標網路 Q 值的外積。"
+
+#: ../../spinningup/exercise2_2_soln.rst:163
+msgid ""
+"Broadcast error 2: ``r_ph`` then gets treated as a row vector and added "
+"to each row of ``(1 - d_ph) * q_pi_targ`` separately."
+msgstr ""
+"廣播錯誤 2：``r_ph`` 被當作行向量處理，分別加到 ``(1 - d_ph) * q_pi_targ`` "
+"的每一行上。"
+
+#: ../../spinningup/exercise2_2_soln.rst:165
+msgid ""
+"Broadcast error 3: ``q_loss`` depends on ``q - backup``, which involves "
+"another bad broadcast between ``q`` (shape ``[batch size, 1]``) and "
+"``backup`` (shape ``[batch size, batch size]``)."
+msgstr ""
+"廣播錯誤 3：``q_loss`` 依賴於 ``q - backup``，這涉及 ``q``（形狀 ``[batch size, 1]``）"
+"和 ``backup``（形狀 ``[batch size, batch size]``）之間的另一次錯誤廣播。"
+
+#: ../../spinningup/exercise2_2_soln.rst:167
+msgid ""
+"To put it mathematically: let :math:`q`, :math:`q'`, :math:`r`, :math:`d`"
+" denote vectors containing the q-values, target q-values, rewards, and "
+"dones for a given batch, where there are :math:`n` entries in the batch. "
+"The correct backup is"
+msgstr ""
+"用數學來表達：令 :math:`q`、:math:`q'`、:math:`r`、:math:`d` 分別表示包含"
+"給定批次中 q 值、目標 q 值、獎勵和結束標記的向量，其中批次有 :math:`n` 個元素。"
+"正確的 backup 為"
+
+#: ../../spinningup/exercise2_2_soln.rst:169
+msgid "z_i = r_i + \\gamma (1-d_i) q'_i,"
+msgstr "z_i = r_i + \\gamma (1-d_i) q'_i,"
+
+#: ../../spinningup/exercise2_2_soln.rst:173
+msgid "and the correct loss function is"
+msgstr "而正確的損失函數為"
+
+#: ../../spinningup/exercise2_2_soln.rst:175
+#, python-brace-format
+msgid "\\frac{1}{n} \\sum_{i=1}^n (q_i - z_i)^2."
+msgstr "\\frac{1}{n} \\sum_{i=1}^n (q_i - z_i)^2."
+
+#: ../../spinningup/exercise2_2_soln.rst:179
+msgid "But with these errors, what gets computed is a backup *matrix*,"
+msgstr "但由於這些錯誤，實際計算出的是一個 backup *矩陣*，"
+
+#: ../../spinningup/exercise2_2_soln.rst:181
+#, python-brace-format
+msgid "z_{ij} = r_j + \\gamma (1-d_j) q'_i,"
+msgstr "z_{ij} = r_j + \\gamma (1-d_j) q'_i,"
+
+#: ../../spinningup/exercise2_2_soln.rst:185
+msgid "and a messed up loss function"
+msgstr "以及一個錯誤的損失函數"
+
+#: ../../spinningup/exercise2_2_soln.rst:187
+#, python-brace-format
+msgid "\\frac{1}{n^2} \\sum_{i=1}^n \\sum_{j=1}^n (q_j - z_{ij})^2."
+msgstr "\\frac{1}{n^2} \\sum_{i=1}^n \\sum_{j=1}^n (q_j - z_{ij})^2."
+
+#: ../../spinningup/exercise2_2_soln.rst:191
+msgid ""
+"If you leave this to run in HalfCheetah long enough, you'll actually see "
+"some non-trivial learning process, because weird details specific to this"
+" environment partly cancel out the errors. But almost everywhere else, it"
+" fails completely."
+msgstr ""
+"如果你讓它在 HalfCheetah 中跑足夠長的時間，實際上會看到一些有意義的學習過程，"
+"因為此環境特有的一些奇怪細節部分抵消了這些錯誤。但在幾乎所有其他環境中，它會完全失敗。"
+
+#: ../../spinningup/exercise2_2_soln.rst:195
+msgid "How it Gums Up the Works: PyTorch Version"
+msgstr "它是如何搞砸一切的：PyTorch 版本"
+
+#: ../../spinningup/exercise2_2_soln.rst:197
+msgid ""
+"Exactly the same broadcasting shenanigans as in the Tensorflow version. "
+"Check out `this note`_ in the PyTorch documentation about it."
+msgstr ""
+"與 Tensorflow 版本完全相同的廣播問題。請查看 PyTorch 文件中關於此問題的 `this note`_。"
+
+#: ../../spinningup/exercise2_2_soln.rst:203
+msgid ""
+"Learning curves for DDPG in HalfCheetah-v2 for bugged and non-bugged "
+"actor-critic implementations using PyTorch, averaged over three random "
+"seeds."
+msgstr ""
+"使用 PyTorch 的 DDPG 在 HalfCheetah-v2 環境中有 bug 和無 bug 的 actor-critic 實作"
+"的學習曲線，結果為三個隨機種子的平均值。"

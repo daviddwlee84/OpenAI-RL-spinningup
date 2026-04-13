@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spinup"
+version = "0.2.0"
+description = "Teaching tools for introducing people to deep RL."
+readme = "readme.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Joshua Achiam"},
+]
+
+dependencies = [
+    "cloudpickle",
+    "gymnasium[atari,box2d,classic_control]",
+    "ipython",
+    "joblib",
+    "matplotlib",
+    "mpi4py",
+    "numpy",
+    "pandas",
+    "psutil",
+    "scipy",
+    "seaborn",
+    "torch>=2.0",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+    "sphinx-intl",
+    "myst-parser",
+]
+[project.scripts]
+spinup-run = "spinup.run:main"
+
+[tool.setuptools.packages.find]
+include = ["spinup*"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
