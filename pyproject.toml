@@ -40,7 +40,6 @@ docs = [
     "myst-parser",
 ]
 [project.scripts]
-spinup-run = "spinup.run:main"
 
 [tool.setuptools.packages.find]
 include = ["spinup*"]

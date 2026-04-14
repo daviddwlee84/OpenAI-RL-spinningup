@@ -6,16 +6,33 @@
             background: #2980b9; border-radius: 4px; padding: 8px 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3); font-size: 14px;">
   <span style="color: #fff; margin-right: 6px;">🌐</span>
-  {% if language == 'zh_TW' %}
-    <a href="{{ pathto('index', 1).replace('/zh-TW/', '/') }}"
+  {% if language and language.startswith('zh') %}
+    <a href="#" id="lang-switch"
        style="color: #ecf0f1; text-decoration: none; margin: 0 4px;">English</a>
     <span style="color: #ecf0f1;">|</span>
     <span style="color: #fff; font-weight: bold; margin: 0 4px;">繁體中文</span>
+    <script>
+    document.getElementById('lang-switch').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.pathname = window.location.pathname.replace('/zh-TW/', '/');
+    });
+    </script>
   {% else %}
     <span style="color: #fff; font-weight: bold; margin: 0 4px;">English</span>
     <span style="color: #ecf0f1;">|</span>
-    <a href="/zh-TW/{{ pagename }}.html"
+    <a href="#" id="lang-switch"
        style="color: #ecf0f1; text-decoration: none; margin: 0 4px;">繁體中文</a>
+    <script>
+    document.getElementById('lang-switch').addEventListener('click', function(e) {
+      e.preventDefault();
+      var page = '{{ pagename }}.html';
+      var path = window.location.pathname;
+      var i = path.lastIndexOf(page);
+      if (i !== -1) {
+        window.location.pathname = path.substring(0, i) + 'zh-TW/' + page;
+      }
+    });
+    </script>
   {% endif %}
 </div>
 {% endblock %}
